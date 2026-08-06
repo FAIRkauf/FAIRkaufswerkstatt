@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FAIRkaufswerkstatt — Immobilienverkauf, neu gedacht</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap');
+
+  :root{
+    --paper:#FAF8F3;
+    --sand:#EFE7D2;
+    --forest:#24392F;
+    --forest-2:#2F4A3E;
+    --ochre:#B8934A;
+    --ink:#1F2019;
+    --ink-soft:#5B5A50;
+    --line:#DED5BE;
+  }
+
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Inter',sans-serif;
+    color:var(--ink);
+    background:var(--paper);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  #prinzip, #prinzip p, #haltung, #haltung p{ text-align:justify; }
+  h1,h2,h3{
+    font-family:'Fraunces',serif;
+    font-weight:500;
+    color:var(--forest);
+    letter-spacing:-0.01em;
+  }
+  a{color:inherit; text-decoration:none;}
+  .wrap{max-width:1120px; margin:0 auto; padding:0 32px;}
+  .eyebrow{
+    font-size:12px;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--ochre);
+    font-weight:600;
+    margin-bottom:14px;
+    display:inline-block;
+  }
+
+  /* ---------- PHOTO TREATMENT ---------- */
+  .photo{ position:relative; overflow:hidden; border-radius:3px; background:var(--sand); }
+  .photo img{ width:100%; height:100%; object-fit:cover; display:block; filter:grayscale(38%) contrast(1.04) brightness(1.02); }
+  .photo::after{ content:''; position:absolute; inset:0; background:linear-gradient(155deg, rgba(36,57,47,.30), rgba(184,147,74,.10)); mix-blend-mode:multiply; }
+
+  /* ---------- NAV ---------- */
+  nav{ position:sticky; top:0; z-index:50; background:rgba(250,248,243,.86); backdrop-filter:blur(10px); border-bottom:1px solid var(--line); }
+  nav .wrap{ display:flex; align-items:center; justify-content:space-between; height:74px; }
+  .logotype{ font-family:'Fraunces',serif; font-size:19px; font-weight:600; color:var(--forest); }
+  .nav-links{display:flex; gap:24px; font-size:13.5px; font-weight:500;}
+  .nav-links a{color:var(--ink-soft); transition:color .2s;}
+  .nav-links a:hover{color:var(--forest);}
+  .nav-cta{ font-size:13.5px; font-weight:600; background:var(--forest); color:var(--paper); padding:11px 22px; border-radius:100px; white-space:nowrap; }
+  @media(max-width:960px){ .nav-links{display:none;} }
+
+  /* ---------- HERO ---------- */
+  .hero{ position:relative; padding:0; min-height:88vh; display:flex; align-items:center; justify-content:center; overflow:hidden; text-align:center; }
+  .hero-media{ position:absolute; inset:0; z-index:0; background:var(--forest); }
+  .hero-media video{ width:100%; height:100%; object-fit:cover; display:block; filter:brightness(.85) saturate(1.05); }
+  .hero-media::after{ content:''; position:absolute; inset:0; background:linear-gradient(180deg, rgba(24,36,29,.62) 0%, rgba(20,30,24,.55) 45%, rgba(18,26,21,.82) 100%); }
+  .hero .wrap{ position:relative; z-index:2; max-width:680px; margin:0 auto; padding:150px 32px 96px; display:flex; flex-direction:column; align-items:center; }
+  .hero h1{ color:var(--paper); font-size:clamp(34px,4.4vw,52px); line-height:1.1; margin-bottom:22px; }
+  .hero p.lead{ font-size:17px; color:#E7E4DA; max-width:480px; margin:0 auto 30px; }
+  .hero-ctas{display:flex; gap:16px; flex-wrap:wrap; margin-bottom:34px; justify-content:center;}
+  .btn-primary{ background:var(--ochre); color:var(--forest); padding:15px 30px; border-radius:100px; font-weight:600; font-size:14.5px; display:inline-block; transition:background .2s; border:none; cursor:pointer; }
+  .btn-primary:hover{background:#c7a25a;}
+  .btn-ghost{ padding:15px 26px; font-weight:600; font-size:14.5px; color:var(--paper); border-bottom:1.5px solid var(--ochre); }
+  .trust-line{ display:flex; align-items:center; gap:10px; font-size:13px; color:#D8D5C9; border-top:1px solid rgba(255,255,255,.22); padding-top:18px; max-width:520px; flex-wrap:wrap; justify-content:center; }
+  .trust-line b{color:var(--paper); font-weight:600;}
+  .hero .eyebrow{ color:var(--ochre); }
+  @media(max-width:900px){ .hero{ min-height:76vh; } .hero .wrap{ padding:130px 24px 70px; } }
+
+  /* ---------- USP STRIP ---------- */
+  .usp{ background:var(--sand); border-top:1px solid var(--line); border-bottom:1px solid var(--line); margin-top:72px; }
+  .usp .wrap{ display:grid; grid-template-columns:repeat(4,1fr); }
+  .usp-item{ padding:36px 28px; border-left:1px solid var(--line); }
+  .usp-item:first-child{border-left:none;}
+  .usp-item svg{width:22px; height:22px; stroke:var(--forest); margin-bottom:14px;}
+  .usp-item h3{font-family:'Inter',sans-serif; font-size:14.5px; font-weight:600; color:var(--forest); margin-bottom:6px;}
+  .usp-item p{font-size:13.5px; color:var(--ink-soft);}
+  @media(max-width:820px){ .usp .wrap{grid-template-columns:1fr 1fr;} .usp-item{border-left:none; border-top:1px solid var(--line);} }
+
+  /* ---------- SECTION ---------- */
+  section.block{ padding:100px 0; position:relative; }
+  section.block .wrap{ display:grid; grid-template-columns:180px 1fr; gap:56px; }
+  .thread-col .label{ font-size:13px; color:var(--ink-soft); max-width:150px; }
+  .block-content h2{ font-size:clamp(26px,3vw,36px); margin-bottom:20px; max-width:780px; }
+  .block-content > p{ font-size:15.5px; color:var(--ink-soft); max-width:740px; margin-bottom:14px; }
+  .block-content .accent-line{ display:inline-block; width:44px; height:1.5px; background:var(--ochre); margin-bottom:22px; }
+  .split{ display:grid; grid-template-columns:1.15fr .85fr; gap:48px; align-items:start; }
+  .split p:not(.pull-quote){ font-size:15.5px; color:var(--ink-soft); margin-bottom:14px; }
+  .split.rev{ grid-template-columns:.85fr 1.15fr; }
+  .split.rev .photo{ order:-1; }
+  @media(max-width:900px){
+    section.block .wrap{grid-template-columns:1fr; gap:16px;}
+    .split, .split.rev{grid-template-columns:1fr;}
+    .split.rev .photo{order:0;}
+  }
+  section.block.alt{ background:var(--sand); border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
+
+  /* ---------- PULL QUOTE ---------- */
+  .pull-quote{ font-family:'Fraunces',serif; font-size:19px; font-style:italic; color:var(--forest); border-left:2px solid var(--ochre); padding:4px 0 4px 20px; margin:20px 0 22px; max-width:560px; }
+
+  /* ---------- TEAM ---------- */
+  .team{ display:grid; grid-template-columns:repeat(3,1fr); gap:24px; margin-top:36px; }
+  .team-card .photo{ aspect-ratio:3/4; margin-bottom:14px; }
+  .team-card h3{ font-size:15.5px; font-weight:600; font-family:'Fraunces',serif; margin-bottom:2px; }
+  .team-card span{ font-size:12.5px; color:var(--ink-soft); }
+  @media(max-width:820px){ .team{grid-template-columns:1fr 1fr;} }
+  @media(max-width:560px){ .team{grid-template-columns:1fr;} }
+
+  /* ---------- STEPS ---------- */
+  .steps{ margin-top:8px; max-width:760px; }
+  .step{ display:flex; gap:20px; padding:22px 0; border-top:1px solid var(--line); }
+  .step:last-child{border-bottom:1px solid var(--line);}
+  .step .idx{ font-family:'Fraunces',serif; font-size:22px; color:var(--ochre); min-width:34px; }
+  .step h3{ font-size:16.5px; font-weight:600; margin-bottom:5px; color:var(--forest); font-family:'Fraunces',serif; }
+  .step p{ font-size:14px; color:var(--ink-soft); margin:0; }
+
+  /* ---------- PRICING CARDS ---------- */
+  .price-intro{ display:flex; justify-content:space-between; align-items:flex-end; gap:24px; flex-wrap:wrap; margin-bottom:8px; }
+  .pricing{ display:grid; grid-template-columns:repeat(3,1fr); gap:22px; margin-top:32px; align-items:stretch; }
+  .price-card{ background:var(--paper); border:1px solid var(--line); border-radius:6px; padding:30px 26px 28px; display:flex; flex-direction:column; position:relative; }
+  .price-card.featured{ border-color:var(--ochre); border-width:1.5px; box-shadow:0 18px 40px -22px rgba(36,57,47,.35); }
+  .price-card .badge{ position:absolute; top:-12px; left:26px; background:var(--ochre); color:var(--paper); font-size:10.5px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; padding:5px 12px; border-radius:100px; }
+  .price-card .tier{ font-family:'Fraunces',serif; font-size:17px; color:var(--forest); font-weight:600; margin-bottom:10px; min-height:22px; }
+  .price-card .desc{ font-size:13px; color:var(--ink-soft); margin-bottom:18px; }
+  .price-card .price{ font-family:'Fraunces',serif; font-size:34px; color:var(--forest); margin-bottom:2px; }
+  .price-card .vat{ font-size:11.5px; color:var(--ink-soft); margin-bottom:20px; }
+  .price-card .incl-of{ font-size:12.5px; color:var(--ink-soft); font-style:italic; margin-bottom:14px; padding:10px 12px; background:var(--sand); border-radius:4px; }
+  .price-card ul{ list-style:none; margin:0 0 22px; padding:0; flex:1; }
+  .price-card li{ font-size:12.8px; color:var(--ink); padding:6px 0 6px 20px; position:relative; border-top:1px solid var(--line); line-height:1.4; }
+  .price-card li:first-child{border-top:none;}
+  .price-card li:before{ content:'✓'; position:absolute; left:0; top:6px; color:var(--ochre); font-weight:700; font-size:12px; }
+  .price-card .btn-primary{ text-align:center; width:100%; padding:13px 0; font-size:13.5px; }
+  @media(max-width:960px){ .pricing{grid-template-columns:1fr;} }
+
+  /* ---------- MODULES GRID ---------- */
+  .module-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--line); border:1px solid var(--line); margin-top:32px; }
+  .module-chip{ background:var(--paper); padding:22px 22px 20px; display:flex; flex-direction:column; justify-content:space-between; min-height:108px; cursor:pointer; border:none; text-align:left; font-family:inherit; transition:background .15s; position:relative; }
+  .module-chip:hover{ background:var(--sand); }
+  .module-chip:hover h4{ color:var(--ochre); }
+  .module-chip h4{ font-family:'Fraunces',serif; font-size:15px; font-weight:600; color:var(--forest); margin-bottom:10px; transition:color .15s; padding-right:20px; }
+  .module-chip .mp{ font-size:14px; font-weight:600; color:var(--ink); }
+  .module-chip .mp.na{ color:var(--ink-soft); font-weight:500; font-style:italic; font-size:12.5px; }
+  .module-chip .more-hint{ position:absolute; top:20px; right:20px; font-size:15px; color:var(--ochre); font-weight:600; }
+  @media(max-width:820px){ .module-grid{grid-template-columns:1fr 1fr;} }
+  @media(max-width:560px){ .module-grid{grid-template-columns:1fr;} }
+
+  /* ---------- MODULE MODAL ---------- */
+  .modal-overlay{ display:none; position:fixed; inset:0; background:rgba(31,32,25,.55); z-index:200; align-items:center; justify-content:center; padding:24px; }
+  .modal-overlay.open{ display:flex; }
+  .modal-box{ background:var(--paper); max-width:560px; width:100%; max-height:82vh; overflow-y:auto; border-radius:8px; padding:40px 40px 36px; position:relative; box-shadow:0 30px 70px -20px rgba(0,0,0,.4); }
+  .modal-close{ position:absolute; top:18px; right:18px; width:32px; height:32px; border-radius:50%; background:var(--sand); border:none; font-size:16px; color:var(--forest); cursor:pointer; display:flex; align-items:center; justify-content:center; }
+  .modal-close:hover{ background:var(--ochre); color:var(--paper); }
+  .modal-box h3{ font-family:'Fraunces',serif; font-size:22px; color:var(--forest); margin-bottom:6px; padding-right:30px; }
+  .modal-box .modal-price{ font-size:14.5px; font-weight:600; color:var(--ochre); margin-bottom:20px; }
+  .modal-box .modal-body p{ font-size:14px; color:var(--ink-soft); line-height:1.6; margin-bottom:14px; }
+  .modal-box .modal-body p:last-child{ margin-bottom:0; }
+  .modal-box .modal-body strong{ color:var(--ink); }
+  .modal-box .modal-body ul{ margin:0 0 14px; padding-left:18px; }
+  .modal-box .modal-body li{ font-size:14px; color:var(--ink-soft); line-height:1.55; margin-bottom:8px; }
+  .modal-box .modal-body a{ color:var(--forest); font-weight:600; border-bottom:1px solid var(--ochre); }
+  @media(max-width:600px){ .modal-box{ padding:32px 24px 28px; } }
+
+  /* ---------- VERGLEICH ---------- */
+  .compare{ margin-top:32px; border-top:1px solid var(--line); }
+  .compare-row{ display:grid; grid-template-columns:1fr 1fr; border-bottom:1px solid var(--line); }
+  .compare-row.head div{ font-family:'Fraunces',serif; font-size:15px; font-weight:600; padding:16px 0 12px; }
+  .compare-row.head div:first-child{color:var(--ink-soft);}
+  .compare-row.head div:last-child{color:var(--forest);}
+  .compare-row div{ padding:16px 24px 16px 0; font-size:14.5px; color:var(--ink-soft); }
+  .compare-row div:first-child{border-right:1px solid var(--line);}
+  .compare-row div:last-child{color:var(--ink); padding-left:24px;}
+
+  /* ---------- ERFAHRUNGEN ---------- */
+  .testimonials{ display:grid; grid-template-columns:repeat(3,1fr); gap:28px; margin-top:24px; }
+  .t-card{ background:var(--sand); border:1px solid var(--line); padding:28px 26px; border-radius:4px; }
+  .t-card .stars{ color:var(--ochre); font-size:14px; letter-spacing:2px; display:block; margin-bottom:14px; }
+  .t-card p.quote{ font-family:'Fraunces',serif; font-size:16px; color:var(--forest); line-height:1.45; margin-bottom:20px; }
+  .t-who b{ color:var(--ink); display:block; font-size:13.5px; }
+  .t-who span{ font-size:13px; color:var(--ink-soft); }
+  .rating-badge{ display:flex; align-items:center; gap:10px; font-size:13.5px; color:var(--ink-soft); margin-top:4px; }
+  .rating-badge .stars{ color:var(--ochre); font-size:16px; letter-spacing:2px; }
+  @media(max-width:900px){.testimonials{grid-template-columns:1fr;}}
+
+  /* ---------- FAQ ---------- */
+  .faq{ margin-top:32px; max-width:760px; }
+  .faq-cat{ font-family:'Fraunces',serif; font-size:14px; font-weight:600; color:var(--ochre); text-transform:uppercase; letter-spacing:.06em; margin:34px 0 4px; }
+  .faq-cat:first-child{ margin-top:0; }
+
+  /* ---------- PRINZIP ---------- */
+  .prinzip-list{ margin-top:32px; display:grid; grid-template-columns:repeat(3,1fr); gap:28px; }
+  .prinzip-item{ border-top:2px solid var(--ochre); padding-top:16px; }
+  .prinzip-item h3{ font-family:'Fraunces',serif; font-size:16px; font-weight:600; color:var(--forest); margin-bottom:8px; }
+  .prinzip-item p{ font-size:14px; color:var(--ink-soft); }
+  .prinzip-cta{ margin-top:44px; text-align:center; background:var(--sand); border:1px solid var(--line); border-radius:8px; padding:36px 24px; }
+  .prinzip-cta p{ font-size:13.5px; color:var(--ink-soft); margin-top:14px; }
+  @media(max-width:820px){ .prinzip-list{grid-template-columns:1fr;} }
+
+  /* ---------- VERGLEICH (10-Punkte) ---------- */
+  .vergleich-grid{ display:grid; grid-template-columns:1fr 1fr; gap:30px 44px; margin-top:32px; }
+  .vg-item .vg-num{ font-family:'Fraunces',serif; color:var(--ochre); font-size:19px; display:block; margin-bottom:6px; }
+  .vg-item h3{ font-family:'Fraunces',serif; font-size:15.5px; font-weight:600; color:var(--forest); margin-bottom:6px; line-height:1.3; }
+  .vg-item p{ font-size:13.5px; color:var(--ink-soft); }
+  @media(max-width:820px){ .vergleich-grid{grid-template-columns:1fr;} }
+  .faq details{ border-bottom:1px solid var(--line); padding:20px 0; }
+  .faq summary{ cursor:pointer; font-family:'Fraunces',serif; font-size:16.5px; color:var(--forest); list-style:none; display:flex; justify-content:space-between; align-items:center; gap:16px;}
+  .faq summary::-webkit-details-marker{display:none;}
+  .faq summary:after{ content:'+'; font-size:20px; color:var(--ochre); font-family:'Inter',sans-serif; flex-shrink:0;}
+  .faq details[open] summary:after{content:'–';}
+  .faq p{ font-size:14.5px; color:var(--ink-soft); margin-top:12px; max-width:640px; }
+
+  /* ---------- FINAL CTA ---------- */
+  .cta-final{ position:relative; padding:130px 0; text-align:center; color:var(--paper); overflow:hidden; background:var(--forest); }
+  .cta-final .wrap{ position:relative; z-index:1; max-width:620px; }
+  .cta-final h2{ color:var(--paper); font-size:clamp(28px,3.6vw,42px); margin-bottom:20px; }
+  .cta-final p{ color:#E3E6DF; font-size:16px; margin-bottom:36px; }
+  .cta-final .btn-primary{ background:var(--ochre); color:var(--forest); }
+  .cta-final .btn-primary:hover{ background:#c7a25a; }
+
+  /* ---------- FOOTER ---------- */
+  footer{ padding:64px 0 40px; border-top:1px solid var(--line); }
+  footer .wrap{ display:grid; grid-template-columns:1.3fr 1fr 1fr; gap:36px; }
+  .foot-col h4{ font-size:13px; color:var(--forest); font-weight:600; margin-bottom:14px; }
+  .foot-col p, .foot-col a{ font-size:13.5px; color:var(--ink-soft); display:block; margin-bottom:8px; }
+  .foot-col a:hover{color:var(--forest);}
+  .footer-bottom{ max-width:1120px; margin:44px auto 0; padding:20px 32px 0; border-top:1px solid var(--line); font-size:12px; color:#8f8d80; }
+  @media(max-width:820px){ footer .wrap{grid-template-columns:1fr; gap:26px;} }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="logotype">FAIRkaufswerkstatt</div>
+    <div class="nav-links">
+      <a href="#fairkaufen">FAIRkaufen</a>
+      <a href="#fairmieten">FAIRmieten</a>
+      <a href="#module">Module</a>
+      <a href="#vergleich">Vergleich</a>
+    </div>
+    <a href="https://calendly.com/fairkaufswerkstatt-info/dein-kostenfreier-und-unverbindlicher-kennenlerntermin" target="_blank" rel="noopener" class="nav-cta">Termin buchen</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="hero-media">
+    <video autoplay muted loop playsinline poster="https://picsum.photos/seed/fkw-hero/1600/1000">
+      <source src="https://assets.mixkit.co/videos/30468/30468-720.mp4" type="video/mp4">
+    </video>
+  </div>
+  <div class="wrap">
+    <span class="eyebrow">Privater Immobilienverkauf, neu gedacht</span>
+    <h1>Keine Maklerprovision.<br>Kein starres Modell.</h1>
+    <p class="lead">Ein individuelles Leistungspaket öffnet dir Türen, die beim Privatverkauf bislang verschlossen waren — für einen Verkauf, der sicher, klar und hochwertig ist.</p>
+    <div class="hero-ctas">
+      <a href="https://calendly.com/fairkaufswerkstatt-info/dein-kostenfreier-und-unverbindlicher-kennenlerntermin" target="_blank" rel="noopener" class="btn-primary">Kostenloses Erstgespräch</a>
+      <a href="#fairkaufen" class="btn-ghost">Pakete ansehen</a>
+    </div>
+    <div class="trust-line">
+      <span>Vermieten ab <b>249 €</b></span>
+      <span>·</span>
+      <span>Verkaufen ab <b>845 €</b></span>
+    </div>
+  </div>
+</header>
+
+<section class="usp" style="margin-top:0;">
+  <div class="wrap">
+    <div class="usp-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/></svg>
+      <h3>Keine Provision</h3>
+      <p>Transparente Fixpreise statt Maklercourtage.</p>
+    </div>
+    <div class="usp-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+      <h3>Individuell</h3>
+      <p>Pakete für FAIRkaufen, FAIRmieten und Erweiterungsmodule.</p>
+    </div>
+    <div class="usp-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg>
+      <h3>Transparent</h3>
+      <p>Volle Einsicht in Preise und Leistungen, keine Überraschungen.</p>
+    </div>
+    <div class="usp-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg>
+      <h3>Persönlich</h3>
+      <p>Begleitung mit Herz, Klarheit und echtem Einsatz.</p>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="prinzip">
+  <div class="wrap">
+    <div class="thread-col"><div class="label">Prinzip</div></div>
+    <div class="block-content">
+      <span class="accent-line"></span>
+      <h2>Deine Vorteile auf den Punkt gebracht</h2>
+
+      <div class="prinzip-list">
+        <div class="prinzip-item">
+          <h3>Makler-Power im Hintergrund</h3>
+          <p>Wir erledigen alle zeitintensiven und komplexen Aufgaben digital für dich.</p>
+        </div>
+        <div class="prinzip-item">
+          <h3>Volle Kontrolle vor Ort</h3>
+          <p>Du führst die Besichtigungen selbst durch — denn niemand kennt deine Immobilie besser als du.</p>
+        </div>
+        <div class="prinzip-item">
+          <h3>Maximale Ersparnis</h3>
+          <p>Voller Profi-Support zum transparenten Festpreis statt teurer Maklerprovision.</p>
+        </div>
+      </div>
+
+      <div class="prinzip-cta">
+        <a href="https://calendly.com/fairkaufswerkstatt-info/dein-kostenfreier-und-unverbindlicher-kennenlerntermin" target="_blank" rel="noopener" class="btn-primary">Jetzt kostenfreies Erstgespräch vereinbaren →</a>
+        <p>Unverbindlich informieren &amp; passendes Festpreis-Paket finden.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="haltung">
+  <div class="wrap">
+    <div class="thread-col"><div class="label">Haltung</div></div>
+    <div class="block-content">
+      <span class="accent-line"></span>
+      <h2>Wissen ist Macht. Und bei uns kein Geheimnis.</h2>
+      <div class="split">
+        <div>
+          <p>Die FAIRkaufswerkstatt ist aus einem einfachen Gedanken entstanden: Wissen nicht für sich zu behalten, sondern verständlich weiterzugeben — damit jeder den Immobilienverkauf selbstbestimmt meistern kann.</p>
+          <p>Ein Ort, an dem Wissen nicht vom Zufall, Budget oder den richtigen Kontakten abhängt, sondern genau dann da ist, wenn man es braucht.</p>
+          <p>Mir war wichtig, etwas zu schaffen, das befähigt statt ausbremst — ein Konzept, das für jede und jeden zugänglich ist. Ich bin davon überzeugt: Wissen und Unterstützung in einem so fundamentalen Bereich dürfen nicht vom Geldbeutel abhängen.</p>
+          <p class="pull-quote">„Ich bin schon immer eine passionierte Maklerin — und habe mit der FAIRkaufswerkstatt nun meine Berufung gefunden.“</p>
+        </div>
+        <div class="photo" style="aspect-ratio:4/5;">
+          <img src="data:image/jpeg;base64,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" alt="Julija Frideric, Gründerin der FAIRkaufswerkstatt">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="fairkaufen">
+  <div class="wrap">
+    <div class="thread-col"><div class="label">FAIRkaufen</div></div>
+    <div class="block-content">
+      <span class="accent-line"></span>
+      <div class="price-intro">
+        <div>
+          <h2>FAIRkaufen</h2>
+          <p>Als Privatverkäufer:in stehst du oft vor einer besonderen Herausforderung — schließlich verkauft man nicht jeden Tag eine Immobilie. Wähle das Paket, das zu deinem Vorhaben passt, und rüste bei Bedarf mit Erweiterungsmodulen auf.</p>
+        </div>
+      </div>
+
+      <div class="pricing">
+        <div class="price-card">
+          <div class="tier">PREMIUM</div>
+          <div class="desc">Konzentrier dich auf das Wesentliche — wir übernehmen die komplette Organisation und den Online-Auftritt deiner Vermarktung.</div>
+          <div class="price">845 €</div>
+          <div class="vat">inkl. 19 % MwSt.</div>
+          <ul>
+            <li>Ratgeber inkl. aller Checklisten und Vorlagen</li>
+            <li>Erhebung relevanter Immobilieninformationen</li>
+            <li>3 Monate Inserats-Verwaltung</li>
+            <li>Beratungstermin vor Vermarktungsbeginn</li>
+            <li>14-tägig Berichterstattung über aktuelle Vermarktungszahlen</li>
+            <li>Weiterleitung von eingehenden Interessentenanfragen</li>
+            <li>Exposé- und Dokumenten-Versand an Interessent:innen</li>
+            <li>Finanzierungsfahrplan für Interessent:innen</li>
+          </ul>
+          <a href="https://calendly.com/fairkaufswerkstatt-info/dein-kostenfreier-und-unverbindlicher-kennenlerntermin" target="_blank" rel="noopener" class="btn-primary">Loslegen</a>
+        </div>
+
+        <div class="price-card featured">
+          <span class="badge">Meist gebucht</span>
+          <div class="tier">RUNDUM-SORGLOS</div>
+          <div class="desc">Alle wichtigen Maklerleistungen in einem kompletten Service — professionell, zeitsparend und bestens organisiert.</div>
+          <div class="price">2.975 €</div>
+          <div class="vat">inkl. 19 % MwSt.</div>
+          <ul>
+            <li>Ratgeber inkl. aller Checklisten und Vorlagen</li>
+            <li>Erhebung relevanter Immobilieninformationen</li>
+            <li>3 Monate Inserats-Verwaltung</li>
+            <li>1 Monat kostenfrei inserieren auf zwei Immobilienportalen</li>
+            <li>Kostenfreier Energieausweis</li>
+            <li>Beratungstermin vor Vermarktungsbeginn</li>
+            <li>Vermarktungsstrategie und Konkurrenzanalyse</li>
+            <li>Resonanzgespräch nach 4 Wochen inkl. Strategieanpassung</li>
+            <li>Immobilienbewertung nach Sprengnetter</li>
+            <li>7-tägig Berichterstattung über aktuelle Vermarktungszahlen</li>
+            <li>Verwaltung von Interessentenanfragen</li>
+            <li>Koordination von Besichtigungsterminen</li>
+            <li>Exposé- und Dokumenten-Versand an Interessent:innen</li>
+            <li>Finanzierungsfahrplan für Interessent:innen</li>
+          </ul>
+          <a href="https://calendly.com/fairkaufswerkstatt-info/dein-kostenfreier-und-unverbindlicher-kennenlerntermin" target="_blank" rel="noopener" class="btn-primary">Loslegen</a>
+        </div>
+
+        <div class="price-card">
+          <div class="tier">MASTERCLASS</div>
+          <div class="desc">Unser umfassendster Komplettservice — inklusive persönlicher Vor-Ort-Begleitung, Workshop-Tag und Premium-Bonusleistungen.</div>
+          <div class="price">5.345 €</div>
+          <div class="vat">inkl. 19 % MwSt.</div>
+          <div class="incl-of">Umfasst sämtliche Leistungen des RUNDUM-SORGLOS-Pakets, ergänzt um:</div>
+          <ul>
+            <li>3 Monate kostenfrei inserieren auf zwei Immobilienportalen</li>
+            <li>Dokumenteneinholung</li>
+            <li>Professionelle Immobilienfotografie</li>
+            <li>360°-Aufnahmen inkl. 3D-Rendering &amp; Dollhouse-Modell</li>
+            <li>Beratungstermin vor Vermarktungsbeginn vor Ort</li>
+            <li>Workshop „Professionelle Besichtigungen &amp; effiziente Prozessgestaltung"</li>
+            <li>Workshop „Verhandlungskompetenz" — Strategien, Preisgestaltung &amp; Einwandbehandlung</li>
+            <li>Dokumente schwärzen (DSGVO-konform)</li>
+            <li>Verkaufsschilder für 3 Monate</li>
+            <li>Flyer &amp; Nachbarschaftsbriefe (inkl. Text &amp; Layout)</li>
+          </ul>
+          <a href="https://calendly.com/fairkaufswerkstatt-info/dein-kostenfreier-und-unverbindlicher-kennenlerntermin" target="_blank" rel="noopener" class="btn-primary">Loslegen</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block alt" id="fairmieten">
+  <div class="wrap">
+    <div class="thread-col"><div class="label">FAIRmieten</div></div>
+    <div class="block-content">
+      <span class="accent-line"></span>
+      <h2>FAIRmieten</h2>
+      <p>Eine Vermietung bringt viele kleine Aufgaben mit sich — von der Kommunikation bis zur Vertragserstellung. Du entscheidest, wer einzieht — wir sorgen im Hintergrund für einen reibungslosen Ablauf.</p>
+
+      <div class="pricing">
+        <div class="price-card">
+          <div class="tier">BASIC</div>
+          <div class="desc">Ideal, um Zeit zu sparen und den Aufwand bei der Mietersuche zu reduzieren — ohne die Kontrolle über die finale Auswahl abzugeben.</div>
+          <div class="price">249 €</div>
+          <div class="vat">inkl. 19 % MwSt.</div>
+          <ul>
+            <li>Erhebung relevanter Immobilieninformationen</li>
+            <li>3 Monate Inserats-Verwaltung</li>
+            <li>7-tägig Berichterstattung über aktuelle Vermarktungszahlen</li>
+            <li>Weiterleitung von eingehenden Interessentenanfragen</li>
+            <li>Bewerbungsfahrplan für Interessent:innen</li>
+          </ul>
+          <a href="https://calendly.com/fairkaufswerkstatt-info/dein-kostenfreier-und-unverbindlicher-kennenlerntermin" target="_blank" rel="noopener" class="btn-primary">Loslegen</a>
+        </div>
+
+        <div class="price-card featured">
+          <span class="badge">Meist gebucht</span>
+          <div class="tier">TOP</div>
+          <div class="desc">Für alle, die ihre Immobilie stressfrei vermieten möchten — mit professioneller Inseratserstellung und geprüften Interessent:innen.</div>
+          <div class="price">415 €</div>
+          <div class="vat">inkl. 19 % MwSt.</div>
+          <ul>
+            <li>Erhebung relevanter Immobilieninformationen</li>
+            <li>3 Monate Inserats-Verwaltung</li>
+            <li>Beratungstermin vor Vermarktungsbeginn</li>
+            <li>7-tägig Berichterstattung über aktuelle Vermarktungszahlen</li>
+            <li>Verwaltung von Interessentenanfragen</li>
+            <li>Koordination von Besichtigungsterminen</li>
+            <li>Bewerbungsfahrplan für Interessent:innen</li>
+          </ul>
+          <a href="https://calendly.com/fairkaufswerkstatt-info/dein-kostenfreier-und-unverbindlicher-kennenlerntermin" target="_blank" rel="noopener" class="btn-primary">Loslegen</a>
+        </div>
+
+        <div class="price-card">
+          <div class="tier">PREMIUM</div>
+          <div class="desc">Umfassender Service rund um die Vermietung — von der Inseratserstellung bis zum unterschriftsreifen Mietvertrag.</div>
+          <div class="price">595 €</div>
+          <div class="vat">inkl. 19 % MwSt.</div>
+          <ul>
+            <li>Erhebung relevanter Immobilieninformationen</li>
+            <li>3 Monate Inserats-Verwaltung</li>
+            <li>Beratungstermin vor Vermarktungsbeginn</li>
+            <li>7-tägig Berichterstattung über aktuelle Vermarktungszahlen</li>
+            <li>Verwaltung von Interessentenanfragen</li>
+            <li>Koordination von Besichtigungsterminen</li>
+            <li>Bewerbungsfahrplan für Interessent:innen</li>
+            <li>Mietvertrag</li>
+          </ul>
+          <a href="https://calendly.com/fairkaufswerkstatt-info/dein-kostenfreier-und-unverbindlicher-kennenlerntermin" target="_blank" rel="noopener" class="btn-primary">Loslegen</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="module">
+  <div class="wrap">
+    <div class="thread-col"><div class="label">Module</div></div>
+    <div class="block-content">
+      <span class="accent-line"></span>
+      <h2>Passgenaue Erweiterungsmodule</h2>
+      <p>Ob Grundbaustein, Erfolgsmodul oder zusätzlicher Service — stell dir genau die Leistungen zusammen, die du für deine Vermarktung brauchst. Klar strukturiert, flexibel kombinierbar und jederzeit unkompliziert buchbar.</p>
+
+      <div class="module-grid">
+        <div class="module-chip" onclick="openModule('energieausweis')"><span class="more-hint">→</span><h4>Energieausweis</h4><span class="mp">95,00 € <span style="font-weight:400;color:var(--ink-soft);font-size:11.5px;">inkl. MwSt.</span></span></div>
+        <div class="module-chip" onclick="openModule('aufnahmen360')"><span class="more-hint">→</span><h4>360°-Aufnahmen &amp; 3D-Grundrisse</h4><span class="mp">99,00 € <span style="font-weight:400;color:var(--ink-soft);font-size:11.5px;">inkl. MwSt.</span></span></div>
+        <div class="module-chip" onclick="openModule('bewertung')"><span class="more-hint">→</span><h4>Immobilienbewertung</h4><span class="mp">95,00 € <span style="font-weight:400;color:var(--ink-soft);font-size:11.5px;">inkl. MwSt.</span></span></div>
+        <div class="module-chip" onclick="openModule('ratgeber')"><span class="more-hint">→</span><h4>Ratgeber „Verkauf es doch einfach selbst"</h4><span class="mp">19,95 €</span></div>
+        <div class="module-chip" onclick="openModule('beratung90')"><span class="more-hint">→</span><h4>90 Min. individuelle Beratung</h4><span class="mp">129,90 € <span style="font-weight:400;color:var(--ink-soft);font-size:11.5px;">inkl. MwSt.</span></span></div>
+        <div class="module-chip" onclick="openModule('coaching')"><span class="more-hint">→</span><h4>Coaching „Erfolgreich verhandeln"</h4><span class="mp">109,90 € <span style="font-weight:400;color:var(--ink-soft);font-size:11.5px;">inkl. MwSt.</span></span></div>
+        <div class="module-chip" onclick="openModule('remarketing')"><span class="more-hint">→</span><h4>Remarketing-Service</h4><span class="mp">109,90 € <span style="font-weight:400;color:var(--ink-soft);font-size:11.5px;">inkl. MwSt.</span></span></div>
+        <div class="module-chip" onclick="openModule('konkurrenzanalyse')"><span class="more-hint">→</span><h4>Konkurrenz- &amp; Vermarktungsanalyse</h4><span class="mp">109,90 € <span style="font-weight:400;color:var(--ink-soft);font-size:11.5px;">inkl. MwSt.</span></span></div>
+        <div class="module-chip" onclick="openModule('schwaerzen')"><span class="more-hint">→</span><h4>Dokumente schwärzen</h4><span class="mp na">Auf Anfrage</span></div>
+        <div class="module-chip" onclick="openModule('flyer')"><span class="more-hint">→</span><h4>Flyer &amp; Nachbarschaftsbriefe</h4><span class="mp na">Auf Anfrage</span></div>
+        <div class="module-chip" onclick="openModule('schilder')"><span class="more-hint">→</span><h4>Verkaufsschilder mieten</h4><span class="mp na">Auf Anfrage</span></div>
+        <div class="module-chip" onclick="openModule('finanzierung')"><span class="more-hint">→</span><h4>Immobilienfinanzierung</h4><span class="mp" style="color:var(--ochre);">Kostenfrei</span></div>
+      </div>
+
+      <div class="modal-overlay" id="moduleModal" onclick="if(event.target===this) closeModule()">
+        <div class="modal-box">
+          <button class="modal-close" onclick="closeModule()">✕</button>
+          <h3 id="modalTitle"></h3>
+          <div class="modal-price" id="modalPrice"></div>
+          <div class="modal-body" id="modalBody"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="ablauf">
+  <div class="wrap">
+    <div class="thread-col"><div class="label">Ablauf</div></div>
+    <div class="block-content">
+      <span class="accent-line"></span>
+      <h2>In 6 einfachen Schritten zu deinem erfolgreichen Verkauf</h2>
+        <div class="steps">
+          <div class="step"><div class="idx">01</div><div><h3>Unverbindliches Erstgespräch</h3><p><strong>Was wir tun:</strong> Wir lernen deine Immobilie sowie deine Wünsche kennen und analysieren gemeinsam deinen individuellen Unterstützungsbedarf.<br><strong>Dein Vorteil:</strong> Ein transparentes Orientierungsgespräch mit einem klaren Fahrplan für deinen Verkauf — 100 % unverbindlich.</p></div></div>
+          <div class="step"><div class="idx">02</div><div><h3>Datenbasierte Wertermittlung &amp; Strategie</h3><p><strong>Was wir tun:</strong> Auf Basis aktueller Marktdaten ermitteln wir den optimalen Angebotspreis für deine Immobilie.<br><strong>Dein Vorteil:</strong> Kein Bauchgefühl, sondern eine fundierte Preisstrategie als sicheres Fundament.</p></div></div>
+          <div class="step"><div class="idx">03</div><div><h3>Aufbereitung &amp; Profi-Exposé</h3><p><strong>Was wir tun:</strong> Wir strukturieren deine vorhandenen Unterlagen, bereiten Grundrisse digital auf und erstellen ein erstklassiges, verkaufsstarkes Exposé.<br><strong>Dein Vorteil:</strong> Ein professioneller Auftritt, der die Stärken deiner Immobilie perfekt in Szene setzt.</p></div></div>
+          <div class="step"><div class="idx">04</div><div><h3>Digitales Marketing &amp; Käufer-Check</h3><p><strong>Was wir tun:</strong> Wir platzieren deine Immobilie auf den relevanten Portalen, managen alle Anfragen und prüfen vorab die Bonität der Interessenten.<br><strong>Dein Vorteil:</strong> Kein Besichtigungstourismus — du empfängst nur geprüfte, ernsthafte Käufer.</p></div></div>
+          <div class="step"><div class="idx">05</div><div><h3>Besichtigung in Eigenregie &amp; Verhandlungs-Support</h3><p><strong>Was wir tun:</strong> Du führst die Besichtigungstermine vor Ort durch. Wir geben dir praxiserprobte Leitfäden an die Hand und unterstützen dich im Hintergrund bei der Preisverhandlung.<br><strong>Dein Vorteil:</strong> Du behältst die volle Kontrolle vor Ort und holst mit unserem Expertenwissen den besten Preis heraus.</p></div></div>
+          <div class="step"><div class="idx">06</div><div><h3>Sicherer Kaufvertrag &amp; Notarabwicklung</h3><p><strong>Was wir tun:</strong> Wir koordinieren die Erstellung des Kaufvertragsentwurfs, prüfen alle Formalien und begleiten dich Schritt für Schritt bis zum Notartermin.<br><strong>Dein Vorteil:</strong> Ein rechtssicherer, entspannter Verkaufsabschluss bis zur finalen Übergabe.</p></div></div>
+        </div>
+    </div>
+  </div>
+</section>
+
+<section class="block alt" id="vergleich">
+  <div class="wrap">
+    <div class="thread-col"><div class="label">Vergleich</div></div>
+    <div class="block-content">
+      <span class="accent-line"></span>
+      <h2>Privat verkaufen vs. mit der FAIRkaufswerkstatt</h2>
+      <p>Zehn Gründe, warum ein Verkauf mit der FAIRkaufswerkstatt mehr bringt als ein rein privater Verkauf auf eigene Faust.</p>
+
+      <div class="vergleich-grid">
+        <div class="vg-item"><span class="vg-num">01</span><h3>Exklusiver B2B-Zugang zu Profi-Tools</h3><p>Schluss mit teuren Endkundenpreisen: Du nutzt unser B2B-Netzwerk und greifst auf hochkarätige Branchen-Tools und Fachexperten zu, die Privatpersonen sonst verschlossen bleiben.</p></div>
+        <div class="vg-item"><span class="vg-num">02</span><h3>Premium-Inserate zum Vorteilspreis</h3><p>Deine Immobilie steht ganz oben: Wir platzieren dein Objekt im absoluten Premiumsegment der Top-Portale — mit maximaler Sichtbarkeit zu unseren günstigen Rahmenkonditionen.</p></div>
+        <div class="vg-item"><span class="vg-num">03</span><h3>Volle Power auf allen digitalen Kanälen</h3><p>Mehr als nur ein Portal-Eintrag: Wir bespielen die gesamte Bandbreite moderner digitaler Marketingkanäle, um genau die richtigen Käufer gezielt anzusprechen.</p></div>
+        <div class="vg-item"><span class="vg-num">04</span><h3>Käufer-Check durch renommierte Finanzdienstleister</h3><p>Kein Risiko bei der Finanzierung: Etablierte Finanzierungsexperten prüfen die Bonität und reale Kaufkraft der Interessenten vorab auf Herz und Nieren.</p></div>
+        <div class="vg-item"><span class="vg-num">05</span><h3>Schutz vor Besichtigungstourismus</h3><p>Deine Zeit ist wertvoll: Unser Backoffice filtert alle Anfragen systematisch vor — du empfängst vor Ort nur echte, kaufbereite Interessenten.</p></div>
+        <div class="vg-item"><span class="vg-num">06</span><h3>Spürbare Zeitersparnis im Alltag</h3><p>Endlich feierabendfreundlich: Wir nehmen dir den zeitraubenden bürokratischen Schreibtischarbeitsaufwand komplett ab. Du machst nur die Besichtigungen!</p></div>
+        <div class="vg-item"><span class="vg-num">07</span><h3>Datenbasierte Wertermittlung statt Bauchentscheidung</h3><p>Verkaufe nicht unter Wert: Wir ermitteln deinen optimalen Verkaufspreis auf Basis aktueller Marktdaten — für maximale Erlöse ohne Verkaufsrisiko.</p></div>
+        <div class="vg-item"><span class="vg-num">08</span><h3>Profi-Exposé &amp; digitale Grundrissaufbereitung</h3><p>Der erste Eindruck entscheidet: Wir bringen deine Unterlagen in Struktur und erstellen ein erstklassiges Verkaufs-Exposé mit modernen Grundrissen.</p></div>
+        <div class="vg-item"><span class="vg-num">09</span><h3>Starker Sparringspartner bei Preisverhandlungen</h3><p>Niemals unvorbereitet verhandeln: Wir stehen dir im Hintergrund mit praxiserprobten Strategien zur Seite, damit du deinen Wunschpreis selbstbewusst durchsetzt.</p></div>
+        <div class="vg-item"><span class="vg-num">10</span><h3>Rechtssicher bis zur Notar-Unterschrift</h3><p>Entspannt zum Verkaufsabschluss: Wir koordinieren den Kaufvertragsentwurf, prüfen die Details und begleiten dich Schritt für Schritt bis zum Notartermin.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block no-thread-line" id="erfahrungen">
+  <div class="wrap">
+    <div class="thread-col"><div class="label">Erfahrungen</div></div>
+    <div class="block-content">
+      <span class="accent-line"></span>
+      <h2>Was Kund:innen berichten</h2>
+      <div class="rating-badge">
+        <span class="stars">★★★★★</span>
+        <span>5,0 von 5 · 16 Google-Bewertungen</span>
+      </div>
+
+      <div class="testimonials">
+        <div class="t-card">
+          <span class="stars">★★★★★</span>
+          <p class="quote">„Sehr professionell, absolute Empfehlung.“</p>
+          <div class="t-who"><span>Google-Bewertung</span></div>
+        </div>
+        <div class="t-card">
+          <span class="stars">★★★★★</span>
+          <p class="quote">„Spektakulärer Service kombiniert mit einer neuartigen Idee, einzigartig und mitreißend umgesetzt von Gründerin Julija Frideric — eine wirklich spannende Erfahrung.“</p>
+          <div class="t-who"><span>Google-Bewertung</span></div>
+        </div>
+        <div class="t-card">
+          <span class="stars">★★★★★</span>
+          <p class="quote">„Sehr positive Erfahrungen mit der FAIRkaufswerkstatt und besonders mit Geschäftsführerin Julija — hervorzuheben ist vor allem die faire Behandlung der Kund:innen.“</p>
+          <div class="t-who"><span>Google-Bewertung</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block alt no-thread-line" id="faq" style="padding-top:100px;">
+  <div class="wrap">
+    <div class="thread-col"><div class="label">FAQ</div></div>
+    <div class="block-content">
+      <span class="accent-line"></span>
+      <h2>Häufige Fragen</h2>
+      <div class="faq">
+        <div class="faq-cat">Vertrauen &amp; Modell — „Wie funktioniert das überhaupt?“</div>
+        <details open>
+          <summary>Ihr seid kein klassischer Makler — was genau seid ihr dann?</summary>
+          <p>Wir sind dein digitaler Backoffice-Partner und Co-Pilot beim Immobilienverkauf. Ein Makler übernimmt in der Regel alles — inklusive der Besichtigungen vor Ort — und verlangt dafür eine hohe prozentuale Provision. Wir übernehmen exakt all die komplexen, bürokratischen und digitalen Aufgaben im Hintergrund (Wertermittlung, Exposé, Inserate, Anfragen-Check, Vertrag). Du machst lediglich die Besichtigungen selbst. So behältst du die Kontrolle und sparst enorm Geld.</p>
+        </details>
+        <details>
+          <summary>Ist das denn überhaupt legal und rechtssicher, wenn ich selbst besichtige?</summary>
+          <p>Absolut. Als Eigentümer hast du rechtlich jederzeit das volle Recht, deine eigene Immobilie selbst zu verkaufen und Besichtigungen durchzuführen. Wir sorgen im Hintergrund dafür, dass alle gesetzlichen Vorgaben, Unterlagen und Vertragsentwürfe fehlerfrei aufbereitet sind, damit du juristisch auf der sicheren Seite bist.</p>
+        </details>
+
+        <div class="faq-cat">Kosten &amp; Abwicklung — „Wo ist der Haken bei den Fixpreisen?“</div>
+        <details>
+          <summary>Warum seid ihr so viel günstiger als ein Makler? Gibt es versteckte Kosten?</summary>
+          <p>Es gibt keine versteckten Kosten und keine prozentuale Provision. Dass wir so faire Fixpreise anbieten können, hat einen einfachen Grund: Der zeitintensivste Faktor für Makler sind die Fahrten und Vor-Ort-Termine. Da du die Besichtigungen übernimmst, entfällt dieser Aufwand für uns. Durch unsere hochdigitalisierten Prozesse im Backoffice und B2B-Rahmenkonditionen geben wir diesen Preisvorteil direkt an dich weiter.</p>
+        </details>
+        <details>
+          <summary>Wann muss ich das Fixpreis-Paket bezahlen?</summary>
+          <p>Transparenz ist uns extrem wichtig. Du zahlst nur für das vereinbarte Paket gemäß unserer transparenten Leistungsübersicht. Wir besprechen im kostenfreien Erstgespräch exakt, welches Paket zu deinen Bedürfnissen passt — ganz ohne spätere Überraschungen.</p>
+        </details>
+
+        <div class="faq-cat">Sicherheit &amp; Besichtigungen — „Schaffe ich das alleine?“</div>
+        <details>
+          <summary>Ich habe noch nie eine Besichtigung durchgeführt — was ist, wenn ich überfordert bin?</summary>
+          <p>Du bist nicht allein! Wir lassen dich vor Ort keineswegs im Regen stehen. Du erhältst von uns praxiserprobte Leitfäden, Checklisten und professionelle Vorbereitungsmaterialien. Außerdem filtern wir Anfragen im Vorfeld so gründlich, dass du nur mit ernsthaften, sympathischen und vorqualifizierten Interessenten sprichst.</p>
+        </details>
+        <details>
+          <summary>Woher weiß ich, dass der Interessent die Immobilie überhaupt bezahlen kann?</summary>
+          <p>Das ist einer unserer wichtigsten Services: Bevor ein Interessent deine Adresse für einen Besichtigungstermin erhält, durchläuft er unser Vorqualifizierungssystem. Wir arbeiten mit renommierten Finanzdienstleistern zusammen, die die Bonität und echte Kaufkraft der Bewerber vorab prüfen. So schützen wir dich vor Besichtigungstourismus und Platzpatzern.</p>
+        </details>
+
+        <div class="faq-cat">Marketing &amp; Verhandlung — „Bekomme ich wirklich den besten Preis?“</div>
+        <details>
+          <summary>Bekommt meine Immobilie ohne Makler überhaupt genug Reichweite?</summary>
+          <p>Sogar mehr als bei vielen regionalen Maklern. Wir platzieren deine Immobilie über unsere Profi-Zugänge im absoluten Premiumsegment auf den führenden Immobilienportalen und bespielen bei Bedarf gezielt digitale Marketingkanäle. Dein Objekt sticht durch unser Profi-Exposé und moderne Grundrisse aus der Masse heraus.</p>
+        </details>
+        <details>
+          <summary>Was passiert, wenn Käufer versuchen, den Preis drastisch zu drücken?</summary>
+          <p>Auch bei Preisverhandlungen stehen wir dir als Sparringspartner zur Seite. Wir bereiten dich mit klaren Argumenten auf Basis unserer datenbasierten Wertermittlung vor. Du weißt genau, was deine Immobilie wert ist und wie du diesen Preis selbstbewusst vertrittst.</p>
+        </details>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-final" id="kontakt">
+  <div class="wrap">
+    <span class="eyebrow" style="color:var(--sand)">Kontakt</span>
+    <h2>Bereit, deinen Immobilienverkauf neu zu denken?</h2>
+    <p>Lass uns gemeinsam loslegen — in deinem Tempo, mit einem offenen Ohr für deine Wünsche und dem klaren Ziel, das Beste für dich und deine Immobilie herauszuholen.</p>
+    <a href="https://calendly.com/fairkaufswerkstatt-info/dein-kostenfreier-und-unverbindlicher-kennenlerntermin" target="_blank" rel="noopener" class="btn-primary">Jetzt Termin vereinbaren</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-col">
+      <div class="logotype" style="margin-bottom:14px;">FAIRkaufswerkstatt</div>
+      <p style="max-width:280px;">Der faire, individuelle Weg zum privaten Immobilienverkauf und zur Vermietung — ohne Maklerprovision, mit voller Transparenz.</p>
+    </div>
+    <div class="foot-col">
+      <h4>Seite</h4>
+      <a href="#fairkaufen">FAIRkaufen</a>
+      <a href="#fairmieten">FAIRmieten</a>
+      <a href="#module">Module</a>
+      <a href="#vergleich">Vergleich</a>
+    </div>
+    <div class="foot-col">
+      <h4>Kontakt</h4>
+      <a href="mailto:info@fairkaufswerkstatt.de">info@fairkaufswerkstatt.de</a>
+      <a href="impressum.html">Impressum</a>
+      <a href="datenschutzerklaerung.html">Datenschutzerklärung</a>
+      <a href="agbs.html">AGBs</a>
+    </div>
+  </div>
+  <div class="footer-bottom">© 2025 FAIRkaufswerkstatt</div>
+</footer>
+
+<script>
+  var moduleData = {
+    energieausweis: {
+      title: "Energieausweis",
+      price: "95,00 € – 105,00 € inkl. 19 % MwSt.",
+      body: "<p>In Deutschland ist beim Verkauf einer Immobilie ein Energieausweis verpflichtend – das legen die Energieeinsparverordnung (EnEV) und das Gebäudeenergiegesetz (GEG) fest. Der Energieausweis zeigt dir und potenziellen Käufer:innen, wie energieeffizient das Gebäude ist und welchen Verbrauch man erwarten kann.</p><p>Wichtig zu wissen: Wird kein gültiger Energieausweis vorgelegt, kann das rechtliche Konsequenzen haben – bis hin zu Bußgeldern von bis zu 15.000 €.</p><p>Die gute Nachricht: <strong>Du kannst den Energieausweis ganz einfach online beantragen</strong> – in nur wenigen Minuten und zu wirklich attraktiven Konditionen.</p><p>So bist du rechtlich auf der sicheren Seite und startest gut vorbereitet in die Vermarktung.</p>"
+    },
+    aufnahmen360: {
+      title: "360°-Aufnahmen und 3D-Grundrisse",
+      price: "99,00 € inkl. 19 % MwSt.",
+      body: "<p>Ogulo bietet dir moderne Tools, mit denen du deine Immobilie eindrucksvoll, anschaulich und absolut zeitgemäß präsentieren kannst – und hebt deine Vermarktung damit auf ein ganz neues Niveau.</p><p>Die hochauflösende Kamera erstellt automatisch einen übersichtlichen Grundriss deiner Räume, den du ganz individuell anpassen kannst – zum Beispiel durch neue Möblierungen oder das Hervorheben wichtiger Flächenangaben.</p><p>Ein echtes Highlight ist die <strong>Dollhouse-Ansicht</strong>: ein realistisches 3D-Modell deiner Immobilie im Miniaturformat. So bekommen Interessent:innen schon beim ersten Klick ein klares Gefühl für Raumaufteilung und Proportionen – einfach, intuitiv und richtig überzeugend.</p><p>Mehr Infos findest du hier: <a href=\"https://ogulo.com/\" target=\"_blank\" rel=\"noopener\">ogulo.com</a></p>"
+    },
+    bewertung: {
+      title: "Immobilienbewertung",
+      price: "95,00 € inkl. 19 % MwSt.",
+      body: "<p>Wir bewerten deine Immobilie auf Basis der renommierten Sprengnetter-Analyse – und greifen dabei auf echte Verkaufsdaten zurück. So erhältst du eine realistische und verlässliche Einschätzung des aktuellen Marktwerts.</p><p>Die Bewertung basiert auf den Informationen, die du uns zur Verfügung stellst. Deshalb gilt: <strong>Je genauer deine Angaben, desto präziser das Ergebnis.</strong> Kleine Abweichungen können den Wert beeinflussen – aber keine Sorge, wir unterstützen dich gern dabei, alles sauber zusammenzustellen.</p><p>Mit unserer Erfahrung und einem starken Bewertungstool an deiner Seite hast du eine solide Grundlage für eine erfolgreiche und gut durchdachte Vermarktung.</p>"
+    },
+    ratgeber: {
+      title: "„Verkauf es doch einfach selbst\"",
+      price: "19,95 €",
+      body: "<p>Hinter diesem Ratgeber steckt ein klarer Gedanke: <strong>Immobilienverkauf darf kein Buch mit sieben Siegeln sein.</strong></p><p>Zu oft bleibt wichtiges Wissen nur wenigen vorbehalten – dabei solltest du ganz einfach verstehen können, worauf es wirklich ankommt.</p><p>Wir möchten dir Transparenz geben und dir zeigen, dass du <strong>kein Profi sein musst</strong>, um selbstbewusst und gut informiert Entscheidungen zu treffen. Dieser Ratgeber ist kein trockenes Lehrbuch, sondern ein praktischer Begleiter – verständlich, ehrlich und auf Augenhöhe.</p><p>Damit du nicht im Dunkeln tappst, sondern jederzeit den Überblick behältst und dich in deinem Verkaufsprozess sicher fühlst.</p>"
+    },
+    beratung90: {
+      title: "90 Min. individuelle Beratung",
+      price: "129,90 € inkl. 19 % MwSt.",
+      body: "<p><strong>Individuelle Beratung per Videokonferenz – persönlich, unkompliziert und auf den Punkt</strong></p><p>Ob du ganz am Anfang stehst oder schon mitten im Verkaufsprozess bist – in unserem virtuellen Meeting nehmen wir uns Zeit für all deine Fragen und Themen. Du bekommst praxisnahe Tipps, klare Empfehlungen und Strategien, die dich wirklich weiterbringen.</p><p>Freu dich auf ehrliche Einblicke, wertvolles Fachwissen und echte Erfahrung aus der Praxis – direkt, persönlich und ganz auf deine Situation abgestimmt.</p><p>So gehst du bestens vorbereitet in die Vermarktung und kannst mit einem richtig guten Gefühl durchstarten!</p>"
+    },
+    coaching: {
+      title: "Coaching „Erfolgreich verhandeln\"",
+      price: "109,90 € inkl. 19 % MwSt.",
+      body: "<p><strong>Verhandeln will gelernt sein – und kann richtig viel ausmachen!</strong></p><p>Lass dich von unseren Expert:innen gezielt coachen, damit du beim Verkauf deiner Immobilie wirklich das Beste herausholen kannst. Denn es geht meist nicht nur um den Preis – auch in vielen anderen Punkten steckt oft mehr Potenzial, als man auf den ersten Blick denkt.</p><p>Gemeinsam entwickeln wir eine <strong>maßgeschneiderte Verhandlungsstrategie</strong>, die dir Sicherheit gibt und deine Position stärkt. Mit dem richtigen Know-how im Gepäck gehst du selbstbewusst in jedes Gespräch – und erhöhst deine Erfolgschancen deutlich.</p>"
+    },
+    remarketing: {
+      title: "Remarketing-Service",
+      price: "109,90 € inkl. 19 % MwSt.",
+      body: "<p><strong>Frischer Wind für deine Vermarktung</strong></p><p>Läuft der Verkauf deiner Immobilie nicht so, wie du es dir wünschst? Kein Problem – wir schauen gemeinsam ganz genau hin, analysieren die bisherigen Schritte und finden heraus, woran es liegt.</p><p>Mit erfahrenem Blick und einer klaren Strategie decken wir mögliche Stolpersteine auf und entwickeln gezielte Maßnahmen, die deiner Vermarktung wieder neuen Schwung geben.</p><p>Oft reichen schon kleine Veränderungen, um Großes zu bewirken. Nutze die Chance, neue Impulse zu setzen und frisches Interesse bei potenziellen Käufer:innen zu wecken!</p>"
+    },
+    konkurrenzanalyse: {
+      title: "Konkurrenz- &amp; Vermarktungsanalyse",
+      price: "109,90 € inkl. 19 % MwSt.",
+      body: "<p><strong>Strategisch zum Erfolg: Mit Plan zur passenden Käufer:in</strong></p><p>Eine durchdachte Vermarktungsstrategie ist ein entscheidender Faktor für deinen Verkaufserfolg.</p><p>Gemeinsam analysieren wir den Markt, das aktuelle Angebot und die relevanten Zielgruppen – und entwickeln darauf basierend eine Strategie, die wirklich zu deiner Immobilie passt.</p><p>So stellst du sicher, dass du gezielt die passenden Käufer:innen oder Mieter:innen ansprichst – klar, effektiv und mit Fokus auf ein starkes Ergebnis.</p>"
+    },
+    schwaerzen: {
+      title: "Dokumente schwärzen",
+      price: "Auf Anfrage",
+      body: "<p><strong>Sicher ist sicher</strong></p><p>Wir kümmern uns darum, dass sensible Daten in deinen Unterlagen zuverlässig und datenschutzkonform entfernt werden.</p><p>So kannst du deine Dokumente ganz beruhigt und sicher weitergeben – ohne Risiko und ohne zusätzlichen Aufwand für dich.</p>"
+    },
+    flyer: {
+      title: "Flyer &amp; Nachbarschaftsbriefe",
+      price: "Auf Anfrage",
+      body: "<p><strong>Aufmerksam machen, Interesse wecken</strong></p><p>Wir erstellen für dich ansprechend gestaltete Immobilienflyer und individuell formulierte Nachbarschaftsbriefe – gezielt darauf ausgerichtet, Aufmerksamkeit zu schaffen und potenzielle Interessent:innen direkt in deiner Umgebung zu erreichen.</p><p>So machst du deine Vermarktung vor Ort sichtbar, weckst echtes Interesse und erreichst genau die Menschen, die oft besonders gut passen.</p>"
+    },
+    schilder: {
+      title: "Verkaufsschilder mieten",
+      price: "Auf Anfrage",
+      body: "<p><strong>Sichtbar vor Ort – professionell präsentiert</strong></p><p>Du kannst ganz unkompliziert unsere hochwertigen Verkaufsschilder für die Dauer deiner Vermarktung mieten – klar gestaltet, gut platziert und direkt an deiner Immobilie.</p><p>Als Teil unserer durchdachten Marketingmaßnahmen helfen sie dir dabei, deine Immobilie vor Ort wirkungsvoll ins Blickfeld der richtigen Zielgruppe zu rücken.</p><p>So schaffst du Präsenz – zuverlässig, professionell und mit dem gewissen Extra an Sichtbarkeit.</p>"
+    },
+    finanzierung: {
+      title: "Individuelle Immobilienfinanzierung",
+      price: "Kostenfrei",
+      body: "<p>Mit dem Finanzierungsmodul von <strong>Frank Augustynak</strong> bekommen deine Interessent:innen kompetente Unterstützung auf dem Weg zu ihrem Wohntraum – einfach, sicher und zuverlässig.</p><p><strong>Dein Mehrwert:</strong></p><ul><li><strong>Individuelles Finanzierungskonzept in 48 Stunden:</strong> Innerhalb von nur 48 Stunden erhalten deine Interessent:innen ein maßgeschneidertes Finanzierungskonzept – exakt abgestimmt auf ihre Bedürfnisse und finanziellen Möglichkeiten.</li><li><strong>Finanzierungszertifikat binnen 24 Stunden – für geprüfte Interessent:innen:</strong> Interessent:innen können innerhalb von 24 Stunden prüfen lassen, ob sie die gewünschte Immobilie grundsätzlich finanzieren könnten. Das schafft maximale Sicherheit, echte Qualifizierung – und damit einen klaren Vorteil für dich bei der Auswahl potenzieller Käufer:innen.</li><li><strong>Zugang zu über 600 Banken:</strong> Dank bankenunabhängiger Beratung wird aus einer Vielzahl von Finanzierungspartnern das beste Angebot herausgefiltert – kostenfrei und unverbindlich.</li><li><strong>Beste Konditionen – individuell abgestimmt:</strong> Der Vergleich von rund 600 Banken ermöglicht attraktive Zinsen und Finanzierungslösungen, die optimal zu den jeweiligen Lebensumständen passen. Für maximale Sicherheit, Planbarkeit und ein gutes Gefühl bei allen Beteiligten.</li><li><strong>Persönliche Begleitung vom Experten:</strong> Frank Augustynak ist seit 1997 in der Finanzbranche tätig und spezialisiert auf Immobilienfinanzierungen. Mit Erfahrung, Engagement und echter Leidenschaft begleitet er deine Kund:innen auf ihrem Weg ins Eigenheim.</li></ul><p><em>Hinweis: Auch Selbstständige erhalten individuelle Lösungen!</em></p><p><strong>Unser Ziel:</strong> Den Traum vom eigenen Zuhause einfach, sicher und planbar Wirklichkeit werden lassen. Das Modul ist für dich komplett kostenfrei nutzbar – und bietet deinen Kund:innen echten Mehrwert!</p>"
+    }
+  };
+
+  function openModule(key){
+    var m = moduleData[key];
+    if(!m) return;
+    document.getElementById('modalTitle').innerHTML = m.title;
+    document.getElementById('modalPrice').innerHTML = m.price;
+    document.getElementById('modalBody').innerHTML = m.body;
+    document.getElementById('moduleModal').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeModule(){
+    document.getElementById('moduleModal').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape') closeModule();
+  });
+
+  function openMailtoInteresse(e, betreffZusatz){
+    e.preventDefault();
+    var subject = betreffZusatz ? ("Interessensbekundung – " + betreffZusatz) : "Interessensbekundung – FAIRkaufswerkstatt";
+    var body =
+"Hallo FAIRkaufswerkstatt-Team,\n\n" +
+"ich interessiere mich für eure Leistungen rund um den fairen Immobilienverkauf und möchte gerne ein kostenloses Erstgespräch vereinbaren.\n\n" +
+"Kurz zu mir:\n" +
+"- Name: \n" +
+"- Telefonnummer: \n" +
+"- Art der Immobilie: \n" +
+"- Verkaufsanlass (optional): \n\n" +
+"Über eine Rückmeldung mit passenden Terminvorschlägen würde ich mich freuen.\n\n" +
+"Viele Grüße";
+    window.location.href = "mailto:info@fairkaufswerkstatt.de"
+      + "?subject=" + encodeURIComponent(subject)
+      + "&body=" + encodeURIComponent(body);
+  }
+
+  function equalizePriceDescriptions(){
+    document.querySelectorAll('.pricing').forEach(function(grid){
+      var descs = grid.querySelectorAll('.price-card .desc');
+      if(!descs.length) return;
+      descs.forEach(function(d){ d.style.minHeight = '0px'; });
+      var maxH = 0;
+      descs.forEach(function(d){ maxH = Math.max(maxH, d.offsetHeight); });
+      descs.forEach(function(d){ d.style.minHeight = maxH + 'px'; });
+    });
+  }
+  window.addEventListener('load', equalizePriceDescriptions);
+  window.addEventListener('resize', equalizePriceDescriptions);
+</script>
+
+</body>
+</html>

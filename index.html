@@ -8,14 +8,16 @@
   @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap');
 
   :root{
-    --paper:#FAF8F3;
-    --sand:#EFE7D2;
-    --forest:#24392F;
-    --forest-2:#2F4A3E;
-    --ochre:#B8934A;
-    --ink:#1F2019;
-    --ink-soft:#5B5A50;
-    --line:#DED5BE;
+    --accent:#49654E;
+    --paper:#F4F5F1;
+    --sand:#E4E6D9;
+    --forest:#253528;
+    --forest-2:#49654E;
+    --ochre:#8BA889;
+    --ink:#222824;
+    --ink-soft:#4A5450;
+    --line:#D2D7C7;
+    --hair:#DFE3D9;
   }
 
   *{box-sizing:border-box; margin:0; padding:0;}
@@ -27,61 +29,68 @@
     line-height:1.6;
     -webkit-font-smoothing:antialiased;
   }
-  #prinzip, #prinzip p, #haltung, #haltung p{ text-align:justify; }
   h1,h2,h3{
     font-family:'Fraunces',serif;
-    font-weight:500;
+    font-weight:400;
     color:var(--forest);
-    letter-spacing:-0.01em;
+    letter-spacing:-0.015em;
+    line-height:1.14;
   }
   a{color:inherit; text-decoration:none;}
-  .wrap{max-width:1120px; margin:0 auto; padding:0 32px;}
+  .wrap{max-width:1180px; margin:0 auto; padding:0 44px;}
   .eyebrow{
-    font-size:12px;
-    letter-spacing:.14em;
+    font-size:11px;
+    letter-spacing:.26em;
     text-transform:uppercase;
-    color:var(--ochre);
+    color:var(--accent);
     font-weight:600;
     margin-bottom:14px;
     display:inline-block;
   }
 
   /* ---------- PHOTO TREATMENT ---------- */
-  .photo{ position:relative; overflow:hidden; border-radius:3px; background:var(--sand); }
+  .photo{ position:relative; overflow:hidden; border-radius:2px; background:var(--sand); }
   .photo img{ width:100%; height:100%; object-fit:cover; display:block; filter:grayscale(38%) contrast(1.04) brightness(1.02); }
-  .photo::after{ content:''; position:absolute; inset:0; background:linear-gradient(155deg, rgba(36,57,47,.30), rgba(184,147,74,.10)); mix-blend-mode:multiply; }
+  .photo::after{ content:''; position:absolute; inset:0; background:linear-gradient(155deg, rgba(37,53,40,.30), rgba(139,168,137,.10)); mix-blend-mode:multiply; }
 
   /* ---------- NAV ---------- */
-  nav{ position:sticky; top:0; z-index:50; background:rgba(250,248,243,.86); backdrop-filter:blur(10px); border-bottom:1px solid var(--line); }
-  nav .wrap{ display:flex; align-items:center; justify-content:space-between; height:74px; }
-  .logotype{ font-family:'Fraunces',serif; font-size:19px; font-weight:600; color:var(--forest); }
-  .nav-links{display:flex; gap:24px; font-size:13.5px; font-weight:500;}
+  nav{ position:sticky; top:0; z-index:50; background:rgba(244,245,241,.86); backdrop-filter:blur(10px); border-bottom:1px solid var(--line); }
+  nav .wrap{ display:flex; align-items:center; justify-content:space-between; height:96px; }
+  .logotype{ font-family:'Fraunces',serif; font-size:21px; font-weight:400; letter-spacing:.04em; color:var(--forest); }
+  .nav-links{display:flex; gap:38px; font-size:12px; font-weight:500; letter-spacing:.12em; text-transform:uppercase;}
   .nav-links a{color:var(--ink-soft); transition:color .2s;}
   .nav-links a:hover{color:var(--forest);}
-  .nav-cta{ font-size:13.5px; font-weight:600; background:var(--forest); color:var(--paper); padding:11px 22px; border-radius:100px; white-space:nowrap; }
+  .nav-cta{ font-size:11.5px; font-weight:500; letter-spacing:.14em; text-transform:uppercase; background:transparent; color:var(--forest); padding:13px 26px; border:1px solid var(--forest); border-radius:2px; white-space:nowrap; transition:background .3s, color .3s; }
+  .nav-cta:hover{ background:var(--forest); color:var(--paper); }
+  .btn-ghost:hover{ background:rgba(255,255,255,.1); }
+  .price-card{ transition:border-color .35s ease; }
+  .price-card:hover{ border-color:var(--forest); }
+  .t-card{ transition:border-color .35s ease; }
+  .t-card:hover{ border-color:var(--accent); }
+  .module-chip{ transition:background .3s ease; }
   @media(max-width:960px){ .nav-links{display:none;} }
 
   /* ---------- HERO ---------- */
   .hero{ position:relative; padding:0; min-height:88vh; display:flex; align-items:center; justify-content:center; overflow:hidden; text-align:center; }
   .hero-media{ position:absolute; inset:0; z-index:0; background:var(--forest); }
   .hero-media video{ width:100%; height:100%; object-fit:cover; display:block; filter:brightness(.85) saturate(1.05); }
-  .hero-media::after{ content:''; position:absolute; inset:0; background:linear-gradient(180deg, rgba(24,36,29,.62) 0%, rgba(20,30,24,.55) 45%, rgba(18,26,21,.82) 100%); }
-  .hero .wrap{ position:relative; z-index:2; max-width:680px; margin:0 auto; padding:150px 32px 96px; display:flex; flex-direction:column; align-items:center; }
-  .hero h1{ color:var(--paper); font-size:clamp(34px,4.4vw,52px); line-height:1.1; margin-bottom:22px; }
-  .hero p.lead{ font-size:17px; color:#E7E4DA; max-width:480px; margin:0 auto 30px; }
+  .hero-media::after{ content:''; position:absolute; inset:0; background:linear-gradient(180deg, rgba(22,32,25,.62) 0%, rgba(20,28,22,.55) 45%, rgba(18,25,20,.82) 100%); }
+  .hero .wrap{ position:relative; z-index:2; max-width:720px; margin:0 auto; padding:190px 32px 130px; display:flex; flex-direction:column; align-items:center; }
+  .hero h1{ color:var(--paper); font-size:clamp(38px,5vw,62px); line-height:1.08; letter-spacing:-0.02em; margin-bottom:30px; }
+  .hero p.lead{ font-size:18px; line-height:1.7; color:#E4E6D9; max-width:520px; margin:0 auto 40px; }
   .hero-ctas{display:flex; gap:16px; flex-wrap:wrap; margin-bottom:34px; justify-content:center;}
-  .btn-primary{ background:var(--ochre); color:var(--forest); padding:15px 30px; border-radius:100px; font-weight:600; font-size:14.5px; display:inline-block; transition:background .2s; border:none; cursor:pointer; }
-  .btn-primary:hover{background:#c7a25a;}
-  .btn-ghost{ padding:15px 26px; font-weight:600; font-size:14.5px; color:var(--paper); border-bottom:1.5px solid var(--ochre); }
-  .trust-line{ display:flex; align-items:center; gap:10px; font-size:13px; color:#D8D5C9; border-top:1px solid rgba(255,255,255,.22); padding-top:18px; max-width:520px; flex-wrap:wrap; justify-content:center; }
+  .btn-primary{ background:var(--forest); color:var(--paper); padding:19px 40px; border-radius:2px; font-weight:500; font-size:12.5px; letter-spacing:.14em; text-transform:uppercase; display:inline-block; transition:background .3s ease; border:none; cursor:pointer; }
+  .btn-primary:hover{background:var(--forest-2);}
+  .btn-ghost{ padding:19px 30px; font-weight:500; font-size:12.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--paper); border:1px solid rgba(255,255,255,.4); border-radius:2px; transition:background .3s; }
+  .trust-line{ display:flex; align-items:center; gap:10px; font-size:13px; color:#CFD6C9; border-top:1px solid rgba(255,255,255,.22); padding-top:18px; max-width:520px; flex-wrap:wrap; justify-content:center; }
   .trust-line b{color:var(--paper); font-weight:600;}
   .hero .eyebrow{ color:var(--ochre); }
   @media(max-width:900px){ .hero{ min-height:76vh; } .hero .wrap{ padding:130px 24px 70px; } }
 
   /* ---------- USP STRIP ---------- */
-  .usp{ background:var(--sand); border-top:1px solid var(--line); border-bottom:1px solid var(--line); margin-top:72px; }
+  .usp{ background:var(--sand); border-top:1px solid var(--hair); border-bottom:1px solid var(--hair); margin-top:72px; }
   .usp .wrap{ display:grid; grid-template-columns:repeat(4,1fr); }
-  .usp-item{ padding:36px 28px; border-left:1px solid var(--line); }
+  .usp-item{ padding:52px 34px; border-left:1px solid var(--hair); }
   .usp-item:first-child{border-left:none;}
   .usp-item svg{width:22px; height:22px; stroke:var(--forest); margin-bottom:14px;}
   .usp-item h3{font-family:'Inter',sans-serif; font-size:14.5px; font-weight:600; color:var(--forest); margin-bottom:6px;}
@@ -89,12 +98,12 @@
   @media(max-width:820px){ .usp .wrap{grid-template-columns:1fr 1fr;} .usp-item{border-left:none; border-top:1px solid var(--line);} }
 
   /* ---------- SECTION ---------- */
-  section.block{ padding:100px 0; position:relative; }
-  section.block .wrap{ display:grid; grid-template-columns:180px 1fr; gap:56px; }
-  .thread-col .label{ font-size:13px; color:var(--ink-soft); max-width:150px; }
-  .block-content h2{ font-size:clamp(26px,3vw,36px); margin-bottom:20px; max-width:780px; }
-  .block-content > p{ font-size:15.5px; color:var(--ink-soft); max-width:740px; margin-bottom:14px; }
-  .block-content .accent-line{ display:inline-block; width:44px; height:1.5px; background:var(--ochre); margin-bottom:22px; }
+  section.block{ padding:160px 0; position:relative; }
+  section.block .wrap{ display:grid; grid-template-columns:200px 1fr; gap:80px; }
+  .thread-col .label{ font-size:11px; letter-spacing:.26em; text-transform:uppercase; color:var(--accent); max-width:170px; }
+  .block-content h2{ font-size:clamp(30px,3.6vw,46px); margin-bottom:28px; max-width:820px; }
+  .block-content > p{ font-size:16.5px; line-height:1.75; color:var(--ink-soft); max-width:680px; margin-bottom:18px; }
+  .block-content .accent-line{ display:inline-block; width:64px; height:1px; background:var(--accent); margin-bottom:30px; }
   .split{ display:grid; grid-template-columns:1.15fr .85fr; gap:48px; align-items:start; }
   .split p:not(.pull-quote){ font-size:15.5px; color:var(--ink-soft); margin-bottom:14px; }
   .split.rev{ grid-template-columns:.85fr 1.15fr; }
@@ -107,7 +116,7 @@
   section.block.alt{ background:var(--sand); border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
 
   /* ---------- PULL QUOTE ---------- */
-  .pull-quote{ font-family:'Fraunces',serif; font-size:19px; font-style:italic; color:var(--forest); border-left:2px solid var(--ochre); padding:4px 0 4px 20px; margin:20px 0 22px; max-width:560px; }
+  .pull-quote{ font-family:'Fraunces',serif; font-size:24px; font-weight:400; font-style:italic; line-height:1.5; color:var(--forest); border-left:1px solid var(--accent); padding:6px 0 6px 30px; margin:34px 0 34px; max-width:600px; }
 
   /* ---------- TEAM ---------- */
   .team{ display:grid; grid-template-columns:repeat(3,1fr); gap:24px; margin-top:36px; }
@@ -119,50 +128,50 @@
 
   /* ---------- STEPS ---------- */
   .steps{ margin-top:8px; max-width:760px; }
-  .step{ display:flex; gap:20px; padding:22px 0; border-top:1px solid var(--line); }
+  .step{ display:flex; gap:32px; padding:34px 0; border-top:1px solid var(--hair); }
   .step:last-child{border-bottom:1px solid var(--line);}
-  .step .idx{ font-family:'Fraunces',serif; font-size:22px; color:var(--ochre); min-width:34px; }
+  .step .idx{ font-family:'Fraunces',serif; font-size:22px; color:var(--accent); min-width:34px; }
   .step h3{ font-size:16.5px; font-weight:600; margin-bottom:5px; color:var(--forest); font-family:'Fraunces',serif; }
   .step p{ font-size:14px; color:var(--ink-soft); margin:0; }
 
   /* ---------- PRICING CARDS ---------- */
   .price-intro{ display:flex; justify-content:space-between; align-items:flex-end; gap:24px; flex-wrap:wrap; margin-bottom:8px; }
   .pricing{ display:grid; grid-template-columns:repeat(3,1fr); gap:22px; margin-top:32px; align-items:stretch; }
-  .price-card{ background:var(--paper); border:1px solid var(--line); border-radius:6px; padding:30px 26px 28px; display:flex; flex-direction:column; position:relative; }
-  .price-card.featured{ border-color:var(--ochre); border-width:1.5px; box-shadow:0 18px 40px -22px rgba(36,57,47,.35); }
-  .price-card .badge{ position:absolute; top:-12px; left:26px; background:var(--ochre); color:var(--paper); font-size:10.5px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; padding:5px 12px; border-radius:100px; }
-  .price-card .tier{ font-family:'Fraunces',serif; font-size:17px; color:var(--forest); font-weight:600; margin-bottom:10px; min-height:22px; }
+  .price-card{ background:var(--paper); border:1px solid var(--hair); border-radius:2px; padding:44px 36px 40px; display:flex; flex-direction:column; position:relative; }
+  .price-card.featured{ border-color:var(--forest); border-width:1px; }
+  .price-card .badge{ position:absolute; top:-12px; left:26px; background:var(--forest); color:var(--sand); font-size:10.5px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; padding:5px 12px; border-radius:100px; }
+  .price-card .tier{ font-family:'Inter',sans-serif; font-size:11px; letter-spacing:.24em; text-transform:uppercase; color:var(--accent); font-weight:600; margin-bottom:20px; min-height:16px; }
   .price-card .desc{ font-size:13px; color:var(--ink-soft); margin-bottom:18px; }
-  .price-card .price{ font-family:'Fraunces',serif; font-size:34px; color:var(--forest); margin-bottom:2px; }
+  .price-card .price{ font-family:'Fraunces',serif; font-weight:400; font-size:44px; letter-spacing:-0.02em; color:var(--forest); margin-bottom:6px; }
   .price-card .vat{ font-size:11.5px; color:var(--ink-soft); margin-bottom:20px; }
-  .price-card .incl-of{ font-size:12.5px; color:var(--ink-soft); font-style:italic; margin-bottom:14px; padding:10px 12px; background:var(--sand); border-radius:4px; }
+  .price-card .incl-of{ font-size:12.5px; color:var(--ink-soft); font-style:italic; margin-bottom:18px; padding:14px 16px; background:var(--sand); border-radius:2px; }
   .price-card ul{ list-style:none; margin:0 0 22px; padding:0; flex:1; }
-  .price-card li{ font-size:12.8px; color:var(--ink); padding:6px 0 6px 20px; position:relative; border-top:1px solid var(--line); line-height:1.4; }
+  .price-card li{ font-size:13px; color:var(--ink-soft); padding:12px 0 12px 24px; position:relative; border-top:1px solid var(--hair); line-height:1.55; }
   .price-card li:first-child{border-top:none;}
-  .price-card li:before{ content:'✓'; position:absolute; left:0; top:6px; color:var(--ochre); font-weight:700; font-size:12px; }
-  .price-card .btn-primary{ text-align:center; width:100%; padding:13px 0; font-size:13.5px; }
+  .price-card li:before{ content:'✓'; position:absolute; left:0; top:6px; color:var(--accent); font-weight:700; font-size:12px; }
+  .price-card .btn-primary{ text-align:center; width:100%; padding:18px 0; font-size:12px; }
   @media(max-width:960px){ .pricing{grid-template-columns:1fr;} }
 
   /* ---------- MODULES GRID ---------- */
-  .module-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--line); border:1px solid var(--line); margin-top:32px; }
-  .module-chip{ background:var(--paper); padding:22px 22px 20px; display:flex; flex-direction:column; justify-content:space-between; min-height:108px; cursor:pointer; border:none; text-align:left; font-family:inherit; transition:background .15s; position:relative; }
+  .module-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--hair); border:1px solid var(--hair); margin-top:44px; }
+  .module-chip{ background:var(--paper); padding:32px 28px 30px; display:flex; flex-direction:column; justify-content:space-between; min-height:108px; cursor:pointer; border:none; text-align:left; font-family:inherit; transition:background .15s; position:relative; }
   .module-chip:hover{ background:var(--sand); }
-  .module-chip:hover h4{ color:var(--ochre); }
+  .module-chip:hover h4{ color:var(--accent); }
   .module-chip h4{ font-family:'Fraunces',serif; font-size:15px; font-weight:600; color:var(--forest); margin-bottom:10px; transition:color .15s; padding-right:20px; }
   .module-chip .mp{ font-size:14px; font-weight:600; color:var(--ink); }
   .module-chip .mp.na{ color:var(--ink-soft); font-weight:500; font-style:italic; font-size:12.5px; }
-  .module-chip .more-hint{ position:absolute; top:20px; right:20px; font-size:15px; color:var(--ochre); font-weight:600; }
+  .module-chip .more-hint{ position:absolute; top:20px; right:20px; font-size:15px; color:var(--accent); font-weight:600; }
   @media(max-width:820px){ .module-grid{grid-template-columns:1fr 1fr;} }
   @media(max-width:560px){ .module-grid{grid-template-columns:1fr;} }
 
   /* ---------- MODULE MODAL ---------- */
-  .modal-overlay{ display:none; position:fixed; inset:0; background:rgba(31,32,25,.55); z-index:200; align-items:center; justify-content:center; padding:24px; }
+  .modal-overlay{ display:none; position:fixed; inset:0; background:rgba(34,40,36,.55); z-index:200; align-items:center; justify-content:center; padding:24px; }
   .modal-overlay.open{ display:flex; }
-  .modal-box{ background:var(--paper); max-width:560px; width:100%; max-height:82vh; overflow-y:auto; border-radius:8px; padding:40px 40px 36px; position:relative; box-shadow:0 30px 70px -20px rgba(0,0,0,.4); }
+  .modal-box{ background:var(--paper); max-width:600px; width:100%; max-height:84vh; overflow-y:auto; border-radius:2px; padding:56px 56px 48px; position:relative; box-shadow:0 30px 70px -20px rgba(0,0,0,.4); }
   .modal-close{ position:absolute; top:18px; right:18px; width:32px; height:32px; border-radius:50%; background:var(--sand); border:none; font-size:16px; color:var(--forest); cursor:pointer; display:flex; align-items:center; justify-content:center; }
   .modal-close:hover{ background:var(--ochre); color:var(--paper); }
   .modal-box h3{ font-family:'Fraunces',serif; font-size:22px; color:var(--forest); margin-bottom:6px; padding-right:30px; }
-  .modal-box .modal-price{ font-size:14.5px; font-weight:600; color:var(--ochre); margin-bottom:20px; }
+  .modal-box .modal-price{ font-size:14.5px; font-weight:600; color:var(--accent); margin-bottom:20px; }
   .modal-box .modal-body p{ font-size:14px; color:var(--ink-soft); line-height:1.6; margin-bottom:14px; }
   .modal-box .modal-body p:last-child{ margin-bottom:0; }
   .modal-box .modal-body strong{ color:var(--ink); }
@@ -172,7 +181,7 @@
   @media(max-width:600px){ .modal-box{ padding:32px 24px 28px; } }
 
   /* ---------- VERGLEICH ---------- */
-  .compare{ margin-top:32px; border-top:1px solid var(--line); }
+  .compare{ margin-top:44px; border-top:1px solid var(--hair); }
   .compare-row{ display:grid; grid-template-columns:1fr 1fr; border-bottom:1px solid var(--line); }
   .compare-row.head div{ font-family:'Fraunces',serif; font-size:15px; font-weight:600; padding:16px 0 12px; }
   .compare-row.head div:first-child{color:var(--ink-soft);}
@@ -183,18 +192,18 @@
 
   /* ---------- ERFAHRUNGEN ---------- */
   .testimonials{ display:grid; grid-template-columns:repeat(3,1fr); gap:28px; margin-top:24px; }
-  .t-card{ background:var(--sand); border:1px solid var(--line); padding:28px 26px; border-radius:4px; }
-  .t-card .stars{ color:var(--ochre); font-size:14px; letter-spacing:2px; display:block; margin-bottom:14px; }
-  .t-card p.quote{ font-family:'Fraunces',serif; font-size:16px; color:var(--forest); line-height:1.45; margin-bottom:20px; }
+  .t-card{ background:transparent; border:1px solid var(--hair); padding:44px 36px; border-radius:2px; }
+  .t-card .stars{ color:var(--accent); font-size:13px; letter-spacing:5px; display:block; margin-bottom:22px; }
+  .t-card p.quote{ font-family:'Fraunces',serif; font-weight:400; font-size:19px; color:var(--forest); line-height:1.55; margin-bottom:28px; }
   .t-who b{ color:var(--ink); display:block; font-size:13.5px; }
   .t-who span{ font-size:13px; color:var(--ink-soft); }
   .rating-badge{ display:flex; align-items:center; gap:10px; font-size:13.5px; color:var(--ink-soft); margin-top:4px; }
-  .rating-badge .stars{ color:var(--ochre); font-size:16px; letter-spacing:2px; }
+  .rating-badge .stars{ color:var(--accent); font-size:16px; letter-spacing:2px; }
   @media(max-width:900px){.testimonials{grid-template-columns:1fr;}}
 
   /* ---------- FAQ ---------- */
   .faq{ margin-top:32px; max-width:760px; }
-  .faq-cat{ font-family:'Fraunces',serif; font-size:14px; font-weight:600; color:var(--ochre); text-transform:uppercase; letter-spacing:.06em; margin:34px 0 4px; }
+  .faq-cat{ font-family:'Fraunces',serif; font-size:14px; font-weight:600; color:var(--accent); text-transform:uppercase; letter-spacing:.06em; margin:34px 0 4px; }
   .faq-cat:first-child{ margin-top:0; }
 
   /* ---------- PRINZIP ---------- */
@@ -202,39 +211,291 @@
   .prinzip-item{ border-top:2px solid var(--ochre); padding-top:16px; }
   .prinzip-item h3{ font-family:'Fraunces',serif; font-size:16px; font-weight:600; color:var(--forest); margin-bottom:8px; }
   .prinzip-item p{ font-size:14px; color:var(--ink-soft); }
-  .prinzip-cta{ margin-top:44px; text-align:center; background:var(--sand); border:1px solid var(--line); border-radius:8px; padding:36px 24px; }
+  .prinzip-cta{ margin-top:70px; text-align:center; background:transparent; border:1px solid var(--hair); border-radius:2px; padding:58px 24px; }
   .prinzip-cta p{ font-size:13.5px; color:var(--ink-soft); margin-top:14px; }
   @media(max-width:820px){ .prinzip-list{grid-template-columns:1fr;} }
 
   /* ---------- VERGLEICH (10-Punkte) ---------- */
   .vergleich-grid{ display:grid; grid-template-columns:1fr 1fr; gap:30px 44px; margin-top:32px; }
-  .vg-item .vg-num{ font-family:'Fraunces',serif; color:var(--ochre); font-size:19px; display:block; margin-bottom:6px; }
+  .vg-item .vg-num{ font-family:'Fraunces',serif; color:var(--accent); font-size:19px; display:block; margin-bottom:6px; }
   .vg-item h3{ font-family:'Fraunces',serif; font-size:15.5px; font-weight:600; color:var(--forest); margin-bottom:6px; line-height:1.3; }
   .vg-item p{ font-size:13.5px; color:var(--ink-soft); }
   @media(max-width:820px){ .vergleich-grid{grid-template-columns:1fr;} }
-  .faq details{ border-bottom:1px solid var(--line); padding:20px 0; }
-  .faq summary{ cursor:pointer; font-family:'Fraunces',serif; font-size:16.5px; color:var(--forest); list-style:none; display:flex; justify-content:space-between; align-items:center; gap:16px;}
+  .faq details{ border-bottom:1px solid var(--hair); padding:30px 0; }
+  .faq summary{ cursor:pointer; font-family:'Fraunces',serif; font-weight:400; font-size:19px; color:var(--forest); list-style:none; display:flex; justify-content:space-between; align-items:center; gap:20px;}
   .faq summary::-webkit-details-marker{display:none;}
-  .faq summary:after{ content:'+'; font-size:20px; color:var(--ochre); font-family:'Inter',sans-serif; flex-shrink:0;}
+  .faq summary:after{ content:'+'; font-size:20px; color:var(--accent); font-family:'Inter',sans-serif; flex-shrink:0;}
   .faq details[open] summary:after{content:'–';}
   .faq p{ font-size:14.5px; color:var(--ink-soft); margin-top:12px; max-width:640px; }
 
   /* ---------- FINAL CTA ---------- */
-  .cta-final{ position:relative; padding:130px 0; text-align:center; color:var(--paper); overflow:hidden; background:var(--forest); }
+  .cta-final{ position:relative; padding:190px 0; text-align:center; color:var(--paper); overflow:hidden; background:var(--forest); }
   .cta-final .wrap{ position:relative; z-index:1; max-width:620px; }
-  .cta-final h2{ color:var(--paper); font-size:clamp(28px,3.6vw,42px); margin-bottom:20px; }
-  .cta-final p{ color:#E3E6DF; font-size:16px; margin-bottom:36px; }
+  .cta-final h2{ color:var(--paper); font-size:clamp(32px,4.2vw,52px); letter-spacing:-0.02em; margin-bottom:28px; }
+  .cta-final p{ color:#E1E6DD; font-size:16px; margin-bottom:36px; }
   .cta-final .btn-primary{ background:var(--ochre); color:var(--forest); }
-  .cta-final .btn-primary:hover{ background:#c7a25a; }
+  .cta-final .btn-primary:hover{ background:#9AB598; }
 
   /* ---------- FOOTER ---------- */
-  footer{ padding:64px 0 40px; border-top:1px solid var(--line); }
+  footer{ padding:110px 0 60px; border-top:1px solid var(--hair); }
   footer .wrap{ display:grid; grid-template-columns:1.3fr 1fr 1fr; gap:36px; }
   .foot-col h4{ font-size:13px; color:var(--forest); font-weight:600; margin-bottom:14px; }
   .foot-col p, .foot-col a{ font-size:13.5px; color:var(--ink-soft); display:block; margin-bottom:8px; }
   .foot-col a:hover{color:var(--forest);}
-  .footer-bottom{ max-width:1120px; margin:44px auto 0; padding:20px 32px 0; border-top:1px solid var(--line); font-size:12px; color:#8f8d80; }
+  .footer-bottom{ max-width:1180px; margin:60px auto 0; padding:28px 44px 0; border-top:1px solid var(--hair); font-size:12px; color:#636B62; }
   @media(max-width:820px){ footer .wrap{grid-template-columns:1fr; gap:26px;} }
+
+  /* ================= PREMIUM LIGHT — Weiss dominant, Gruen als Hauch ================= */
+  :root{
+    --paper:#FFFFFF;
+    --sand:#F4F7F2;
+    --forest:#1F2A22;
+    --forest-2:#3A4E3F;
+    --ochre:#4E6B54;
+    --accent:#4E6B54;
+    --ink:#1F2A22;
+    --ink-soft:#5C6960;
+    --line:#E8EDE5;
+    --hair:#EEF2EB;
+  }
+
+  /* ---- Ueberschriften zuruecknehmen ---- */
+  .hero h1{ font-size:clamp(30px,3.4vw,44px); line-height:1.12; letter-spacing:-0.015em; }
+  .block-content h2{ font-size:clamp(23px,2.5vw,31px); line-height:1.22; margin-bottom:20px; }
+  .cta-final h2{ font-size:clamp(24px,2.8vw,34px); }
+  .pull-quote{ font-size:20px; }
+  .price-card .price{ font-size:36px; }
+  .t-card p.quote{ font-size:17px; }
+  .faq summary{ font-size:17px; }
+
+  /* ---- Rubriken zentriert wie bei RELEAD360 ---- */
+  section.block .wrap{ display:block; max-width:980px; }
+  .thread-col{ text-align:center; margin-bottom:16px; }
+  .thread-col .label{
+    display:inline-block; max-width:none; background:var(--sand);
+    padding:8px 20px; border-radius:100px;
+    font-size:10.5px; letter-spacing:.24em; text-transform:uppercase;
+    color:var(--accent); font-weight:600;
+  }
+  .block-content{ text-align:center; }
+  .block-content h2{ margin-left:auto; margin-right:auto; }
+  .block-content > p{ margin-left:auto; margin-right:auto; }
+  .block-content .accent-line{ display:none; }
+  .block-content h2::after{
+    content:''; display:block; width:44px; height:1px;
+    background:var(--accent); margin:22px auto 0;
+  }
+  /* Inhalte darunter wieder linksbuendig */
+  .steps, .pricing, .module-grid, .faq, .split, .vergleich-grid,
+  .prinzip-list, .testimonials, .compare, .why-list, .team,
+  .rating-badge{ text-align:left; }
+  .price-intro{ justify-content:center; }
+  .rating-badge{ justify-content:center; }
+
+  /* ---- Karten heller und ruhiger ---- */
+  .price-card{ border:1px solid var(--line); }
+  .price-card.featured{ border-color:var(--accent); }
+  .price-card .tier{ color:var(--accent); }
+  .t-card{ background:var(--paper); border:1px solid var(--line); }
+  .usp{ background:var(--sand); border-color:var(--hair); }
+  section.block.alt{ background:var(--sand); border-color:var(--hair); }
+  .module-chip:hover{ background:var(--sand); }
+  .prinzip-item{ border-top:1px solid var(--accent); }
+  .prinzip-cta{ background:var(--sand); border:1px solid var(--hair); }
+
+  /* ---- Buttons: fein, dunkelgruen ---- */
+  .btn-primary{ background:var(--forest); color:#FFFFFF; }
+  .btn-primary:hover{ background:var(--forest-2); }
+  .nav-cta{ border-color:var(--forest); color:var(--forest); }
+  .nav-cta:hover{ background:var(--forest); color:#FFFFFF; }
+
+  /* ---- Abschlussblock hell statt dunkel ---- */
+  .cta-final{ background:var(--sand); color:var(--ink); border-top:1px solid var(--hair); }
+  .cta-final h2{ color:var(--forest); }
+  .cta-final p{ color:var(--ink-soft); }
+  .cta-final .eyebrow{ color:var(--accent); }
+  .cta-final .btn-primary{ background:var(--forest); color:#FFFFFF; }
+  .cta-final .btn-primary:hover{ background:var(--forest-2); }
+
+  /* ---- Hero: Overlay leichter, Text bleibt lesbar ---- */
+  .hero-media::after{ background:linear-gradient(180deg, rgba(18,25,20,.52) 0%, rgba(18,25,20,.46) 45%, rgba(18,25,20,.72) 100%); }
+  .hero .eyebrow{ color:#C8D6C6; }
+  .btn-ghost{ border-color:rgba(255,255,255,.5); }
+
+  /* ---- Feinheiten ---- */
+  .step .idx{ color:var(--accent); font-weight:400; }
+  .vg-item .vg-num{ color:var(--accent); }
+  .faq summary:after{ color:var(--accent); }
+  .faq-cat{ color:var(--accent); }
+  .module-chip .more-hint{ color:var(--accent); }
+  .price-card li:before{ color:var(--accent); }
+  .t-card .stars, .rating-badge .stars{ color:var(--accent); }
+  footer{ border-top:1px solid var(--hair); }
+  @media(max-width:900px){ section.block .wrap{ display:block; } }
+
+  /* ---- Korrekturen: was nicht zentriert gehoert ---- */
+  .modal-overlay, .modal-box, .modal-box .modal-body{ text-align:left; }
+  .pull-quote{ text-align:left; }
+  .module-chip{ text-align:center; align-items:center; }
+  .module-chip .more-hint{ top:20px; right:22px; }
+  .module-chip h4{ padding:0 22px; }
+  .foot-col{ text-align:left; }
+  .price-card{ text-align:left; }
+  .usp-item{ text-align:left; }
+  .stp, .step{ text-align:left; }
+  .t-card{ text-align:left; }
+  .vg-item{ text-align:left; }
+  .prinzip-item{ text-align:left; }
+  .compare-row div{ text-align:left; }
+  .faq details, .faq summary, .faq p, .faq-cat{ text-align:left; }
+
+  /* ---- FAIRkaufen-Kopf mittig wie die anderen Rubriken ---- */
+  .price-intro{ text-align:center; justify-content:center; }
+  .price-intro > div{ margin:0 auto; max-width:680px; }
+  .price-intro h2{ margin-left:auto; margin-right:auto; }
+  .price-intro p{ margin-left:auto; margin-right:auto; }
+  /* ---- Modulkacheln zentriert ---- */
+  .module-chip{ justify-content:center; gap:14px; min-height:150px; }
+  .module-chip h4{ margin-bottom:0; }
+  .rating-badge{ text-align:left; }
+
+  /* ---- Modulkacheln: Preis fuehrt, Leistung tritt zurueck ---- */
+  .module-chip h4{
+    font-weight:400;
+    font-size:15.5px;
+    color:var(--ink-soft);
+    letter-spacing:0;
+    line-height:1.4;
+  }
+  .module-chip:hover h4{ color:var(--forest); }
+  .module-chip .mp{
+    font-family:'Fraunces',serif;
+    font-size:17px;
+    font-weight:600;
+    color:var(--forest);
+    letter-spacing:-0.01em;
+  }
+  .module-chip .mp.na{
+    font-family:'Fraunces',serif;
+    font-size:16.5px;
+    font-weight:600;
+    font-style:normal;
+    color:var(--forest);
+  }
+  .module-chip .mp span{ font-weight:400 !important; }
+
+  /* ================= SMARTPHONE ================= */
+  .burger{ display:none; width:44px; height:44px; border:1px solid var(--line); background:transparent;
+           border-radius:2px; cursor:pointer; padding:0; flex-direction:column; align-items:center;
+           justify-content:center; gap:5px; flex-shrink:0; transition:background .25s; }
+  .burger span{ display:block; width:19px; height:1.5px; background:var(--forest); border-radius:2px;
+                transition:transform .3s cubic-bezier(.2,.7,.3,1), opacity .2s; }
+  .burger.open span:nth-child(1){ transform:translateY(6.5px) rotate(45deg); }
+  .burger.open span:nth-child(2){ opacity:0; }
+  .burger.open span:nth-child(3){ transform:translateY(-6.5px) rotate(-45deg); }
+
+  @media(max-width:960px){
+    nav .wrap{ height:auto; padding:16px 22px; flex-wrap:wrap; gap:14px; }
+    .burger{ display:flex; }
+    .nav-cta{ order:2; margin-left:auto; padding:11px 18px; font-size:10.5px; }
+    .burger{ order:3; }
+    .nav-links{
+      display:flex; order:4; flex-direction:column; gap:0; width:100%;
+      max-height:0; overflow:hidden; opacity:0; text-transform:none; letter-spacing:0;
+      transition:max-height .38s cubic-bezier(.2,.7,.3,1), opacity .28s, margin .38s;
+    }
+    .nav-links.open{ max-height:320px; opacity:1; margin-top:6px; border-top:1px solid var(--hair); }
+    .nav-links a{ padding:16px 2px; font-size:15px; border-bottom:1px solid var(--hair); color:var(--forest); }
+    .nav-links a:last-child{ border-bottom:none; }
+  }
+
+  @media(max-width:760px){
+    .wrap{ padding:0 22px; }
+    section.block{ padding:80px 0; }
+    section.block .wrap{ max-width:none; }
+    .hero{ min-height:auto; }
+    .hero .wrap{ padding:118px 22px 76px; max-width:none; }
+    .hero h1{ font-size:clamp(27px,7.4vw,36px); margin-bottom:20px; }
+    .hero p.lead{ font-size:16px; margin-bottom:30px; }
+    .hero-ctas{ gap:12px; width:100%; }
+    .hero-ctas .btn-primary, .hero-ctas .btn-ghost{ width:100%; text-align:center; }
+    .btn-primary, .btn-ghost{ padding:16px 24px; font-size:11px; letter-spacing:.12em; }
+    .block-content h2{ font-size:clamp(21px,5.4vw,26px); }
+    .block-content h2::after{ margin-top:16px; }
+    .block-content > p{ font-size:15.5px; line-height:1.7; }
+    .thread-col{ margin-bottom:12px; }
+    .usp-item{ padding:30px 22px; }
+    .price-card{ padding:30px 24px 28px; }
+    .price-card .price{ font-size:32px; }
+    .module-chip{ padding:26px 18px; min-height:120px; }
+    .module-chip h4{ padding:0 8px; font-size:15px; }
+    .step{ gap:18px; padding:26px 0; }
+    .pull-quote{ font-size:18px; padding-left:20px; margin:26px 0; }
+    .faq details{ padding:22px 0; }
+    .faq summary{ font-size:16px; }
+    .cta-final{ padding:92px 0; }
+    .cta-final .wrap{ max-width:none; }
+    .cta-final .btn-primary{ width:100%; }
+    footer{ padding:66px 0 40px; }
+    .footer-bottom{ padding:24px 22px 0; margin-top:36px; }
+    .modal-box{ padding:34px 22px 30px; }
+    .modal-overlay{ padding:14px; }
+    .prinzip-cta{ padding:38px 20px; margin-top:44px; }
+    .t-card{ padding:32px 24px; }
+  }
+
+  @media(max-width:420px){
+    .wrap{ padding:0 18px; }
+    .logotype{ font-size:18px; }
+    .nav-cta{ font-size:10px; padding:10px 14px; }
+    .price-card{ padding:26px 20px 24px; }
+    .usp-item{ padding:26px 18px; }
+  }
+
+  /* ================= RECHTS-OVERLAYS ================= */
+  .legal-overlay{ display:none; position:fixed; inset:0; z-index:300; background:rgba(31,42,34,.5); backdrop-filter:blur(3px); padding:24px; }
+  .legal-overlay.open{ display:flex; align-items:flex-start; justify-content:center; }
+  body.legal-open{ overflow:hidden; }
+  .legal-box{ background:var(--paper); width:100%; max-width:840px; max-height:90vh; overflow-y:auto;
+              border-radius:2px; padding:0 0 60px; position:relative; margin:auto 0; text-align:left;
+              box-shadow:0 40px 90px -30px rgba(31,42,34,.45); animation:legalIn .35s cubic-bezier(.2,.7,.3,1); }
+  @keyframes legalIn{ from{opacity:0; transform:translateY(24px);} to{opacity:1; transform:translateY(0);} }
+  .legal-bar{ position:sticky; top:0; z-index:2; display:flex; align-items:center; justify-content:space-between;
+              gap:16px; padding:18px 30px; background:rgba(255,255,255,.95); backdrop-filter:blur(8px);
+              border-bottom:1px solid var(--hair); }
+  .legal-bar .legal-back{ display:inline-flex; align-items:center; gap:8px; font-size:11px; letter-spacing:.14em;
+              text-transform:uppercase; font-weight:600; color:var(--forest); background:var(--sand);
+              padding:11px 20px; border:none; border-radius:2px; cursor:pointer; font-family:inherit; transition:background .25s; }
+  .legal-bar .legal-back:hover{ background:var(--line); }
+  .legal-bar .legal-x{ width:38px; height:38px; border-radius:2px; background:var(--sand); border:none; cursor:pointer;
+              font-size:15px; color:var(--forest); display:flex; align-items:center; justify-content:center; transition:background .25s; }
+  .legal-bar .legal-x:hover{ background:var(--line); }
+  .legal-content{ padding:38px 52px 0; text-align:left; }
+  .legal-content h1{ font-family:'Fraunces',serif; font-weight:400; font-size:30px; color:var(--forest); margin:6px 0 8px; letter-spacing:-0.015em; }
+  .legal-content h1::after{ content:''; display:block; width:44px; height:1px; background:var(--accent); margin-top:20px; }
+  .legal-content h2{ font-family:'Fraunces',serif; font-weight:400; font-size:19px; color:var(--forest);
+              margin:40px 0 12px; padding-top:24px; border-top:1px solid var(--hair); letter-spacing:-0.01em; }
+  .legal-content h4{ font-family:'Inter',sans-serif; font-size:14px; font-weight:600; color:var(--forest); margin:22px 0 6px; }
+  .legal-content p{ font-size:14.5px; line-height:1.75; color:var(--ink-soft); margin-bottom:14px; }
+  .legal-content ul{ margin:0 0 16px 20px; }
+  .legal-content li{ font-size:14.5px; line-height:1.7; color:var(--ink-soft); margin-bottom:8px; }
+  .legal-content strong{ color:var(--ink); font-weight:600; }
+  .legal-content em{ color:var(--forest); font-style:italic; }
+  .legal-content a{ color:var(--forest); font-weight:500; border-bottom:1px solid var(--accent); word-break:break-word; }
+  .legal-content a:hover{ opacity:.7; }
+  .legal-card{ background:var(--sand); border-radius:2px; padding:26px 28px; margin:24px 0; }
+  .legal-card p{ margin-bottom:8px; color:var(--ink); }
+  .legal-card p:last-child{ margin-bottom:0; }
+  .foot-col button.foot-link{ background:none; border:none; padding:0; font:inherit; font-size:13.5px;
+              color:var(--ink-soft); display:block; margin-bottom:8px; cursor:pointer; text-align:left; transition:color .2s; }
+  .foot-col button.foot-link:hover{ color:var(--forest); }
+  @media(max-width:760px){
+    .legal-overlay{ padding:10px; }
+    .legal-content{ padding:28px 22px 0; }
+    .legal-bar{ padding:14px 18px; }
+    .legal-content h1{ font-size:25px; }
+    .legal-content h2{ font-size:17px; }
+  }
 </style>
 </head>
 <body>
@@ -242,13 +503,16 @@
 <nav>
   <div class="wrap">
     <div class="logotype">FAIRkaufswerkstatt</div>
-    <div class="nav-links">
-      <a href="#fairkaufen">FAIRkaufen</a>
-      <a href="#fairmieten">FAIRmieten</a>
-      <a href="#module">Module</a>
-      <a href="#vergleich">Vergleich</a>
+    <div class="nav-links" id="navLinks">
+      <a href="#fairkaufen" onclick="closeMenu()">FAIRkaufen</a>
+      <a href="#fairmieten" onclick="closeMenu()">FAIRmieten</a>
+      <a href="#module" onclick="closeMenu()">Module</a>
+      <a href="#vergleich" onclick="closeMenu()">Vergleich</a>
     </div>
     <a href="https://calendly.com/fairkaufswerkstatt-info/dein-kostenfreier-und-unverbindlicher-kennenlerntermin" target="_blank" rel="noopener" class="nav-cta">Termin buchen</a>
+    <button type="button" class="burger" id="burger" onclick="toggleMenu()" aria-label="Menü öffnen" aria-expanded="false" aria-controls="navLinks">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
 
@@ -334,7 +598,7 @@
     <div class="thread-col"><div class="label">Haltung</div></div>
     <div class="block-content">
       <span class="accent-line"></span>
-      <h2>Wissen ist Macht. Und bei uns kein Geheimnis.</h2>
+      <h2>Wissen ist Macht.<br>Und bei uns kein Geheimnis.</h2>
       <div class="split">
         <div>
           <p>Die FAIRkaufswerkstatt ist aus einem einfachen Gedanken entstanden: Wissen nicht für sich zu behalten, sondern verständlich weiterzugeben — damit jeder den Immobilienverkauf selbstbestimmt meistern kann.</p>
@@ -515,7 +779,7 @@
         <div class="module-chip" onclick="openModule('schwaerzen')"><span class="more-hint">→</span><h4>Dokumente schwärzen</h4><span class="mp na">Auf Anfrage</span></div>
         <div class="module-chip" onclick="openModule('flyer')"><span class="more-hint">→</span><h4>Flyer &amp; Nachbarschaftsbriefe</h4><span class="mp na">Auf Anfrage</span></div>
         <div class="module-chip" onclick="openModule('schilder')"><span class="more-hint">→</span><h4>Verkaufsschilder mieten</h4><span class="mp na">Auf Anfrage</span></div>
-        <div class="module-chip" onclick="openModule('finanzierung')"><span class="more-hint">→</span><h4>Immobilienfinanzierung</h4><span class="mp" style="color:var(--ochre);">Kostenfrei</span></div>
+        <div class="module-chip" onclick="openModule('finanzierung')"><span class="more-hint">→</span><h4>Immobilienfinanzierung</h4><span class="mp">Kostenfrei</span></div>
       </div>
 
       <div class="modal-overlay" id="moduleModal" onclick="if(event.target===this) closeModule()">
@@ -657,7 +921,7 @@
 
 <section class="cta-final" id="kontakt">
   <div class="wrap">
-    <span class="eyebrow" style="color:var(--sand)">Kontakt</span>
+    <span class="eyebrow">Kontakt</span>
     <h2>Bereit, deinen Immobilienverkauf neu zu denken?</h2>
     <p>Lass uns gemeinsam loslegen — in deinem Tempo, mit einem offenen Ohr für deine Wünsche und dem klaren Ziel, das Beste für dich und deine Immobilie herauszuholen.</p>
     <a href="https://calendly.com/fairkaufswerkstatt-info/dein-kostenfreier-und-unverbindlicher-kennenlerntermin" target="_blank" rel="noopener" class="btn-primary">Jetzt Termin vereinbaren</a>
@@ -680,15 +944,461 @@
     <div class="foot-col">
       <h4>Kontakt</h4>
       <a href="mailto:info@fairkaufswerkstatt.de">info@fairkaufswerkstatt.de</a>
-      <a href="impressum.html">Impressum</a>
-      <a href="datenschutzerklaerung.html">Datenschutzerklärung</a>
-      <a href="agbs.html">AGBs</a>
+      <button type="button" class="foot-link" onclick="openLegal('impressum')">Impressum</button>
+      <button type="button" class="foot-link" onclick="openLegal('datenschutz')">Datenschutzerklärung</button>
+      <button type="button" class="foot-link" onclick="openLegal('agb')">AGBs</button>
     </div>
   </div>
   <div class="footer-bottom">© 2025 FAIRkaufswerkstatt</div>
 </footer>
 
+<div class="legal-overlay" id="legal-impressum" onclick="if(event.target===this) closeLegal()">
+  <div class="legal-box">
+    <div class="legal-bar">
+      <button type="button" class="legal-back" onclick="closeLegal()">← Zurück zur Startseite</button>
+      <button type="button" class="legal-x" onclick="closeLegal()" aria-label="Schließen">✕</button>
+    </div>
+    <div class="legal-content">
+<h1>Impressum</h1>
+<div class="legal-card">
+  <p><strong>FAIRkaufswerkstatt GmbH</strong></p>
+  <p>Bethmannstraße 7-9<br>60311 Frankfurt am Main</p>
+  <p>Telefon: <a href="tel:+4917672743056">+49 (0) 176 727 430 56</a><br>E-Mail: <a href="mailto:info@fairkaufswerkstatt.de">info@fairkaufswerkstatt.de</a></p>
+</div>
+
+<h2>Registereintrag</h2>
+<p>Eintragung ins Handelsregister<br>Registergericht: Amtsgericht Frankfurt am Main<br>Registernummer: HRB 133 769<br>USt.-IdNr.: DE367917822</p>
+
+<h2>Aufsichtsbehörde</h2>
+<p>Hauptniederlassung und Sitz: Frankfurt am Main</p>
+<p>Erlaubnis nach § 34c der Gewerbeordnung erteilt durch das Ordnungsamt der Stadt Frankfurt am Main</p>
+<p>Vertretungsberechtigte Geschäftsführerin: Julija Frideric</p>
+
+<h2>Verantwortlich im Sinne des § 18 Abs. 2 MStV</h2>
+<p>Julija Frideric, Anschrift wie oben.</p>
+
+<h2>Haftung für Inhalte</h2>
+<p>Als Diensteanbieter sind wir gemäß § 7 Abs. 1 DDG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 DDG sind wir als Diensteanbieter jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen.</p>
+<p>Verpflichtungen zur Entfernung oder Sperrung der Nutzung von Informationen nach den allgemeinen Gesetzen bleiben hiervon unberührt. Eine diesbezügliche Haftung ist jedoch erst ab dem Zeitpunkt der Kenntnis einer konkreten Rechtsverletzung möglich. Bei Bekanntwerden von entsprechenden Rechtsverletzungen werden wir diese Inhalte umgehend entfernen.</p>
+
+<h2>Haftung für Links</h2>
+<p>Unser Angebot enthält Links zu externen Websites Dritter, auf deren Inhalte wir keinen Einfluss haben. Deshalb können wir für diese fremden Inhalte auch keine Gewähr übernehmen. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich. Die verlinkten Seiten wurden zum Zeitpunkt der Verlinkung auf mögliche Rechtsverstöße überprüft. Rechtswidrige Inhalte waren zum Zeitpunkt der Verlinkung nicht erkennbar.</p>
+<p>Eine permanente inhaltliche Kontrolle der verlinkten Seiten ist jedoch ohne konkrete Anhaltspunkte einer Rechtsverletzung nicht zumutbar. Bei Bekanntwerden von Rechtsverletzungen werden wir derartige Links umgehend entfernen.</p>
+
+<h2>Urheberrecht</h2>
+<p>Die durch die FAIRkaufswerkstatt GmbH erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers. Downloads und Kopien dieser Seite sind nur für den privaten, nicht kommerziellen Gebrauch gestattet.</p>
+<p>Soweit die Inhalte auf dieser Seite nicht vom Betreiber erstellt wurden, werden die Urheberrechte Dritter beachtet. Insbesondere werden Inhalte Dritter als solche gekennzeichnet. Sollten Sie trotzdem auf eine Urheberrechtsverletzung aufmerksam werden, bitten wir um einen entsprechenden Hinweis. Bei Bekanntwerden von Rechtsverletzungen werden wir derartige Inhalte umgehend entfernen.</p>
+    </div>
+  </div>
+</div>
+
+<div class="legal-overlay" id="legal-datenschutz" onclick="if(event.target===this) closeLegal()">
+  <div class="legal-box">
+    <div class="legal-bar">
+      <button type="button" class="legal-back" onclick="closeLegal()">← Zurück zur Startseite</button>
+      <button type="button" class="legal-x" onclick="closeLegal()" aria-label="Schließen">✕</button>
+    </div>
+    <div class="legal-content">
+<h1>Datenschutzerklärung</h1>
+<p>Stand: 2025</p>
+<h2>1. Datenschutz auf einen Blick</h2>
+<p><strong>Allgemeine Hinweise</strong><br>Die folgenden Hinweise geben einen einfachen Überblick darüber, was mit Ihren personenbezogenen Daten passiert, wenn Sie diese Website besuchen. Personenbezogene Daten sind alle Daten, mit denen Sie persönlich identifiziert werden können. Ausführliche Informationen zum Thema Datenschutz entnehmen Sie unserer unter diesem Text aufgeführten Datenschutzerklärung.</p>
+<p><strong>Datenerfassung auf dieser Website</strong></p>
+<p><em>Wer ist verantwortlich für die Datenerfassung auf dieser Website?</em><br>Die Datenverarbeitung auf dieser Website erfolgt durch den Websitebetreiber. Dessen Kontaktdaten können Sie dem Abschnitt „Hinweis zur Verantwortlichen Stelle" in dieser Datenschutzerklärung entnehmen.</p>
+<p><em>Wie erfassen wir Ihre Daten?</em><br>Ihre Daten werden zum einen dadurch erhoben, dass Sie uns diese mitteilen. Hierbei kann es sich z.B. um Daten handeln, die Sie in ein Kontaktformular eingeben. Andere Daten werden automatisch oder nach Ihrer Einwilligung beim Besuch der Website durch unsere IT-Systeme erfasst. Das sind vor allem technische Daten (z. B. Internetbrowser, Betriebssystem oder Uhrzeit des Seitenaufrufs). Die Erfassung dieser Daten erfolgt automatisch, sobald Sie diese Website betreten.</p>
+<p><em>Wofür nutzen wir Ihre Daten?</em><br>Ein Teil der Daten wird erhoben, um eine fehlerfreie Bereitstellung der Website zu gewährleisten. Andere Daten können zur Analyse Ihres Nutzerverhaltens verwendet werden. Sofern über die Website Verträge geschlossen oder angebahnt werden können, werden die übermittelten Daten auch für Vertragsangebote, Bestellungen oder sonstige Auftragsanfragen verarbeitet.</p>
+<p><em>Welche Rechte haben Sie bezüglich Ihrer Daten?</em><br>Sie haben jederzeit das Recht, unentgeltlich Auskunft über Herkunft, Empfänger und Zweck Ihrer gespeicherten personenbezogenen Daten zu erhalten. Sie haben außerdem ein Recht, die Berichtigung oder Löschung dieser Daten zu verlangen. Wenn Sie eine Einwilligung zur Datenverarbeitung erteilt haben, können Sie diese Einwilligung jederzeit für die Zukunft widerrufen. Außerdem haben Sie das Recht, unter bestimmten Umständen die Einschränkung der Verarbeitung Ihrer personenbezogenen Daten zu verlangen. Des Weiteren steht Ihnen ein Beschwerderecht bei der zuständigen Aufsichtsbehörde zu.</p>
+<p>Hierzu sowie zu weiteren Fragen zum Thema Datenschutz können Sie sich jederzeit an uns wenden.</p>
+<p><strong>Analyse-Tools und Tools von Drittanbietern</strong><br>Beim Besuch dieser Website kann Ihr Surf-Verhalten statistisch ausgewertet werden. Das geschieht vor allem mit sogenannten Analyseprogrammen.</p>
+<p>Detaillierte Informationen zu diesen Analyseprogrammen finden Sie in der folgenden Datenschutzerklärung.</p>
+<h2>2. Hosting</h2>
+<p>Wir hosten die Inhalte unserer Website bei folgendem Anbieter:</p>
+<p><strong>IONOS</strong><br>Anbieter ist die IONOS SE, Elgendorfer Str. 57, 56410 Montabaur (nachfolgend IONOS). Wenn Sie unsere Website besuchen, erfasst IONOS verschiedene Logfiles inklusive Ihrer IP-Adressen. Details entnehmen Sie der Datenschutzerklärung von IONOS: <a href="https://www.ionos.de/terms-gtc/terms-privacy." target="_blank" rel="noopener">https://www.ionos.de/terms-gtc/terms-privacy.</a></p>
+<p>Die Verwendung von IONOS erfolgt auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO. Wir haben ein berechtigtes Interesse an einer möglichst zuverlässigen Darstellung unserer Website. Sofern eine entsprechende Einwilligung abgefragt wurde, erfolgt die Verarbeitung ausschließlich auf Grundlage von Art. 6 Abs. 1 lit. a DSGVO und § 25 Abs. 1 TDDDG, soweit die Einwilligung die Speicherung von Cookies oder den Zugriff auf Informationen im Endgerät des Nutzers (z. B. Device-Fingerprinting) im Sinne des TDDDG umfasst. Die Einwilligung ist jederzeit widerrufbar.</p>
+<p><strong>Auftragsverarbeitung</strong><br>Wir haben einen Vertrag über Auftragsverarbeitung (AVV) zur Nutzung des oben genannten Dienstes geschlossen. Hierbei handelt es sich um einen datenschutzrechtlich vorgeschriebenen Vertrag, der gewährleistet, dass dieser die personenbezogenen Daten unserer Websitebesucher nur nach unseren Weisungen und unter Einhaltung der DSGVO verarbeitet.</p>
+<h2>3. Allgemeine Hinweise und Pflichtinformationen</h2>
+<p><strong>Datenschutz</strong><br>Die Betreiber dieser Seiten nehmen den Schutz Ihrer persönlichen Daten sehr ernst. Wir behandeln Ihre personenbezogenen Daten vertraulich und entsprechend den gesetzlichen Datenschutzvorschriften sowie dieser Datenschutzerklärung.</p>
+<p>Wenn Sie diese Website benutzen, werden verschiedene personenbezogene Daten erhoben. Personenbezogene Daten sind Daten, mit denen Sie persönlich identifiziert werden können. Die vorliegende Datenschutzerklärung erläutert, welche Daten wir erheben und wofür wir sie nutzen. Sie erläutert auch, wie und zu welchem Zweck das geschieht.</p>
+<p>Wir weisen darauf hin, dass die Datenübertragung im Internet (z. B. bei der Kommunikation per E-Mail) Sicherheitslücken aufweisen kann. Ein lückenloser Schutz der Daten vor dem Zugriff durch Dritte ist nicht möglich.</p>
+<p><strong>Hinweis zur verantwortlichen Stelle</strong><br>Die verantwortliche Stelle für die Datenverarbeitung auf dieser Website ist:</p>
+<p>FAIRkaufswerkstatt GmbH<br>Bethmannstraße 7-9<br>60311 Frankfurt am Main<br>Telefon: 017672743056<br>E-Mail: Info@fairkaufswerkstatt.de</p>
+<p>Verantwortliche Stelle ist die natürliche oder juristische Person, die allein oder gemeinsam mit anderen über die Zwecke und Mittel der Verarbeitung von personenbezogenen Daten (z. B. Namen, E-Mail-Adressen o. Ä.) entscheidet.</p>
+<p><strong>Speicherdauer</strong><br>Soweit innerhalb dieser Datenschutzerklärung keine speziellere Speicherdauer genannt wurde, verbleiben Ihre personenbezogenen Daten bei uns, bis der Zweck für die Datenverarbeitung entfällt. Wenn Sie ein berechtigtes Löschersuchen geltend machen oder eine Einwilligung zur Datenverarbeitung widerrufen, werden Ihre Daten gelöscht, sofern wir keine anderen rechtlich zulässigen Gründe für die Speicherung Ihrer personenbezogenen Daten haben (z. B. steuer- oder handelsrechtliche Aufbewahrungsfristen); im letztgenannten Fall erfolgt die Löschung nach Fortfall dieser Gründe.</p>
+<p><strong>Allgemeine Hinweise zu den Rechtsgrundlagen der Datenverarbeitung auf dieser Website</strong><br>Sofern Sie in die Datenverarbeitung eingewilligt haben, verarbeiten wir Ihre personenbezogenen Daten auf Grundlage von Art. 6 Abs. 1 lit. a DSGVO bzw. Art. 9 Abs. 2 lit. a DSGVO, sofern besondere Datenkategorien nach Art. 9 Abs. 1 DSGVO verarbeitet werden. Im Falle einer ausdrücklichen Einwilligung in die Übertragung personenbezogener Daten in Drittstaaten erfolgt die Datenverarbeitung außerdem auf Grundlage von Art. 49 Abs. 1 lit. a DSGVO. Sofern Sie in die Speicherung von Cookies oder in den Zugriff auf Informationen in Ihr Endgerät (z. B. via Device-Fingerprinting) eingewilligt haben, erfolgt die Datenverarbeitung zusätzlich auf Grundlage von § 25 Abs. 1 TDDDG. Die Einwilligung ist jederzeit widerrufbar. Sind Ihre Daten zur Vertragserfüllung oder zur Durchführung vorvertraglicher Maßnahmen erforderlich, verarbeiten wir Ihre Daten auf Grundlage des Art. 6 Abs. 1 lit. b DSGVO. Des Weiteren verarbeiten wir Ihre Daten, sofern diese zur Erfüllung einer rechtlichen Verpflichtung erforderlich sind auf Grundlage von Art. 6 Abs. 1 lit. c DSGVO. Die Datenverarbeitung kann ferner auf Grundlage unseres berechtigten Interesses nach Art. 6 Abs. 1 lit. f DSGVO erfolgen. Über die jeweils im Einzelfall einschlägigen Rechtsgrundlagen wird in den folgenden Absätzen dieser Datenschutzerklärung informiert.</p>
+<p><strong>Hinweis zur Datenweitergabe in datenschutzrechtlich nicht sichere Drittstaaten sowie die Weitergabe an US-Unternehmen, die nicht DPF-zertifiziert sind</strong><br>Wir verwenden unter anderem Tools von Unternehmen mit Sitz in datenschutzrechtlich nicht sicheren Drittstaaten sowie US-Tools, deren Anbieter nicht nach dem EU-US-Data Privacy Framework (DPF) zertifiziert sind. Wenn diese Tools aktiv sind, können Ihre personenbezogene Daten in diese Staaten übertragen und dort verarbeitet werden.</p>
+<p>Wir weisen darauf hin, dass in datenschutzrechtlich unsicheren Drittstaaten kein mit der EU vergleichbares Datenschutzniveau garantiert werden kann. Wir weisen darauf hin, dass die USA als sicherer Drittstaat grundsätzlich ein mit der EU vergleichbares Datenschutzniveau aufweisen. Eine Datenübertragung in die USA ist danach zulässig, wenn der Empfänger eine Zertifizierung unter dem „EU-US Data Privacy Framework" (DPF) besitzt oder über geeignete zusätzliche Garantien verfügt. Informationen zu Übermittlungen an Drittstaaten einschließlich der Datenempfänger finden Sie in dieser Datenschutzerklärung.</p>
+<p><strong>Empfänger von personenbezogenen Daten</strong><br>Im Rahmen unserer Geschäftstätigkeit arbeiten wir mit verschiedenen externen Stellen zusammen. Dabei ist teilweise auch eine Übermittlung von personenbezogenen Daten an diese externen Stellen erforderlich. Wir geben personenbezogene Daten nur dann an externe Stellen weiter, wenn dies im Rahmen einer Vertragserfüllung erforderlich ist, wenn wir gesetzlich hierzu verpflichtet sind (z. B. Weitergabe von Daten an Steuerbehörden), wenn wir ein berechtigtes Interesse nach Art. 6 Abs. 1 lit. f DSGVO an der Weitergabe haben oder wenn eine sonstige Rechtsgrundlage die Datenweitergabe erlaubt. Beim Einsatz von Auftragsverarbeitern geben wir personenbezogene Daten unserer Kunden nur auf Grundlage eines gültigen Vertrags über Auftragsverarbeitung weiter. Im Falle einer gemeinsamen Verarbeitung wird ein Vertrag über gemeinsame Verarbeitung geschlossen.</p>
+<p><strong>Widerruf Ihrer Einwilligung zur Datenverarbeitung</strong><br>Viele Datenverarbeitungsvorgänge sind nur mit Ihrer ausdrücklichen Einwilligung möglich. Sie können eine bereits erteilte Einwilligung jederzeit widerrufen. Die Rechtmäßigkeit der bis zum Widerruf erfolgten Datenverarbeitung bleibt vom Widerruf unberührt.</p>
+<p><strong>Widerspruchsrecht gegen die Datenerhebung in besonderen Fällen sowie gegen Direktwerbung (Art. 21 DSGVO)</strong><br>Wenn die Datenverarbeitung auf Grundlage von Art. 6 Abs. 1 lit. e oder f DSGVO erfolgt, haben Sie jederzeit das Recht, aus Gründen, die sich aus Ihrer besonderen Situation ergeben, gegen die Verarbeitung Ihrer personenbezogenen Daten Widerspruch einzulegen; dies gilt auch für ein auf diese Bestimmungen gestütztes Profiling. Die jeweilige Rechtsgrundlage, auf denen eine Verarbeitung beruht, entnehmen Sie dieser Datenschutzerklärung. Wenn Sie Widerspruch einlegen, werden wir Ihre betroffenen personenbezogenen Daten nicht mehr verarbeiten, es sei denn, wir können zwingende schutzwürdige Gründe für die Verarbeitung nachweisen, die Ihre Interessen, Rechte und Freiheiten überwiegen oder die Verarbeitung dient der Geltendmachung, Ausübung oder Verteidigung von Rechtsansprüchen (Widerspruch nach Art. 21 Abs. 1 DSGVO).</p>
+<p>Werden Ihre personenbezogenen Daten verarbeitet, um Direktwerbung zu betreiben, so haben Sie das Recht, jederzeit Widerspruch gegen die Verarbeitung Sie betreffender personenbezogener Daten zum Zwecke derartiger Werbung einzulegen; dies gilt auch für das Profiling, soweit es mit solcher Direktwerbung in Verbindung steht. Wenn Sie widersprechen, werden Ihre personenbezogenen Daten anschließend nicht mehr zum Zwecke der Direktwerbung verwendet (Widerspruch nach Art. 21 Abs. 2 DSGVO).</p>
+<p><strong>Beschwerderecht bei der zuständigen Aufsichtsbehörde</strong><br>Im Falle von Verstößen gegen die DSGVO steht den Betroffenen ein Beschwerderecht bei einer Aufsichtsbehörde, insbesondere in dem Mitgliedstaat ihres gewöhnlichen Aufenthalts, ihres Arbeitsplatzes oder des Orts des mutmaßlichen Verstoßes zu. Das Beschwerderecht besteht unbeschadet anderweitiger verwaltungsrechtlicher oder gerichtlicher Rechtsbehelfe.</p>
+<p><strong>Recht auf Datenübertragbarkeit</strong><br>Sie haben das Recht, Daten, die wir auf Grundlage Ihrer Einwilligung oder in Erfüllung eines Vertrags automatisiert verarbeiten, an sich oder an einen Dritten in einem gängigen, maschinenlesbaren Format aushändigen zu lassen. Sofern Sie die direkte Übertragung der Daten an einen anderen Verantwortlichen verlangen, erfolgt dies nur, soweit es technisch machbar ist.</p>
+<p><strong>Auskunft, Berichtigung und Löschung</strong><br>Sie haben im Rahmen der geltenden gesetzlichen Bestimmungen jederzeit das Recht auf unentgeltliche Auskunft über Ihre gespeicherten personenbezogenen Daten, deren Herkunft und Empfänger und den Zweck der Datenverarbeitung und ggf. ein Recht auf Berichtigung oder Löschung dieser Daten. Hierzu sowie zu weiteren Fragen zum Thema personenbezogene Daten können Sie sich jederzeit an uns wenden.</p>
+<p><strong>Recht auf Einschränkung der Verarbeitung</strong><br>Sie haben das Recht, die Einschränkung der Verarbeitung Ihrer personenbezogenen Daten zu verlangen. Hierzu können Sie sich jederzeit an uns wenden. Das Recht auf Einschränkung der Verarbeitung besteht in folgenden Fällen:</p>
+<ul><li>Wenn Sie die Richtigkeit Ihrer bei uns gespeicherten personenbezogenen Daten bestreiten, benötigen wir in der Regel Zeit, um dies zu überprüfen. Für die Dauer der Prüfung haben Sie das Recht, die Einschränkung der Verarbeitung Ihrer personenbezogenen Daten zu verlangen.</li>
+<li>Wenn die Verarbeitung Ihrer personenbezogenen Daten unrechtmäßig geschah/geschieht, können Sie statt der Löschung die Einschränkung der Datenverarbeitung verlangen.</li>
+<li>Wenn wir Ihre personenbezogenen Daten nicht mehr benötigen, Sie sie jedoch zur Ausübung, Verteidigung oder Geltendmachung von Rechtsansprüchen benötigen, haben Sie das Recht, statt der Löschung die Einschränkung der Verarbeitung Ihrer personenbezogenen Daten zu verlangen.</li>
+<li>Wenn Sie einen Widerspruch nach Art. 21 Abs. 1 DSGVO eingelegt haben, muss eine Abwägung zwischen Ihren und unseren Interessen vorgenommen werden. Solange noch nicht feststeht, wessen Interessen überwiegen, haben Sie das Recht, die Einschränkung der Verarbeitung Ihrer personenbezogenen Daten zu verlangen.</li></ul>
+<p>Wenn Sie die Verarbeitung Ihrer personenbezogenen Daten eingeschränkt haben, dürfen diese Daten – von ihrer Speicherung abgesehen – nur mit Ihrer Einwilligung oder zur Geltendmachung, Ausübung oder Verteidigung von Rechtsansprüchen oder zum Schutz der Rechte einer anderen natürlichen oder juristischen Person oder aus Gründen eines wichtigen öffentlichen Interesses der Europäischen Union oder eines Mitgliedstaats verarbeitet werden.</p>
+<p><strong>SSL- bzw. TLS-Verschlüsselung</strong><br>Diese Seite nutzt aus Sicherheitsgründen und zum Schutz der Übertragung vertraulicher Inhalte, wie zum Beispiel Bestellungen oder Anfragen, die Sie an uns als Seitenbetreiber senden, eine SSL- bzw. TLS-Verschlüsselung. Eine verschlüsselte Verbindung erkennen Sie daran, dass die Adresszeile des Browsers von „<a href="http://"" target="_blank" rel="noopener">http://"</a> auf „<a href="https://"" target="_blank" rel="noopener">https://"</a> wechselt und an dem Schloss-Symbol in Ihrer Browserzeile.</p>
+<p>Wenn die SSL- bzw. TLS-Verschlüsselung aktiviert ist, können die Daten, die Sie an uns übermitteln, nicht von Dritten mitgelesen werden.</p>
+<p><strong>Widerspruch gegen Werbe-E-Mails</strong><br>Der Nutzung von im Rahmen der Impressumspflicht veröffentlichten Kontaktdaten zur Übersendung von nicht ausdrücklich angeforderter Werbung und Informationsmaterialien wird hiermit widersprochen. Die Betreiber der Seiten behalten sich ausdrücklich rechtliche Schritte im Falle der unverlangten Zusendung von Werbeinformationen, etwa durch Spam-E-Mails, vor.</p>
+<h2>4. Datenerfassung auf dieser Website</h2>
+<p><strong>Cookies</strong><br>Unsere Internetseiten verwenden so genannte „Cookies". Cookies sind kleine Datenpakete und richten auf Ihrem Endgerät keinen Schaden an. Sie werden entweder vorübergehend für die Dauer einer Sitzung (Session-Cookies) oder dauerhaft (permanente Cookies) auf Ihrem Endgerät gespeichert. Session-Cookies werden nach Ende Ihres Besuchs automatisch gelöscht. Permanente Cookies bleiben auf Ihrem Endgerät gespeichert, bis Sie diese selbst löschen oder eine automatische Löschung durch Ihren Webbrowser erfolgt.</p>
+<p>Cookies können von uns (First-Party-Cookies) oder von Drittunternehmen stammen (sog. Third-Party-Cookies). Third-Party-Cookies ermöglichen die Einbindung bestimmter Dienstleistungen von Drittunternehmen innerhalb von Webseiten (z. B. Cookies zur Abwicklung von Zahlungsdienstleistungen).</p>
+<p>Cookies haben verschiedene Funktionen. Zahlreiche Cookies sind technisch notwendig, da bestimmte Webseitenfunktionen ohne diese nicht funktionieren würden (z. B. die Warenkorbfunktion oder die Anzeige von Videos). Andere Cookies können zur Auswertung des Nutzerverhaltens oder zu Werbezwecken verwendet werden.</p>
+<p>Cookies, die zur Durchführung des elektronischen Kommunikationsvorgangs, zur Bereitstellung bestimmter, von Ihnen erwünschter Funktionen (z. B. für die Warenkorbfunktion) oder zur Optimierung der Website (z. B. Cookies zur Messung des Webpublikums) erforderlich sind (notwendige Cookies), werden auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO gespeichert, sofern keine andere Rechtsgrundlage angegeben wird. Der Websitebetreiber hat ein berechtigtes Interesse an der Speicherung von notwendigen Cookies zur technisch fehlerfreien und optimierten Bereitstellung seiner Dienste. Sofern eine Einwilligung zur Speicherung von Cookies und vergleichbaren Wiedererkennungstechnologien abgefragt wurde, erfolgt die Verarbeitung ausschließlich auf Grundlage dieser Einwilligung (Art. 6 Abs. 1 lit. a DSGVO und § 25 Abs. 1 TDDDG); die Einwilligung ist jederzeit widerrufbar.</p>
+<p>Sie können Ihren Browser so einstellen, dass Sie über das Setzen von Cookies informiert werden und Cookies nur im Einzelfall erlauben, die Annahme von Cookies für bestimmte Fälle oder generell ausschließen sowie das automatische Löschen der Cookies beim Schließen des Browsers aktivieren. Bei der Deaktivierung von Cookies kann die Funktionalität dieser Website eingeschränkt sein.</p>
+<p>Welche Cookies und Dienste auf dieser Website eingesetzt werden, können Sie dieser Datenschutzerklärung entnehmen.</p>
+<p><strong>Kontaktformular</strong><br>Wenn Sie uns per Kontaktformular Anfragen zukommen lassen, werden Ihre Angaben aus dem Anfrageformular inklusive der von Ihnen dort angegebenen Kontaktdaten zwecks Bearbeitung der Anfrage und für den Fall von Anschlussfragen bei uns gespeichert. Diese Daten geben wir nicht ohne Ihre Einwilligung weiter.</p>
+<p>Die Verarbeitung dieser Daten erfolgt auf Grundlage von Art. 6 Abs. 1 lit. b DSGVO, sofern Ihre Anfrage mit der Erfüllung eines Vertrags zusammenhängt oder zur Durchführung vorvertraglicher Maßnahmen erforderlich ist. In allen übrigen Fällen beruht die Verarbeitung auf unserem berechtigten Interesse an der effektiven Bearbeitung der an uns gerichteten Anfragen (Art. 6 Abs. 1 lit. f DSGVO) oder auf Ihrer Einwilligung (Art. 6 Abs. 1 lit. a DSGVO) sofern diese abgefragt wurde; die Einwilligung ist jederzeit widerrufbar.</p>
+<p>Die von Ihnen im Kontaktformular eingegebenen Daten verbleiben bei uns, bis Sie uns zur Löschung auffordern, Ihre Einwilligung zur Speicherung widerrufen oder der Zweck für die Datenspeicherung entfällt (z. B. nach abgeschlossener Bearbeitung Ihrer Anfrage). Zwingende gesetzliche Bestimmungen insbesondere Aufbewahrungsfristen – bleiben unberührt.</p>
+<p><strong>Anfrage per E-Mail, Telefon oder Telefax</strong><br>Wenn Sie uns per E-Mail, Telefon oder Telefax kontaktieren, wird Ihre Anfrage inklusive aller daraus hervorgehenden personenbezogenen Daten (Name, Anfrage) zum Zwecke der Bearbeitung Ihres Anliegens bei uns gespeichert und verarbeitet. Diese Daten geben wir nicht ohne Ihre Einwilligung weiter.</p>
+<p>Die Verarbeitung dieser Daten erfolgt auf Grundlage von Art. 6 Abs. 1 lit. b DSGVO, sofern Ihre Anfrage mit der Erfüllung eines Vertrags zusammenhängt oder zur Durchführung vorvertraglicher Maßnahmen erforderlich ist. In allen übrigen Fällen beruht die Verarbeitung auf unserem berechtigten Interesse an der effektiven Bearbeitung der an uns gerichteten Anfragen (Art. 6 Abs. 1 lit. f DSGVO) oder auf Ihrer Einwilligung (Art. 6 Abs. 1 lit. a DSGVO) sofern diese abgefragt wurde; die Einwilligung ist jederzeit widerrufbar.</p>
+<p>Die von Ihnen an uns per Kontaktanfragen übersandten Daten verbleiben bei uns, bis Sie uns zur Löschung auffordern, Ihre Einwilligung zur Speicherung widerrufen oder der Zweck für die Datenspeicherung entfällt (z. B. nach abgeschlossener Bearbeitung Ihres Anliegens). Zwingende gesetzliche Bestimmungen insbesondere gesetzliche Aufbewahrungsfristen – bleiben unberührt.</p>
+<p><strong>Kommunikation via WhatsApp</strong><br>Für die Kommunikation mit unseren Kunden und sonstigen Dritten nutzen wir unter anderem den Instant Messaging-Dienst WhatsApp. Anbieter ist die WhatsApp Ireland Limited, 4 Grand Canal Square, Grand Canal Harbour, Dublin 2, Irland.</p>
+<p>Die Kommunikation erfolgt über eine Ende-zu-Ende-Verschlüsselung (Peer-to-Peer), die verhindert, dass WhatsApp oder sonstige Dritte Zugriff auf die Kommunikationsinhalte erlangen können. WhatsApp erhält jedoch Zugriff auf Metadaten, die im Zuge des Kommunikationsvorgangs entstehen (z. B. Absender, Empfänger und Zeitpunkt). Wir weisen ferner darauf hin, dass WhatsApp nach eigener Aussage, personenbezogene Daten seiner Nutzer mit seiner in den USA ansässigen Konzernmutter Meta teilt. Weitere Details zur Datenverarbeitung finden Sie in der Datenschutzrichtlinie von WhatsApp unter: <a href="https://www.whatsapp.com/legal/#privacy-policy." target="_blank" rel="noopener">https://www.whatsapp.com/legal/#privacy-policy.</a></p>
+<p>Der Einsatz von WhatsApp erfolgt auf Grundlage unseres berechtigten Interesses an einer möglichst schnellen und effektiven Kommunikation mit Kunden, Interessenten und sonstigen Geschäfts- und Vertragspartnern (Art. 6 Abs. 1 lit. f DSGVO). Sofern eine entsprechende Einwilligung abgefragt wurde, erfolgt die Datenverarbeitung ausschließlich auf Grundlage der Einwilligung; diese ist jederzeit mit Wirkung für die Zukunft widerrufbar.</p>
+<p>Die zwischen Ihnen und uns auf WhatsApp ausgetauschten Kommunikationsinhalte verbleiben bei uns, bis Sie uns zur Löschung auffordern, Ihre Einwilligung zur Speicherung widerrufen oder der Zweck für die Datenspeicherung entfällt (z. B. nach abgeschlossener Bearbeitung Ihrer Anfrage). Zwingende gesetzliche Bestimmungen – insbesondere Aufbewahrungsfristen – bleiben unberührt.</p>
+<p>Das Unternehmen verfügt über eine Zertifizierung nach dem „EU-US Data Privacy Framework" (DPF). Der DPF ist ein Übereinkommen zwischen der Europäischen Union und den USA, der die Einhaltung europäischer Datenschutzstandards bei Datenverarbeitungen in den USA gewährleisten soll. Jedes nach dem DPF zertifizierte Unternehmen verpflichtet sich, diese Datenschutzstandards einzuhalten. Weitere Informationen hierzu erhalten Sie vom Anbieter unter folgendem Link: <a href="https://www.dataprivacyframework.gov/participant/7735." target="_blank" rel="noopener">https://www.dataprivacyframework.gov/participant/7735.</a></p>
+<p>Wir nutzen WhatsApp in der Variante „WhatsApp Business".</p>
+<p>Die Datenübertragung in die USA wird auf die Standardvertragsklauseln der EU-Kommission gestützt. Details finden Sie hier: <a href="https://www.whatsapp.com/legal/business-data-transfer-addendum." target="_blank" rel="noopener">https://www.whatsapp.com/legal/business-data-transfer-addendum.</a></p>
+<p><strong>Calendly</strong><br>Auf unserer Website haben Sie die Möglichkeit, Termine mit uns zu vereinbaren. Für die Terminbuchung nutzen wir das Tool „Calendly". Anbieter ist die Calendly LLC, 271 17th St NW, 10th Floor, Atlanta, Georgia 30363, USA (nachfolgend „Calendly").</p>
+<p>Zum Zweck der Terminbuchung geben Sie die abgefragten Daten und den Wunschtermin in die dafür vorgesehene Maske ein. Die eingegebenen Daten werden für die Planung, Durchführung und ggf. für die Nachbereitung des Termins verwendet. Die Termindaten werden für uns auf den Servern von Calendly gespeichert, dessen Datenschutzerklärung Sie hier einsehen können: <a href="https://calendly.com/privacy." target="_blank" rel="noopener">https://calendly.com/privacy.</a></p>
+<p>Die von Ihnen eingegebenen Daten verbleiben bei uns, bis Sie uns zur Löschung auffordern, Ihre Einwilligung zur Speicherung widerrufen oder der Zweck für die Datenspeicherung entfällt. Zwingende gesetzliche Bestimmungen – insbesondere Aufbewahrungsfristen – bleiben unberührt.</p>
+<p>Rechtsgrundlage für die Datenverarbeitung ist Art. 6 Abs. 1 lit. f DSGVO. Der Websitebetreiber hat ein berechtigtes Interesse an einer möglichst unkomplizierten Terminvereinbarung mit Interessenten und Kunden. Sofern eine entsprechende Einwilligung abgefragt wurde, erfolgt die Verarbeitung ausschließlich auf Grundlage von Art. 6 Abs. 1 lit. a DSGVO und § 25 Abs. 1 TDDDG, soweit die Einwilligung die Speicherung von Cookies oder den Zugriff auf Informationen im Endgerät des Nutzers (z. B. Device-Fingerprinting) im Sinne des TDDDG umfasst. Die Einwilligung ist jederzeit widerrufbar.</p>
+<p>Die Datenübertragung in die USA wird auf die Standardvertragsklauseln der EU-Kommission gestützt. Details finden Sie hier: <a href="https://calendly.com/pages/dpa." target="_blank" rel="noopener">https://calendly.com/pages/dpa.</a></p>
+<p>Das Unternehmen verfügt über eine Zertifizierung nach dem „EU-US Data Privacy Framework" (DPF). Weitere Informationen hierzu erhalten Sie vom Anbieter unter folgendem Link: <a href="https://www.dataprivacyframework.gov/participant/6050." target="_blank" rel="noopener">https://www.dataprivacyframework.gov/participant/6050.</a></p>
+<p><strong>Auftragsverarbeitung</strong><br>Wir haben einen Vertrag über Auftragsverarbeitung (AVV) zur Nutzung des oben genannten Dienstes geschlossen. Hierbei handelt es sich um einen datenschutzrechtlich vorgeschriebenen Vertrag, der gewährleistet, dass dieser die personenbezogenen Daten unserer Websitebesucher nur nach unseren Weisungen und unter Einhaltung der DSGVO verarbeitet.</p>
+<p><strong>Google Calendar</strong><br>Auf unserer Website haben Sie die Möglichkeit, Termine mit uns zu vereinbaren. Für die Planung nutzen wir Google Calendar. Anbieter ist die Google Ireland Limited („Google"), Gordon House, Barrow Street, Dublin 4, Irland.</p>
+<p>Zum Zweck der Terminbuchung geben Sie die abgefragten Daten und den Wunschtermin in die dafür vorgesehene Maske ein. Die eingegebenen Daten werden für die Planung, Durchführung und ggf. für die Nachbereitung des Termins verwendet. Die Termindaten werden für uns auf den Servern von Google Calendar gespeichert, dessen Datenschutzerklärung Sie hier einsehen können: <a href="https://policies.google.com/privacy." target="_blank" rel="noopener">https://policies.google.com/privacy.</a></p>
+<p>Rechtsgrundlage für die Datenverarbeitung ist Art. 6 Abs. 1 lit. f DSGVO. Die Datenübertragung in die USA wird auf die Standardvertragsklauseln der EU-Kommission gestützt. Details finden Sie hier: <a href="https://workspace.google.com/terms/dpa_terms.html" target="_blank" rel="noopener">https://workspace.google.com/terms/dpa_terms.html</a> und hier <a href="https://cloud.google.com/terms/sccs." target="_blank" rel="noopener">https://cloud.google.com/terms/sccs.</a></p>
+<p>Das Unternehmen verfügt über eine Zertifizierung nach dem „EU-US Data Privacy Framework" (DPF). Weitere Informationen hierzu erhalten Sie vom Anbieter unter folgendem Link: <a href="https://www.dataprivacyframework.gov/participant/5780." target="_blank" rel="noopener">https://www.dataprivacyframework.gov/participant/5780.</a></p>
+<p><strong>Auftragsverarbeitung</strong><br>Wir haben einen Vertrag über Auftragsverarbeitung (AVV) zur Nutzung des oben genannten Dienstes geschlossen.</p>
+<p><strong>Registrierung mit Facebook Connect</strong><br>Statt einer direkten Registrierung auf dieser Website können Sie sich mit Facebook Connect registrieren. Anbieter dieses Dienstes ist die Meta Platforms Ireland Limited, 4 Grand Canal Square, Dublin 2, Irland. Die erfassten Daten werden nach Aussage von Facebook jedoch auch in die USA und in andere Drittländer übertragen.</p>
+<p>Dadurch wird Ihr Facebook-Profil mit dieser Website bzw. unseren Diensten verknüpft. Durch diese Verknüpfung erhalten wir Zugriff auf Ihre bei Facebook hinterlegten Daten. Dies sind vor allem: Facebook-Name, Facebook-Profil- und Titelbild, bei Facebook hinterlegte E-Mail-Adresse, Facebook-ID, Facebook-Freundeslisten, Facebook Likes („Gefällt-mir"-Angaben), Geburtstag, Geschlecht, Land, Sprache.</p>
+<p>Diese Daten werden zur Einrichtung, Bereitstellung und Personalisierung Ihres Accounts genutzt.</p>
+<p>Die Registrierung mit Facebook-Connect und die damit verbundenen Datenverarbeitungsvorgänge erfolgen auf Grundlage Ihrer Einwilligung (Art. 6 Abs. 1 lit. a DSGVO). Diese Einwilligung können Sie jederzeit mit Wirkung für die Zukunft widerrufen.</p>
+<p>Soweit mit Hilfe des hier beschriebenen Tools personenbezogene Daten auf unserer Website erfasst und an Facebook weitergeleitet werden, sind wir und die Meta Platforms Ireland Limited gemeinsam für diese Datenverarbeitung verantwortlich (Art. 26 DSGVO). Die gemeinsame Verantwortlichkeit beschränkt sich dabei ausschließlich auf die Erfassung der Daten und deren Weitergabe an Facebook. Den Wortlaut der Vereinbarung finden Sie unter: <a href="https://www.facebook.com/legal/controller_addendum." target="_blank" rel="noopener">https://www.facebook.com/legal/controller_addendum.</a></p>
+<p>Die Datenübertragung in die USA wird auf die Standardvertragsklauseln der EU-Kommission gestützt. Details finden Sie hier: <a href="https://www.facebook.com/legal/EU_data_transfer_addendum" target="_blank" rel="noopener">https://www.facebook.com/legal/EU_data_transfer_addendum</a>, <a href="https://de-de.facebook.com/help/566994660333381" target="_blank" rel="noopener">https://de-de.facebook.com/help/566994660333381</a> und <a href="https://www.facebook.com/policy.php." target="_blank" rel="noopener">https://www.facebook.com/policy.php.</a></p>
+<p>Weitere Informationen finden Sie in den Facebook-Nutzungsbedingungen und den Facebook-Datenschutzbestimmungen unter: <a href="https://de-de.facebook.com/about/privacy/" target="_blank" rel="noopener">https://de-de.facebook.com/about/privacy/</a> und <a href="https://de-de.facebook.com/legal/terms/." target="_blank" rel="noopener">https://de-de.facebook.com/legal/terms/.</a></p>
+<h2>5. Soziale Medien</h2>
+<p><strong>Social-Media-Elemente mit Shariff</strong><br>Auf dieser Website werden Elemente von sozialen Medien verwendet (z. B. Facebook, X, Instagram, Pinterest, XING, LinkedIn, Tumblr).</p>
+<p>Die Social-Media-Elemente können Sie in der Regel anhand der jeweiligen Social-Media-Logos erkennen. Um den Datenschutz auf dieser Website zu gewährleisten, verwenden wir diese Elemente nur zusammen mit der sogenannten „Shariff"-Lösung. Diese Anwendung verhindert, dass die auf dieser Website integrierten Social-Media-Elemente Ihre personenbezogenen Daten schon beim ersten Betreten der Seite an den jeweiligen Anbieter übertragen.</p>
+<p>Erst wenn Sie das jeweilige Social-Media-Element durch Anklicken der zugehörigen Schaltfläche aktivieren, wird eine direkte Verbindung zum Server des Anbieters hergestellt (Einwilligung). Sobald Sie das Social-Media-Element aktivieren, erhält der jeweilige Anbieter die Information, dass Sie mit Ihrer IP-Adresse diese Website besucht haben.</p>
+<p>Das Aktivieren des Plugins stellt eine Einwilligung im Sinne des Art. 6 Abs. 1 lit. a DSGVO und § 25 Abs. 1 TDDDG dar. Diese Einwilligung können Sie jederzeit mit Wirkung für die Zukunft widerrufen.</p>
+<p><strong>Facebook</strong><br>Auf dieser Website sind Elemente des sozialen Netzwerks Facebook integriert. Anbieter dieses Dienstes ist die Meta Platforms Ireland Limited, Merrion Road, Dublin 4, D04 X2K5, Irland.</p>
+<p>Wenn das Social-Media-Element aktiv ist, wird eine direkte Verbindung zwischen Ihrem Endgerät und dem Facebook-Server hergestellt. Facebook erhält dadurch die Information, dass Sie mit Ihrer IP-Adresse diese Website besucht haben. Weitere Informationen hierzu finden Sie in der Datenschutzerklärung von Facebook unter: <a href="https://de-de.facebook.com/privacy/explanation." target="_blank" rel="noopener">https://de-de.facebook.com/privacy/explanation.</a></p>
+<p>Die Nutzung dieses Dienstes erfolgt auf Grundlage Ihrer Einwilligung nach Art. 6 Abs. 1 lit. a DSGVO und § 25 Abs. 1 TDDDG. Die Einwilligung ist jederzeit widerrufbar.</p>
+<p>Das Unternehmen verfügt über eine Zertifizierung nach dem „EU-US Data Privacy Framework" (DPF). Weitere Informationen: <a href="https://www.dataprivacyframework.gov/participant/4452." target="_blank" rel="noopener">https://www.dataprivacyframework.gov/participant/4452.</a></p>
+<p><strong>Instagram</strong><br>Auf dieser Website sind Funktionen des Dienstes Instagram eingebunden. Diese Funktionen werden angeboten durch die Meta Platforms Ireland Limited, Merrion Road, Dublin 4, D04 X2K5, Irland.</p>
+<p>Wenn das Social-Media-Element aktiv ist, wird eine direkte Verbindung zwischen Ihrem Endgerät und dem Instagram-Server hergestellt. Instagram erhält dadurch Informationen über den Besuch dieser Website durch Sie.</p>
+<p>Die Nutzung dieses Dienstes erfolgt auf Grundlage Ihrer Einwilligung nach Art. 6 Abs. 1 lit. a DSGVO und § 25 Abs. 1 TDDDG. Die Einwilligung ist jederzeit widerrufbar.</p>
+<p>Weitere Informationen hierzu finden Sie in der Datenschutzerklärung von Instagram: <a href="https://privacycenter.instagram.com/policy/." target="_blank" rel="noopener">https://privacycenter.instagram.com/policy/.</a></p>
+<p>Das Unternehmen verfügt über eine Zertifizierung nach dem „EU-US Data Privacy Framework" (DPF). Weitere Informationen: <a href="https://www.dataprivacyframework.gov/participant/4452." target="_blank" rel="noopener">https://www.dataprivacyframework.gov/participant/4452.</a></p>
+<p><strong>LinkedIn</strong><br>Diese Website nutzt Elemente des Netzwerks LinkedIn. Anbieter ist die LinkedIn Ireland Unlimited Company, Wilton Plaza, Wilton Place, Dublin 2, Irland.</p>
+<p>Bei jedem Abruf einer Seite dieser Website, die Elemente von LinkedIn enthält, wird eine Verbindung zu Servern von LinkedIn aufgebaut. Die Nutzung dieses Dienstes erfolgt auf Grundlage Ihrer Einwilligung nach Art. 6 Abs. 1 lit. a DSGVO und § 25 Abs. 1 TDDDG. Die Einwilligung ist jederzeit widerrufbar.</p>
+<p>Weitere Informationen hierzu finden Sie in der Datenschutzerklärung von LinkedIn unter: <a href="https://www.linkedin.com/legal/privacy-policy." target="_blank" rel="noopener">https://www.linkedin.com/legal/privacy-policy.</a></p>
+<p>Das Unternehmen verfügt über eine Zertifizierung nach dem „EU-US Data Privacy Framework" (DPF). Weitere Informationen: <a href="https://www.dataprivacyframework.gov/participant/5448." target="_blank" rel="noopener">https://www.dataprivacyframework.gov/participant/5448.</a></p>
+<p><strong>Pinterest</strong><br>Auf dieser Website verwenden wir Elemente des sozialen Netzwerkes Pinterest, das von der Pinterest Europe Ltd., Palmerston House, 2nd Floor, Fenian Street, Dublin 2, Irland betrieben wird.</p>
+<p>Wenn Sie eine Seite aufrufen, die ein solches Element enthält, stellt Ihr Browser eine direkte Verbindung zu den Servern von Pinterest her. Die Nutzung dieses Dienstes erfolgt auf Grundlage Ihrer Einwilligung nach Art. 6 Abs. 1 lit. a DSGVO und § 25 Abs. 1 TDDDG. Die Einwilligung ist jederzeit widerrufbar.</p>
+<p>Weitere Informationen finden Sie in den Datenschutzhinweisen von Pinterest: <a href="https://policy.pinterest.com/de/privacy-policy." target="_blank" rel="noopener">https://policy.pinterest.com/de/privacy-policy.</a></p>
+<h2>6. Analyse-Tools und Werbung</h2>
+<p><strong>IONOS WebAnalytics</strong><br>Diese Website nutzt die Analysedienste von IONOS WebAnalytics (im Folgenden: IONOS). Anbieter ist die 1&amp;1 IONOS SE, Elgendorfer Straße 57, D – 56410 Montabaur. Im Rahmen der Analysen mit IONOS können u. a. Besucherzahlen und -verhalten (z. B. Anzahl der Seitenaufrufe, Dauer eines Webseitenbesuchs, Absprungraten), Besucherquellen, Besucherstandorte sowie technische Daten (Browser- und Betriebssystemversionen) analysiert werden. Zu diesem Zweck speichert IONOS insbesondere folgende Daten:</p>
+<ul><li>Referrer (zuvor besuchte Webseite)</li>
+<li>angeforderte Webseite oder Datei</li>
+<li>Browsertyp und Browserversion</li>
+<li>verwendetes Betriebssystem</li>
+<li>verwendeter Gerätetyp</li>
+<li>Uhrzeit des Zugriffs</li>
+<li>IP-Adresse in anonymisierter Form (wird nur zur Feststellung des Orts des Zugriffs verwendet)</li></ul>
+<p>Die Datenerfassung erfolgt laut IONOS vollständig anonymisiert, sodass sie nicht zu einzelnen Personen zurückverfolgt werden kann. Cookies werden von IONOS WebAnalytics nicht gespeichert.</p>
+<p>Die Speicherung und Analyse der Daten erfolgt auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO. Der Websitebetreiber hat ein berechtigtes Interesse an der statistischen Analyse des Nutzerverhaltens, um sowohl sein Webangebot als auch seine Werbung zu optimieren.</p>
+<p>Weitere Informationen zur Datenerfassung und Verarbeitung durch IONOS WebAnalytics entnehmen Sie der Datenschutzerklärung von IONOS unter folgendem Link: <a href="https://www.ionos.de/terms-gtc/datenschutzerklaerung/" target="_blank" rel="noopener">https://www.ionos.de/terms-gtc/datenschutzerklaerung/</a></p>
+<p><strong>Auftragsverarbeitung</strong><br>Wir haben einen Vertrag über Auftragsverarbeitung (AVV) zur Nutzung des oben genannten Dienstes geschlossen.</p>
+<p><strong>Google Ads</strong><br>Der Websitebetreiber verwendet Google Ads. Google Ads ist ein Online-Werbeprogramm der Google Ireland Limited („Google"), Gordon House, Barrow Street, Dublin 4, Irland.</p>
+<p>Google Ads ermöglicht es uns Werbeanzeigen in der Google-Suchmaschine oder auf Drittwebseiten auszuspielen, wenn der Nutzer bestimmte Suchbegriffe bei Google eingibt (Keyword-Targeting). Ferner können zielgerichtete Werbeanzeigen anhand der bei Google vorhandenen Nutzerdaten (z. B. Standortdaten und Interessen) ausgespielt werden (Zielgruppen-Targeting).</p>
+<p>Die Nutzung dieses Dienstes erfolgt auf Grundlage Ihrer Einwilligung nach Art. 6 Abs. 1 lit. a DSGVO und § 25 Abs. 1 TDDDG. Die Einwilligung ist jederzeit widerrufbar.</p>
+<p>Die Datenübertragung in die USA wird auf die Standardvertragsklauseln der EU-Kommission gestützt. Details finden Sie hier: <a href="https://policies.google.com/privacy/frameworks" target="_blank" rel="noopener">https://policies.google.com/privacy/frameworks</a> und <a href="https://business.safety.google/controllerterms/." target="_blank" rel="noopener">https://business.safety.google/controllerterms/.</a></p>
+<p>Das Unternehmen verfügt über eine Zertifizierung nach dem „EU-US Data Privacy Framework" (DPF). Weitere Informationen: <a href="https://www.dataprivacyframework.gov/participant/5780." target="_blank" rel="noopener">https://www.dataprivacyframework.gov/participant/5780.</a></p>
+<h2>7. Plugins und Tools</h2>
+<p><strong>YouTube</strong><br>Diese Website bindet Videos der Website YouTube ein. Betreiber der Website ist die Google Ireland Limited („Google"), Gordon House, Barrow Street, Dublin 4, Irland.</p>
+<p>Wenn Sie eine unserer Webseiten besuchen, auf denen YouTube eingebunden ist, wird eine Verbindung zu den Servern von YouTube hergestellt. Dabei wird dem YouTube-Server mitgeteilt, welche unserer Seiten Sie besucht haben.</p>
+<p>Des Weiteren kann YouTube verschiedene Cookies auf Ihrem Endgerät speichern oder vergleichbare Technologien zur Wiedererkennung verwenden (z. B. Device-Fingerprinting). Wenn Sie in Ihrem YouTube-Account eingeloggt sind, ermöglichen Sie YouTube, Ihr Surfverhalten direkt Ihrem persönlichen Profil zuzuordnen. Dies können Sie verhindern, indem Sie sich aus Ihrem YouTube-Account ausloggen.</p>
+<p>Die Nutzung von YouTube erfolgt im Interesse einer ansprechenden Darstellung unserer Online-Angebote. Dies stellt ein berechtigtes Interesse im Sinne von Art. 6 Abs. 1 lit. f DSGVO dar. Sofern eine entsprechende Einwilligung abgefragt wurde, erfolgt die Verarbeitung ausschließlich auf Grundlage von Art. 6 Abs. 1 lit. a DSGVO und § 25 Abs. 1 TDDDG. Die Einwilligung ist jederzeit widerrufbar.</p>
+<p>Weitere Informationen zum Umgang mit Nutzerdaten finden Sie in der Datenschutzerklärung von YouTube unter: <a href="https://policies.google.com/privacy?hl=de." target="_blank" rel="noopener">https://policies.google.com/privacy?hl=de.</a></p>
+<p>Das Unternehmen verfügt über eine Zertifizierung nach dem „EU-US Data Privacy Framework" (DPF). Weitere Informationen: <a href="https://www.dataprivacyframework.gov/participant/5780." target="_blank" rel="noopener">https://www.dataprivacyframework.gov/participant/5780.</a></p>
+<p><strong>Google Fonts (lokales Hosting)</strong><br>Diese Seite nutzt zur einheitlichen Darstellung von Schriftarten so genannte Google Fonts, die von Google bereitgestellt werden. Die Google Fonts sind lokal installiert. Eine Verbindung zu Servern von Google findet dabei nicht statt.</p>
+<p>Weitere Informationen zu Google Fonts finden Sie unter <a href="https://developers.google.com/fonts/faq" target="_blank" rel="noopener">https://developers.google.com/fonts/faq</a> und in der Datenschutzerklärung von Google: <a href="https://policies.google.com/privacy?hl=de." target="_blank" rel="noopener">https://policies.google.com/privacy?hl=de.</a></p>
+<p><strong>Google Maps</strong><br>Diese Seite nutzt den Kartendienst Google Maps. Anbieter ist die Google Ireland Limited („Google"), Gordon House, Barrow Street, Dublin 4, Irland. Mit Hilfe dieses Dienstes können wir Kartenmaterial auf unserer Website einbinden.</p>
+<p>Zur Nutzung der Funktionen von Google Maps ist es notwendig, Ihre IP-Adresse zu speichern. Diese Informationen werden in der Regel an einen Server von Google in den USA übertragen und dort gespeichert. Der Anbieter dieser Seite hat keinen Einfluss auf diese Datenübertragung.</p>
+<p>Die Nutzung von Google Maps erfolgt im Interesse einer ansprechenden Darstellung unserer Online-Angebote und an einer leichten Auffindbarkeit der von uns auf der Website angegebenen Orte. Dies stellt ein berechtigtes Interesse im Sinne von Art. 6 Abs. 1 lit. f DSGVO dar. Die Einwilligung ist jederzeit widerrufbar.</p>
+<p>Die Datenübertragung in die USA wird auf die Standardvertragsklauseln der EU-Kommission gestützt. Details finden Sie hier: <a href="https://privacy.google.com/businesses/gdprcontrollerterms/" target="_blank" rel="noopener">https://privacy.google.com/businesses/gdprcontrollerterms/</a> und <a href="https://privacy.google.com/businesses/gdprcontrollerterms/sccs/." target="_blank" rel="noopener">https://privacy.google.com/businesses/gdprcontrollerterms/sccs/.</a></p>
+<p>Mehr Informationen zum Umgang mit Nutzerdaten finden Sie in der Datenschutzerklärung von Google: <a href="https://policies.google.com/privacy?hl=de." target="_blank" rel="noopener">https://policies.google.com/privacy?hl=de.</a></p>
+<p>Das Unternehmen verfügt über eine Zertifizierung nach dem „EU-US Data Privacy Framework" (DPF). Weitere Informationen: <a href="https://www.dataprivacyframework.gov/participant/5780." target="_blank" rel="noopener">https://www.dataprivacyframework.gov/participant/5780.</a></p>
+<h2>8. eCommerce und Zahlungsanbieter</h2>
+<p><strong>Verarbeiten von Kunden- und Vertragsdaten</strong><br>Wir erheben, verarbeiten und nutzen personenbezogene Kunden- und Vertragsdaten zur Begründung, inhaltlichen Ausgestaltung und Änderung unserer Vertragsbeziehungen. Personenbezogene Daten über die Inanspruchnahme dieser Website (Nutzungsdaten) erheben, verarbeiten und nutzen wir nur, soweit dies erforderlich ist, um dem Nutzer die Inanspruchnahme des Dienstes zu ermöglichen oder abzurechnen. Rechtsgrundlage hierfür ist Art. 6 Abs. 1 lit. b DSGVO.</p>
+<p>Die erhobenen Kundendaten werden nach Abschluss des Auftrags oder Beendigung der Geschäftsbeziehung und Ablauf der ggf. bestehenden gesetzlichen Aufbewahrungsfristen gelöscht. Gesetzliche Aufbewahrungsfristen bleiben unberührt.</p>
+<p><strong>Datenübermittlung bei Vertragsschluss für Dienstleistungen und digitale Inhalte</strong><br>Wir übermitteln personenbezogene Daten an Dritte nur dann, wenn dies im Rahmen der Vertragsabwicklung notwendig ist, etwa an das mit der Zahlungsabwicklung beauftragte Kreditinstitut.</p>
+<p>Eine weitergehende Übermittlung der Daten erfolgt nicht bzw. nur dann, wenn Sie der Übermittlung ausdrücklich zugestimmt haben. Eine Weitergabe Ihrer Daten an Dritte ohne ausdrückliche Einwilligung, etwa zu Zwecken der Werbung, erfolgt nicht.</p>
+<p>Grundlage für die Datenverarbeitung ist Art. 6 Abs. 1 lit. b DSGVO, der die Verarbeitung von Daten zur Erfüllung eines Vertrags oder vorvertraglicher Maßnahmen gestattet.</p>
+<h2>9. Audio- und Videokonferenzen</h2>
+<p><strong>Datenverarbeitung</strong><br>Für die Kommunikation mit unseren Kunden setzen wir unter anderen Online-Konferenz-Tools ein. Wenn Sie mit uns per Video- oder Audiokonferenz via Internet kommunizieren, werden Ihre personenbezogenen Daten von uns und dem Anbieter des jeweiligen Konferenz-Tools erfasst und verarbeitet.</p>
+<p>Die Konferenz-Tools erfassen dabei alle Daten, die Sie zur Nutzung der Tools bereitstellen/einsetzen (E-Mail-Adresse und/oder Ihre Telefonnummer). Ferner verarbeiten die Konferenz-Tools die Dauer der Konferenz, Beginn und Ende (Zeit) der Teilnahme an der Konferenz, Anzahl der Teilnehmer und sonstige „Kontextinformationen" im Zusammenhang mit dem Kommunikationsvorgang (Metadaten).</p>
+<p>Des Weiteren verarbeitet der Anbieter des Tools alle technischen Daten, die zur Abwicklung der Online-Kommunikation erforderlich sind. Dies umfasst insbesondere IP-Adressen, MAC-Adressen, Geräte-IDs, Gerätetyp, Betriebssystemtyp und -version, Client-Version, Kameratyp, Mikrofon oder Lautsprecher sowie die Art der Verbindung.</p>
+<p>Sofern innerhalb des Tools Inhalte ausgetauscht, hochgeladen oder in sonstiger Weise bereitgestellt werden, werden diese ebenfalls auf den Servern der Tool-Anbieter gespeichert. Zu solchen Inhalten zählen insbesondere Cloud-Aufzeichnungen, Chat-/Sofortnachrichten, Voicemails, hochgeladene Fotos und Videos, Dateien, Whiteboards und andere Informationen, die während der Nutzung des Dienstes geteilt werden.</p>
+<p>Bitte beachten Sie, dass wir nicht vollumfänglich Einfluss auf die Datenverarbeitungsvorgänge der verwendeten Tools haben. Unsere Möglichkeiten richten sich maßgeblich nach der Unternehmenspolitik des jeweiligen Anbieters.</p>
+<p><strong>Zweck und Rechtsgrundlagen</strong><br>Die Konferenz-Tools werden genutzt, um mit angehenden oder bestehenden Vertragspartnern zu kommunizieren oder bestimmte Leistungen gegenüber unseren Kunden anzubieten (Art. 6 Abs. 1 lit. b DSGVO). Des Weiteren dient der Einsatz der Tools der allgemeinen Vereinfachung und Beschleunigung der Kommunikation mit uns bzw. unserem Unternehmen (berechtigtes Interesse im Sinne von Art. 6 Abs. 1 lit. f DSGVO). Soweit eine Einwilligung abgefragt wurde, erfolgt der Einsatz der betreffenden Tools auf Grundlage dieser Einwilligung; die Einwilligung ist jederzeit mit Wirkung für die Zukunft widerrufbar.</p>
+<p><strong>Speicherdauer</strong><br>Die unmittelbar von uns über die Video- und Konferenz-Tools erfassten Daten werden von unseren Systemen gelöscht, sobald Sie uns zur Löschung auffordern, Ihre Einwilligung zur Speicherung widerrufen oder der Zweck für die Datenspeicherung entfällt. Gespeicherte Cookies verbleiben auf Ihrem Endgerät, bis Sie sie löschen. Zwingende gesetzliche Aufbewahrungsfristen bleiben unberührt. Auf die Speicherdauer Ihrer Daten, die von den Betreibern der Konferenz-Tools zu eigenen Zwecken gespeichert werden, haben wir keinen Einfluss.</p>
+<p><strong>Eingesetzte Konferenz-Tools</strong></p>
+<p><em>TeamViewer</em><br>Wir nutzen TeamViewer. Anbieter ist die TeamViewer Germany GmbH, Jahnstr. 30, 73037 Göppingen. Details zur Datenverarbeitung entnehmen Sie der Datenschutzerklärung von TeamViewer: <a href="https://www.teamviewer.com/de/datenschutzerklaerung/." target="_blank" rel="noopener">https://www.teamviewer.com/de/datenschutzerklaerung/.</a></p>
+<p><em>Microsoft Teams</em><br>Wir nutzen Microsoft Teams. Anbieter ist die Microsoft Ireland Operations Limited, One Microsoft Place, South County Business Park, Leopardstown, Dublin 18, Irland. Details zur Datenverarbeitung entnehmen Sie der Datenschutzerklärung von Microsoft Teams: <a href="https://privacy.microsoft.com/de-de/privacystatement." target="_blank" rel="noopener">https://privacy.microsoft.com/de-de/privacystatement.</a></p>
+<p>Das Unternehmen verfügt über eine Zertifizierung nach dem „EU-US Data Privacy Framework" (DPF). Weitere Informationen: <a href="https://www.dataprivacyframework.gov/participant/6474." target="_blank" rel="noopener">https://www.dataprivacyframework.gov/participant/6474.</a></p>
+<p><em>Google Meet</em><br>Wir nutzen Google Meet. Anbieter ist die Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland. Details zur Datenverarbeitung entnehmen Sie der Datenschutzerklärung von Google: <a href="https://policies.google.com/privacy?hl=de." target="_blank" rel="noopener">https://policies.google.com/privacy?hl=de.</a></p>
+<p>Das Unternehmen verfügt über eine Zertifizierung nach dem „EU-US Data Privacy Framework" (DPF). Weitere Informationen: <a href="https://www.dataprivacyframework.gov/participant/5780." target="_blank" rel="noopener">https://www.dataprivacyframework.gov/participant/5780.</a></p>
+<h2>10. Eigene Dienste</h2>
+<p><strong>Google Drive</strong><br>Wir haben Google Drive auf dieser Website eingebunden. Anbieter ist die Google Ireland Limited („Google"), Gordon House, Barrow Street, Dublin 4, Irland.</p>
+<p>Google Drive ermöglicht es uns, einen Uploadbereich auf unserer Website einzubinden, in dem Sie Inhalte hochladen können. Wenn Sie Inhalte hochladen, werden diese auf den Servern von Google Drive gespeichert. Wenn Sie unsere Website betreten, wird außerdem eine Verbindung zu Google Drive aufgebaut, sodass Google Drive feststellen kann, dass Sie unsere Website besucht haben.</p>
+<p>Die Verwendung von Google Drive erfolgt auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO. Der Websitebetreiber hat ein berechtigtes Interesse an einem zuverlässigen Uploadbereich auf seiner Website. Sofern eine entsprechende Einwilligung abgefragt wurde, erfolgt die Verarbeitung ausschließlich auf Grundlage von Art. 6 Abs. 1 lit. a DSGVO; die Einwilligung ist jederzeit widerrufbar.</p>
+<p>Das Unternehmen verfügt über eine Zertifizierung nach dem „EU-US Data Privacy Framework" (DPF). Weitere Informationen: <a href="https://www.dataprivacyframework.gov/participant/5780." target="_blank" rel="noopener">https://www.dataprivacyframework.gov/participant/5780.</a></p>
+<p><strong>Auftragsverarbeitung</strong><br>Wir haben einen Vertrag über Auftragsverarbeitung (AVV) zur Nutzung des oben genannten Dienstes geschlossen. Hierbei handelt es sich um einen datenschutzrechtlich vorgeschriebenen Vertrag, der gewährleistet, dass dieser die personenbezogenen Daten unserer Websitebesucher nur nach unseren Weisungen und unter Einhaltung der DSGVO verarbeitet.</p>
+    </div>
+  </div>
+</div>
+
+<div class="legal-overlay" id="legal-agb" onclick="if(event.target===this) closeLegal()">
+  <div class="legal-box">
+    <div class="legal-bar">
+      <button type="button" class="legal-back" onclick="closeLegal()">← Zurück zur Startseite</button>
+      <button type="button" class="legal-x" onclick="closeLegal()" aria-label="Schließen">✕</button>
+    </div>
+    <div class="legal-content">
+<h1>Allgemeine Geschäftsbedingungen</h1>
+<p>Stand: 2025</p>
+<h2>Präambel FAIRkaufswerkstatt</h2>
+<p>Die FAIRkaufswerkstatt definiert die Aufgaben eines klassischen Immobilienmaklers neu und verbindet umfassendes Fachwissen mit individueller Beratung und Begleitung durch alle Etappen eines Verkaufsprozesses.</p>
+<h2>§ 1 Geltungsbereich</h2>
+<p>(1) Diese Allgemeinen Geschäftsbedingungen (im Folgenden: „AGB") gelten für alle Verträge über die Erbringung von Dienstleistungen, insbesondere Beratungs- und Begleitungsdienstleistungen im Zusammenhang mit Immobilien-Verkaufsprozessen sowie Analyse- und Bewertungsleistungen - ob persönlich oder digital - in diesem Bereich sowie alle anderen, damit zusammenhängende Leistungen zwischen</p>
+<p>FAIRkaufswerkstatt GmbH<br>Bethmannstraße 7-9<br>60311 Frankfurt am Main<br>(mehr Informationen im Impressum)</p>
+<p>(nachfolgend „Verwender", „wir", oder „uns" genannt) und Ihnen (nachfolgend „Partner", „Ihr" oder „Sie" genannt).</p>
+<p>(2) Die AGB gelten unabhängig davon, ob Sie Verbraucher oder Unternehmer sind.</p>
+<p>(3) "Verbraucher" sind Sie, wenn Sie eine natürliche Person sind, die einen Vertrag mit uns zu Zwecken abschließt, der überwiegend weder Ihrer gewerblichen noch Ihrer selbständigen, freiberuflichen, öffentlich-rechtlichen oder gemeinnützigen beruflichen Tätigkeit zugerechnet werden kann.</p>
+<p>(4) "Unternehmer", sind Sie, wenn Sie eine natürliche Person sind oder einen Vertragsschluss für eine juristische Person oder eine rechtsfähige Personengesellschaft tätigen, die bei Abschluss des Vertrages mit uns in Ausübung ihrer gewerblichen, freiberuflichen, selbständigen, öffentlich-rechtlichen oder gemeinnützigen beruflichen Tätigkeit handelt.</p>
+<p>(5) Diese AGB gelten auf allen unseren Plattformen. "Plattformen" sind alle unsere Vertriebs- und Operationskanäle und -dienste. Insbesondere sind es unsere Webseiten oder Apps und unsere Profile auf Webseiten oder Apps unserer Partner. Insbesondere sind es alle unsere Räumlichkeiten; alle unsere physischen oder elektronischen Unterlagen wie E-Mails, Auftragsdokumente oder Informationsmaterialien; alle unsere Vertriebsflächen sowie unsere Webseiten oder Apps und unsere Profile auf Webseiten oder Apps unserer Partner.</p>
+<p>(6) Maßgebend ist die jeweils bei Abschluss des Vertrags gültige Fassung der AGB. Abweichende AGB werden nicht akzeptiert. Dies gilt auch, wenn wir der Einbeziehung nicht ausdrücklich widersprochen haben. Etwas anderes kann gelten, soweit in diesen AGB in Einzelfällen etwas anderes bestimmt ist. Soweit in eine andere Sprache als Deutsch übersetzte Rechtstexte oder Dokumente bestehen, sind die deutschen Rechtstexte oder Dokumente rechtlich verbindlich und damit anwendbar – die übersetzten Rechtstexte oder Dokumente dienen alleine zum besseren Verständnis.</p>
+<p>(7) Alle zwischen Ihnen und uns im Zusammenhang mit einer Leistung getroffenen Vereinbarungen ergeben sich insbesondere aus einer Bestellung bzw. Beauftragung sowie den dazugehörigen Anlagen, unserer Bestätigung, unserer Annahme sowie ergänzend, soweit dort nicht geregelt, aus diesen AGB. Diese AGB finden auch auf spätere Bestellungen bzw. Beauftragungen Anwendung, die Sie während oder nach Ablauf der Vertragslaufzeit abgeben, es sei denn, zu diesem Zeitpunkt sind andere AGB einbezogen worden.</p>
+<p>(8) Mit Ausnahme schriftlicher Änderungen und Ergänzungen dieser AGB werden elektronisch oder digital erstellte Dokumente oder Unterlagen schriftlichen Dokumenten oder Unterlagen gleichgestellt.</p>
+<p>(9) Diese AGB gelten auch für andere, zwischen Ihnen und uns geschlossene Verträge, soweit keine speziellen, auf die andere Vertragsart bezogenen AGB vorliegen und Klauseln dieser AGB inhaltlich Anwendung finden können.</p>
+<h2>§ 2 Leistungsumfang</h2>
+<p>(1) Wir erbringen persönliche und digitale Dienstleistungen auf dem Gebiet der Immobilienveräußerung sowie alle anderen, damit zusammenhängende Leistungen. Insbesondere bieten wir hierbei folgende Pakete an:</p>
+<p><strong>Alleskönner</strong></p>
+<ul><li>FAIRkaufswerkstatt-Ratgeber inkl. aller Checklisten und Vorlagen</li></ul>
+<p><strong>Premium</strong></p>
+<ul><li>FAIRkaufswerkstatt-Ratgeber inkl. aller Checklisten und Vorlagen</li>
+<li>Inserats-Verwaltung (3 Monate)</li>
+<li>30 Min. Datenaufnahme Immobilie</li>
+<li>45 Min. individueller Beratungstermin vor Vermarktungsbeginn</li>
+<li>Berichterstattung über aktuelle Vermarktungszahlen 14-tägig</li>
+<li>Weiterleitung von Interessentenanfragen</li>
+<li>Exposé- und Unterlagenversand an Interessenten</li>
+<li>Finanzierungsfahrplan für eingehende Bewerbungsanfragen</li></ul>
+<p><strong>Rundum-Sorglos</strong></p>
+<ul><li>FAIRkaufswerkstatt-Ratgeber inkl. aller Checklisten und Vorlagen</li>
+<li>Inserats-Verwaltung (3 Monate)</li>
+<li>1 Monat kostenfrei inserieren</li>
+<li>30 Min. Datenaufnahme Immobilie</li>
+<li>60 Min. individueller Beratungstermin vor Vermarktungsbeginn</li>
+<li>30 Min. Vermarktungsstrategie und Konkurrenzanalyse</li>
+<li>45 Min. Resonanzgespräch nach vierwöchiger Vermarktungszeit inkl. Strategieanpassung</li>
+<li>Immobilienbewertung nach renommierten Bewertungsverfahren</li>
+<li>Berichterstattung über aktuelle Vermarktungszahlen wöchentlich</li>
+<li>Verwaltung von Interessentenanfragen und Koordination von Besichtigungsterminen</li>
+<li>Exposé- und Unterlagenversand an Interessenten</li>
+<li>Finanzierungsfahrplan für eingehende Bewerbungsanfragen</li></ul>
+<p>(2) Sie erhalten zur Inanspruchnahme des digitalen Teils unserer Leistungen – insbesondere des Fairwerkstatt-Ratgebers – Zugriff auf Software, Online-Datenbanken, Funktionen, Betriebssysteme, Dokumentationen und alle anderen Bestandteile unserer Software ("Dienste"). Sie können die Dienste über unsere Plattformen nutzen - insbesondere über unsere Webseiten. Eine Rückübersetzung (Dekompilierung) des Programmcodes in eine andere Darstellungsform ist untersagt. Unbeschadet dieses Nutzungsrechts behalten wir alle Rechte an den Diensten einschließlich des Quellcodes sowie aller Kopien oder Teilkopien. Sie verpflichten sich, die Dienste ohne unsere ausdrückliche schriftliche Zustimmung weder im Original noch in Form von vollständigen oder teilweisen Kopien Dritten zugänglich zu machen. Dies gilt auch für den Fall einer vollständigen oder teilweisen Veräußerung oder Auflösung Ihres Unternehmens.</p>
+<p>(3) Maßgeblich für den Umfang unserer Leistung ist im Einzelfall: Ihre Bestellung bzw. Ihr Auftrag, egal über welche unserer Plattformen Sie sie abgeben, insbesondere bei einer Online-Bestellung (beispielsweise die Leistungsbeschreibung im Rahmen des Beauftragungs- bzw. Bestellvorgangs auf der Webseite) oder in Textform (beispielsweise die Bestell- bzw. Auftragsunterlagen samt Anhängen, unabhängig davon, ob in Papierform oder elektronisch per E-Mail) sowie im Fall einer oder eines schriftlichen oder mündlichen Bestellung, Auftrags oder annehmenden Antwort auf ein von uns ausgesprochenes Vertragsschlussangebot in von uns genutzten Räumlichkeiten, an einer unserer Vertriebsflächen oder auf einem von uns genutzten Kommunikationskanal.</p>
+<p>Eine bzw. ein über das vereinbarte Leistungsspektrum oder das vereinbarte Zeitkontingent der Bestellung bzw. des Auftrags hinausgehende Bestellung bzw. Auftrag oder ein von ihr bzw. ihm abweichender Änderungswunsch bedürfen einer gesonderten Vereinbarung und sind gesondert zu vergüten.</p>
+<h2>§ 3 Vergütung und Durchführung</h2>
+<p>(1) Wir erhalten für unsere Leistungen eine Vergütung nach Ihrer Bestellung bzw. Ihrem Auftrag nach dem Paragrafen über den Leistungsumfang.</p>
+<p>(2) Wir verpflichten uns, die vertraglich geschuldeten Leistungen sorgfältig und gewissenhaft zu erbringen. Sofern die Leistungserfüllung keine Werkverpflichtung betrifft, ist ein Leistungserfolg nicht geschuldet. Wir verpflichten uns, die vertraglich geschuldeten Leistungen sorgfältig und gewissenhaft, nach dem Stand von Wissenschaft, und Technik und dem von Ihnen zur Verfügung gestellten Informationsbestand zu erbringen. Eine rechtliche oder steuerliche Prüfung oder Beratung wird von uns nicht vorgenommen – insbesondere bleiben Sie verantwortlich für die Gewährleistung der Einhaltung von Rechten Dritter oder öffentlicher Rechtsvorschriften.</p>
+<p>(3) Wir sind berechtigt, zur Erbringung der Leistung Dritte, insbesondere als Subunternehmer einzuschalten.</p>
+<p>(4) Wird eine Leistung vertragsgemäß unter Anwendung von "Künstlicher-Intelligenz" bzw. AI-Tools wie Open-AI GPT-3 oder Open-AI GPT-4 erbracht, wird für die Richtigkeit und Vollständigkeit so erzielter Ergebnisse oder mögliche Rechtsverletzungen durch die Verwendung solcher Tools – insbesondere für die Wahrung von Rechten dritter wie Datenschutz-, Urheber- oder Markenrechte – keine Haftung übernommen. Die Erbringung entsprechender Leistungen erfolgt ausschließlich durch das AI-Tool und wird weder im Prozess noch im Ergebnis von uns überprüft. Die rechtliche sowie inhaltliche Überprüfung obliegt Ihnen.</p>
+<p>(5) Wird eine Leistung vertragsgemäß kostenfrei erbracht, wird für die Richtigkeit und Vollständigkeit so erzielter Ergebnisse – mit Ausnahme daraus entstehender Schäden des Lebens, des Körpers oder der Gesundheit und nach dem Produkthaftungsgesetz – keine Haftung übernommen. Die inhaltliche Überprüfung obliegt Ihnen.</p>
+<h2>§ 4 Vertragsschluss</h2>
+<p>(1) Wenn wir unsere Leistungen auf unseren Plattformen präsentieren, geben wir kein verbindliches Angebot zum Abschluss eines Vertrags ab. Bei der Präsentation handelt es sich lediglich um eine unverbindliche Darbietung. Unsere schriftlichen Angebote sind für die Dauer von zwei Monaten hinsichtlich der wesentlichen Bedingungen als feste Vertragsangebote anzusehen. Hiernach sind sie freibleibend. Sollten wir eine Kostensteigerung feststellen, werden sie hiervon schriftlich in Kenntnis setzen. Sie gilt als von Ihnen genehmigt, wenn Sie nicht innerhalb von einer Woche schriftlich und begründet widersprechen.</p>
+<p>(2) Eine rechtsverbindliche Bestellung bzw. Beauftragung können Sie auf jede Weise abgeben, die unsere Plattformen anbieten oder wir Ihnen im Einzelfall vorschlagen. Insbesondere können Sie sie wie folgt abgeben:</p>
+<ul><li>Indem Sie einen Bestellungs- bzw. Beauftragungs-Button/Knopf auf unseren Plattformen anklicken, insbesondere auf unseren Webseiten sowie unseren Profilen auf Webseiten und Apps Dritter.</li>
+<li>Indem Sie uns ausgefüllte Auftrags- bzw. Vertragsunterlagen über jeden gängigen Kommunikationskanal wie E-Mail, Post oder unsere Social-Media-Profile zusenden oder auf ein von uns an Sie über einen solchen Kommunikationskanal zugesandtes Vertragsabschlussangebot annehmend antworten.</li>
+<li>Indem Sie uns ausgefüllte Auftrags- bzw. Vertragsunterlagen übergeben – beispielsweise in unseren oder Ihren Räumlichkeiten oder Vertriebsflächen, auf Messen, Informations- oder Werbeveranstaltungen oder bei jeder anderen Gelegenheit.</li>
+<li>Indem Sie Ihre Bestellung bzw. Beauftragung schriftlich oder mündlich auf unseren Plattformen, insbesondere in den von uns genutzten Räumlichkeiten, Vertriebsflächen oder über die von uns genutzten Kommunikationskanäle abgeben oder auf ein von uns ausgesprochenes Vertragsschlussangebot annehmend antworten.</li></ul>
+<p>Sie sind an die Beauftragung bzw. Bestellung für die Dauer von 2 Wochen nach ihrer Abgabe gebunden.</p>
+<p>(3) Mit der Beauftragung bzw. Bestellung stimmen Sie zudem diesen AGB und der Datenverarbeitung gemäß unserer Datenschutzerklärung verbindlich zu.</p>
+<p>(4) Wir können den Zugang der abgegebenen Bestellung bzw. Auftrages</p>
+<ul><li>per E-Mail an die von Ihnen angegebene oder genutzte E-Mail-Adresse bzw. per Nachricht innerhalb unserer Plattformen, insbesondre innerhalb unserer Webseiten sowie unseren Profilen auf Webseiten und Apps Dritter</li>
+<li>mit Bestätigungsschreiben per Brief oder durch Übergabe</li>
+<li>mündlich oder durch die Aushändigung einer Quittung oder jeglichen schriftlichen Bestätigung</li></ul>
+<p>bestätigen. In der Bestätigung liegt keine verbindliche Annahme der Bestellung bzw. des Auftrages, es sei denn, darin wird neben der Bestätigung des Zugangs zugleich die Annahme erklärt. Wir bestätigen die Bestellung bzw. Beauftragung grundsätzlich selbst. Allerdings kann auch ein Dritter in unserem Namen eine Bestätigung abgeben, wenn Sie unsere Leistung auf Plattformen Dritter – insbesondere einer Webseite oder App eines Dritten – bestellt bzw. beauftragt haben.</p>
+<p>(5) Ein Vertrag zwischen Ihnen und uns kommt erst zustande, wenn wir</p>
+<ul><li>die Bestellung bzw. Ihren Auftrag ausdrücklich annehmen.</li>
+<li>mit der Leistungserbringung beginnen.</li>
+<li>eine Rechnung stellen.</li>
+<li>die Leistung – ganz oder teilweise – erbringen.</li>
+<li>Sie ein Konto auf unseren Plattformen einrichten – ob durch Anmeldung, die Übernahme Ihrer Daten von einem Drittanbieter oder auf eine andere Weise.</li></ul>
+<p>Die Annahme kann gleichzeitig mit der Bestätigung erfolgen.</p>
+<p>(6) Bestehen mehrere Vertragspartner – insbesondere, wenn die Bestellung bzw. Beauftragung durch mehrere Personen gemeinschaftlich erfolgte - oder ist der Vertragspartner eine Personengesellschaft, haften die Vertragspartner bzw. die Gesellschafter der Personengesellschaft für unsere Forderung als Gesamtschuldner. Wir sind berechtigt, uns bei der Vertragsdurchführung auf die Weisungen und Informationen eines einzelnen Vertragspartners bzw. Gesellschafters einer Personengesellschafters zu stützen, insbesondere ohne dies mit den Übrigen Vertragspartnern bzw. Gesellschaftern einer Personengesellschaft abzusprechen, soweit nicht ein anderer schriftlich widerspricht. Ein Widerspruch berechtigt uns zur Beendigung des Vertrags auf Grundlage und mit den Folgen einer fehlenden Mitwirkung.</p>
+<p>(7) Bei Vertragsschlüssen mit Kunden mit Wohn- oder Geschäftssitz im Ausland behalten wir uns vor, erst nach Erhalt unserer Vergütung nebst etwaigen Nebenkosten mit der Leistungserbringung zu beginnen (Vorkassevorbehalt). Falls wir von dem Vorkassevorbehalt Gebrauch machen, werden wir Sie unverzüglich unterrichten.</p>
+<h2>§ 5 Anmeldung, Konto</h2>
+<p>(1) Erfordert eine unserer Leistungen die Einrichtung eines Kontos auf unseren Plattformen, erhalten Sie es durch eine Anmeldung.</p>
+<p>(2) Die Angabe der bei Anmeldung abgefragten Daten ist verpflichtend. Sie versichern ihre Vollständigkeit und Richtigkeit. Die Anmeldung kann durch Eingabe Ihrer Daten auf unseren Plattformen erfolgen.</p>
+<p>(3) Folgende Voraussetzungen bestehen für die Anmeldung:</p>
+<ul><li>Verbraucher sind unbeschränkt geschäftsfähige natürliche Personen über 18 Jahren</li>
+<li>Unternehmen als natürliche Personen erfüllen die Voraussetzungen eines Verbrauchers</li>
+<li>Unternehmer als Personen- oder Kapitalgesellschaften sowie jegliche anderen Körperschaften, Vereinigungen oder Gemeinschaften sind rechtsfähig und haben einen vertretungsberechtigten Vertreter. Die Angabe eines Postfachs genügt nicht.</li></ul>
+<p>(4) Ein Anspruch auf Anmeldung besteht nicht. Wir sind berechtigt, eine Anmeldung abzulehnen. Mit dem Abschluss der Anmeldung entsteht zwischen Ihnen und uns ein Vertragsverhältnis.</p>
+<p>(5) Mit der Anmeldung erhalten Sie ein Konto, welches alle notwendigen Daten für die Nutzung enthält. Die Nutzung darf nur durch Sie selbst erfolgen, insbesondere dürfen Sie Dritten die Nutzung des Kontos nicht gestatten oder das Konto nicht an Dritte übertragen (Accountsharing). Das Passwort kann jederzeit geändert werden. Mehrere Konten einer Person sind unzulässig. Das Konto besteht bis zum Eintritt der Wirkung der Kündigung.</p>
+<p>(6) Sie sind für den Inhalt und die Qualität aller Angaben verantwortlich. Sie versichern, dass sie richtig und vollständig sind.</p>
+<p>(7) Sie dürfen den sicheren Betrieb unserer Plattformen nicht gefährden. Es ist alles zu unterlassen, was andere Benutzer der Plattformen belästigen könnte oder über die bestimmungsgemäße Benutzung unserer Plattformen hinausgeht. Sie sind insbesondere verpflichtet, folgendes zu unterlassen:</p>
+<ul><li>Dateien hochzuladen oder zu versenden, die einen Virus oder sonstige Schadsoftware enthalten oder sonstige Eingriffe vorzunehmen, die die Funktionalität oder die Erreichbarkeit der Plattformen beeinträchtigen oder Inhalte verändern oder löschen könnte,</li>
+<li>Jede Form von Werbung hochzuladen oder zu versenden, besonders E-Mail-Werbung, SMS-Werbung, Kettenbriefe oder andere belästigende Inhalt,</li>
+<li>Die Plattformen einer übermäßigen Belastung auszusetzen oder auf jede andere Weise das Funktionieren zu stören oder zu gefährden,</li>
+<li>Ohne schriftliche Zustimmung Crawler, Spider, Scraper oder andere automatisierte Mechanismen zu nutzen, um auf die Plattformen zuzugreifen und Inhalte zu sammeln.</li>
+<li>Informationen wie E-Mail-Adressen oder Rufnummern anderer Benutzer ohne vorherige Einwilligung zu sammeln oder zu verwenden,</li>
+<li>Inhalte der Plattformen oder Dritter ohne vorherige Einwilligung durch uns oder die Dritten zu vervielfältigen, öffentlich zugänglich zu machen, zu verbreiten, zu bearbeiten oder in einer Art und Weise zu nutzen, die über die bestimmungsgemäße Nutzung hinausgeht.</li></ul>
+<p>(8) Wir sind berechtigt, in Hinblick auf Ihr Konto ohne Angabe von Gründen jede Maßnahme zu treffen. Insbesondere sind wir berechtigt, Sie zu einer Stellungnahme aufzufordern, das Konto vorläufig zu sperren, eine Verwarnung auszusprechen oder das Konto dauerhaft zu sperren oder zu löschen. Darüber hinaus behalten wir uns ausdrücklich die Geltendmachung von zivil- und strafrechtlichen Ansprüchen vor. Die Sanktionen betreffen nicht die Zahlungspflicht bei bereits zustande gekommenen Leistungsverhältnissen, insbesondere wenn die Leistung bereits (teilweise) erbracht wurde.</p>
+<p>(9) Sollten Leistungen auf unseren Plattformen auch ohne ein Konto in Anspruch genommen werden können, geben Sie bereits mit der Nutzung unserer Plattformen ein Angebot auf Abschluss eines Vertrages für die Dauer der Nutzung einer Plattform gemäß dieser AGB ab, welches wir durch die Erbringung der Leistung annehmen.</p>
+<h2>§ 6 Preise, Zahlung, Verzug, Zahlungsbedingungen, Aufrechnung, Zurückbehaltungsrecht, Zahlungsansprüche Dritter, Stundenhonorar</h2>
+<p>(1) Die von uns angegebenen Preise sind – soweit im Einzelfall nichts anderes präsentiert oder vereinbart wurde – Bruttopreise inklusive der Umsatzsteuer.</p>
+<p>(2) Unsere Vergütung wird – soweit keine andere Vereinbarung zwischen Ihnen und uns besteht – nach Abschluss des Vertrages und vor der jeweiligen fällig. Sie ist spätestens innerhalb von 2 Wochen nach Versand unserer Rechnung (Rechnungsdatum) zu bezahlen. Unterbleibt die Zahlung, tritt Zahlungsverzug ein. Bei Zahlungsverzug sind wir berechtigt, nach den gesetzlichen Bestimmungen Verzugszinsen und weiteren Schadensersatz geltend zu machen. Der Verzugszins gegenüber Verbrauchern beträgt für das Jahr 5 Prozentpunkte über dem Basiszinssatz nach § 288 BGB; gegenüber Unternehmern beträgt der Verzugszins für das Jahr 9 Prozentpunkte über dem Basiszinssatz nach § 288 BGB.</p>
+<p>(3) Wir ermöglichen Ihnen die Nutzung verschiedener Zahlungsdienste und -möglichkeiten. Sie können zur Zahlung jeden von uns bereitgestellten Zahlungsweg nutzen, insbesondere</p>
+<ul><li>auf ein von uns angegebenes Konto überweisen,</li>
+<li>uns eine Einzugsermächtigung oder SEPA-Lastschriftmandat erteilen,</li>
+<li>uns per EC-/Maestro- oder Kreditkarte bezahlen,</li>
+<li>uns über eine Plattform Dritter bezahlen (beispielsweise Apple App Store, Google Play oder Amazon Appstore),</li>
+<li>oder uns über einen von uns angegebenen Zahlungsdienstleister (beispielsweise PayPal) bezahlen,</li></ul>
+<p>jeweils, sofern wir eine entsprechende Zahlungsmöglichkeit anbieten. Wir behalten uns vor, Zahlungsmöglichkeiten individuell oder allgemein auszuschließen oder im Nachgang zu ergänzen.</p>
+<p>(4) Sie nehmen die Zahlungsleistung eines Zahlungsdienstleisters in Anspruch, indem Sie auf den Button des Zahlungsdienstleisters während des Bestellprozesses von Leistungen klicken. Sie werden auf die entsprechende Seite des jeweiligen Zahlungsdienstleisters geführt. Sie nehmen die Zahlungsleistung einer dritten Plattform wie Apple App Store, Google Play oder Amazon Appstore in Anspruch, indem Sie unsere App über ihn runterladen. Wir stellen hinsichtlich der Zahlung nur den Zugang zur Seite des jeweiligen Zahlungsdienstleisters oder der Plattform bereit, werden aber nicht Vertragspartei. Meistens ist es zur Nutzung von Zahlungsdiensten eines Zahlungsdienstleisters oder der Plattform erforderlich, ein Vertragsverhältnis mit dem entsprechenden Zahlungsdienstleister einzugehen. Es gelten die jeweiligen Vertragsbedingungen, AGB und Datenschutzbestimmungen.</p>
+<p>(5) Im Fall einer erteilten Einzugsermächtigung, eines SEPA-Lastschriftmandats oder der Zahlung per EC-/Maestro- oder Kreditkarte werden wir die Belastung Ihres Kontos frühestens zum Fälligkeitszeitpunkt veranlassen. Eine erteilte Einzugsermächtigung gilt bis auf Widerruf auch für weitere Aufträge.</p>
+<p>(6) Sie sind nicht berechtigt, gegenüber unseren Forderungen aufzurechnen, es sei denn, Ihre Gegenansprüche sind rechtskräftig festgestellt oder unbestritten, sowie dann, wenn Sie Mängelrügen oder Gegenansprüche aus demselben Vertragsverhältnis geltend machen.</p>
+<p>(7) Sie dürfen nur dann ein Zurückbehaltungsrecht ausüben, wenn Ihr Gegenanspruch aus demselben Vertragsverhältnis herrührt und rechtskräftig festgestellt oder unbestritten ist.</p>
+<p>(8) Für den Fall, dass auf eine unserer Forderung aus einem oder mehreren Verträgen nicht fristgerecht gezahlt wird, sind wir berechtigt, ein Inkassobüro mit dem weiteren Einzug der fälligen Forderung zu beauftragen. Sie willigen mit Vertragsschluss ein, dass wir die zum Einzug der Forderung erforderlichen Daten und Informationen an das Inkassobüro übermitteln und das Inkassobüro zur Speicherung und Verarbeitung der Daten berechtigt ist. Insbesondere werden Name und Anschrift, Vertragsdatum, sowie Rechnungsnummer, Rechnungsbetrag und das Fälligkeitsdatum übermittelt.</p>
+<p>(9) Zahlungsansprüche Dritter, insbesondere Gebühren (jegliche Ämter, Behörden o. ä.), Honorare von an der Leistungserbringung beteiligter Dritter oder jegliche Zahlungsansprüche dieser Dritter und damit andere als aus der Leistungserbringung resultierender Zahlungssachverhalte – insbesondere öffentlicher Gläubiger oder auch zur Leistungserbringung in ihrem Namen und für Sie herangezogener Dritter – sind nicht in der Vergütung enthalten und werden von Ihnen gesondert und gegenüber den jeweiligen Stellen bzw. Personen entrichtet. Dies gilt auch dann, wenn diese Ausgaben durch uns vorausgelegt werden; sie sind in diesem Fall an uns zu erstatten.</p>
+<p>(10) Die Abrechnung eines Stundenhonorars erfolgt im 15-Minuten-Takt (0,25 Stunden). Für angefangene 15 Minuten wird jeweils ein Viertel des Stundensatzes berechnet. Bei pauschalierten Stundenpaketen oder Zeitkontingenten für die Gesamtleistung oder bestimmte Leistungsabschnitte kommt es nach Abschluss der Gesamtleistung oder des Leistungsabschnitts zu einem Verfall nicht verbrauchter Stunden innerhalb von einem Jahr ab Entstehung. Insbesondere besteht kein Anspruch auf Übernahme der Stunden in eine andere Gesamtleistung oder ihre Rückzahlung bei erfolgter Zahlung.</p>
+<h2>§ 7 Laufzeit und Kündigung</h2>
+<p>(1) Die Laufzeit des Vertrags beginnt – soweit nichts Gegenteiliges elektronisch oder schriftlich vereinbart – mit der Absendung der Auftrags- bzw. Bestellungsbestätigung des Verwenders an den Partner.</p>
+<p>(2) Die Vertragslaufzeit richtet sich nach der individuellen Vereinbarung der Vertragsparteien. Im Falle einer Inseratsverwaltung als Vertragsbestandteil beträgt sie 3 Monate.</p>
+<p>(3) Kündigen wir aus wichtigem Grund, so sind Sie verpflichtet, uns die Kosten und Vergütungen zu erstatten, die nachweislich bis zum Zeitpunkt der Kündigung angefallen sind. Die bis dahin von uns geleisteten Dienste sind anteilig abzurechnen, soweit dies möglich ist, anderenfalls erfolgt eine vollständige Abrechnung.</p>
+<p>(4) Die Kündigung kann durch Brief oder per E-Mail erfolgen.</p>
+<p>(5) Sollten zum Zeitpunkt des Zuganges der Kündigungserklärung von uns geschuldete Leistungen noch nicht erbracht worden sein, so sind wir von unserer Leistungspflicht frei, es sei denn, die Parteien vereinbaren schriftlich den Umfang der noch zu erbringenden Leistungen.</p>
+<h2>§ 8 Beanstandungen</h2>
+<p>Sofern wir im Einzelfall für die Herbeiführung eines bestimmten Erfolges einzustehen haben (werkvertragliche Verpflichtung), gilt: Sie sind verpflichtet, einen Schaden oder eine Unvollständigkeit sofort zu rügen.</p>
+<h2>§ 9 Gewährleistung</h2>
+<p>(1) Sofern wir im Einzelfall für die Herbeiführung eines bestimmten Erfolges einzustehen haben (werkvertragliche Verpflichtung), gilt: Wir haften für Mängel vertragsgegenständlicher Leistungen nach den geltenden gesetzlichen Vorschriften. Die Verjährungsfrist für gesetzliche Mängelansprüche beträgt zwei Jahre und beginnt mit der Ablieferung. Im Fall von gebrauchten Leistungen oder ihrer Reparatur beträgt die Gewährleistungsfrist ein Jahr. Diese Fristen gelten auch für Ansprüche auf Ersatz von Mangelfolgeschäden, soweit sie nicht aus unerlaubter Handlung herrühren.</p>
+<p>(2) Etwaige von uns gegebene Garantien oder von den Herstellern eingeräumte Herstellergarantien treten neben die Ansprüche wegen Sach- oder Rechtsmängeln im Sinne von Abs. 1. Einzelheiten des Umfangs solcher Garantien ergeben sich aus den Garantiebedingungen, die den Artikeln gegebenenfalls beiliegen.</p>
+<h2>§ 10 Rechteeinräumung an Tätigkeitsergebnissen</h2>
+<p>(1) Wir erkennen an, dass sämtliche Rechte an allen Tätigkeitsergebnissen, bei der Tätigkeit verwendeten Daten oder Unterlagen (Dateien, Entwürfe usw.) oder anderen schutzfähigen Gütern sowie alle Schutzrechte, die an den Tätigkeitsergebnissen, Daten, Unterlagen oder schutzfähigen Gütern bestehen, aus ihrer Nutzung entstehen und/oder in ihnen verkörpert sind, nur insoweit auf Sie übergehen, als dass der Rechteübergang auf die vertraglich vereinbarte, die private (also nicht im Rahmen einer gewerblichen, freiberuflichen, selbständigen, öffentlich-rechtlichen oder gemeinnützigen Nutzung) und die nicht-öffentliche (also nicht durch Veröffentlichung) Nutzung eingeschränkt ist. Sie nehmen diese Übertragung hiermit an.</p>
+<p>(2) Sollte die im Vorabsatz vorgesehene Rechtsübertragung nicht wirksam bewirkt werden können, räumen wir Ihnen hiermit ein den Beschränkungen des Vorabsatzes unterworfenes Nutzungsrecht an den Tätigkeitsergebnissen bzw. Schutzrechten ein. Dies umfasst auch neue Nutzungsarten, die erst in der Zukunft bekannt werden. Soweit dies rechtlich möglich ist, verzichten wir unbedingt und unwiderruflich auf alle Urheberpersönlichkeitsrechte, die an bereits entstandenen oder zukünftigen Tätigkeitsergebnissen bestehen, inklusive des Namensnennungsrechts und des Entstellungsverbots.</p>
+<p>(3) Sie können die eingeräumten Rechte nicht auf Dritte übertragen.</p>
+<p>(4) Die vorstehenden Rechtsübertragung bzw. Einräumung von Nutzungsrechten erfolgt erst nach vollständiger Zahlung unserer Vergütung.</p>
+<p>(5) Wir können die Tätigkeitsergebnisse im Rahmen unseres Geschäftsbetriebs nutzen und nach Entfernung der kundenspezifischen Details frei verwenden.</p>
+<p>(6) Unsere im Rahmen der Vertragsdurchführung an Sie gelangten Unterlagen oder Dateien wie Präsentationen, Vorarbeiten, Konzepte, Whitepaper oder Kopien dürfen erst nach unserer schriftlichen Zustimmung an Dritte weitergegeben, veröffentlicht, präsentiert oder außerhalb des privaten oder unternehmensinternen Bereiches genutzt werden. Eine Haftung für ihre Vollständigkeit oder Richtigkeit wird nicht übernommen.</p>
+<h2>§ 11 Widerruf</h2>
+<p>(1) Falls Sie Unternehmer im Sinne des § 14 BGB sind, besteht das Widerrufsrecht nicht.</p>
+<p>Für Verbraucher gilt:</p>
+<p><strong>Widerrufsbelehrung</strong></p>
+<p><strong>Widerrufsrecht</strong><br>Sie haben das Recht, binnen vierzehn Tagen ohne Angabe von Gründen diesen Vertrag zu widerrufen.</p>
+<p>Die Widerrufsfrist beträgt vierzehn Tage ab dem Tag des Vertragsschlusses.</p>
+<p>Um Ihr Widerrufsrecht auszuüben, müssen Sie uns (FAIRkaufswerkstatt GmbH, Bethmannstraße 7-9, 60311 Frankfurt am Main, Mobil-Nr.: +49 (0) 176 7274 3056, E-Mail: Info@fairkaufswerkstatt.de) mittels einer eindeutigen Erklärung (z. B. ein mit der Post versandter Brief, Telefax oder E-Mail) über Ihren Entschluss, diesen Vertrag zu widerrufen, informieren. Sie können dafür das beigefügte Muster-Widerrufsformular verwenden, das jedoch nicht vorgeschrieben ist.</p>
+<p>Zur Wahrung der Widerrufsfrist reicht es aus, dass Sie die Mitteilung über die Ausübung des Widerrufsrechts vor Ablauf der Widerrufsfrist absenden.</p>
+<p><strong>Folgen des Widerrufs</strong><br>Wenn Sie diesen Vertrag widerrufen, haben wir Ihnen alle Zahlungen, die wir von Ihnen erhalten haben, einschließlich der Lieferkosten (mit Ausnahme der zusätzlichen Kosten, die sich daraus ergeben, dass Sie eine andere Art der Lieferung als die von uns angebotene, günstigste Standardlieferung gewählt haben), unverzüglich und spätestens binnen vierzehn Tagen ab dem Tag zurückzuzahlen, an dem die Mitteilung über Ihren Widerruf dieses Vertrags bei uns eingegangen ist. Für diese Rückzahlung verwenden wir dasselbe Zahlungsmittel, das Sie bei der ursprünglichen Transaktion eingesetzt haben, es sei denn, mit Ihnen wurde ausdrücklich etwas anderes vereinbart; in keinem Fall werden Ihnen wegen dieser Rückzahlung Entgelte berechnet.</p>
+<p>Haben Sie verlangt, dass die Dienstleistungen während der Widerrufsfrist beginnen soll, so haben Sie uns einen angemessenen Betrag zu zahlen, der dem Anteil der bis zu dem Zeitpunkt, zu dem Sie uns von der Ausübung des Widerrufsrechts hinsichtlich dieses Vertrags unterrichten, bereits erbrachten Dienstleistungen im Vergleich zum Gesamtumfang der im Vertrag vorgesehenen Dienstleistungen entspricht.</p>
+<p><strong>Muster-Widerrufsformular</strong><br>(Wenn Sie den Vertrag widerrufen wollen, dann füllen Sie bitte dieses Formular aus und senden Sie es zurück.)</p>
+<p>— An FAIRkaufswerkstatt GmbH, Bethmannstraße 7-9, 60311 Frankfurt am Main, Mobil-Nr.: +49 (0) 176 7274 3056, E-Mail: Info@fairkaufswerkstatt.de:<br>— Hiermit widerrufe(n) ich/wir (<em>) den von mir/uns (</em>) abgeschlossenen Vertrag über die Erbringung der folgenden Dienstleistung (*)<br>— Bestellt am (<em>) / erhalten am (</em>)<br>— Name des/der Verbraucher(s)<br>— Anschrift des/der Verbraucher(s)<br>— Unterschrift des/der Verbraucher(s) (nur bei Mitteilung auf Papier)<br>— Datum<br>(*) Unzutreffendes streichen.</p>
+<p>(2) Das Widerrufsrecht besteht nicht, erlischt oder kann ausgeschlossen werden, wenn ein gesetzlich geregelter Fall, eine entsprechende gerichtliche Entscheidung oder ein sonstiger rechtlicher Grund besteht. Gesetzlich geregelte Fälle ergeben sich insbesondere aus §§ 312 g oder 356 BGB.</p>
+<ul><li>bei Verträgen, zur Erbringung von Dienstleistungen in den Bereichen der Beherbergung zu anderen Zwecken als zu Wohnzwecken, Beförderung von Waren, Kraftfahrzeugvermietung, Lieferung von Speisen und Getränken sowie zur Erbringung weiterer Dienstleistungen im Zusammenhang mit Freizeitbetätigungen, wenn der Vertrag für die Erbringung einen spezifischen Termin oder Zeitraum vorsieht.</li></ul>
+<p>(3) Das Widerrufsrecht erlischt bei einem Vertrag über die Lieferung von nicht auf einem körperlichen Datenträger befindlichen digitalen Inhalten auch dann, wenn der Unternehmer mit der Ausführung des Vertrags begonnen hat, nachdem der Verbraucher<br>1. ausdrücklich zugestimmt hat, dass der Unternehmer mit der Ausführung des Vertrags vor Ablauf der Widerrufsfrist beginnt, und<br>2. seine Kenntnis davon bestätigt hat, dass er durch seine Zustimmung mit Beginn der Ausführung des Vertrags sein Widerrufsrecht verliert.</p>
+<p>(4) Das Widerrufsrecht erlischt insbesondere bei einem Vertrag zur Erbringung von Dienstleistungen auch dann, wenn der Unternehmer die Dienstleistung vollständig erbracht hat und mit der Ausführung der Dienstleistung erst begonnen hat, nachdem der Verbraucher dazu seine ausdrückliche Zustimmung gegeben hat und gleichzeitig seine Kenntnis davon bestätigt hat, dass er sein Widerrufsrecht bei vollständiger Vertragserfüllung durch den Unternehmer verliert. Bei einem außerhalb von Geschäftsräumen geschlossenen Vertrag muss die Zustimmung des Verbrauchers auf einem dauerhaften Datenträger übermittelt werden. Bei einem Vertrag über die Erbringung von Finanzdienstleistungen erlischt das Widerrufsrecht abweichend von Satz 1, wenn der Vertrag von beiden Seiten auf ausdrücklichen Wunsch des Verbrauchers vollständig erfüllt ist, bevor der Verbraucher sein Widerrufsrecht ausübt.</p>
+<h2>§ 12 Mitwirkungspflicht</h2>
+<p>(1) Sie werden uns bei der Erbringung unserer vertragsgemäßen Leistungen durch angemessene Mitwirkungshandlungen fördern. Sie werden uns beispielsweise die erforderlichen Informationen, Daten, Umstände, Verhältnisse unverzüglich mitteilen; Unterlagen, Materialien, Sachen oder Zugänge zur Erfüllung der Leistung zur Verfügung stellen; uns unverzüglich Weisungen und Freigaben erteilen und uns einen kompetenten Ansprechpartner benennen, der nicht ausgewechselt wird. Sie müssen zu Ihren Handlungen – insbesondere zu Überlassungen oder Zugangsgewährungen - berechtigt sein, insbesondere dürfen keine Rechte Dritter oder behördliche Bestimmungen verletzt werden.</p>
+<p>(2) Soweit Sie zur Mitteilung, Bereitstellung oder zur Verfügungsüberlassung nach Abs. 1 nicht berechtigt sind, beispielsweise weil wettbewerbs-, datenschutz-, marken- und kennzeichenrechtliche Verstöße oder jegliche Verstöße gegen Rechte Dritter oder behördliche Bestimmungen vorliegen, liegt ebenso fehlende Mitwirkung vor. Sie versichern Ihre Berechtigung zu den entsprechenden Handlungen. Eine entsprechende Überprüfung durch uns wird nicht erfolgen. Von etwaigen Ansprüchen Dritter, die wegen Ihrer fehlenden Berechtigung gegen uns vorgehen, werden Sie uns auf erstes Anfordern freistellen und uns jeglichen Schaden, der wegen der Inanspruchnahme durch den Dritten entsteht, einschließlich etwaiger für die Rechtsverteidigung anfallenden Gerichts- und Anwaltskosten, ersetzen. Im Übrigen gelten die gesetzlichen Bestimmungen.</p>
+<p>(3) Fehlende, unvollständige, schadensverursachende oder rechtsverletzende Mitwirkung – beispielsweise durch Mitteilung bzw. Zuleitung unvollständiger, unrichtiger oder nicht zur rechtmäßigen Verwendung geeigneter Informationen, Daten, Stoffe oder Unterlagen – berechtigt uns zur Beendung des Vertrags, im Falle eines Vertrages mit einem Unternehmer auch ohne Auswirkung auf die vereinbarte Vergütung.</p>
+<p>(4) Entsteht uns durch fehlerhafte Mitwirkung ein Schaden, besteht ein Schadensersatzanspruch. Sie stellen uns in diesem Fall ebenso von sämtlichen Ansprüchen Dritter frei, die Dritte im Zusammenhang mit von Ihnen zumindest grob fahrlässig fehlerhaft durchgeführten Mitwirkungshandlungen geltend machen.</p>
+<h2>§ 13 Leistungsfrist, Höhere Gewalt</h2>
+<p>(1) Wir sind – soweit nicht im Einzelfall vereinbart - nicht an Fristen und Termine bei der Ausführung der Leistung gebunden. Leistungstermine bedürfen der Schriftform.</p>
+<p>(2) „Höhere Gewalt" bedeutet das Eintreten eines Ereignisses oder Umstands, das uns daran hindert, eine oder mehrere unserer vertraglichen Verpflichtungen aus dem Vertrag zu erfüllen, wenn und soweit wir nachweisen, dass: (a) dieses Hindernis außerhalb der uns zumutbaren Kontrolle liegt; und (b) es zum Zeitpunkt des Vertragsabschlusses nicht in zumutbarer Weise vorhersehbar war; und (c) die Auswirkungen des Hindernisses von uns nicht in zumutbarer Weise hätten vermieden oder überwunden werden können.</p>
+<p>(3) Bis zum Beweis des Gegenteils wird bei den folgenden Ereignissen vermutet, die uns betreffen, sie würden die Voraussetzungen unter Absatz 2 lit. (a) und lit. (b) nach Absatz 2 dieser Klausel erfüllen: (i) Krieg (erklärt oder nicht erklärt), Feindseligkeiten, Angriff, Handlungen ausländischer Feinde, umfangreiche militärische Mobilisierung; (ii) Bürgerkrieg, Aufruhr, Rebellion und Revolution, militärische oder sonstige Machtergreifung, Aufstand, Terrorakte, Sabotage oder Piraterie; (iii) Währungs- und Handelsbeschränkungen, Embargo, Sanktionen; (iv) rechtmäßige oder unrechtmäßige Amtshandlungen, Befolgung von Gesetzen oder Regierungsanordnungen, Enteignung, Beschlagnahme von Werken, Requisition, Verstaatlichung; (v) Pest, Epidemie, Naturkatastrophe oder extremes Naturereignis; (vi) Explosion, Feuer, Zerstörung von Ausrüstung, längerer Ausfall von Transportmitteln, Telekommunikation, Informationssystemen oder Energie; (vii) allgemeine Arbeitsunruhen wie Boykott, Streik und Aussperrung, Bummelstreik, Besetzung von Fabriken und Gebäuden.</p>
+<p>(4) Falls wir uns erfolgreich auf Höhere Gewalt berufen, sind wir ab dem Zeitpunkt, zu dem das Hindernis uns die Leistungserbringung unmöglich macht, von unserer Pflicht zur Erfüllung unserer vertraglichen Verpflichtungen und von jeder Schadenersatzpflicht oder von jedem anderen vertraglichen Rechtsbehelf wegen Vertragsverletzung befreit; sofern dies unverzüglich mitgeteilt wird. Erfolgt die Mitteilung nicht unverzüglich, so wird die Befreiung von dem Zeitpunkt an wirksam, zu dem die Mitteilung Sie erreicht. Ist die Auswirkung des geltend gemachten Hindernisses oder Ereignisses vorübergehend, so gelten die eben dargelegten Folgen nur so lange, wie das geltend gemachte Hindernis die Vertragserfüllung durch uns verhindert. Hat die Dauer des geltend gemachten Hindernisses zur Folge, dass Ihnen dasjenige, was Sie kraft des Vertrages berechtigterweise erwarten durften, in erheblichem Maße entzogen wird, so haben Sie das Recht, den Vertrag durch Benachrichtigung innerhalb eines angemessenen Zeitraums zu kündigen.</p>
+<h2>§ 14 Kommunikation</h2>
+<p>(1) Zur Gewährleistung einer schnellen und einfachen Kommunikation untereinander erfolgt die Kommunikation grundsätzlich über E-Mail sowie Telefon. Sie willigen dazu ein, dass Ihnen Informationen per E-Mail, soweit vorhanden Ihrem Konto auf unseren Plattformen, postalisch oder auf anderem Weg zugesandt werden.</p>
+<p>(2) Der Versand und die Kommunikation erfolgen auf Ihr Risiko. Für Störungen in den Leitungsnetzen des Internets, für Server- und Softwareprobleme Dritter oder Probleme eines Post- oder Zustellungsdienstleisters sind wir nicht verantwortlich und haften nicht.</p>
+<h2>§ 15 Unsere Rechte an unseren Plattformen</h2>
+<p>(1) Sie erklären sich einverstanden, dass es sich bei den Plattformen, die zur Inanspruchnahme unserer Dienste genutzt werden, und allen mit ihnen zusammenhängenden Anwendungen um Datenbankwerke und um Datenbanken i. S. v. §§ 4 Abs. 2, 87a Abs. 1 UrhG handelt, deren rechtliche Inhaber wir sind. Alle zugehörigen Anwendungen unterfallen dem Schutz nach §§ 69a ff. UrhG. Sie sind urheberrechtlich geschützt.</p>
+<p>(2) Die Rechte an allen sonstigen Elementen unserer Plattformen, insbesondere die Nutzungs- und Leistungsschutzrechte an den von uns eingestellten oder per Rechteeinräumung erworbenen Inhalten und Dokumenten, stehen ebenfalls ausschließlich uns zu. Insbesondere Marken, sonstige Kennzeichen, Firmenlogos, Schutzvermerke, Urhebervermerke oder andere der Identifikation unserer Plattformen dienender einzelner Elemente davon dienende Merkmale dürfen nicht entfernt oder verändert werden. Das gilt ebenso für Ausdrucke.</p>
+<h2>§ 16 Änderung der Dienste</h2>
+<p>Wir behalten uns vor, den zur Inanspruchnahme unserer Leistungen erforderlichen Zugriff auf Software, Online-Datenbanken, Funktionen, Betriebssysteme, Dokumentationen und alle anderen Bestandteile unserer Software sowie ihre Funktionsweise – soweit rechtlich zulässig auch ohne vorherige Ankündigung – insgesamt oder in Teilen, jederzeit, vorübergehend oder auf Dauer, einzustellen, zu verändern, oder einzuschränken. Insbesondere behalten wir uns vor, Eigenschaften unserer Leistungen (beispielsweise Design, Layout, Rubriken, Struktur oder Verfügbarkeit) zu verändern, zu deaktivieren, kostenfreie Bestandteile in kostenpflichtige umzustellen, bestimmte Funktionen nicht weiter zu unterstützen oder die Komptabilität (beispielsweise zu bestimmten Gerätetypen oder Betriebssystemen) auszusetzen.</p>
+<h2>§ 17 Werbung Dritter und Kooperation mit Dritten</h2>
+<p>(1) Wir behalten uns das Recht vor, Ihnen auf unseren Plattformen Werbung mit uns kooperierender Dritter anzuzeigen. Wir haben keinen Einfluss auf die Werbung, insbesondere nicht auf ihren Inhalt, ihre Zuverlässigkeit oder ihre Genauigkeit. Die Anzeige von Werbung erfolgt ohne unsere Prüfung, insbesondere wird sie von uns inhaltlich nicht gebilligt – verantwortlich ist alleine Werbetreibende. Bei jeder Form der Beanspruchung – insbesondere durch Klicken, Nutzung ihrer mittels application programming interface („API") durchgeführten Leistungen oder dem Besuch ihrer auf der Werbung verlinkten Plattformen – gelten ihre Vertragsbedingungen, AGB und Datenschutzbestimmungen. Werbung kann insbesondere mit der Verlinkung von Plattformen kooperierender Dritter oder API-Anwendungen kooperierender Dritter einhergehen. Auch hierbei besteht alleine die Verantwortlichkeit des jeweiligen Anbieters der Werbung. Es gelten dessen Vertragsbedingungen, AGB und Datenschutzbestimmungen.</p>
+<p>(2) Wir kooperieren mit Dritten auch insoweit, als dass kooperierende Dritte uns gegen eine Affiliateprovision oder unentgeltlich Kontakte von Interessenten übermitteln, auf ihren Plattformen einen Vertragsschluss für uns bewirken oder einen Kontakt zwecks des Abschlusses eines Vertrages herstellen. Hierbei überlassen wir kooperierenden Dritten auch Aktionscodes, deren Gültigkeit und Inhalt auf die durch uns an den kooperierenden Dritten kommunizierten Bedingungen beschränkt ist und deren Laufzeit maximal zwei Jahre ab Herausgabe an den kooperierenden Dritten beschränkt ist – auf Anfrage stellen wir Ihnen die an den kooperierenden Dritten kommunizierten Bedingungen des Aktionscodes bereit, die für Sie gelten; wir haften insbesondere nicht für Zuvielangaben kooperierender Dritten.</p>
+<p>(3) Jegliche Kooperation mit kooperierenden Dritten kann von uns mangels anderer Vereinbarung ohne eine Frist jederzeit gekündigt werden. Kooperierende Dritte haben die Pflicht, bei der Erfüllung ihrer Pflichten uns gegenüber rechtmäßig zu handeln, insbesondere die Rechte anderer Dritter zu achten. Die kooperierenden Dritten versichern Ihre Berechtigung allen zu den entsprechenden Handlungen, insbesondere der Nutzung jeglicher in unsere Sphäre gelangender Inhalte und der Weitergabe von Kontakten an uns; eine entsprechende Überprüfung durch uns wird nicht erfolgen. Kooperierende Dritte stellen uns vor jeglicher Haftung wegen Inanspruchnahme wegen jeglicher Rechtsverstöße durch andere Dritte frei.</p>
+<h2>§ 18 Gutschein</h2>
+<p>(1) Ein Gutschein kann bei uns innerhalb einer auf dem Gutschein ausgewiesenen Frist eingelöst werden, spätestens jedoch bis zum Ende des zweiten Jahres nach dem Jahr des Gutscheinkaufs. Eine nachträgliche Verrechnung ist nicht möglich. Pro Auftrag bzw. Bestellung ist nur ein Gutschein einlösbar. Der Gutschein kann nur für im Gutschein bezeichnete Leistungen und nicht für den Erwerb von weiteren Gutscheinen oder andere, nicht im Gutschein bezeichnete Leistungen, verwendet werden. Etwaiges Restguthaben wird nicht erstattet. Gutschein-Guthaben wird weder in Geld ausgezahlt noch verzinst. Wir können mit befreiender Wirkung an den jeweiligen Inhaber leisten. Dies gilt nicht, wenn wir Kenntnis oder grob fahrlässige Unkenntnis von der Nichtberechtigung, der Geschäftsunfähigkeit oder der fehlenden Vertretungsberechtigung des jeweiligen Inhabers hatten.</p>
+<p>(2) Der Gutschein ist personalisiert und nicht übertragbar.</p>
+<p>(3) Im Falle des Verlustes – auch ohne Ihr Verschulden oder bei Höherer Gewalt – übernehmen wir keine Haftung, insbesondere sind wir nicht zur Leistung und den Ersatz verlorener Tickets verpflichtet.</p>
+<h2>§ 19 Urheber- und sonstige Rechte</h2>
+<p>Wir haben an allen Bildern, Filmen, Texten und sonstigen vom Urheberrecht oder ähnlichen Rechten, insbesondere durch geistige Eigentumsrechte, geschützten Inhalten, die auf unserer Webseite, unseren Profilen auf anderen Webseiten, unseren Social-Media-Profilen und allen unseren Plattformen veröffentlicht werden, Urheberrechte oder sonstige Rechte. Eine Verwendung der Bilder, Filme, Texte und sonstiger Rechte ist ohne unsere schriftliche Zustimmung nicht gestattet.</p>
+<h2>§ 20 Datenschutz und Datensicherheit</h2>
+<p>(1) Wir erheben personenbezogene Daten von Ihnen sowie ggf. andere, von Ihnen zugeleitete oder im Zuge der Vertragserfüllung von uns erlangte Daten zum Zweck der Vertragsdurchführung sowie zur Erfüllung der vertraglichen und vorvertraglichen Pflichten. Die Datenerhebung und Datenverarbeitung ist zur Vertragserfüllung erforderlich und beruht auf Artikel 6 Abs.1 b) DSGVO. Wir verarbeiten sie nach den Verpflichtungen der DSGVO.</p>
+<p>Nach § 5 Abs. 1 DSGVO müssen personenbezogene Daten im Wesentlichen:<br>(a) auf rechtmäßige und faire Weise und in einer für die betroffene Person nachvollziehbaren Weise verarbeitet werden („Rechtmäßigkeit, Verarbeitung nach Treu und Glauben, Transparenz");<br>(b) für festgelegte, eindeutige und legitime Zwecke erhoben werden und dürfen nicht in einer mit diesen Zwecken nicht zu vereinbarenden Weise weiterverarbeitet werden („Zweckbindung");<br>(c) dem Zweck angemessen und erheblich sowie auf das für die Zwecke der Verarbeitung notwendige Maß beschränkt sein („Datenminimierung");<br>(d) sachlich richtig und erforderlichenfalls auf dem neuesten Stand sein; es sind alle angemessenen Maßnahmen zu treffen, damit personenbezogene Daten, die im Hinblick auf die Zwecke ihrer Verarbeitung unrichtig sind, unverzüglich gelöscht oder berichtigt werden („Richtigkeit");<br>(e) in einer Form gespeichert werden, die die Identifizierung der betroffenen Personen nur so lange ermöglicht, wie es für die Zwecke, für die sie verarbeitet werden, erforderlich ist („Speicherbegrenzung");<br>(f) in einer Weise verarbeitet werden, die eine angemessene Sicherheit der personenbezogenen Daten gewährleistet, einschließlich Schutz vor unbefugter oder unrechtmäßiger Verarbeitung und vor unbeabsichtigtem Verlust, unbeabsichtigter Zerstörung oder unbeabsichtigter Schädigung durch geeignete technische und organisatorische Maßnahmen („Integrität und Vertraulichkeit").</p>
+<p>(2) Daten werden grundsätzlich nicht an Dritte übermittelt, wenn keine entsprechende Pflicht besteht oder die Vertragsdurchführung oder der Einhaltung einer gesetzlichen Frist eine Datenübermittlung erforderlich macht, beispielsweise wenn die Weitergabe der Daten erforderlich sind, um für Sie eine zur Vertragsdurchführung notwendige Abfrage durch einen Drittanbieter durchzuführen, Ihre Daten an einen Zahlungsanbieter weitergeleitet werden oder Subunternehmer in Anspruch genommen werden, um zur Erfüllung einer Leistungspflicht Ihnen gegenüber beizutragen. In diesen Fällen werden die Dienstleister vielfach mit Ihnen ein Vertragsverhältnis haben, so dass sie auf eigene Verantwortung handeln.</p>
+<p>(3) Sobald Daten für den Zweck ihrer Verarbeitung nicht mehr erforderlich sind und falls eine gesetzliche Aufbewahrungspflicht nicht weiter besteht, werden sie von uns gelöscht. In Anbahnung unseres Vertragsverhältnisses sowie bei dessen Durchführung bewahren wir Ihre Daten auf. Dabei kann es auch notwendig sein, dass nach Kündigung unseres Vertragsverhältnisses Daten weiter aufbewahrt werden. Beispielsweise müssen Rechnungsdaten (Abrechnungsunterlagen) gemäß § 147 Abgabenordnung 10 Jahre aufbewahrt werden. Solange ein für uns ausführender Dienstleister ebenso einen Vertrag über die Durchführung Ihrer Leistung mit uns hat, bleiben wir verpflichtet, die Daten entsprechend der vereinbarten Aufbewahrungsfristen vorzuhalten.</p>
+<p>(4) Sie haben das Recht auf Auskunft, Datenübertragung, Löschung, Berichtigung, Einschränkung oder Sperrung Ihrer personenbezogenen Daten. Insbesondere haben Sie einen Anspruch auf eine unentgeltliche Auskunft über alle personenbezogenen Daten. Ihre Anfrage kann an uns gestellt werden. Außerdem stehen Ihnen entsprechende verwaltungsrechtliche oder gerichtliche Rechtsbehelfe oder die bei einer Aufsichtsbehörde offen.</p>
+<h2>§ 21 Haftung, Freistellung und Aufwendungsersatz</h2>
+<p>(1) Wir haften gegenüber Ihnen in allen Fällen vertraglicher und außervertraglicher Haftung bei Vorsatz und grober Fahrlässigkeit nach Maßgabe der gesetzlichen Bestimmungen auf Schadensersatz oder Ersatz vergeblicher Aufwendungen.</p>
+<p>(2) In sonstigen Fällen haften wir – soweit in Abs. 3 nicht abweichend geregelt – nur bei Verletzung einer Vertragspflicht, deren Erfüllung die ordnungsgemäße Durchführung des Vertrags überhaupt erst ermöglicht und auf deren Einhaltung Sie als Vertragspartner regelmäßig vertrauen dürfen (so genannte Kardinalpflicht), und zwar beschränkt auf den Ersatz des vorhersehbaren und typischen Schadens. In allen übrigen Fällen ist unsere Haftung vorbehaltlich der Regelung in Abs. 3 ausgeschlossen.</p>
+<p>(3) Unsere Haftung für Schäden aus der Verletzung des Lebens, des Körpers oder der Gesundheit und nach dem Produkthaftungsgesetz bleibt von den vorstehenden sowie allen übrigen in diesen AGB sowie zwischen uns getroffenen Haftungs-, Gewährleistungs- oder Verantwortungsbeschränkungen und Haftungs-, Gewährleistungs- oder Verantwortungsausschlüssen unberührt.</p>
+<p>(4) Sie stellen uns von etwaigen Ansprüchen Dritter, die wegen möglicher schuldhafter Verletzungen des Partners gegen seine Pflichten – insbesondere aus diesen AGB – gegen uns und/oder unseren Erfüllungsgehilfen geltend gemacht werden, auf erstes Anfordern frei. Sie ersetzen uns jeglichen Schaden, der wegen der Inanspruchnahme durch den Dritten entsteht, einschließlich etwaiger für die Rechtsverteidigung anfallenden Gerichts- und Anwaltskosten. Im Übrigen gelten die gesetzlichen Bestimmungen.</p>
+<p>(5) Wir haben Anspruch auf Ersatz der Aufwendungen, die wir den Umständen nach für erforderlich halten durften und nicht zu vertreten hatten, insbesondere jegliche Aufwendungen zum Schutz des Vertragsgutes sowie daneben auf eine ortsübliche, angemessene Vergütung.</p>
+<h2>§ 22 Leistungsort, Anwendbares Recht, Vertragssprache und Gerichtsstand</h2>
+<p>(1) Für alle Leistungen aus dem Vertrag wird als Erfüllungsort Frankfurt am Main vereinbart.</p>
+<p>(2) Es gilt das Recht der Bundesrepublik Deutschland unter Ausschluss des UN-Kaufrechts. Sind sowohl Sie als auch wir zum Zeitpunkt des Vertragsschlusses Kaufleute und haben Sie Ihren Sitz zum Zeitpunkt des Vertragsschlusses in Deutschland, ist ausschließlicher Gerichtsstand unser Sitz in Frankfurt am Main. Im Übrigen gelten für die örtliche und die internationale Zuständigkeit die anwendbaren gesetzlichen Bestimmungen.</p>
+<p>(3) Vertragssprache ist, soweit nichts Anderes schriftlich vereinbart ist, Deutsch. Jegliche übersetzten Rechtstexte oder Dokumente dienen alleine einem besseren Verständnis. Insbesondere in Bezug auf eine Vertragsabrede als auch auf diese AGB, die Datenschutzbestimmungen oder alle anderen Rechtstexte oder Dokumente sind die deutschen Versionen rechtsverbindlich; dies gilt insbesondere bei Abweichungen oder Auslegungsunterschieden zwischen solchen Rechtstexten oder Dokumenten.</p>
+<h2>§ 23 Schlussbestimmungen</h2>
+<p>(1) Änderungen und Ergänzungen dieser AGB erfolgen schriftlich, das Recht hierzu behalten wir uns vor. Änderungen setzen voraus, dass Sie nicht unangemessen benachteiligt werden, kein Verstoß gegen Treu und Glauben geschieht und der Änderung nicht widersprochen wird. Im Fall einer Änderung erfolgt eine Mitteilung über einen der Kommunikationskanäle – insbesondere per E-Mail – 2 Monate vor ihrer Wirksamkeit. Die Änderung wird wirksam, wenn ihr nicht innerhalb dieser Frist widersprochen wird – hiernach werden die geänderten AGB gültig.</p>
+<p>(2) Eine Abtretung dieses Vertrags an ein anderes Unternehmen wird vorbehalten. Sie wird 1 Monat nach Absendung einer Abtretungsmitteilung über einen unserer Kommunikationskanäle – insbesondere per E-Mail – an Sie gültig. Sie haben im Fall einer Abtretung ein Kündigungsrecht, welches 1 Monat nach Zugang der Mitteilung der Abtretung gilt. Alle uns eingeräumten Rechte gelten zugleich als unseren Rechtsnachfolgern eingeräumt.</p>
+<p>(3) Im Falle der Unwirksamkeit einzelner Bestimmungen dieser AGB, wird die Rechtswirksamkeit der übrigen Bestimmungen nicht berührt. Die unwirksame Bestimmung wird durch eine wirksame Bestimmung ersetzt, die dem beabsichtigten wirtschaftlichen Zweck am nächsten kommt.</p>
+    </div>
+  </div>
+</div>
+
 <script>
+
+  function openLegal(key){
+    var el=document.getElementById('legal-'+key);
+    if(!el) return;
+    document.querySelectorAll('.legal-overlay.open').forEach(function(o){ o.classList.remove('open'); });
+    el.classList.add('open');
+    document.body.classList.add('legal-open');
+    el.querySelector('.legal-box').scrollTop = 0;
+  }
+  function closeLegal(){
+    document.querySelectorAll('.legal-overlay.open').forEach(function(o){ o.classList.remove('open'); });
+    document.body.classList.remove('legal-open');
+  }
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeLegal(); });
+
+  function toggleMenu(){
+    var l=document.getElementById('navLinks'), b=document.getElementById('burger');
+    var open=l.classList.toggle('open');
+    b.classList.toggle('open', open);
+    b.setAttribute('aria-expanded', open?'true':'false');
+    b.setAttribute('aria-label', open?'Menü schließen':'Menü öffnen');
+  }
+  function closeMenu(){
+    var l=document.getElementById('navLinks'), b=document.getElementById('burger');
+    if(!l) return;
+    l.classList.remove('open'); b.classList.remove('open');
+    b.setAttribute('aria-expanded','false'); b.setAttribute('aria-label','Menü öffnen');
+  }
+  window.addEventListener('resize', function(){ if(window.innerWidth>960) closeMenu(); });
   var moduleData = {
     energieausweis: {
       title: "Energieausweis",
@@ -748,7 +1458,7 @@
     finanzierung: {
       title: "Individuelle Immobilienfinanzierung",
       price: "Kostenfrei",
-      body: "<p>Mit dem Finanzierungsmodul von <strong>Frank Augustynak</strong> bekommen deine Interessent:innen kompetente Unterstützung auf dem Weg zu ihrem Wohntraum – einfach, sicher und zuverlässig.</p><p><strong>Dein Mehrwert:</strong></p><ul><li><strong>Individuelles Finanzierungskonzept in 48 Stunden:</strong> Innerhalb von nur 48 Stunden erhalten deine Interessent:innen ein maßgeschneidertes Finanzierungskonzept – exakt abgestimmt auf ihre Bedürfnisse und finanziellen Möglichkeiten.</li><li><strong>Finanzierungszertifikat binnen 24 Stunden – für geprüfte Interessent:innen:</strong> Interessent:innen können innerhalb von 24 Stunden prüfen lassen, ob sie die gewünschte Immobilie grundsätzlich finanzieren könnten. Das schafft maximale Sicherheit, echte Qualifizierung – und damit einen klaren Vorteil für dich bei der Auswahl potenzieller Käufer:innen.</li><li><strong>Zugang zu über 600 Banken:</strong> Dank bankenunabhängiger Beratung wird aus einer Vielzahl von Finanzierungspartnern das beste Angebot herausgefiltert – kostenfrei und unverbindlich.</li><li><strong>Beste Konditionen – individuell abgestimmt:</strong> Der Vergleich von rund 600 Banken ermöglicht attraktive Zinsen und Finanzierungslösungen, die optimal zu den jeweiligen Lebensumständen passen. Für maximale Sicherheit, Planbarkeit und ein gutes Gefühl bei allen Beteiligten.</li><li><strong>Persönliche Begleitung vom Experten:</strong> Frank Augustynak ist seit 1997 in der Finanzbranche tätig und spezialisiert auf Immobilienfinanzierungen. Mit Erfahrung, Engagement und echter Leidenschaft begleitet er deine Kund:innen auf ihrem Weg ins Eigenheim.</li></ul><p><em>Hinweis: Auch Selbstständige erhalten individuelle Lösungen!</em></p><p><strong>Unser Ziel:</strong> Den Traum vom eigenen Zuhause einfach, sicher und planbar Wirklichkeit werden lassen. Das Modul ist für dich komplett kostenfrei nutzbar – und bietet deinen Kund:innen echten Mehrwert!</p>"
+      body: "<p>Mit unserem Finanzierungsmodul erhalten deine Interessent:innen kompetente Unterstützung auf dem Weg zu ihrem Wohntraum – einfach, sicher und zuverlässig.</p><p><strong>Dein Mehrwert:</strong></p><ul><li><strong>Finanzierungskonzept in 48 Stunden:</strong> maßgeschneidert und exakt auf Bedürfnisse und finanzielle Möglichkeiten abgestimmt.</li><li><strong>Finanzierungszertifikat binnen 24 Stunden:</strong> Interessent:innen lassen vorab prüfen, ob die Immobilie grundsätzlich finanzierbar ist – echte Qualifizierung und ein klarer Vorteil für dich bei der Auswahl potenzieller Käufer:innen.</li><li><strong>Zugang zu über 600 Banken:</strong> unsere bankenunabhängigen Finanzberater:innen filtern aus einer Vielzahl von Partnern das beste Angebot heraus – kostenfrei und unverbindlich.</li><li><strong>Beste Konditionen:</strong> attraktive Zinsen und Finanzierungslösungen, die optimal zu den jeweiligen Lebensumständen passen.</li><li><strong>Persönliche Begleitung:</strong> erfahrene Spezialist:innen für Immobilienfinanzierung begleiten deine Kund:innen bis ins Eigenheim.</li></ul><p><em>Hinweis: Auch Selbstständige erhalten individuelle Lösungen.</em></p><p>Das Modul ist für dich komplett kostenfrei nutzbar – und bietet deinen Kund:innen echten Mehrwert.</p>"
     }
   };
 

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>Weiterleitung — FAIRkaufswerkstatt</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap');
+  :root{ --paper:#FAF8F3; --sand:#EFE7D2; --forest:#24392F; --ochre:#B8934A; --ink:#1F2019; --ink-soft:#5B5A50; --line:#DED5BE; }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{ font-family:'Inter',sans-serif; background:var(--paper); color:var(--ink); min-height:100vh; display:flex; align-items:center; justify-content:center; padding:32px; line-height:1.6; }
+  .box{ max-width:520px; text-align:center; }
+  .logotype{ font-family:'Fraunces',serif; font-size:19px; font-weight:600; color:var(--forest); margin-bottom:28px; }
+  h1{ font-family:'Fraunces',serif; font-weight:500; font-size:clamp(24px,4vw,32px); color:var(--forest); margin-bottom:14px; }
+  p{ font-size:15px; color:var(--ink-soft); margin-bottom:26px; }
+  a.btn{ display:inline-block; background:var(--ochre); color:var(--forest); text-decoration:none; font-weight:600; font-size:14.5px; padding:14px 28px; border-radius:100px; }
+  a.btn:hover{ background:#c7a25a; }
+</style>
+<script>
+(function () {
+  var p = (window.location.pathname || "").toLowerCase();
+  p = p.replace(/^\/+|\/+$/g, "").replace(/\.html?$/, "");
+
+  var map = [
+    ["fairkaufen",  "#fairkaufen"],
+    ["verkaufen",   "#fairkaufen"],
+    ["fairmieten",  "#fairmieten"],
+    ["vermieten",   "#fairmieten"],
+    ["mieten",      "#fairmieten"],
+    ["modul",       "#module"],
+    ["erweiterung", "#module"],
+    ["maklermodell","#vergleich"],
+    ["vergleich",   "#vergleich"],
+    ["kontakt",     "#kontakt"],
+    ["contact",     "#kontakt"],
+    ["termin",      "#kontakt"],
+    ["ueber",       "#haltung"],
+    ["über",        "#haltung"],
+    ["about",       "#haltung"],
+    ["ablauf",      "#ablauf"],
+    ["faq",         "#faq"],
+    ["frage",       "#faq"],
+    ["bewertung",   "#erfahrungen"],
+    ["erfahrung",   "#erfahrungen"],
+    ["referenz",    "#erfahrungen"],
+    ["preis",       "#fairkaufen"],
+    ["paket",       "#fairkaufen"],
+    ["product",     "#fairkaufen"],
+    ["leistung",    "#fairkaufen"]
+  ];
+
+  var target = "/";
+  for (var i = 0; i < map.length; i++) {
+    if (p.indexOf(map[i][0]) !== -1) { target = "/" + map[i][1]; break; }
+  }
+  window.location.replace(target);
+})();
+</script>
+</head>
+<body>
+  <div class="box">
+    <div class="logotype">FAIRkaufswerkstatt</div>
+    <h1>Diese Seite ist umgezogen</h1>
+    <p>Unsere Website wurde neu gestaltet — alle Inhalte findest du jetzt gebündelt auf einer Seite. Du wirst automatisch weitergeleitet.</p>
+    <a class="btn" href="/">Zur Startseite</a>
+  </div>
+</body>
+</html>

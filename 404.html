@@ -2,67 +2,36 @@
 <html lang="de">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex">
-<title>Weiterleitung — FAIRkaufswerkstatt</title>
+<title>Seite nicht gefunden – FAIRkaufswerkstatt</title>
+<link rel="icon" href="/favicon.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,800&family=Instrument+Sans:wght@400;600&display=swap" rel="stylesheet">
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap');
-  :root{ --paper:#FAF8F3; --sand:#EFE7D2; --forest:#24392F; --ochre:#B8934A; --ink:#1F2019; --ink-soft:#5B5A50; --line:#DED5BE; }
-  *{box-sizing:border-box; margin:0; padding:0;}
-  body{ font-family:'Inter',sans-serif; background:var(--paper); color:var(--ink); min-height:100vh; display:flex; align-items:center; justify-content:center; padding:32px; line-height:1.6; }
-  .box{ max-width:520px; text-align:center; }
-  .logotype{ font-family:'Fraunces',serif; font-size:19px; font-weight:600; color:var(--forest); margin-bottom:28px; }
-  h1{ font-family:'Fraunces',serif; font-weight:500; font-size:clamp(24px,4vw,32px); color:var(--forest); margin-bottom:14px; }
-  p{ font-size:15px; color:var(--ink-soft); margin-bottom:26px; }
-  a.btn{ display:inline-block; background:var(--ochre); color:var(--forest); text-decoration:none; font-weight:600; font-size:14.5px; padding:14px 28px; border-radius:100px; }
-  a.btn:hover{ background:#c7a25a; }
+  :root{--ink:#2c3736;--ink-2:#4b5b5a;--muted:#6a7a78;--paper:#f6f5f0;--line:#ded9cf;--mint:#4b5b5a;--marker:#ffd23f}
+  *{box-sizing:border-box}
+  body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;
+    background:var(--paper);color:var(--ink);font-family:'Instrument Sans',system-ui,sans-serif;
+    font-size:17px;line-height:1.55;padding:40px 22px}
+  .box{max-width:520px;text-align:center}
+  .code{font-family:'Bricolage Grotesque','Arial Black',sans-serif;font-weight:800;
+    font-size:clamp(3.4rem,14vw,5.4rem);line-height:1;letter-spacing:-.04em;margin:0 0 6px}
+  h1{font-family:'Bricolage Grotesque','Arial Black',sans-serif;font-weight:800;letter-spacing:-.02em;
+    font-size:clamp(1.5rem,5vw,2.1rem);line-height:1.15;margin:0 0 14px;text-wrap:balance}
+  h1 .hl{background:linear-gradient(transparent 62%,var(--marker) 62%);padding:0 2px}
+  p{color:var(--muted);margin:0 0 28px;text-wrap:pretty}
+  a.btn{display:inline-block;background:var(--mint);color:#fff;text-decoration:none;font-weight:600;
+    padding:15px 26px;border-radius:999px;min-height:48px}
+  a.btn:hover{background:#394746}
 </style>
-<script>
-(function () {
-  var p = (window.location.pathname || "").toLowerCase();
-  p = p.replace(/^\/+|\/+$/g, "").replace(/\.html?$/, "");
-
-  var map = [
-    ["fairkaufen",  "#fairkaufen"],
-    ["verkaufen",   "#fairkaufen"],
-    ["fairmieten",  "#fairmieten"],
-    ["vermieten",   "#fairmieten"],
-    ["mieten",      "#fairmieten"],
-    ["modul",       "#module"],
-    ["erweiterung", "#module"],
-    ["maklermodell","#vergleich"],
-    ["vergleich",   "#vergleich"],
-    ["kontakt",     "#kontakt"],
-    ["contact",     "#kontakt"],
-    ["termin",      "#kontakt"],
-    ["ueber",       "#haltung"],
-    ["über",        "#haltung"],
-    ["about",       "#haltung"],
-    ["ablauf",      "#ablauf"],
-    ["faq",         "#faq"],
-    ["frage",       "#faq"],
-    ["bewertung",   "#erfahrungen"],
-    ["erfahrung",   "#erfahrungen"],
-    ["referenz",    "#erfahrungen"],
-    ["preis",       "#fairkaufen"],
-    ["paket",       "#fairkaufen"],
-    ["product",     "#fairkaufen"],
-    ["leistung",    "#fairkaufen"]
-  ];
-
-  var target = "/";
-  for (var i = 0; i < map.length; i++) {
-    if (p.indexOf(map[i][0]) !== -1) { target = "/" + map[i][1]; break; }
-  }
-  window.location.replace(target);
-})();
-</script>
 </head>
 <body>
   <div class="box">
-    <div class="logotype">FAIRkaufswerkstatt</div>
-    <h1>Diese Seite ist umgezogen</h1>
-    <p>Unsere Website wurde neu gestaltet — alle Inhalte findest du jetzt gebündelt auf einer Seite. Du wirst automatisch weitergeleitet.</p>
+    <div class="code">404</div>
+    <h1>Diese Seite ist <span class="hl">ausgezogen.</span></h1>
+    <p>Der Link stimmt nicht mehr oder hat sich vertippt. Kein Drama – auf der Startseite findest du alles.</p>
     <a class="btn" href="/">Zur Startseite</a>
   </div>
 </body>

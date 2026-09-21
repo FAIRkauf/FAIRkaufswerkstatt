@@ -2,8 +2,10 @@
 
 Website der FAIRkaufswerkstatt GmbH – eine einzige, in sich geschlossene HTML-Datei.
 Alle Styles, Skripte und Bilder sind eingebettet (Bilder als Base64-Data-URI),
-es gibt keinen Build-Schritt und keine Abhängigkeiten. Extern geladen werden
-lediglich die Google Fonts.
+es gibt keinen Build-Schritt und keine Abhängigkeiten. Die Schriften liegen
+lokal in `fonts/` (seit 21.09.2026) – extern wird nichts geladen. Die Seite
+`widerruf/` ist die Widerrufsfunktion nach § 356a BGB; sie schickt an
+`portal.fairkaufswerkstatt.de/api/widerruf.php`.
 
 Gehostet über **GitHub Pages**, Domain: <https://www.fairkaufswerkstatt.de>
 

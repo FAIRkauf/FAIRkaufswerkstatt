@@ -1452,6 +1452,47 @@ details p{padding:0 20px 22px 0;color:var(--muted);font-size:.97rem;font-weight:
   .calc2-seg small{margin-top:0}
 }
 @media(prefers-reduced-motion:reduce){.ab-chev,.ab-no{transition:none}}
+
+/* ============================================================
+   Logo-Zeile auf kleinen Handys + alle Überschriften mittig (22.10.2026)
+   ============================================================ */
+.topbar .btn{flex-direction:row;gap:0}
+@media(max-width:359px){.topbar .tb-long{display:none}}
+
+/* Abschnittsköpfe: Überzeile, Überschrift und Einleitung mittig */
+.section-head{margin-left:auto;margin-right:auto;text-align:center}
+.section-head h2,.section-head .lead{margin-left:auto;margin-right:auto}
+.eyebrow{justify-content:center;text-align:center}
+
+/* Das Problem */
+#problem .problem-intro,#problem .problem-q,#problem .problem-bridge{text-align:center;margin-left:auto;margin-right:auto}
+.urgency-label{text-align:center}
+.sc-head{flex-direction:column;justify-content:center;text-align:center}
+.insight-inner{text-align:center}
+.insight h2,.insight p.sub{margin-left:auto;margin-right:auto}
+.insight .chips{justify-content:center}
+
+/* Ohne uns / Mit uns: Text neben dem Regler */
+.photoproof-text{text-align:center}
+.photoproof-text .lead{margin-left:auto;margin-right:auto}
+
+/* Pakete: Kopf der Karten (Leistungslisten bleiben linksbündig) */
+.plan .name,.plan .for,.plan .price-box,.plan .term{text-align:center}
+
+/* Vergleich: Karten */
+.vsc-card{text-align:center;align-items:center}
+
+/* FAIRkaufsBOOST-Kasten: Text und Knopf untereinander, mittig */
+.crosslink{text-align:center}
+@media(min-width:820px){.crosslink{grid-template-columns:1fr}}
+.crosslink p{margin-left:auto;margin-right:auto}
+.crosslink .btn{justify-self:center}
+
+/* Kontakt: linke Spalte mittig */
+#kontakt .form-layout > .rv:first-child{text-align:center}
+#kontakt .form-layout > .rv:first-child .lead{margin-left:auto;margin-right:auto}
+#kontakt .side-list li{flex-direction:column;align-items:center;text-align:center;gap:8px}
+#kontakt .alt-path{flex-direction:column;align-items:center;text-align:center}
 </style>
 </head>
 <body>
@@ -1462,7 +1503,7 @@ details p{padding:0 20px 22px 0;color:var(--muted);font-size:.97rem;font-weight:
       <em>Immobilien verkaufen ohne Provision</em>
     </a>
     <div class="topbar-note">Maklerwissen zum Festpreis · bundesweit digital</div>
-    <a class="btn btn-primary" href="#kontakt" data-cta="topbar">Erstgespräch sichern</a>
+    <a class="btn btn-primary" href="#kontakt" data-cta="topbar">Erstgespräch<span class="tb-long">&nbsp;sichern</span></a>
   </div>
 </header>
 

@@ -1491,8 +1491,56 @@ details p{padding:0 20px 22px 0;color:var(--muted);font-size:.97rem;font-weight:
 /* Kontakt: linke Spalte mittig */
 #kontakt .form-layout > .rv:first-child{text-align:center}
 #kontakt .form-layout > .rv:first-child .lead{margin-left:auto;margin-right:auto}
-#kontakt .side-list li{flex-direction:column;align-items:center;text-align:center;gap:8px}
+#kontakt .side-list{max-width:460px;margin-left:auto;margin-right:auto;text-align:left}
+#kontakt .side-list li{flex-direction:row;align-items:flex-start;text-align:left;gap:15px}
 #kontakt .alt-path{flex-direction:column;align-items:center;text-align:center}
+
+/* ============================================================
+   Runde 3 (22.10.2026): Ablauf als Zeitleiste, Über einzeilig,
+   BOOST-Umbruch, Kontakt-Schritte links, Pakete aufklappbar
+   ============================================================ */
+/* Ablauf: Überschrift mittig, Schritte als Zeitleiste mit dünnem Strich links */
+.ab-steps{max-width:760px}
+.ab-steps li{position:relative;padding-left:58px}
+.ab-steps li+li{border-top:0}
+.ab-steps li::before{content:"";position:absolute;left:18px;top:58px;bottom:-8px;width:2px;border-radius:1px;background:rgba(44,55,54,.2)}
+.ab-steps li:last-child::before{display:none}
+.ab-steps summary{position:static;justify-content:flex-start;text-align:left;padding:12px 0;gap:12px}
+.ab-no{position:absolute;left:0;top:14px}
+.ab-t{flex:1}
+.ab-body{text-align:left;padding:0 0 26px}
+.ab-body>p{margin:0;max-width:62ch}
+.ab-out{margin:16px 0 0;max-width:none}
+@media(max-width:760px){.ab-steps li{padding-left:52px}}
+
+/* Hinter der Werkstatt: Überschrift auf dem Computer in einer Zeile */
+#ueber .section-head{max-width:none}
+#ueber .section-head h2{text-wrap:balance}
+
+/* BOOST: gelbe Markierung nie auseinanderreißen */
+.crosslink h3 .hl{white-space:nowrap}
+
+/* Pakete: einen Teil der Leistungen zeigen, Rest weich aufklappen */
+.plan-list{display:flex;flex-direction:column;margin:0 0 18px}
+.plan-list ul{margin:0}
+.plan li.extra{display:none}
+.plan.open li.extra{display:block;animation:planIn .35s ease both;animation-delay:calc(var(--i,0) * 35ms)}
+@keyframes planIn{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+.plan-more{align-self:center;display:inline-flex;align-items:center;gap:6px;min-height:44px;margin-top:16px;padding:0 18px;
+  border-radius:999px;border:1px solid var(--line);background:var(--card);font-family:var(--body);font-weight:600;font-size:.875rem;
+  color:var(--mint-dark);cursor:pointer;transition:background-color .15s,border-color .15s}
+.plan-more:hover{background:var(--mint-soft);border-color:var(--mint-pastel)}
+.plan-more:focus-visible{outline:3px solid var(--mint-dark);outline-offset:2px}
+.plan-more svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;transition:transform .2s}
+.plan.open .plan-more svg{transform:rotate(180deg)}
+@media(hover:hover){
+  .plan{transition:transform .2s ease,box-shadow .2s ease}
+  .plan:hover{transform:translateY(-4px);box-shadow:0 30px 60px -36px rgba(44,55,54,.55)}
+}
+@media(prefers-reduced-motion:reduce){
+  .plan.open li.extra{animation:none}
+  .plan,.plan:hover{transition:none;transform:none}
+}
 </style>
 </head>
 <body>
@@ -1814,8 +1862,7 @@ details p{padding:0 20px 22px 0;color:var(--muted);font-size:.97rem;font-weight:
             <span class="vat">Festpreis, einmalig · inkl. 19 % MwSt.</span>
           </div>
           <p class="term"><b>Statt rund 17.850 € Provision bei 500.000 €</b></p>
-          <details class="plan-toggle" open>
-            <summary><span>Leistungen entdecken</span><span class="mt-plus" aria-hidden="true"></span></summary>
+          <div class="plan-list">
               <ul>
                 <li>Ratgeber inkl. aller Checklisten und Vorlagen</li>
                 <li>Erhebung relevanter Immobilieninformationen</li>
@@ -1826,7 +1873,8 @@ details p{padding:0 20px 22px 0;color:var(--muted);font-size:.97rem;font-weight:
                 <li>Exposé- und Dokumenten-Versand an Interessent:innen</li>
                 <li>Finanzierungsfahrplan für Interessent:innen</li>
               </ul>
-          </details>
+            <button type="button" class="plan-more" aria-expanded="false"><span>Alle Leistungen</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9.5l6 6 6-6"/></svg></button>
+          </div>
           <div class="foot">
             <a class="btn btn-dark btn-block" href="#kontakt" data-cta="paket-845">Premium anfragen</a>
             <p class="note">Ideal, wenn du organisiert bist und nur die Profi-Struktur brauchst.</p>
@@ -1842,8 +1890,7 @@ details p{padding:0 20px 22px 0;color:var(--muted);font-size:.97rem;font-weight:
             <span class="vat">Festpreis, einmalig · inkl. 19 % MwSt.</span>
           </div>
           <p class="term"><b>Inkl. Energieausweis &amp; Bewertung nach Sprengnetter</b></p>
-          <details class="plan-toggle" open>
-            <summary><span>Leistungen entdecken</span><span class="mt-plus" aria-hidden="true"></span></summary>
+          <div class="plan-list">
               <ul>
                 <li class="inherit">Alles aus Premium, plus:</li>
                 <li><b>1 Monat kostenfrei</b> inserieren auf zwei Immobilienportalen</li>
@@ -1855,7 +1902,8 @@ details p{padding:0 20px 22px 0;color:var(--muted);font-size:.97rem;font-weight:
                 <li>Verwaltung von Interessentenanfragen</li>
                 <li>Koordination von Besichtigungsterminen</li>
               </ul>
-          </details>
+            <button type="button" class="plan-more" aria-expanded="false"><span>Alle Leistungen</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9.5l6 6 6-6"/></svg></button>
+          </div>
           <div class="foot">
             <a class="btn btn-primary btn-block" href="#kontakt" data-cta="paket-2975">Rundum-Sorglos anfragen</a>
             <p class="note">Der Klassiker: Du zeigst die Immobilie, wir kümmern uns um den Rest.</p>
@@ -1871,8 +1919,7 @@ details p{padding:0 20px 22px 0;color:var(--muted);font-size:.97rem;font-weight:
             <span class="vat">Festpreis, einmalig · inkl. 19 % MwSt.</span>
           </div>
           <p class="term"><b>Inkl. Profi-Fotografie, 360°-Rundgang &amp; zwei Workshops</b></p>
-          <details class="plan-toggle" open>
-            <summary><span>Leistungen entdecken</span><span class="mt-plus" aria-hidden="true"></span></summary>
+          <div class="plan-list">
               <ul>
                 <li class="inherit">Alles aus Rundum-Sorglos, plus:</li>
                 <li><b>3 Monate kostenfrei</b> inserieren auf zwei Immobilienportalen</li>
@@ -1886,7 +1933,8 @@ details p{padding:0 20px 22px 0;color:var(--muted);font-size:.97rem;font-weight:
                 <li>Verkaufsschilder für 3 Monate</li>
                 <li>Flyer &amp; Nachbarschaftsbriefe (inkl. Text &amp; Layout)</li>
               </ul>
-          </details>
+            <button type="button" class="plan-more" aria-expanded="false"><span>Alle Leistungen</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9.5l6 6 6-6"/></svg></button>
+          </div>
           <div class="foot">
             <a class="btn btn-dark btn-block" href="#kontakt" data-cta="paket-5345">Masterclass anfragen</a>
             <p class="note">Für Immobilien, bei denen der Auftritt über den Preis entscheidet.</p>
@@ -1907,8 +1955,7 @@ details p{padding:0 20px 22px 0;color:var(--muted);font-size:.97rem;font-weight:
             <span class="vat">Festpreis, einmalig · inkl. 19 % MwSt.</span>
           </div>
           <p class="term"><b>Statt bis zu zwei Nettokaltmieten Provision</b></p>
-          <details class="plan-toggle" open>
-            <summary><span>Leistungen entdecken</span><span class="mt-plus" aria-hidden="true"></span></summary>
+          <div class="plan-list">
               <ul>
                 <li>Erhebung relevanter Immobilieninformationen</li>
                 <li><b>3 Monate</b> Inserats-Verwaltung</li>
@@ -1916,7 +1963,8 @@ details p{padding:0 20px 22px 0;color:var(--muted);font-size:.97rem;font-weight:
                 <li>Weiterleitung eingehender Interessentenanfragen</li>
                 <li>Bewerbungsfahrplan für Interessent:innen</li>
               </ul>
-          </details>
+            <button type="button" class="plan-more" aria-expanded="false"><span>Alle Leistungen</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9.5l6 6 6-6"/></svg></button>
+          </div>
           <div class="foot">
             <a class="btn btn-dark btn-block" href="#kontakt" data-cta="miete-249">Basic anfragen</a>
             <p class="note">Wenn du nur ein sauberes Inserat und Struktur brauchst.</p>
@@ -1932,15 +1980,15 @@ details p{padding:0 20px 22px 0;color:var(--muted);font-size:.97rem;font-weight:
             <span class="vat">Festpreis, einmalig · inkl. 19 % MwSt.</span>
           </div>
           <p class="term"><b>Inkl. Anfragen-Management &amp; Terminkoordination</b></p>
-          <details class="plan-toggle" open>
-            <summary><span>Leistungen entdecken</span><span class="mt-plus" aria-hidden="true"></span></summary>
+          <div class="plan-list">
               <ul>
                 <li class="inherit">Alles aus Basic, plus:</li>
                 <li>Beratungstermin vor Vermarktungsbeginn</li>
                 <li>Verwaltung von Interessentenanfragen</li>
                 <li>Koordination von Besichtigungsterminen</li>
               </ul>
-          </details>
+            <button type="button" class="plan-more" aria-expanded="false"><span>Alle Leistungen</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9.5l6 6 6-6"/></svg></button>
+          </div>
           <div class="foot">
             <a class="btn btn-primary btn-block" href="#kontakt" data-cta="miete-415">Top anfragen</a>
             <p class="note">Damit du nicht 60 Nachrichten am Tag beantworten musst.</p>
@@ -1956,13 +2004,13 @@ details p{padding:0 20px 22px 0;color:var(--muted);font-size:.97rem;font-weight:
             <span class="vat">Festpreis, einmalig · inkl. 19 % MwSt.</span>
           </div>
           <p class="term"><b>Inkl. Mietvertrag</b></p>
-          <details class="plan-toggle" open>
-            <summary><span>Leistungen entdecken</span><span class="mt-plus" aria-hidden="true"></span></summary>
+          <div class="plan-list">
               <ul>
                 <li class="inherit">Alles aus Top, plus:</li>
                 <li>Mietvertrag</li>
               </ul>
-          </details>
+            <button type="button" class="plan-more" aria-expanded="false"><span>Alle Leistungen</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9.5l6 6 6-6"/></svg></button>
+          </div>
           <div class="foot">
             <a class="btn btn-dark btn-block" href="#kontakt" data-cta="miete-595">Premium anfragen</a>
             <p class="note">Wenn am Ende alles rechtssicher auf Papier stehen soll.</p>
@@ -2253,7 +2301,7 @@ details p{padding:0 20px 22px 0;color:var(--muted);font-size:.97rem;font-weight:
     <div class="crosslink rv">
       <div>
         <p class="eyebrow">Schon online?</p>
-        <h3>Deine Immobilie steht längst im Netz – und in deinem Postfach<br class="br-m"> <span class="hl">herrscht gähnende Leere?</span></h3>
+        <h3>Deine Immobilie steht längst im Netz<br class="cl-br"> – und in deinem Postfach <span class="hl">herrscht gähnende Leere?</span></h3>
         <p>Dann brauchst du kein komplettes Paket, sondern einen zweiten Vermarktungsstart. Mit dem FAIRkaufsBOOST analysieren wir dein bestehendes Inserat und sagen dir kostenlos, was es gerade ausbremst.</p>
       </div>
       <a class="btn btn-primary" href="https://www.fairkaufsboost.de" target="_blank" rel="noopener" data-cta="boost">Inserat kostenlos prüfen<small>Antwort innerhalb von 24 Stunden</small></a>
@@ -2835,6 +2883,26 @@ const io = new IntersectionObserver((entries) => {
   entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
 }, { threshold: .12 });
 document.querySelectorAll('.rv').forEach(el => io.observe(el));
+
+/* ---------- Pakete: einen Teil der Leistungen zeigen, Rest aufklappen ---------- */
+(() => {
+  const SICHTBAR = 4;
+  document.querySelectorAll('.plan .plan-list').forEach(list => {
+    const plan = list.closest('.plan');
+    const btn = list.querySelector('.plan-more');
+    const extra = [...list.querySelectorAll('li:not(.inherit)')].slice(SICHTBAR);
+    if (extra.length < 2) { btn.remove(); return; }          // bei 0–1 weiteren Punkten alles zeigen
+    extra.forEach((li, i) => { li.classList.add('extra'); li.style.setProperty('--i', i); });
+    const label = btn.querySelector('span');
+    const zu = `+ ${extra.length} weitere Leistungen`;
+    label.textContent = zu;
+    btn.addEventListener('click', () => {
+      const offen = plan.classList.toggle('open');
+      btn.setAttribute('aria-expanded', String(offen));
+      label.textContent = offen ? 'Weniger anzeigen' : zu;
+    });
+  });
+})();
 
 /* ---------- Ablauf: Aufklappliste, immer nur ein Schritt offen ---------- */
 (() => {

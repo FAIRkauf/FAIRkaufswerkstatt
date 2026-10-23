@@ -2001,6 +2001,10 @@ svg.fk-sym{width:1em;height:1em;flex:none;fill:none;stroke:currentColor;stroke-w
   .fk-formhead{align-items:flex-start;gap:14px;margin-bottom:22px;padding-bottom:20px}
   .fk-formhead .fk-ic{width:44px;height:44px;font-size:21px}
 }
+
+/* Schlussblock: auf dem Handy genau drei Zeilen, ein Satz pro Zeile – Größe passt sich der Breite an */
+@media(min-width:761px){.fk-final .fk-br-m{display:none}}
+@media(max-width:760px){.fk-final-h{font-size:min(34px, calc((100vw - 84px) / 10.4));white-space:nowrap}}
 </style>
 </head>
 <body>
@@ -2643,7 +2647,7 @@ svg.fk-sym{width:1em;height:1em;flex:none;fill:none;stroke:currentColor;stroke-w
 <section class="fk-s fk-final-s">
   <div class="fk-wrap">
     <div class="fk-final">
-      <h2 class="fk-final-h">Deine Immobilie.<br>Deine Entscheidungen. <span>Dein Geld.</span></h2>
+      <h2 class="fk-final-h">Deine Immobilie.<br>Deine Entscheidungen.<br class="fk-br-m"> <span>Dein Geld.</span></h2>
       <p>Lass uns unverbindlich darüber sprechen, was für deinen Verkauf wirklich nötig ist – und was nicht.</p>
       <a class="fk-btn fk-btn-primary fk-btn-lg" href="#kontakt" data-cta="final">Kostenloses Erstgespräch</a>
     </div>

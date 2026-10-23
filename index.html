@@ -1875,7 +1875,8 @@ svg.fk-sym{width:1em;height:1em;flex:none;fill:none;stroke:currentColor;stroke-w
 .fk-boost-p{max-width:640px;margin:18px auto 30px;font-size:clamp(17px,1.6vw,20px);color:rgba(255,255,255,.8)}
 .fk-boost-hint{margin-top:12px;font-size:14px;color:rgba(255,255,255,.65)}
 @media(max-width:760px){.fk-boost{padding:48px 22px}}
-@media(max-width:380px){.fk-hl{white-space:normal}}
+@media(max-width:350px){.fk-boost{padding-left:16px;padding-right:16px}.fk-boost-h{font-size:21px}}
+@media(max-width:300px){.fk-hl{white-space:normal}}
 
 /* ---------- Kontakt ---------- */
 .fk-contact{display:grid;grid-template-columns:1fr 1.1fr;gap:72px;align-items:start}
@@ -1953,6 +1954,15 @@ svg.fk-sym{width:1em;height:1em;flex:none;fill:none;stroke:currentColor;stroke-w
 }
 @media(max-width:760px){.fk-calc,.fk-stats{grid-template-columns:minmax(0,1fr)}}
 @media(max-width:620px){.fk-chips{grid-template-columns:minmax(0,1fr)}}
+
+/* BOOST-Überschrift: Computer mit festem Umbruch nach „Netz“, Handy fließend und ausgeglichen (kein einzelnes Wort allein) */
+.fk-boost .cl-sp{display:none}
+@media(min-width:761px){.fk-boost .cl-br-m{display:none}}
+@media(max-width:760px){
+  .fk-boost .cl-br{display:none}
+  .fk-boost .cl-sp{display:inline}
+  .fk-boost-h{text-wrap:balance}
+}
 </style>
 </head>
 <body>
@@ -2498,7 +2508,7 @@ svg.fk-sym{width:1em;height:1em;flex:none;fill:none;stroke:currentColor;stroke-w
   <div class="fk-wrap">
     <div class="fk-boost">
       <p class="fk-eyebrow">Schon online?</p>
-      <h3 class="fk-boost-h">Deine Immobilie steht längst im Netz<br class="cl-br"> – und in deinem Postfach <span class="fk-hl">herrscht gähnende Leere?</span></h3>
+      <h3 class="fk-boost-h">Deine Immobilie steht längst im Netz<span class="cl-sp">&nbsp;</span><br class="cl-br">– und in deinem Postfach<br class="cl-br-m"> <span class="fk-hl">herrscht gähnende Leere?</span></h3>
       <p class="fk-boost-p">Dann brauchst du kein Paket, sondern einen zweiten Start: Wir prüfen dein Inserat kostenlos und sagen dir, was es ausbremst.</p>
       <a class="fk-btn fk-btn-primary fk-btn-lg" href="https://www.fairkaufsboost.de" target="_blank" rel="noopener" data-cta="boost">Inserat kostenlos prüfen</a>
       <p class="fk-boost-hint">Antwort innerhalb von 24 Stunden</p>

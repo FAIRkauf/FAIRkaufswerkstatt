@@ -1551,139 +1551,545 @@ h1,h2,h3{letter-spacing:-.03em}
 .hero::before{top:-220px;left:50%;right:auto;width:100vw;height:900px;transform:translateX(-50%);border-radius:0;opacity:1;
   background:radial-gradient(40% 50% at 30% 40%,rgba(255,210,63,.35),transparent 70%),radial-gradient(45% 55% at 72% 35%,#cfe0dc,transparent 70%)}
 .insight::after{display:none}
+
+/* ============================================================
+   Runde 4 (23.10.2026): Startseite nach Julijas Vorlage
+   breiter, größer, ruhig – Systemschrift, weiche Karten
+   ============================================================ */
+:root{
+  --fk-elev:#ffffff;
+  --fk-fill:rgba(120,120,110,.12);
+  --fk-fill-2:rgba(120,120,110,.08);
+  --fk-label:#1d2524;
+  --fk-label-2:rgba(29,37,36,.70);
+  --fk-label-3:rgba(29,37,36,.45);
+  --fk-sep:rgba(29,37,36,.12);
+  --fk-tint:#2f6f66;
+  --fk-sage:#cfe0dc;
+  --fk-strike:#c81e29;
+  --fk-glass:rgba(255,255,255,.62);
+  --fk-glass-brd:rgba(255,255,255,.75);
+  --fk-shadow:0 1px 2px rgba(0,0,0,.04),0 12px 32px rgba(20,40,38,.08);
+  --fk-rxl:28px;--fk-rl:20px;--fk-rm:14px;
+  --fk-w:1280px;
+  --wrap:1280px;
+}
+html{scroll-padding-top:96px}
+body{line-height:1.47}
+#top{position:relative;z-index:0}
+.wrap{padding:0 32px}
+.fk-wrap{max-width:var(--fk-w);margin:0 auto;padding:0 32px}
+@media(max-width:760px){.wrap,.fk-wrap{padding:0 20px}}
+:where(.fk-hero,.fk-s,.fk-nav,.fk-fab) :is(p,ul,ol,figure,blockquote,h1,h2,h3){margin:0}
+:where(.fk-hero,.fk-s) :is(ul,ol){padding:0;list-style:none}
+svg.fk-sym{width:1em;height:1em;flex:none;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;vertical-align:-.125em}
+
+/* ---------- Überzeilen & Abschnittsköpfe (neu und bestehend einheitlich) ---------- */
+.fk-eyebrow{font-size:15px;font-weight:600;line-height:1.3;letter-spacing:0;color:var(--fk-tint)}
+.eyebrow{font-family:var(--body);font-size:15px;font-weight:600;letter-spacing:0;text-transform:none;color:var(--fk-tint);justify-content:center}
+.eyebrow::before{display:none}
+.fk-s{padding:120px 0 0}
+.fk-head{text-align:center;max-width:880px;margin:0 auto 56px}
+.fk-h2,.section-head h2{font-size:clamp(34px,4.2vw,56px);line-height:1.08;letter-spacing:-.03em;font-weight:700;color:var(--fk-label);margin-top:10px;text-wrap:balance}
+.fk-sub{font-size:clamp(17px,1.6vw,21px);line-height:1.45;color:var(--fk-label-2);margin-top:16px;letter-spacing:-.012em;text-wrap:pretty}
+.section-head{max-width:880px;margin:0 auto 56px;text-align:center}
+.section-head .lead{font-size:clamp(17px,1.6vw,21px);line-height:1.45;color:var(--fk-label-2);max-width:none;margin:16px auto 0}
+#beweis,#vergleich,#ueber,#faq{background:none;padding:120px 0 0}
+.partner-strip{padding:104px 0 88px}
+@media(max-width:760px){
+  .fk-s,#beweis,#vergleich,#ueber,#faq{padding-top:80px}
+  .fk-head,.section-head{margin-bottom:36px}
+}
+
+/* ---------- Navigation (Glas, schwebt über dem Inhalt) ---------- */
+.fk-nav{position:sticky;top:12px;z-index:50;max-width:var(--fk-w);margin:12px auto 0;padding:0 20px}
+.fk-nav-in{display:flex;align-items:center;gap:24px;height:62px;padding:0 9px 0 26px;border-radius:999px;background:var(--fk-glass);
+  -webkit-backdrop-filter:blur(24px) saturate(180%);backdrop-filter:blur(24px) saturate(180%);border:1px solid var(--fk-glass-brd);box-shadow:var(--fk-shadow)}
+.fk-logo{font-size:18px;font-weight:600;letter-spacing:-.02em;color:var(--fk-label);white-space:nowrap;text-decoration:none}
+.fk-logo b{font-weight:800}
+.fk-nav-links{display:flex;gap:4px;margin-left:auto}
+.fk-nav-links a{color:var(--fk-label-2);font-size:15px;padding:10px 14px;border-radius:999px;text-decoration:none;transition:background-color .15s,color .15s}
+.fk-nav-links a:hover{background:var(--fk-fill-2);color:var(--fk-label)}
+@media(max-width:900px){.fk-nav-links{display:none}.fk-nav .fk-btn{margin-left:auto}}
+@media(max-width:760px){.fk-nav{top:8px;margin-top:8px;padding:0 12px}.fk-nav-in{height:56px;gap:10px;padding:0 7px 0 18px}}
+@media(max-width:360px){.fk-logo{font-size:15px}.fk-nav .fk-btn{padding:0 14px}}
+
+/* ---------- Knöpfe ---------- */
+.fk-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:0 24px;border-radius:999px;border:0;cursor:pointer;
+  font-family:var(--body);font-weight:600;font-size:17px;line-height:1;letter-spacing:-.02em;white-space:nowrap;text-decoration:none;
+  transition:transform .12s ease,filter .12s ease,background-color .15s ease}
+.fk-btn:active{transform:scale(.97);filter:brightness(.95)}
+.fk-btn:focus-visible{outline:3px solid var(--fk-tint);outline-offset:3px}
+.fk-btn-primary{background:var(--marker);color:var(--fk-label)}
+.fk-btn-primary:hover{background:#f7c81f}
+.fk-btn-tinted{background:var(--fk-fill);color:var(--fk-label)}
+.fk-btn-tinted:hover{background:rgba(120,120,110,.18)}
+.fk-btn-sm{min-height:42px;padding:0 20px;font-size:15px}
+@media(pointer:coarse){.fk-btn-sm{min-height:44px}}
+.fk-btn-lg{min-height:58px;padding:0 32px;font-size:18px}
+.fk-block{width:100%}
+
+/* ---------- Hero ---------- */
+.fk-hero{position:relative;padding:104px 0 0;text-align:center}
+.fk-hero::before{content:"";position:absolute;left:0;right:0;top:-240px;height:960px;z-index:-1;pointer-events:none;
+  background:radial-gradient(40% 50% at 30% 40%,rgba(255,210,63,.35),transparent 70%),radial-gradient(45% 55% at 72% 35%,var(--fk-sage),transparent 70%)}
+.fk-h1{font-size:clamp(44px,6.2vw,84px);line-height:1.03;letter-spacing:-.035em;font-weight:700;color:var(--fk-label);max-width:1060px;margin:16px auto 0;text-wrap:balance}
+.fk-h1 span{color:var(--fk-label-3)}
+.fk-lead{font-size:clamp(19px,1.9vw,24px);line-height:1.4;color:var(--fk-label-2);max-width:720px;margin:24px auto 0;letter-spacing:-.015em}
+.fk-ctas{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:38px}
+.fk-trust{display:flex;gap:10px 30px;justify-content:center;flex-wrap:wrap;margin-top:30px;color:var(--fk-label-2);font-size:16px}
+.fk-trust span{display:inline-flex;align-items:center;gap:7px}
+.fk-trust svg{color:var(--fk-tint)}
+@media(max-width:760px){
+  .fk-hero{padding-top:56px}
+  .fk-h1{line-height:1.06}
+  .fk-ctas{flex-direction:column;align-items:stretch;padding:0 4px}
+  .fk-trust{gap:8px 18px;font-size:14px}
+}
+
+/* ---------- Rechner ---------- */
+.fk-calc{display:grid;grid-template-columns:1.15fr 1fr;max-width:1080px;margin:64px auto 0;background:var(--fk-elev);border-radius:var(--fk-rxl);box-shadow:var(--fk-shadow);overflow:hidden;text-align:left}
+.fk-calc-l{padding:44px 48px}
+.fk-calc-r{padding:44px 48px;background:linear-gradient(160deg,var(--fk-sage),var(--fk-elev));display:flex;flex-direction:column;justify-content:space-between;gap:28px}
+.fk-calc-title{font-size:clamp(24px,2.4vw,30px);font-weight:700;line-height:1.15;letter-spacing:-.025em;color:var(--fk-label)}
+.fk-calc-sub{color:var(--fk-label-2);font-size:16px;margin-top:6px}
+.fk-field{margin:30px 0 0;padding:0;border:0;min-width:0}
+.fk-row{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+.fk-calc .fk-row label,.fk-calc .fk-field legend{display:inline;margin:0;padding:0;font-size:16px;font-weight:400;color:var(--fk-label-2)}
+.fk-calc .fk-field legend{display:block;margin-bottom:12px}
+.fk-row output{font-size:22px;font-weight:600;color:var(--fk-label);font-variant-numeric:tabular-nums;white-space:nowrap}
+.fk-calc .fk-range,.fk-calc .fk-range:focus{-webkit-appearance:none;appearance:none;display:block;width:100%;height:44px;margin:4px 0 0;padding:0;border:0;border-radius:0;background:transparent;box-shadow:none;outline:none;cursor:pointer}
+.fk-range{--fill:50%}
+.fk-range::-webkit-slider-runnable-track{height:6px;border-radius:3px;background:linear-gradient(90deg,var(--fk-label) var(--fill),var(--fk-fill) var(--fill))}
+.fk-range::-webkit-slider-thumb{-webkit-appearance:none;width:30px;height:30px;margin-top:-12px;border-radius:50%;background:#fff;border:0;box-shadow:0 0 0 .5px rgba(0,0,0,.08),0 3px 8px rgba(0,0,0,.18)}
+.fk-range:focus-visible::-webkit-slider-thumb{box-shadow:0 0 0 3px var(--fk-tint),0 3px 8px rgba(0,0,0,.18)}
+.fk-range::-moz-range-track{height:6px;border-radius:3px;background:var(--fk-fill)}
+.fk-range::-moz-range-progress{height:6px;border-radius:3px;background:var(--fk-label)}
+.fk-range::-moz-range-thumb{width:30px;height:30px;border-radius:50%;background:#fff;border:0;box-shadow:0 3px 8px rgba(0,0,0,.18)}
+.fk-seg{display:flex;gap:2px;padding:3px;border-radius:13px;background:var(--fk-fill-2)}
+.fk-seg label{position:relative;flex:1;display:block;margin:0;cursor:pointer}
+.fk-seg input{position:absolute;inset:0;width:100%;height:100%;margin:0;padding:0;border:0;opacity:0;cursor:pointer}
+.fk-seg span,.fk-seg button{display:flex;align-items:center;justify-content:center;min-height:44px;padding:8px;border-radius:10px;border:0;background:transparent;
+  font-family:var(--body);font-size:15px;font-weight:500;line-height:1.2;color:var(--fk-label-2);text-align:center;transition:background-color .15s,box-shadow .15s}
+.fk-seg button{flex:1;cursor:pointer}
+.fk-seg input:checked+span,.fk-seg button[aria-selected="true"]{background:var(--fk-elev);color:var(--fk-label);font-weight:600;box-shadow:0 1px 3px rgba(0,0,0,.12)}
+.fk-seg input:focus-visible+span,.fk-seg button:focus-visible{outline:3px solid var(--fk-tint);outline-offset:1px}
+.fk-lines{font-size:16px}
+.fk-lines div{display:flex;justify-content:space-between;gap:12px;padding:14px 0;border-bottom:.5px solid var(--fk-sep);color:var(--fk-label);font-variant-numeric:tabular-nums}
+.fk-lines s{color:var(--fk-strike);text-decoration-thickness:1.5px}
+.fk-keep small{display:block;font-size:16px;font-weight:500;color:var(--fk-label-2)}
+.fk-big{font-size:clamp(52px,6vw,72px);line-height:1.05;font-weight:700;letter-spacing:-.04em;margin-top:8px;color:var(--fk-label);font-variant-numeric:tabular-nums}
+.fk-big .mark{padding:0 .04em}
+.fk-note{font-size:13px;line-height:1.45;letter-spacing:0;color:var(--fk-label-2);margin-top:18px}
+@media(max-width:760px){
+  .fk-calc{grid-template-columns:1fr;margin-top:44px}
+  .fk-calc-l,.fk-calc-r{padding:28px 22px}
+  .fk-seg span{font-size:14px;padding:8px 4px}
+}
+
+/* ---------- Problem + Kacheln ---------- */
+.fk-problem-head{text-align:center;max-width:1040px;margin:0 auto 56px}
+.fk-problem-head .fk-eyebrow{margin-bottom:14px}
+.fk-problem-head .problem-intro{max-width:none}
+.fk-problem-head .problem-q{overflow-wrap:break-word}
+.fk-problem-head .fk-sub{max-width:760px;margin:6px auto 0}
+.fk-stats{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.fk-tile{border-radius:var(--fk-rxl);padding:48px;background:var(--fk-elev);box-shadow:var(--fk-shadow)}
+.fk-num{font-size:clamp(64px,7.5vw,104px);font-weight:700;line-height:1;letter-spacing:-.045em;color:var(--mint-dark)}
+.fk-tile h3{font-size:clamp(20px,1.9vw,24px);font-weight:600;line-height:1.25;letter-spacing:-.02em;color:var(--fk-label);margin-top:16px}
+.fk-tile p:not(.fk-num){font-size:17px;color:var(--fk-label-2);margin-top:10px}
+.fk-tile-alone{background:#fcf4f3;box-shadow:inset 0 0 0 1.5px #ecccc6,var(--fk-shadow)}
+.fk-tile-alone .fk-num{color:var(--signal)}
+@media(max-width:760px){.fk-stats{grid-template-columns:1fr;gap:16px}.fk-tile{padding:30px 26px}}
+
+/* ---------- Selbstcheck ---------- */
+.fk-chips{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.fk-chip{display:flex;gap:16px;align-items:flex-start;width:100%;padding:24px;border-radius:var(--fk-rl);border:2px solid transparent;background:var(--fk-elev);box-shadow:var(--fk-shadow);
+  font:inherit;color:var(--fk-label);text-align:left;cursor:pointer;transition:border-color .15s ease,transform .15s ease}
+.fk-chip:hover{transform:translateY(-2px)}
+.fk-chip:focus-visible{outline:3px solid var(--fk-tint);outline-offset:3px}
+.fk-ic{flex:none;width:48px;height:48px;border-radius:13px;background:var(--fk-fill-2);display:grid;place-items:center;font-size:23px;color:var(--fk-tint)}
+.fk-chip-t{flex:1;min-width:0}
+.fk-chip-t b{display:block;font-size:18px;font-weight:600;letter-spacing:-.02em}
+.fk-chip-t span{display:block;font-size:15px;line-height:1.4;color:var(--fk-label-2);margin-top:4px}
+.fk-chk{flex:none;width:26px;height:26px;border-radius:50%;border:1.5px solid var(--fk-label-3);display:grid;place-items:center;font-size:15px;color:transparent}
+.fk-chip[aria-pressed="true"]{border-color:var(--fk-label)}
+.fk-chip[aria-pressed="true"] .fk-chk{background:var(--fk-label);border-color:var(--fk-label);color:#fff}
+.fk-counter{text-align:center;margin-top:26px;font-size:16px;color:var(--fk-label-2)}
+.fk-counter b{color:var(--fk-label)}
+.fk-reslink[hidden]{display:none}
+.fk-textbtn{display:inline-flex;align-items:center;gap:2px;min-height:44px;padding:0 4px;border:0;background:none;font:inherit;color:var(--fk-tint);cursor:pointer}
+.fk-textbtn:hover{text-decoration:underline;text-underline-offset:3px}
+.fk-resultcard{max-width:780px;margin:20px auto 0;padding:36px;border-radius:var(--fk-rxl);background:linear-gradient(160deg,var(--fk-sage),var(--fk-elev));box-shadow:var(--fk-shadow);text-align:center}
+.fk-resultcard[hidden]{display:none}
+.fk-restext{font-size:18px;color:var(--fk-label);margin:8px auto 22px;max-width:620px}
+@media(max-width:900px){.fk-chips{grid-template-columns:1fr 1fr}}
+@media(max-width:620px){.fk-chips{grid-template-columns:1fr}.fk-chip{padding:18px}.fk-resultcard{padding:28px 20px}}
+
+/* ---------- Du brauchst Maklerwissen ---------- */
+.fk-insight{text-align:center;padding:76px 48px;border-radius:var(--fk-rxl);background:linear-gradient(160deg,var(--fk-sage),var(--fk-elev));box-shadow:var(--fk-shadow)}
+.fk-strike{color:var(--fk-label-3);text-decoration:line-through;text-decoration-thickness:.06em}
+.fk-insight .fk-sub{max-width:640px;margin:20px auto 0}
+.fk-pills{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:30px}
+.fk-pills li{padding:10px 18px;border-radius:999px;background:var(--fk-elev);font-size:15px;font-weight:500;color:var(--fk-label);box-shadow:0 1px 2px rgba(0,0,0,.05)}
+.fk-closing{margin-top:30px;font-size:clamp(19px,1.8vw,23px);font-weight:600;letter-spacing:-.02em;color:var(--fk-label)}
+@media(max-width:760px){.fk-insight{padding:46px 22px}.fk-pills li{font-size:14px;padding:8px 14px}}
+
+/* ---------- Vorher / Nachher: größer, präsenter ---------- */
+#beweis .proof-carousel{max-width:none}
+@media(min-width:820px){#beweis .photoproof{grid-template-columns:1.4fr 1fr;gap:64px}}
+#beweis .ba-slider{max-width:560px;border-radius:var(--fk-rxl);box-shadow:var(--fk-shadow)}
+#beweis .ba-slider.ba-wide{max-width:720px}
+#beweis .ba-slider.ba-text{max-width:640px;min-height:360px}
+#beweis .photoproof-text h3{font-size:clamp(22px,2.4vw,32px);letter-spacing:-.025em;line-height:1.2;color:var(--fk-label)}
+#beweis .photoproof-text .lead{font-size:18px;color:var(--fk-label-2)}
+#beweis .pc-tab{font-family:var(--body);font-size:15px;letter-spacing:0;text-transform:none;padding:11px 22px}
+#beweis .pc-arrow{width:52px;height:52px;border-color:transparent;box-shadow:var(--fk-shadow)}
+#beweis .ba-caption{font-family:var(--body);letter-spacing:0;text-transform:none}
+
+/* ---------- Ablauf: schmale Zeitleiste links ---------- */
+.fk-steps{display:grid;grid-template-columns:260px 1fr;gap:56px;align-items:start;max-width:1140px;margin:0 auto}
+.fk-timeline{position:relative;display:flex;flex-direction:column;gap:6px;padding:6px 0}
+.fk-timeline::before{content:"";position:absolute;left:21px;top:30px;bottom:30px;width:1.5px;background:var(--fk-sep)}
+.fk-timeline button{position:relative;display:flex;align-items:center;gap:16px;width:100%;min-height:56px;padding:8px 14px 8px 6px;border:0;border-radius:14px;background:none;
+  font:inherit;font-size:17px;font-weight:500;color:var(--fk-label-2);text-align:left;cursor:pointer;transition:color .15s}
+.fk-timeline button:hover{color:var(--fk-label)}
+.fk-timeline button:focus-visible{outline:3px solid var(--fk-tint);outline-offset:2px}
+.fk-timeline em{position:relative;z-index:1;flex:none;width:32px;height:32px;border-radius:50%;display:grid;place-items:center;font-style:normal;font-size:14px;font-weight:600;
+  background:var(--paper);box-shadow:inset 0 0 0 1.5px var(--fk-sep);color:var(--fk-label-2);transition:background-color .2s,color .2s,box-shadow .2s}
+.fk-timeline button.done em{background:var(--fk-sage);box-shadow:none;color:var(--fk-label)}
+.fk-timeline button[aria-selected="true"]{color:var(--fk-label);font-weight:600}
+.fk-timeline button[aria-selected="true"] em{background:var(--fk-label);box-shadow:none;color:#fff}
+.fk-stepcard{display:flex;flex-direction:column;min-height:440px;padding:48px;border-radius:var(--fk-rxl);background:var(--fk-elev);box-shadow:var(--fk-shadow)}
+.fk-steptitle{font-size:clamp(26px,2.8vw,38px);line-height:1.12;letter-spacing:-.03em;font-weight:700;color:var(--fk-label);margin-top:10px}
+.fk-steptext{font-size:18px;line-height:1.5;color:var(--fk-label-2);margin-top:14px;max-width:640px}
+.fk-progress{display:flex;gap:6px;margin:28px 0}
+.fk-progress i{flex:1;height:4px;border-radius:2px;background:var(--fk-fill);transition:background-color .25s}
+.fk-progress i.on{background:var(--fk-label)}
+.fk-result{margin-top:auto;display:flex;gap:14px;align-items:flex-start;padding:22px 24px;border-radius:var(--fk-rm);background:var(--fk-sage)}
+.fk-result svg{font-size:24px;color:var(--fk-tint);margin-top:2px}
+.fk-result b{display:block;font-size:13px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--fk-label-2)}
+.fk-result span{display:block;font-size:17px;color:var(--fk-label);margin-top:2px}
+@media(max-width:900px){
+  .fk-steps{grid-template-columns:1fr;gap:18px}
+  .fk-timeline{flex-direction:row;justify-content:space-between;gap:0;padding:0}
+  .fk-timeline::before{left:24px;right:24px;top:50%;bottom:auto;width:auto;height:1.5px}
+  .fk-timeline button{width:auto;min-height:48px;padding:6px;border-radius:50%}
+  .fk-timeline button span{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+  .fk-timeline em{width:36px;height:36px}
+  .fk-stepcard{min-height:0;padding:28px 24px}
+  .fk-steptext{font-size:17px}
+}
+
+/* ---------- Pakete ---------- */
+.fk-segc{display:flex;justify-content:center;margin:-12px 0 48px}
+.fk-segc .fk-seg{width:440px;max-width:100%}
+.fk-plans{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;align-items:stretch}
+.fk-plan{position:relative;display:flex;flex-direction:column;padding:38px 36px 36px;border-radius:var(--fk-rxl);background:var(--fk-elev);box-shadow:var(--fk-shadow);transition:transform .2s ease}
+.fk-plan.feat{outline:2px solid var(--fk-label);outline-offset:-2px}
+.fk-badge{position:absolute;top:-14px;left:36px;padding:6px 13px;border-radius:999px;background:var(--marker);color:var(--fk-label);font-size:13px;font-weight:700}
+.fk-tier{font-size:14px;font-weight:600;color:var(--fk-tint)}
+.fk-plan-name{font-size:clamp(26px,2.4vw,32px);font-weight:700;letter-spacing:-.03em;color:var(--fk-label);margin-top:4px}
+.fk-tag{font-size:16px;color:var(--fk-label-2)}
+.fk-price{font-size:clamp(44px,4.4vw,56px);font-weight:700;line-height:1;letter-spacing:-.04em;color:var(--fk-label);margin-top:24px;font-variant-numeric:tabular-nums}
+.fk-pnote{font-size:13px;color:var(--fk-label-2);margin-top:8px}
+.fk-feat{margin:24px 0 0;border-top:.5px solid var(--fk-sep);font-size:16px}
+.fk-feat li{display:flex;gap:10px;padding:11px 0;border-bottom:.5px solid var(--fk-sep);line-height:1.38;color:var(--fk-label)}
+.fk-feat li svg{color:var(--fk-tint);margin-top:3px}
+.fk-feat li.extra{display:none}
+.fk-plan.open .fk-feat li.extra{display:flex;animation:planIn .35s ease both;animation-delay:calc(var(--i,0) * 35ms)}
+.fk-more{align-self:flex-start;display:inline-flex;align-items:center;gap:6px;min-height:44px;margin-top:6px;padding:0;border:0;background:none;
+  font:inherit;font-size:15px;font-weight:600;color:var(--fk-tint);cursor:pointer}
+.fk-more:focus-visible{outline:3px solid var(--fk-tint);outline-offset:2px}
+.fk-more svg{transition:transform .2s}
+.fk-plan.open .fk-more svg{transform:rotate(180deg)}
+.fk-plan > .fk-plan-btn{width:100%;margin-top:auto}
+.fk-plan > .fk-feat,.fk-plan > .fk-more{margin-bottom:24px}
+.fk-plan > .fk-more{margin-top:-14px}
+@media(hover:hover){.fk-plan:hover{transform:translateY(-4px)}}
+@media(max-width:900px){.fk-plans{grid-template-columns:1fr;max-width:560px;margin:0 auto;gap:30px}.fk-plan{padding:32px 26px 28px}}
+
+/* ---------- Module (gruppierte Liste, Symbole transparent) ---------- */
+.fk-groups{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.fk-group{background:var(--fk-elev);border-radius:var(--fk-rl);box-shadow:var(--fk-shadow);overflow:hidden}
+.fk-cell{position:relative;display:flex;align-items:center;gap:16px;width:100%;min-height:76px;padding:14px 22px;border:0;background:none;
+  font:inherit;color:var(--fk-label);text-align:left;cursor:pointer;transition:background-color .15s}
+.fk-cell+.fk-cell::before{content:"";position:absolute;top:0;left:86px;right:0;border-top:.5px solid var(--fk-sep)}
+.fk-cell:hover{background:rgba(120,120,110,.05)}
+.fk-cell:focus-visible{outline:3px solid var(--fk-tint);outline-offset:-3px}
+.fk-cell .fk-ic{width:46px;height:46px;border-radius:12px;font-size:21px}
+.fk-cell-t{flex:1;min-width:0}
+.fk-cell-t b{display:block;font-size:17px;font-weight:500;letter-spacing:-.02em}
+.fk-cell-t small{display:block;font-size:14px;letter-spacing:0;color:var(--fk-label-2);margin-top:2px}
+.fk-p{font-size:16px;color:var(--fk-label-2);font-variant-numeric:tabular-nums;white-space:nowrap}
+.fk-chev{font-size:15px;color:var(--fk-label-3)}
+@media(max-width:900px){.fk-groups{grid-template-columns:1fr;max-width:660px;margin:0 auto}}
+@media(max-width:420px){.fk-cell{gap:12px;padding:12px 16px}.fk-cell+.fk-cell::before{left:74px}.fk-cell .fk-ic{width:42px;height:42px}}
+
+/* ---------- Vergleich: wie bisher, größer ---------- */
+#vergleich .vs-carousel{max-width:1060px}
+#vergleich .vsc-nav{gap:10px;margin-bottom:30px}
+#vergleich .vsc-tab{font-family:var(--body);font-size:14px;letter-spacing:.02em;padding:11px 20px}
+#vergleich .vsc-label{font-size:clamp(24px,2.4vw,32px);letter-spacing:-.025em;margin-bottom:26px;color:var(--fk-label)}
+#vergleich .vsc-cards{gap:24px}
+#vergleich .vsc-card{min-height:210px;padding:40px 44px;border-radius:var(--fk-rxl);border-color:transparent;box-shadow:var(--fk-shadow)}
+#vergleich .vsc-fkw{box-shadow:inset 0 0 0 1.5px var(--mint-pastel),var(--fk-shadow)}
+#vergleich .vsc-card span{font-family:var(--body);font-size:13px;letter-spacing:.08em}
+#vergleich .vsc-card b{font-size:clamp(20px,2vw,24px);line-height:1.3}
+#vergleich .vsc-benefit{font-size:17px}
+#vergleich .vsc-viewport{min-height:320px}
+#vergleich .vsc-arrow{width:52px;height:52px;border-color:transparent;box-shadow:var(--fk-shadow)}
+#vergleich .vsc-prev{left:-26px}
+#vergleich .vsc-next{right:-26px}
+#vergleich .vs-note{max-width:860px;margin:28px auto 0;text-align:center;font-size:14px;color:var(--fk-label-2)}
+@media(max-width:1140px){#vergleich .vsc-prev{left:-10px}#vergleich .vsc-next{right:-10px}}
+@media(max-width:620px){#vergleich .vsc-card{min-height:0;padding:26px 22px}#vergleich .vsc-viewport{min-height:0}#vergleich .vsc-prev{left:0}#vergleich .vsc-next{right:0}}
+
+/* ---------- Bewertungen: Karten zum Wischen ---------- */
+.fk-rating{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:8px 16px;margin:-24px 0 40px;font-size:16px;color:var(--fk-label-2)}
+.fk-rating b{font-size:38px;font-weight:700;letter-spacing:-.03em;color:var(--fk-label)}
+.fk-stars{color:#f5b301;letter-spacing:2px}
+.fk-rating a{color:var(--fk-tint)}
+.fk-quotes{display:grid;grid-auto-flow:column;grid-auto-columns:calc((100% - 48px) / 3);gap:24px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding:0 6px;
+  scrollbar-width:none;padding:8px 6px 28px;margin:-8px -6px 0;outline:none}
+.fk-quotes::-webkit-scrollbar{display:none}
+.fk-quotes:focus-visible{outline:3px solid var(--fk-tint);outline-offset:2px;border-radius:var(--fk-rl)}
+.fk-q{scroll-snap-align:start;display:flex;flex-direction:column;padding:34px;border-radius:var(--fk-rl);background:var(--fk-elev);box-shadow:var(--fk-shadow)}
+.fk-q .fk-stars{font-size:16px}
+.fk-q blockquote{font-size:19px;line-height:1.45;font-weight:500;letter-spacing:-.018em;color:var(--fk-label);margin-top:14px}
+.fk-q figcaption{margin-top:auto;padding-top:20px;font-size:15px;color:var(--fk-label-2)}
+.fk-qnav{display:flex;justify-content:center;gap:12px}
+.fk-qnav[hidden]{display:none}
+.fk-qbtn{width:48px;height:48px;border-radius:50%;border:0;display:grid;place-items:center;background:var(--fk-elev);box-shadow:var(--fk-shadow);font-size:18px;color:var(--fk-label);cursor:pointer;transition:opacity .2s,transform .12s}
+.fk-qbtn:disabled{opacity:.35;cursor:default}
+.fk-qbtn:active{transform:scale(.95)}
+.fk-qbtn:focus-visible{outline:3px solid var(--fk-tint);outline-offset:3px}
+@media(max-width:900px){.fk-quotes{grid-auto-columns:calc((100% - 24px) / 2)}}
+@media(max-width:620px){.fk-quotes{grid-auto-columns:86%;gap:14px}.fk-q{padding:26px}}
+
+/* ---------- FAIRkaufsBOOST: kürzer, gleiche Breite wie der Rest ---------- */
+.fk-boost{text-align:center;padding:76px 48px;border-radius:var(--fk-rxl);background:var(--ink);color:#fff}
+.fk-boost .fk-eyebrow{color:var(--marker)}
+.fk-boost-h{font-size:clamp(26px,3vw,40px);line-height:1.22;letter-spacing:-.03em;font-weight:700;color:#fff;margin-top:12px}
+.fk-hl{background:var(--marker);color:var(--fk-label);padding:.02em .22em;border-radius:6px;white-space:nowrap;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.fk-boost-p{max-width:640px;margin:18px auto 30px;font-size:clamp(17px,1.6vw,20px);color:rgba(255,255,255,.8)}
+.fk-boost-hint{margin-top:12px;font-size:14px;color:rgba(255,255,255,.65)}
+@media(max-width:760px){.fk-boost{padding:48px 22px}}
+@media(max-width:380px){.fk-hl{white-space:normal}}
+
+/* ---------- Kontakt ---------- */
+.fk-contact{display:grid;grid-template-columns:1fr 1.1fr;gap:72px;align-items:start}
+.fk-contact-l .fk-sub{max-width:540px}
+.fk-flow{display:grid;gap:22px;margin-top:38px}
+.fk-flow li{display:flex;gap:16px;align-items:flex-start}
+.fk-flow em{flex:none;width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:var(--fk-label);color:#fff;font-style:normal;font-size:15px;font-weight:600}
+.fk-flow b{display:block;font-size:18px;font-weight:600;color:var(--fk-label)}
+.fk-flow span{display:block;font-size:16px;color:var(--fk-label-2);margin-top:2px}
+.fk-form .fk-group{margin-bottom:20px}
+.fk-fcell{position:relative;display:flex;align-items:center;gap:14px;min-height:60px;padding:0 22px;transition:background-color .15s}
+.fk-fcell+.fk-fcell::before{content:"";position:absolute;top:0;left:22px;right:0;border-top:.5px solid var(--fk-sep)}
+.fk-form .fk-fcell label{flex:none;width:130px;margin:0;font-size:17px;font-weight:500;color:var(--fk-label)}
+.fk-form .fk-fcell input,.fk-form .fk-fcell select,
+.fk-form .fk-fcell input:focus,.fk-form .fk-fcell select:focus{flex:1;min-width:0;width:auto;min-height:58px;margin:0;padding:0;border:0;border-radius:0;background:transparent;box-shadow:none;outline:none;
+  font-family:var(--body);font-size:17px;color:var(--fk-label);-webkit-appearance:none;appearance:none}
+.fk-form .fk-fcell input::placeholder{color:var(--fk-label-3)}
+.fk-fcell:focus-within{background:rgba(47,111,102,.05)}
+.fk-form .fk-sel select{padding-right:30px;cursor:pointer}
+.fk-sel .fk-chev{position:absolute;right:22px;top:50%;margin-top:-.5em;pointer-events:none}
+.fk-fcell:has(.err){background:#fff3f2}
+.fk-fcell:has(.err) label{color:var(--signal)}
+.fk-formerr{display:none;margin:-6px 4px 14px;font-size:14px;font-weight:600;color:var(--signal)}
+.fk-form:has(.err) .fk-formerr{display:block}
+.fk-hint{margin:0 4px 16px;font-size:14px;color:var(--fk-label-2)}
+.fk-privacy{margin:14px 4px 0;font-size:13px;line-height:1.45;color:var(--fk-label-2)}
+.fk-privacy a{color:var(--fk-tint)}
+.fk-alt{display:flex;gap:12px;margin-top:18px}
+.fk-alt .fk-btn{flex:1}
+.fk-formwrap .success,.fk-formwrap .form-error{padding:44px 32px;border-radius:var(--fk-rxl);background:var(--fk-elev);box-shadow:var(--fk-shadow)}
+.fk-done-h{margin:0 0 10px;font-size:24px;font-weight:700;letter-spacing:-.02em;color:var(--fk-label)}
+.fk-done-p{margin:0 0 22px;color:var(--fk-label-2)}
+@media(max-width:900px){.fk-contact{grid-template-columns:1fr;gap:44px}}
+@media(max-width:520px){.fk-form .fk-fcell label{width:112px;font-size:16px}.fk-fcell{padding:0 16px}.fk-fcell+.fk-fcell::before{left:16px}.fk-sel .fk-chev{right:16px}.fk-alt{flex-direction:column}}
+
+/* ---------- Schlussblock ---------- */
+.fk-final{text-align:center;padding:104px 32px;border-radius:var(--fk-rxl);background:#1d2524;color:#f2f5f4}
+.fk-final-h{font-size:clamp(36px,5vw,64px);line-height:1.06;letter-spacing:-.035em;font-weight:700;color:#f2f5f4}
+.fk-final-h span{color:rgba(242,245,244,.5)}
+.fk-final p{max-width:600px;margin:20px auto 34px;font-size:clamp(17px,1.6vw,20px);color:rgba(242,245,244,.74)}
+@media(max-width:760px){.fk-final{padding:64px 22px}}
+
+/* ---------- Mobil: schwebende Leiste unten (Glas) ---------- */
+.fk-fab{display:none}
+@media(max-width:760px){
+  .fk-fab{display:flex;position:fixed;left:16px;right:16px;bottom:calc(16px + env(safe-area-inset-bottom));z-index:60;gap:8px;padding:8px;border-radius:999px;
+    background:var(--fk-glass);-webkit-backdrop-filter:blur(24px) saturate(180%);backdrop-filter:blur(24px) saturate(180%);border:1px solid var(--fk-glass-brd);box-shadow:var(--fk-shadow);
+    transform:translateY(170%);transition:transform .3s ease}
+  .fk-fab.on{transform:none}
+  .fk-fab .fk-btn{flex:1;min-height:48px;font-size:16px}
+  .fk-fab .fk-fab-wa{flex:none;width:48px;padding:0}
+  .footer{padding-bottom:110px}
+}
+/* Fußzeile: Rechtslinks nebeneinander wie in der Vorlage */
+.footer{border-top:.5px solid var(--fk-sep);font-size:14px;color:var(--fk-label-2)}
+.footer .footer-legal{flex-direction:row;flex-wrap:wrap;gap:0 20px;width:auto}
+.footer .footer-legal a{display:inline-flex;align-items:center;min-height:44px;color:var(--fk-label-2)}
+@supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){.fk-nav-in,.fk-fab{background:rgba(255,255,255,.94)}}
+@media(prefers-reduced-transparency:reduce){.fk-nav-in,.fk-fab{background:rgba(255,255,255,.96);-webkit-backdrop-filter:none;backdrop-filter:none}}
+@media(prefers-reduced-motion:reduce){.fk-btn,.fk-chip,.fk-plan,.fk-fab,.fk-timeline em,.fk-progress i{transition:none}.fk-quotes{scroll-behavior:auto}}
+
+/* Raster nie breiter als der Bildschirm (lange Auswahl-Einträge, lange Wörter) */
+.fk-calc{grid-template-columns:minmax(0,1.15fr) minmax(0,1fr)}
+.fk-stats{grid-template-columns:repeat(2,minmax(0,1fr))}
+.fk-chips{grid-template-columns:repeat(3,minmax(0,1fr))}
+.fk-steps{grid-template-columns:260px minmax(0,1fr)}
+.fk-plans{grid-template-columns:repeat(3,minmax(0,1fr))}
+.fk-groups{grid-template-columns:repeat(2,minmax(0,1fr))}
+.fk-contact{grid-template-columns:minmax(0,1fr) minmax(0,1.1fr)}
+.fk-contact > *,.fk-steps > *,.fk-calc > *{min-width:0}
+.fk-form .fk-fcell select{width:0}
+@media(max-width:900px){
+  .fk-chips{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .fk-steps,.fk-plans,.fk-groups,.fk-contact{grid-template-columns:minmax(0,1fr)}
+}
+@media(max-width:760px){.fk-calc,.fk-stats{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:620px){.fk-chips{grid-template-columns:minmax(0,1fr)}}
 </style>
 </head>
 <body>
-<header class="topbar">
-  <div class="inner">
-    <a class="brand" href="#top">
-      <b>FAIRkaufs<span>WERKSTATT</span></b>
-      <em>Immobilien verkaufen ohne Provision</em>
-    </a>
-    <div class="topbar-note">Maklerwissen zum Festpreis · bundesweit digital</div>
-    <a class="btn btn-primary" href="#kontakt" data-cta="topbar">Erstgespräch<span class="tb-long">&nbsp;sichern</span></a>
-  </div>
-</header>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="fk-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></symbol>
+  <symbol id="fk-seal" viewBox="0 0 24 24"><path d="M12 3l2.4 1.8 3-.2.9 2.9 2.5 1.7-1 2.8 1 2.8-2.5 1.7-.9 2.9-3-.2L12 21l-2.4-1.8-3 .2-.9-2.9-2.5-1.7 1-2.8-1-2.8 2.5-1.7.9-2.9 3 .2z"/><path d="M8.5 12l2.3 2.3L15.5 9.6"/></symbol>
+  <symbol id="fk-euro" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M15.5 8.5a4 4 0 100 7M7 11h6M7 13.5h6"/></symbol>
+  <symbol id="fk-star" viewBox="0 0 24 24"><path d="M12 3.5l2.6 5.4 5.9.8-4.3 4.1 1 5.8L12 16.8l-5.2 2.8 1-5.8L3.5 9.7l5.9-.8z"/></symbol>
+  <symbol id="fk-chart" viewBox="0 0 24 24"><path d="M4 20h16M7 16v-4M12 16V7M17 16v-7"/></symbol>
+  <symbol id="fk-doc" viewBox="0 0 24 24"><path d="M7 3h7l5 5v13H7z"/><path d="M14 3v5h5M10 13h6M10 17h6"/></symbol>
+  <symbol id="fk-photo" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="3"/><circle cx="9" cy="10" r="1.6"/><path d="M21 16l-5-5-8 8"/></symbol>
+  <symbol id="fk-mega" viewBox="0 0 24 24"><path d="M4 10v4h3l7 4V6L7 10z"/><path d="M17 9.5a3.5 3.5 0 010 5"/></symbol>
+  <symbol id="fk-people" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.2"/><path d="M3.5 19a5.5 5.5 0 0111 0"/><circle cx="17" cy="9" r="2.4"/><path d="M15.5 14.2A4.5 4.5 0 0120.5 19"/></symbol>
+  <symbol id="fk-hand" viewBox="0 0 24 24"><path d="M3 12l4-4 4 2 3-2 7 5-4 4-3-1-3 3-4-1z"/><path d="M11 10l3 3"/></symbol>
+  <symbol id="fk-chev" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></symbol>
+  <symbol id="fk-chev-l" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></symbol>
+  <symbol id="fk-down" viewBox="0 0 24 24"><path d="M6 9.5l6 6 6-6"/></symbol>
+  <symbol id="fk-cal" viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="15" rx="3"/><path d="M3.5 10h17M8 3v4M16 3v4"/></symbol>
+  <symbol id="fk-bubble" viewBox="0 0 24 24"><path d="M4 12a8 7 0 118 7l-5 2 1-3.5A7 7 0 014 12z"/></symbol>
+  <symbol id="fk-cube" viewBox="0 0 24 24"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9z"/><path d="M4 7.5l8 4.5 8-4.5M12 12v9"/></symbol>
+  <symbol id="fk-leaf" viewBox="0 0 24 24"><path d="M5 19c0-9 6-14 15-14 0 9-5 15-14 15"/><path d="M5 19l8-8"/></symbol>
+  <symbol id="fk-book" viewBox="0 0 24 24"><path d="M4 5.5A2.5 2.5 0 016.5 3H20v15H6.5A2.5 2.5 0 004 20.5z"/><path d="M4 20.5A2.5 2.5 0 006.5 23H20"/></symbol>
+  <symbol id="fk-refresh" viewBox="0 0 24 24"><path d="M20 11a8 8 0 00-14.9-3.5M4 4v4h4"/><path d="M4 13a8 8 0 0014.9 3.5M20 20v-4h-4"/></symbol>
+  <symbol id="fk-eyeoff" viewBox="0 0 24 24"><path d="M3 3l18 18"/><path d="M10.6 6.2A9.9 9.9 0 0112 6c5 0 9 6 9 6a17 17 0 01-3 3.4M6.6 7.6A17 17 0 003 12s4 6 9 6a9 9 0 004.3-1.1"/><path d="M9.9 10a3 3 0 004.2 4.2"/></symbol>
+  <symbol id="fk-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="M3.5 7l8.5 6 8.5-6"/></symbol>
+  <symbol id="fk-sign" viewBox="0 0 24 24"><path d="M12 3v18M5 6h12l2 2.5L17 11H5zM8 21h8"/></symbol>
+</svg>
+<nav class="fk-nav" aria-label="Hauptnavigation"><div class="fk-nav-in">
+  <a class="fk-logo" href="#top" aria-label="FAIRkaufswerkstatt – zum Seitenanfang"><b>FAIRkaufs</b>WERKSTATT</a>
+  <div class="fk-nav-links"><a href="#pakete">Pakete</a><a href="#ablauf">Ablauf</a><a href="#module">Module</a><a href="#vergleich">Vergleich</a><a href="#faq">Fragen</a></div>
+  <a class="fk-btn fk-btn-primary fk-btn-sm" href="#kontakt" data-cta="topbar">Erstgespräch</a>
+</div></nav>
 
 <main id="top">
 
 <!-- HERO -->
-<section class="hero hero-c">
-  <div class="wrap">
-    <p class="hc-eyebrow">Verkaufen &amp; Vermieten ohne Provision</p>
-    <h1>Verkauf deine Immobilie doch einfach selbst. <span class="hl">Nur eben nicht allein.</span></h1>
-    <p class="hc-sub">Mit uns bekommst du das komplette Maklerwissen an die Hand – und behältst die Provision, die Kontrolle und die Entscheidung.</p>
-    <div class="hc-cta">
-      <a class="btn btn-primary" href="#kontakt" data-cta="hero">Erstgespräch anfragen</a>
-      <a class="hc-link" href="#pakete">Pakete ab 845 € ansehen<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9.5 6l6 6-6 6"/></svg></a>
+<header class="fk-hero">
+  <div class="fk-wrap">
+    <p class="fk-eyebrow">Verkaufen &amp; Vermieten ohne Provision</p>
+    <h1 class="fk-h1">Verkauf deine Immobilie selbst. <span>Nur eben nicht allein.</span></h1>
+    <p class="fk-lead">Das komplette Maklerwissen zum Festpreis – du behältst die Provision, die Kontrolle und die Entscheidung.</p>
+    <div class="fk-ctas">
+      <a class="fk-btn fk-btn-primary fk-btn-lg" href="#kontakt" data-cta="hero">Kostenloses Erstgespräch</a>
+      <a class="fk-btn fk-btn-tinted fk-btn-lg" href="#pakete">Pakete ab 845 €</a>
     </div>
-    <p class="hc-hint">Kostenlos, unverbindlich und ohne Verkaufsdruck.</p>
-    <ul class="hc-facts">
-      <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Keine Provision</li>
-      <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Pauschale Festpreise</li>
-      <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>5,0 ★ bei Google</li>
-    </ul>
+    <div class="fk-trust">
+      <span><svg class="fk-sym" aria-hidden="true"><use href="#fk-seal"/></svg>Keine Provision</span>
+      <span><svg class="fk-sym" aria-hidden="true"><use href="#fk-euro"/></svg>Pauschale Festpreise</span>
+      <span><svg class="fk-sym" aria-hidden="true"><use href="#fk-star"/></svg>5,0 bei Google</span>
+    </div>
 
-    <div class="calc2" id="calc">
-      <div class="calc2-grid">
-        <div class="calc2-ctrl">
-          <h2 class="calc2-title">Was kostet dich ein Makler?</h2>
-          <div class="calc2-field">
-            <label for="calcPrice">Angebotspreis deiner Immobilie</label>
-            <output id="calcPriceOut" for="calcPrice">500.000 €</output>
-            <input type="range" id="calcPrice" class="calc2-range" min="100000" max="1500000" step="10000" value="500000">
-          </div>
-          <div class="calc2-field">
-            <label for="calcRate">Üblicher Provisionsanteil für Verkäufer</label>
-            <output id="calcRateOut" for="calcRate">3,57 %</output>
-            <input type="range" id="calcRate" class="calc2-range" min="1" max="7" step="0.01" value="3.57">
-          </div>
-          <fieldset class="calc2-field">
-            <legend>Dein Paket bei uns</legend>
-            <div class="calc2-seg">
-              <label><input type="radio" name="calcPaket" value="845"><span>Premium<small>845 €</small></span></label>
-              <label><input type="radio" name="calcPaket" value="2975" checked><span>Rundum-Sorglos<small>2.975 €</small></span></label>
-              <label><input type="radio" name="calcPaket" value="5345"><span>Masterclass<small>5.345 €</small></span></label>
-            </div>
-          </fieldset>
+    <div class="fk-calc" id="calc">
+      <div class="fk-calc-l">
+        <h2 class="fk-calc-title">Was kostet dich ein Makler?</h2>
+        <p class="fk-calc-sub">Schieb die Regler auf deinen Fall.</p>
+        <div class="fk-field">
+          <div class="fk-row"><label for="calcPrice">Angebotspreis</label><output id="calcPriceOut" for="calcPrice">500.000 €</output></div>
+          <input type="range" id="calcPrice" class="fk-range" min="100000" max="1500000" step="10000" value="500000">
         </div>
-        <div class="calc2-out" aria-live="polite">
-          <dl>
-            <div><dt>Maklerprovision</dt><dd><s id="calcCommission">17.850 €</s></dd></div>
-            <div><dt>Dein Festpreis bei uns</dt><dd id="calcFix">2.975 €</dd></div>
-          </dl>
-          <p class="calc2-savelabel" id="calcSaveLabel">Bleibt bei dir</p>
-          <p class="calc2-save"><span class="mark" id="calcSave">14.875 €</span></p>
+        <div class="fk-field">
+          <div class="fk-row"><label for="calcRate">Provision für Verkäufer</label><output id="calcRateOut" for="calcRate">3,57 %</output></div>
+          <input type="range" id="calcRate" class="fk-range" min="1" max="7" step="0.01" value="3.57">
+        </div>
+        <fieldset class="fk-field">
+          <legend>Dein Paket</legend>
+          <div class="fk-seg">
+            <label><input type="radio" name="calcPaket" value="845"><span>Premium</span></label>
+            <label><input type="radio" name="calcPaket" value="2975" checked><span>Rundum-Sorglos</span></label>
+            <label><input type="radio" name="calcPaket" value="5345"><span>Masterclass</span></label>
+          </div>
+        </fieldset>
+      </div>
+      <div class="fk-calc-r" aria-live="polite">
+        <div class="fk-lines">
+          <div><span>Maklerprovision</span><s id="calcCommission">17.850 €</s></div>
+          <div><span>Festpreis bei uns</span><span id="calcFix">2.975 €</span></div>
+        </div>
+        <div class="fk-keep">
+          <small id="calcSaveLabel">Bleibt bei dir</small>
+          <div class="fk-big"><span class="mark" id="calcSave">14.875 €</span></div>
+          <p class="fk-note">Beispielrechnung, kein Angebot. 3,57 % entspricht dem in Hessen üblichen Verkäuferanteil inkl. MwSt.</p>
         </div>
       </div>
-      <p class="calc2-note">Beispielrechnung, kein Angebot. Der voreingestellte Satz von 3,57 % entspricht dem in Hessen üblichen Verkäuferanteil inkl. MwSt. – Provisionssätze werden frei vereinbart und unterscheiden sich je nach Region und Makler. Schieb den Regler einfach auf deinen Fall.</p>
     </div>
-    <p class="hc-caption">Die Provision ist der eine Teil. Der andere: das Wissen, das dahintersteckt. Genau das bekommst du bei uns – zum Festpreis.</p>
+  </div>
+</header>
+
+<!-- PROBLEM -->
+<section class="fk-s" id="problem">
+  <div class="fk-wrap">
+    <div class="fk-problem-head">
+      <p class="fk-eyebrow">Das Problem</p>
+      <p class="problem-intro">Die Maklerprovision sparen? Klar.</p>
+      <p class="problem-q problem-q-wrap"><span class="mark">Aber bitte <b>nicht zum <span class="nb">Vollzeit-Makler</span></b> werden!</span></p>
+      <p class="fk-sub">Preisfindung, Unterlagen, Exposé, Vermarktung, Besichtigungen, Verhandlung – ein Verkauf verlangt mehr Wissen und Zeit, als die meisten denken.</p>
+    </div>
+    <div class="fk-stats">
+      <div class="fk-tile fk-tile-money"><p class="fk-num">3,57 %</p><h3>So viel Provision zahlst du sonst</h3><p>Bei 500.000 € rund 17.850 € – für Leistungen, die du zu großen Teilen selbst übernehmen kannst, wenn dir jemand zeigt wie.</p></div>
+      <div class="fk-tile fk-tile-alone"><p class="fk-num">0 %</p><h3>So viel Unterstützung hast du allein</h3><p>Wer ganz allein verkauft, spart die Provision – steht bei Bewertung, Unterlagen und Verhandlung aber schnell allein da.</p></div>
+    </div>
   </div>
 </section>
 
-<!-- PROBLEM -->
-<section id="problem">
-  <div class="wrap">
-    <div class="rv" style="margin-bottom:10px">
-      <p class="eyebrow">Das Problem</p>
-      <p class="problem-intro">Die Maklerprovision sparen? Klar.</p>
-      <p class="problem-q problem-q-wrap"><span class="mark">Aber bitte <b>nicht zum <span class="nb">Vollzeit-Makler</span></b> werden!</span></p>
-      <p class="problem-bridge">Preisfindung, Unterlagen, Exposé, Vermarktung, Anfragen, Besichtigungen, Verhandlung, Kaufvertrag: Fast jeder unterschätzt, <b>was ein Verkauf oder eine Vermietung an Wissen verlangt</b> – und <b>was das an Zeit frisst</b>.</p>
+<!-- SELBSTCHECK -->
+<section class="fk-s" id="selbstcheck">
+  <div class="fk-wrap">
+    <div class="fk-head">
+      <p class="fk-eyebrow">Selbstcheck</p>
+      <h2 class="fk-h2">Wo fühlst du dich noch unsicher?</h2>
+      <p class="fk-sub">Tippe an, was auf dich zutrifft. Wir zeigen dir, wo wir einspringen.</p>
     </div>
-
-    <!-- GRUND 1: DAS GELD -->
-    <div class="urgency rv">
-      <p class="urgency-label">Grund 1 — Das Geld</p>
-      <div class="urgency-grid">
-        <div class="urgency-item">
-          <span class="u-num">3,57 %</span>
-          <div><b>So viel Provision zahlst du sonst</b><p>Bei 500.000 € Kaufpreis sind das rund 17.850 € – für Leistungen, die du zu großen Teilen selbst übernehmen kannst, wenn dir jemand zeigt wie.</p></div>
-        </div>
-        <div class="urgency-item urgency-danger">
-          <span class="u-num">0 %</span>
-          <div><b>So viel Unterstützung hast du allein</b><p>Wer ganz allein verkauft oder vermietet, spart zwar die Provision – steht bei Bewertung, Unterlagen und Verhandlung aber schnell alleine da. Dort passieren die teuren Fehler.</p></div>
-        </div>
-      </div>
+    <div class="fk-chips" id="fkChecks">
+      <button type="button" class="fk-chip" aria-pressed="false"><span class="fk-ic"><svg class="fk-sym" aria-hidden="true"><use href="#fk-chart"/></svg></span><span class="fk-chip-t"><b>Immobilienbewertung</b><span>Was ist realistisch drin – und wie begründe ich den Preis?</span></span><span class="fk-chk"><svg class="fk-sym" aria-hidden="true"><use href="#fk-check"/></svg></span></button>
+      <button type="button" class="fk-chip" aria-pressed="false"><span class="fk-ic"><svg class="fk-sym" aria-hidden="true"><use href="#fk-doc"/></svg></span><span class="fk-chip-t"><b>Unterlagen &amp; Recht</b><span>Welche Dokumente brauche ich, was darf nicht fehlen?</span></span><span class="fk-chk"><svg class="fk-sym" aria-hidden="true"><use href="#fk-check"/></svg></span></button>
+      <button type="button" class="fk-chip" aria-pressed="false"><span class="fk-ic"><svg class="fk-sym" aria-hidden="true"><use href="#fk-photo"/></svg></span><span class="fk-chip-t"><b>Präsentation &amp; Exposé</b><span>Aus Fotos und Grundriss einen Auftritt machen, der Lust macht.</span></span><span class="fk-chk"><svg class="fk-sym" aria-hidden="true"><use href="#fk-check"/></svg></span></button>
+      <button type="button" class="fk-chip" aria-pressed="false"><span class="fk-ic"><svg class="fk-sym" aria-hidden="true"><use href="#fk-mega"/></svg></span><span class="fk-chip-t"><b>Vermarktung &amp; Portale</b><span>Wo inserieren, wie nachsteuern, wen ansprechen?</span></span><span class="fk-chk"><svg class="fk-sym" aria-hidden="true"><use href="#fk-check"/></svg></span></button>
+      <button type="button" class="fk-chip" aria-pressed="false"><span class="fk-ic"><svg class="fk-sym" aria-hidden="true"><use href="#fk-people"/></svg></span><span class="fk-chip-t"><b>Interessenten einschätzen</b><span>Wer meint es ernst – und wer kann finanzieren?</span></span><span class="fk-chk"><svg class="fk-sym" aria-hidden="true"><use href="#fk-check"/></svg></span></button>
+      <button type="button" class="fk-chip" aria-pressed="false"><span class="fk-ic"><svg class="fk-sym" aria-hidden="true"><use href="#fk-hand"/></svg></span><span class="fk-chip-t"><b>Preisverhandlung</b><span>Den Preis halten, ohne Interessent:innen zu verlieren.</span></span><span class="fk-chk"><svg class="fk-sym" aria-hidden="true"><use href="#fk-check"/></svg></span></button>
     </div>
-
-    <!-- GRUND 2: DAS WISSEN -->
-    <div class="symptom-check rv">
-      <p class="urgency-label sc-topic">Grund 2 — Das Wissen</p>
-      <div class="sc-head">
-        <p class="sc-label">Wo fühlst du dich noch nicht verkaufsstark? Klick an.</p>
-        <p class="sc-counter"><b id="scCount">0</b> von 6 ausgewählt</p>
-      </div>
-      <div class="symptoms" id="symptomList">
-        <button type="button" class="symptom" aria-pressed="false"><span class="tick"></span><span><b>Immobilienbewertung</b><p>Was ist realistisch drin – und wie begründe ich den Preis, wenn jemand nachfragt?</p></span></button>
-        <button type="button" class="symptom" aria-pressed="false"><span class="tick"></span><span><b>Unterlagen &amp; Rechtliches</b><p>Welche Dokumente brauche ich, was muss ins Exposé und was darf keinesfalls fehlen?</p></span></button>
-        <button type="button" class="symptom" aria-pressed="false"><span class="tick"></span><span><b>Präsentation &amp; Exposé</b><p>Aus Fotos, Grundriss und Beschreibung einen Auftritt machen, der Lust auf mehr macht.</p></span></button>
-        <button type="button" class="symptom" aria-pressed="false"><span class="tick"></span><span><b>Vermarktung &amp; Portale</b><p>Wo inserieren, wie oft nachsteuern und mit welcher Ansprache erreiche ich die Richtigen?</p></span></button>
-        <button type="button" class="symptom" aria-pressed="false"><span class="tick"></span><span><b>Interessenten einschätzen</b><p>Wer meint es ernst – und wer kann die Immobilie überhaupt finanzieren?</p></span></button>
-        <button type="button" class="symptom" aria-pressed="false"><span class="tick"></span><span><b>Preisverhandlung</b><p>Den Preis halten, ohne ernsthafte Interessent:innen zu verlieren. Auch wenn es unangenehm wird.</p></span></button>
-      </div>
-      <div class="sc-result" id="scResult">
-        <div class="sc-result-inner"><b id="scResultLabel">Ergebnis</b><span id="scResultText"></span></div>
-      </div>
+    <p class="fk-counter" aria-live="polite"><b><span id="fkCount">0</span> von 6</b> ausgewählt<span class="fk-reslink" id="fkResLink" hidden> · <button type="button" class="fk-textbtn" id="fkResBtn" aria-expanded="false" aria-controls="fkResult">Ergebnis ansehen<svg class="fk-sym" aria-hidden="true"><use href="#fk-chev"/></svg></button></span></p>
+    <div class="fk-resultcard" id="fkResult" hidden>
+      <p class="fk-eyebrow" id="fkResLabel">Ergebnis</p>
+      <p class="fk-restext" id="fkResText"></p>
+      <a class="fk-btn fk-btn-primary" href="#kontakt" data-cta="selbstcheck">Kostenloses Erstgespräch</a>
     </div>
+  </div>
+</section>
 
-    <!-- KERN-ERKENNTNIS -->
-    <div class="insight rv">
-      <div class="insight-inner">
-        <p class="kicker">Genau dafür gibt es die FAIRkaufswerkstatt</p>
-        <h2><span class="strike">Du brauchst einen Makler.</span><br>Du brauchst <span class="yes mark">Maklerwissen.</span></h2>
-        <p class="sub">Wir geben dir das Wissen, die Werkzeuge und die professionelle Unterstützung, die du für deinen Verkauf oder deine Vermietung brauchst – genau dort, wo du sie brauchst:</p>
-        <div class="chips">
-          <span class="chip">Wertermittlung</span>
-          <span class="chip">Unterlagen</span>
-          <span class="chip">Exposé</span>
-          <span class="chip">Portale</span>
-          <span class="chip">Interessenten-Check</span>
-          <span class="chip">Verhandlung</span>
-          <span class="chip">Notartermin</span>
-        </div>
-        <p class="closing">Du machst das, was du ohnehin am besten kannst: deine Immobilie zeigen. Wir machen den Rest – im Hintergrund. Kein Makler. Kein Alleingang. Sondern dein Verkauf – mit Profis im Rücken.</p>
-      </div>
+<!-- MAKLERWISSEN -->
+<section class="fk-s" id="maklerwissen">
+  <div class="fk-wrap">
+    <div class="fk-insight">
+      <p class="fk-eyebrow">Genau dafür gibt es die FAIRkaufswerkstatt</p>
+      <h2 class="fk-h2"><span class="fk-strike">Du brauchst einen Makler.</span><br>Du brauchst <span class="mark">Maklerwissen.</span></h2>
+      <p class="fk-sub">Wissen, Werkzeuge und Profi-Unterstützung – genau dort, wo du sie brauchst.</p>
+      <ul class="fk-pills"><li>Wertermittlung</li><li>Unterlagen</li><li>Exposé</li><li>Portale</li><li>Interessenten-Check</li><li>Verhandlung</li><li>Notartermin</li></ul>
+      <p class="fk-closing">Du zeigst deine Immobilie. Wir machen den Rest – im Hintergrund.</p>
     </div>
   </div>
 </section>
@@ -1807,313 +2213,117 @@ h1,h2,h3{letter-spacing:-.03em}
 
 
 <!-- LÖSUNG / INTERAKTIVER PROZESS -->
-<section class="soft" id="ablauf">
-  <div class="wrap">
-    <div class="section-head ab-head rv">
-      <p class="hc-eyebrow">Der Ablauf</p>
-      <h2>Sechs Schritte. Du gehst sie – <span class="nb">wir gehen mit.</span></h2>
-      <p class="lead">Vom ersten Gespräch bis zur Unterschrift. Tipp einen Schritt an und sieh, was darin passiert und was am Ende für dich herauskommt.</p>
+<section class="fk-s" id="ablauf">
+  <div class="fk-wrap">
+    <div class="fk-head">
+      <p class="fk-eyebrow">Der Ablauf</p>
+      <h2 class="fk-h2">Sechs Schritte. Du gehst sie – <span class="nb">wir gehen mit.</span></h2>
     </div>
-
-    <ol class="ab-steps rv">
-      <li><details name="ablauf" open>
-        <summary><span class="ab-no" aria-hidden="true">1</span><h3 class="ab-t"><span class="ab-sr">Schritt 1: </span>Unverbindliches Erstgespräch</h3><svg class="ab-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9.5l6 6 6-6"/></svg></summary>
-        <div class="ab-body"><p>Wir lernen deine Immobilie und deine Wünsche kennen und analysieren gemeinsam, wo du wirklich Unterstützung brauchst – und wo eben nicht. Kein Verkaufsgespräch, sondern eine ehrliche Einordnung deiner Ausgangslage.</p><div class="ab-out"><span>Dein Ergebnis</span><p>Ein klarer Fahrplan für deinen Verkauf oder deine Vermietung. Transparent, ehrlich und zu 100 % unverbindlich.</p></div></div>
-      </details></li>
-      <li><details name="ablauf">
-        <summary><span class="ab-no" aria-hidden="true">2</span><h3 class="ab-t"><span class="ab-sr">Schritt 2: </span>Datenbasierte Wertermittlung &amp; Strategie</h3><svg class="ab-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9.5l6 6 6-6"/></svg></summary>
-        <div class="ab-body"><p>Auf Basis aktueller Marktdaten ermitteln wir den optimalen Angebotspreis für deine Immobilie. Kein Bauchgefühl, keine Schönfärberei – sondern eine Zahl, die du im Gespräch mit Interessent:innen auch begründen kannst.</p><div class="ab-out"><span>Dein Ergebnis</span><p>Eine fundierte Preisstrategie als sicheres Fundament für die gesamte Vermarktung.</p></div></div>
-      </details></li>
-      <li><details name="ablauf">
-        <summary><span class="ab-no" aria-hidden="true">3</span><h3 class="ab-t"><span class="ab-sr">Schritt 3: </span>Aufbereitung &amp; Profi-Exposé</h3><svg class="ab-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9.5l6 6 6-6"/></svg></summary>
-        <div class="ab-body"><p>Wir strukturieren deine vorhandenen Unterlagen, bereiten Grundrisse digital auf und erstellen ein erstklassiges, verkaufsstarkes Exposé. Aus einer Sammlung von PDFs wird ein Auftritt.</p><div class="ab-out"><span>Dein Ergebnis</span><p>Ein professioneller Auftritt, der die Stärken deiner Immobilie in Szene setzt – statt sie nur aufzuzählen.</p></div></div>
-      </details></li>
-      <li><details name="ablauf">
-        <summary><span class="ab-no" aria-hidden="true">4</span><h3 class="ab-t"><span class="ab-sr">Schritt 4: </span>Digitales Marketing &amp; Interessenten-Check</h3><svg class="ab-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9.5l6 6 6-6"/></svg></summary>
-        <div class="ab-body"><p>Wir platzieren deine Immobilie auf den relevanten Portalen, managen alle Anfragen und prüfen vorab, ob die Interessierten überhaupt finanzieren bzw. die Miete tragen können.</p><div class="ab-out"><span>Dein Ergebnis</span><p>Kein Besichtigungstourismus: Du empfängst nur geprüfte, ernsthafte Interessent:innen.</p></div></div>
-      </details></li>
-      <li><details name="ablauf">
-        <summary><span class="ab-no" aria-hidden="true">5</span><h3 class="ab-t"><span class="ab-sr">Schritt 5: </span>Besichtigung in Eigenregie &amp; Verhandlungs-Support</h3><svg class="ab-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9.5l6 6 6-6"/></svg></summary>
-        <div class="ab-body"><p>Du führst die Besichtigungstermine vor Ort durch – niemand kann deine Immobilie so erzählen wie du. Wir geben dir praxiserprobte Leitfäden an die Hand und unterstützen im Hintergrund bei der Preisverhandlung.</p><div class="ab-out"><span>Dein Ergebnis</span><p>Du behältst die volle Kontrolle vor Ort und holst mit unserem Expertenwissen den besten Preis heraus.</p></div></div>
-      </details></li>
-      <li><details name="ablauf">
-        <summary><span class="ab-no" aria-hidden="true">6</span><h3 class="ab-t"><span class="ab-sr">Schritt 6: </span>Sicherer Vertrag &amp; saubere Abwicklung</h3><svg class="ab-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9.5l6 6 6-6"/></svg></summary>
-        <div class="ab-body"><p>Beim Verkauf koordinieren wir den Kaufvertragsentwurf, prüfen alle Formalien und begleiten dich Schritt für Schritt bis zum Notartermin. Beim Vermieten sorgen wir für einen rechtssicheren Mietvertrag und eine saubere Übergabe.</p><div class="ab-out"><span>Dein Ergebnis</span><p>Ein rechtssicherer, entspannter Abschluss bis zur finalen Übergabe.</p></div></div>
-      </details></li>
-    </ol>
-
-    <p class="ab-more"><a class="hc-link" href="#kontakt" data-cta="ablauf">Mit dem Erstgespräch anfangen<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9.5 6l6 6-6 6"/></svg></a></p>
+    <div class="fk-steps">
+      <ol class="fk-timeline" role="tablist" aria-label="Ablauf in sechs Schritten" aria-orientation="vertical">
+        <li><button type="button" role="tab" id="fkStepTab0" aria-controls="fkStepPanel" aria-selected="true" tabindex="0" data-step="0"><em>1</em><span>Erstgespräch</span></button></li>
+        <li><button type="button" role="tab" id="fkStepTab1" aria-controls="fkStepPanel" aria-selected="false" tabindex="-1" data-step="1"><em>2</em><span>Wertermittlung</span></button></li>
+        <li><button type="button" role="tab" id="fkStepTab2" aria-controls="fkStepPanel" aria-selected="false" tabindex="-1" data-step="2"><em>3</em><span>Exposé</span></button></li>
+        <li><button type="button" role="tab" id="fkStepTab3" aria-controls="fkStepPanel" aria-selected="false" tabindex="-1" data-step="3"><em>4</em><span>Vermarktung</span></button></li>
+        <li><button type="button" role="tab" id="fkStepTab4" aria-controls="fkStepPanel" aria-selected="false" tabindex="-1" data-step="4"><em>5</em><span>Besichtigung</span></button></li>
+        <li><button type="button" role="tab" id="fkStepTab5" aria-controls="fkStepPanel" aria-selected="false" tabindex="-1" data-step="5"><em>6</em><span>Abschluss</span></button></li>
+      </ol>
+      <div class="fk-stepcard" id="fkStepPanel" role="tabpanel" aria-labelledby="fkStepTab0" aria-live="polite">
+        <p class="fk-eyebrow" id="fkStepNo">Schritt 1 von 6</p>
+        <h3 class="fk-steptitle" id="fkStepTitle">Unverbindliches Erstgespräch</h3>
+        <p class="fk-steptext" id="fkStepText">Wir lernen deine Immobilie und deine Wünsche kennen und klären gemeinsam, wo du wirklich Unterstützung brauchst – und wo nicht. Kein Verkaufsgespräch, sondern eine ehrliche Einordnung.</p>
+        <div class="fk-progress" aria-hidden="true"><i class="on"></i><i></i><i></i><i></i><i></i><i></i></div>
+        <div class="fk-result"><svg class="fk-sym" aria-hidden="true"><use href="#fk-seal"/></svg><div><b>Dein Ergebnis</b><span id="fkStepOut">Ein klarer Fahrplan für deinen Verkauf oder deine Vermietung – transparent und 100 % unverbindlich.</span></div></div>
+      </div>
+    </div>
   </div>
 </section>
 
 <!-- PAKETE -->
-<section id="pakete">
-  <div class="wrap">
-    <div class="section-head rv">
-      <p class="eyebrow">Die Pakete</p>
-      <h2>Wie viel willst du selbst machen?</h2>
-      <p class="lead">Drei Stufen, ein Prinzip: Du entscheidest, wie viel du selbst übernimmst und wo wir einspringen. Alle Preise sind pauschale Festpreise inkl. 19 % MwSt. – ohne Provision, ohne Nachschlag beim Abschluss.</p>
+<section class="fk-s" id="pakete">
+  <div class="fk-wrap">
+    <div class="fk-head">
+      <p class="fk-eyebrow">Die Pakete</p>
+      <h2 class="fk-h2">Wie viel willst du selbst machen?</h2>
+      <p class="fk-sub">Pauschale Festpreise inkl. 19 % MwSt. Keine Provision, kein Nachschlag beim Abschluss.</p>
     </div>
-
-    <div class="pkg-switch rv" role="tablist" aria-label="Pakete umschalten">
-      <button role="tab" aria-selected="true" data-pkg="kaufen">FAIRkaufen<small>Immobilie verkaufen</small></button>
-      <button role="tab" aria-selected="false" data-pkg="mieten">FAIRmieten<small>Immobilie vermieten</small></button>
-    </div>
-
-    <!-- FAIRKAUFEN -->
-    <div class="pkg-group" id="pkg-kaufen">
-      <div class="plans">
-        <div class="plan rv">
-          <span class="badge calm">Einstieg</span>
-          <p class="name">Premium</p>
-          <p class="for">Du machst viel selbst</p>
-          <div class="price-box">
-            <p class="price">845 <sup>€</sup></p>
-            <span class="vat">Festpreis, einmalig · inkl. 19 % MwSt.</span>
-          </div>
-          <p class="term"><b>Statt rund 17.850 € Provision bei 500.000 €</b></p>
-          <div class="plan-list">
-              <ul>
-                <li>Ratgeber inkl. aller Checklisten und Vorlagen</li>
-                <li>Erhebung relevanter Immobilieninformationen</li>
-                <li><b>3 Monate</b> Inserats-Verwaltung</li>
-                <li>Beratungstermin vor Vermarktungsbeginn</li>
-                <li>14-tägig Berichterstattung über aktuelle Vermarktungszahlen</li>
-                <li>Weiterleitung eingehender Interessentenanfragen</li>
-                <li>Exposé- und Dokumenten-Versand an Interessent:innen</li>
-                <li>Finanzierungsfahrplan für Interessent:innen</li>
-              </ul>
-            <button type="button" class="plan-more" aria-expanded="false"><span>Alle Leistungen</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9.5l6 6 6-6"/></svg></button>
-          </div>
-          <div class="foot">
-            <a class="btn btn-dark btn-block" href="#kontakt" data-cta="paket-845">Premium anfragen</a>
-            <p class="note">Ideal, wenn du organisiert bist und nur die Profi-Struktur brauchst.</p>
-          </div>
-        </div>
-
-        <div class="plan featured rv">
-          <span class="badge">Am meisten gebucht</span>
-          <p class="name">Rundum-Sorglos</p>
-          <p class="for">Wir übernehmen den Papierkram</p>
-          <div class="price-box">
-            <p class="price">2.975 <sup>€</sup></p>
-            <span class="vat">Festpreis, einmalig · inkl. 19 % MwSt.</span>
-          </div>
-          <p class="term"><b>Inkl. Energieausweis &amp; Bewertung nach Sprengnetter</b></p>
-          <div class="plan-list">
-              <ul>
-                <li class="inherit">Alles aus Premium, plus:</li>
-                <li><b>1 Monat kostenfrei</b> inserieren auf zwei Immobilienportalen</li>
-                <li>Kostenfreier Energieausweis</li>
-                <li>Immobilienbewertung nach Sprengnetter</li>
-                <li>Vermarktungsstrategie und Konkurrenzanalyse</li>
-                <li>Resonanzgespräch nach 4 Wochen inkl. Strategieanpassung</li>
-                <li><b>7-tägig</b> Berichterstattung über aktuelle Vermarktungszahlen</li>
-                <li>Verwaltung von Interessentenanfragen</li>
-                <li>Koordination von Besichtigungsterminen</li>
-              </ul>
-            <button type="button" class="plan-more" aria-expanded="false"><span>Alle Leistungen</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9.5l6 6 6-6"/></svg></button>
-          </div>
-          <div class="foot">
-            <a class="btn btn-primary btn-block" href="#kontakt" data-cta="paket-2975">Rundum-Sorglos anfragen</a>
-            <p class="note">Der Klassiker: Du zeigst die Immobilie, wir kümmern uns um den Rest.</p>
-          </div>
-        </div>
-
-        <div class="plan rv">
-          <span class="badge calm">Volles Programm</span>
-          <p class="name">Masterclass</p>
-          <p class="for">Alles, was geht</p>
-          <div class="price-box">
-            <p class="price">5.345 <sup>€</sup></p>
-            <span class="vat">Festpreis, einmalig · inkl. 19 % MwSt.</span>
-          </div>
-          <p class="term"><b>Inkl. Profi-Fotografie, 360°-Rundgang &amp; zwei Workshops</b></p>
-          <div class="plan-list">
-              <ul>
-                <li class="inherit">Alles aus Rundum-Sorglos, plus:</li>
-                <li><b>3 Monate kostenfrei</b> inserieren auf zwei Immobilienportalen</li>
-                <li>Dokumenteneinholung</li>
-                <li>Professionelle Immobilienfotografie</li>
-                <li>360°-Aufnahmen inkl. 3D-Rendering &amp; Dollhouse-Modell</li>
-                <li>Beratungstermin vor Vermarktungsbeginn vor Ort</li>
-                <li>Workshop „Professionelle Besichtigungen &amp; effiziente Prozessgestaltung“</li>
-                <li>Workshop „Verhandlungskompetenz“ – Strategien, Preisgestaltung &amp; Einwandbehandlung</li>
-                <li>Dokumente schwärzen (DSGVO-konform)</li>
-                <li>Verkaufsschilder für 3 Monate</li>
-                <li>Flyer &amp; Nachbarschaftsbriefe (inkl. Text &amp; Layout)</li>
-              </ul>
-            <button type="button" class="plan-more" aria-expanded="false"><span>Alle Leistungen</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9.5l6 6 6-6"/></svg></button>
-          </div>
-          <div class="foot">
-            <a class="btn btn-dark btn-block" href="#kontakt" data-cta="paket-5345">Masterclass anfragen</a>
-            <p class="note">Für Immobilien, bei denen der Auftritt über den Preis entscheidet.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- FAIRMIETEN -->
-    <div class="pkg-group" id="pkg-mieten" hidden>
-      <div class="plans">
-        <div class="plan rv">
-          <span class="badge calm">Einstieg</span>
-          <p class="name">Basic</p>
-          <p class="for">Du machst viel selbst</p>
-          <div class="price-box">
-            <p class="price">249 <sup>€</sup></p>
-            <span class="vat">Festpreis, einmalig · inkl. 19 % MwSt.</span>
-          </div>
-          <p class="term"><b>Statt bis zu zwei Nettokaltmieten Provision</b></p>
-          <div class="plan-list">
-              <ul>
-                <li>Erhebung relevanter Immobilieninformationen</li>
-                <li><b>3 Monate</b> Inserats-Verwaltung</li>
-                <li>7-tägig Berichterstattung über aktuelle Vermarktungszahlen</li>
-                <li>Weiterleitung eingehender Interessentenanfragen</li>
-                <li>Bewerbungsfahrplan für Interessent:innen</li>
-              </ul>
-            <button type="button" class="plan-more" aria-expanded="false"><span>Alle Leistungen</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9.5l6 6 6-6"/></svg></button>
-          </div>
-          <div class="foot">
-            <a class="btn btn-dark btn-block" href="#kontakt" data-cta="miete-249">Basic anfragen</a>
-            <p class="note">Wenn du nur ein sauberes Inserat und Struktur brauchst.</p>
-          </div>
-        </div>
-
-        <div class="plan featured rv">
-          <span class="badge">Am meisten gebucht</span>
-          <p class="name">Top</p>
-          <p class="for">Wir sortieren die Anfragen</p>
-          <div class="price-box">
-            <p class="price">415 <sup>€</sup></p>
-            <span class="vat">Festpreis, einmalig · inkl. 19 % MwSt.</span>
-          </div>
-          <p class="term"><b>Inkl. Anfragen-Management &amp; Terminkoordination</b></p>
-          <div class="plan-list">
-              <ul>
-                <li class="inherit">Alles aus Basic, plus:</li>
-                <li>Beratungstermin vor Vermarktungsbeginn</li>
-                <li>Verwaltung von Interessentenanfragen</li>
-                <li>Koordination von Besichtigungsterminen</li>
-              </ul>
-            <button type="button" class="plan-more" aria-expanded="false"><span>Alle Leistungen</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9.5l6 6 6-6"/></svg></button>
-          </div>
-          <div class="foot">
-            <a class="btn btn-primary btn-block" href="#kontakt" data-cta="miete-415">Top anfragen</a>
-            <p class="note">Damit du nicht 60 Nachrichten am Tag beantworten musst.</p>
-          </div>
-        </div>
-
-        <div class="plan rv">
-          <span class="badge calm">Volles Programm</span>
-          <p class="name">Premium</p>
-          <p class="for">Bis zur Unterschrift</p>
-          <div class="price-box">
-            <p class="price">595 <sup>€</sup></p>
-            <span class="vat">Festpreis, einmalig · inkl. 19 % MwSt.</span>
-          </div>
-          <p class="term"><b>Inkl. Mietvertrag</b></p>
-          <div class="plan-list">
-              <ul>
-                <li class="inherit">Alles aus Top, plus:</li>
-                <li>Mietvertrag</li>
-              </ul>
-            <button type="button" class="plan-more" aria-expanded="false"><span>Alle Leistungen</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9.5l6 6 6-6"/></svg></button>
-          </div>
-          <div class="foot">
-            <a class="btn btn-dark btn-block" href="#kontakt" data-cta="miete-595">Premium anfragen</a>
-            <p class="note">Wenn am Ende alles rechtssicher auf Papier stehen soll.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <p class="plans-note rv">Alle Preise sind pauschale Festpreise inkl. 19 % MwSt. Keine Provision, keine Erfolgsbeteiligung, keine versteckten Kosten.</p>
+    <div class="fk-segc"><div class="fk-seg fk-pkgswitch" role="tablist" aria-label="Pakete umschalten">
+      <button type="button" role="tab" aria-selected="true" data-pkg="kaufen">FAIRkaufen · Verkauf</button>
+      <button type="button" role="tab" aria-selected="false" data-pkg="mieten">FAIRmieten · Vermietung</button>
+    </div></div>
+    <div class="pkg-group" id="pkg-kaufen"><div class="fk-plans">
+        <article class="fk-plan">
+          <p class="fk-tier">Einstieg</p><h3 class="fk-plan-name">Premium</h3><p class="fk-tag">Du machst viel selbst</p>
+          <p class="fk-price">845 €</p><p class="fk-pnote">einmalig · inkl. 19 % MwSt.</p>
+          <ul class="fk-feat"><li><svg class="fk-sym" aria-hidden="true"><use href="#fk-check"/></svg><span>Ratgeber mit allen Checklisten &amp; Vorlagen</span></li><li><svg class="fk-sym" aria-hidden="true"><use href="#fk-check"/></svg><span>3 Monate Inserats-Verwaltung</span></li><li><svg class="fk-sym" aria-hidden="true"><use href="#fk-check"/></svg><span>Beratung vor Vermarktungsstart</span></li><li><svg class="fk-sym" aria-hidden="true"><use href="#fk-check"/></svg><span>14-tägige Vermarktungs-Reports</span></li><li><svg class="fk-sym" aria-hidden="true"><use href="#fk-check"/></svg><span>Finanzierungsfahrplan für Interessent:innen</span></li><li class="extra"><svg class="fk-sym" aria-hidden="true"><use href="#fk-check"/></svg><span>Erhebung relevanter Immobilieninformationen</span></li><li class="extra"><svg class="fk-sym" aria-hidden="true"><use href="#fk-check"/></svg><span>Weiterleitung eingehender Interessentenanfragen</span></li><li class="extra"><svg class="fk-sym" aria-hidden="true"><use href="#fk-check"/></svg><span>Exposé- und Dokumenten-Versand an Interessent:innen</span></li></ul>
+          <button type="button" class="fk-more" aria-expanded="false"><span>+ 3 weitere Leistungen</span><svg class="fk-sym" aria-hidden="true"><use href="#fk-down"/></svg></button>
+          <a class="fk-btn fk-btn-tinted fk-plan-btn" href="#kontakt" data-cta="paket-845">Premium anfragen</a>
+        </article>
+        <article class="fk-plan feat">
+          <p class="fk-badge">Am meisten gebucht</p><p class="fk-tier">Der Klassiker</p><h3 class="fk-plan-name">Rundum-Sorglos</h3><p class="fk-tag">Wir übernehmen den Papierkram</p>
+          <p class="fk-price">2.975 €</p><p class="fk-pnote">einmalig · inkl. 19 % MwSt.</p>
+          <ul class="fk-feat"><li><svg class="fk-sym" aria-hidden="true"><use href="#fk-check"/></svg><span>Alles aus Premium</span></li><li><svg class="fk-sym" aria-hidden="true"><use href="#fk-check"/></svg><span>Energieausweis &amp; Bewertung nach Sprengnetter</span></li><li><svg class="fk-sym" aria-hidden="true"><use href="#fk-check"/></svg><span>Vermarktungsstrategie &amp; Konkurrenzanalyse</span></li><li><svg class="fk-sym" aria-hidden="true"><use href="#fk-check"/></svg><span>Wöchentliche Reports</span></li><li><svg class="fk-sym" aria-hidden="true"><use href="#fk-check"/></svg><span>Besichtigungstermine koordiniert</span></li><li class="extra"><svg class="fk-sym" aria-hidden="true"><use href="#fk-check"/></svg><span>1 Monat kostenfrei auf zwei Immobilienportalen inserieren</span></li><li class="extra"><svg class="fk-sym" aria-hidden="true"><use href="#fk-check"/></svg><span>Resonanzgespräch nach 4 Wochen inkl. Strategieanpassung</span></li><li class="extra"><svg class="fk-sym" aria-hidden="true"><use href="#fk-check"/></svg><span>Verwaltung von Interessentenanfragen</span></li></ul>
+          <button type="button" class="fk-more" aria-expanded="false"><span>+ 3 weitere Leistungen</span><svg class="fk-sym" aria-hidden="true"><use href="#fk-down"/></svg></button>
+          <a class="fk-btn fk-btn-primary fk-plan-btn" href="#kontakt" data-cta="paket-2975">Rundum-Sorglos anfragen</a>
+        </article>
+        <article class="fk-plan">
+          <p class="fk-tier">Volles Programm</p><h3 class="fk-plan-name">Masterclass</h3><p class="fk-tag">Alles, was geht</p>
+          <p class="fk-price">5.345 €</p><p class="fk-pnote">einmalig · inkl. 19 % MwSt.</p>
+          <ul class="fk-feat"><li><svg class="fk-sym" aria-hidden="true"><use href="#fk-check"/></svg><span>Alles aus Rundum-Sorglos</span></li><li><svg class="fk-sym" aria-hidden="true"><use href="#fk-check"/></svg><span>Profi-Fotografie &amp; 360°-Rundgang</span></li><li><svg class="fk-sym" aria-hidden="true"><use href="#fk-check"/></svg><span>Workshops Besichtigung &amp; Verhandlung</span></li><li><svg class="fk-sym" aria-hidden="true"><use href="#fk-check"/></svg><span>Verkaufsschilder, Flyer &amp; Nachbarschaftsbriefe</span></li><li><svg class="fk-sym" aria-hidden="true"><use href="#fk-check"/></svg><span>Beratung vor Ort</span></li><li class="extra"><svg class="fk-sym" aria-hidden="true"><use href="#fk-check"/></svg><span>3 Monate kostenfrei auf zwei Immobilienportalen inserieren</span></li><li class="extra"><svg class="fk-sym" aria-hidden="true"><use href="#fk-check"/></svg><span>Dokumenteneinholung</span></li><li class="extra"><svg class="fk-sym" aria-hidden="true"><use href="#fk-check"/></svg><span>Dokumente schwärzen (DSGVO-konform)</span></li></ul>
+          <button type="button" class="fk-more" aria-expanded="false"><span>+ 3 weitere Leistungen</span><svg class="fk-sym" aria-hidden="true"><use href="#fk-down"/></svg></button>
+          <a class="fk-btn fk-btn-tinted fk-plan-btn" href="#kontakt" data-cta="paket-5345">Masterclass anfragen</a>
+        </article>
+    </div></div>
+    <div class="pkg-group" id="pkg-mieten" hidden><div class="fk-plans">
+        <article class="fk-plan">
+          <p class="fk-tier">Einstieg</p><h3 class="fk-plan-name">Basic</h3><p class="fk-tag">Du machst viel selbst</p>
+          <p class="fk-price">249 €</p><p class="fk-pnote">einmalig · inkl. 19 % MwSt.</p>
+          <ul class="fk-feat"><li><svg class="fk-sym" aria-hidden="true"><use href="#fk-check"/></svg><span>Erhebung relevanter Immobilieninformationen</span></li><li><svg class="fk-sym" aria-hidden="true"><use href="#fk-check"/></svg><span>3 Monate Inserats-Verwaltung</span></li><li><svg class="fk-sym" aria-hidden="true"><use href="#fk-check"/></svg><span>Wöchentliche Vermarktungs-Reports</span></li><li><svg class="fk-sym" aria-hidden="true"><use href="#fk-check"/></svg><span>Weiterleitung eingehender Interessentenanfragen</span></li><li><svg class="fk-sym" aria-hidden="true"><use href="#fk-check"/></svg><span>Bewerbungsfahrplan für Interessent:innen</span></li></ul>
+          
+          <a class="fk-btn fk-btn-tinted fk-plan-btn" href="#kontakt" data-cta="miete-249">Basic anfragen</a>
+        </article>
+        <article class="fk-plan feat">
+          <p class="fk-badge">Am meisten gebucht</p><p class="fk-tier">Der Klassiker</p><h3 class="fk-plan-name">Top</h3><p class="fk-tag">Wir sortieren die Anfragen</p>
+          <p class="fk-price">415 €</p><p class="fk-pnote">einmalig · inkl. 19 % MwSt.</p>
+          <ul class="fk-feat"><li><svg class="fk-sym" aria-hidden="true"><use href="#fk-check"/></svg><span>Alles aus Basic</span></li><li><svg class="fk-sym" aria-hidden="true"><use href="#fk-check"/></svg><span>Beratung vor Vermarktungsstart</span></li><li><svg class="fk-sym" aria-hidden="true"><use href="#fk-check"/></svg><span>Verwaltung von Interessentenanfragen</span></li><li><svg class="fk-sym" aria-hidden="true"><use href="#fk-check"/></svg><span>Besichtigungstermine koordiniert</span></li></ul>
+          
+          <a class="fk-btn fk-btn-primary fk-plan-btn" href="#kontakt" data-cta="miete-415">Top anfragen</a>
+        </article>
+        <article class="fk-plan">
+          <p class="fk-tier">Volles Programm</p><h3 class="fk-plan-name">Premium</h3><p class="fk-tag">Bis zur Unterschrift</p>
+          <p class="fk-price">595 €</p><p class="fk-pnote">einmalig · inkl. 19 % MwSt.</p>
+          <ul class="fk-feat"><li><svg class="fk-sym" aria-hidden="true"><use href="#fk-check"/></svg><span>Alles aus Top</span></li><li><svg class="fk-sym" aria-hidden="true"><use href="#fk-check"/></svg><span>Rechtssicherer Mietvertrag</span></li></ul>
+          
+          <a class="fk-btn fk-btn-tinted fk-plan-btn" href="#kontakt" data-cta="miete-595">Premium anfragen</a>
+        </article>
+    </div></div>
   </div>
 </section>
 
 <!-- MODULE -->
-<section id="module" class="mintbg">
-  <div class="wrap">
-    <div class="section-head rv">
-      <p class="eyebrow">Die Module</p>
-      <h2>Du brauchst nur ein Puzzleteil? Bekommst du auch einzeln.</h2>
-      <p class="lead">Nicht jeder braucht ein ganzes Paket. Manchmal fehlt nur der Energieausweis oder eine ehrliche Einschätzung zum Preis. Alle Module sind einzeln buchbar – auch ohne Paket.</p>
+<section class="fk-s" id="module">
+  <div class="fk-wrap">
+    <div class="fk-head">
+      <p class="fk-eyebrow">Die Module</p>
+      <h2 class="fk-h2">Nur ein Puzzleteil? Gibt’s auch einzeln.</h2>
     </div>
-
-    <details class="modules-toggle rv" id="moduleToggle" open>
-      <summary>
-        <span class="mt-label">Sieh dir unsere Module an</span>
-        <span class="mt-count">12 Bausteine</span>
-        <span class="mt-plus" aria-hidden="true"></span>
-      </summary>
-      <div class="mt-body">
-        <p class="mt-hint">Klick ein Modul an, dann erfährst du genau, was dahintersteckt.</p>
-      <div class="modules">
-        <button type="button" class="module" data-module="energieausweis">
-          <span class="module-txt"><b>Energieausweis</b><i>Pflicht bei Verkauf & Vermietung</i></span>
-          <span class="module-price">95,00 €</span>
-          <span class="module-more" aria-hidden="true">→</span>
-        </button>
-        <button type="button" class="module" data-module="bewertung">
-          <span class="module-txt"><b>Immobilienbewertung</b><i>Datenbasiert statt Bauchgefühl</i></span>
-          <span class="module-price">95,00 €</span>
-          <span class="module-more" aria-hidden="true">→</span>
-        </button>
-        <button type="button" class="module" data-module="aufnahmen360">
-          <span class="module-txt"><b>360°-Aufnahmen und 3D-Grundrisse</b><i>Virtueller Rundgang</i></span>
-          <span class="module-price">99,00 €</span>
-          <span class="module-more" aria-hidden="true">→</span>
-        </button>
-        <button type="button" class="module" data-module="beratung90">
-          <span class="module-txt"><b>90 Min. individuelle Beratung</b><i>Deine Fragen, unsere Antworten</i></span>
-          <span class="module-price">129,90 €</span>
-          <span class="module-more" aria-hidden="true">→</span>
-        </button>
-        <button type="button" class="module" data-module="coaching">
-          <span class="module-txt"><b>Coaching „Erfolgreich verhandeln“</b><i>Damit du nicht unter Wert abschließt</i></span>
-          <span class="module-price">109,90 €</span>
-          <span class="module-more" aria-hidden="true">→</span>
-        </button>
-        <button type="button" class="module" data-module="konkurrenzanalyse">
-          <span class="module-txt"><b>Konkurrenz- &amp; Vermarktungsanalyse</b><i>Wer buhlt sonst noch um deine Interessenten?</i></span>
-          <span class="module-price">109,90 €</span>
-          <span class="module-more" aria-hidden="true">→</span>
-        </button>
-        <button type="button" class="module" data-module="remarketing">
-          <span class="module-txt"><b>Remarketing-Service</b><i>Wenn das Inserat schon länger läuft</i></span>
-          <span class="module-price">109,90 €</span>
-          <span class="module-more" aria-hidden="true">→</span>
-        </button>
-        <button type="button" class="module" data-module="ratgeber">
-          <span class="module-txt"><b>Ratgeber „Verkauf es doch einfach selbst“</b><i>Alle Checklisten und Vorlagen</i></span>
-          <span class="module-price">19,95 €</span>
-          <span class="module-more" aria-hidden="true">→</span>
-        </button>
-        <button type="button" class="module" data-module="schwaerzen">
-          <span class="module-txt"><b>Dokumente schwärzen</b><i>DSGVO-konform</i></span>
-          <span class="module-price">auf Anfrage</span>
-          <span class="module-more" aria-hidden="true">→</span>
-        </button>
-        <button type="button" class="module" data-module="flyer">
-          <span class="module-txt"><b>Flyer &amp; Nachbarschaftsbriefe</b><i>Inkl. Text & Layout</i></span>
-          <span class="module-price">auf Anfrage</span>
-          <span class="module-more" aria-hidden="true">→</span>
-        </button>
-        <button type="button" class="module" data-module="schilder">
-          <span class="module-txt"><b>Verkaufsschilder mieten</b><i>Sichtbar auch offline</i></span>
-          <span class="module-price">auf Anfrage</span>
-          <span class="module-more" aria-hidden="true">→</span>
-        </button>
-        <button type="button" class="module module-free" data-module="finanzierung">
-          <span class="module-txt"><b>Immobilienfinanzierung</b><i>Für deine Interessent:innen</i></span>
-          <span class="module-price">kostenfrei</span>
-          <span class="module-more" aria-hidden="true">→</span>
-        </button>
+    <div class="fk-groups">
+      <div class="fk-group">
+        <button type="button" class="fk-cell" data-module="energieausweis"><span class="fk-ic"><svg class="fk-sym" aria-hidden="true"><use href="#fk-leaf"/></svg></span><span class="fk-cell-t"><b>Energieausweis</b><small>Pflicht bei Verkauf &amp; Vermietung</small></span><span class="fk-p">95,00 €</span><svg class="fk-sym fk-chev" aria-hidden="true"><use href="#fk-chev"/></svg></button>
+        <button type="button" class="fk-cell" data-module="bewertung"><span class="fk-ic"><svg class="fk-sym" aria-hidden="true"><use href="#fk-chart"/></svg></span><span class="fk-cell-t"><b>Immobilienbewertung</b><small>Datenbasiert statt Bauchgefühl</small></span><span class="fk-p">95,00 €</span><svg class="fk-sym fk-chev" aria-hidden="true"><use href="#fk-chev"/></svg></button>
+        <button type="button" class="fk-cell" data-module="aufnahmen360"><span class="fk-ic"><svg class="fk-sym" aria-hidden="true"><use href="#fk-cube"/></svg></span><span class="fk-cell-t"><b>360°-Aufnahmen &amp; 3D-Grundriss</b><small>Virtueller Rundgang</small></span><span class="fk-p">99,00 €</span><svg class="fk-sym fk-chev" aria-hidden="true"><use href="#fk-chev"/></svg></button>
+        <button type="button" class="fk-cell" data-module="beratung90"><span class="fk-ic"><svg class="fk-sym" aria-hidden="true"><use href="#fk-bubble"/></svg></span><span class="fk-cell-t"><b>90 Min. Beratung</b><small>Deine Fragen, unsere Antworten</small></span><span class="fk-p">129,90 €</span><svg class="fk-sym fk-chev" aria-hidden="true"><use href="#fk-chev"/></svg></button>
+        <button type="button" class="fk-cell" data-module="remarketing"><span class="fk-ic"><svg class="fk-sym" aria-hidden="true"><use href="#fk-refresh"/></svg></span><span class="fk-cell-t"><b>Remarketing-Service</b><small>Wenn das Inserat schon länger läuft</small></span><span class="fk-p">109,90 €</span><svg class="fk-sym fk-chev" aria-hidden="true"><use href="#fk-chev"/></svg></button>
+        <button type="button" class="fk-cell" data-module="schwaerzen"><span class="fk-ic"><svg class="fk-sym" aria-hidden="true"><use href="#fk-eyeoff"/></svg></span><span class="fk-cell-t"><b>Dokumente schwärzen</b><small>DSGVO-konform</small></span><span class="fk-p">auf Anfrage</span><svg class="fk-sym fk-chev" aria-hidden="true"><use href="#fk-chev"/></svg></button>
       </div>
+      <div class="fk-group">
+        <button type="button" class="fk-cell" data-module="coaching"><span class="fk-ic"><svg class="fk-sym" aria-hidden="true"><use href="#fk-hand"/></svg></span><span class="fk-cell-t"><b>Coaching „Erfolgreich verhandeln“</b><small>Nicht unter Wert abschließen</small></span><span class="fk-p">109,90 €</span><svg class="fk-sym fk-chev" aria-hidden="true"><use href="#fk-chev"/></svg></button>
+        <button type="button" class="fk-cell" data-module="konkurrenzanalyse"><span class="fk-ic"><svg class="fk-sym" aria-hidden="true"><use href="#fk-people"/></svg></span><span class="fk-cell-t"><b>Konkurrenzanalyse</b><small>Wer buhlt um deine Interessenten?</small></span><span class="fk-p">109,90 €</span><svg class="fk-sym fk-chev" aria-hidden="true"><use href="#fk-chev"/></svg></button>
+        <button type="button" class="fk-cell" data-module="ratgeber"><span class="fk-ic"><svg class="fk-sym" aria-hidden="true"><use href="#fk-book"/></svg></span><span class="fk-cell-t"><b>Ratgeber „Verkauf es selbst“</b><small>Alle Checklisten &amp; Vorlagen</small></span><span class="fk-p">19,95 €</span><svg class="fk-sym fk-chev" aria-hidden="true"><use href="#fk-chev"/></svg></button>
+        <button type="button" class="fk-cell" data-module="flyer"><span class="fk-ic"><svg class="fk-sym" aria-hidden="true"><use href="#fk-mail"/></svg></span><span class="fk-cell-t"><b>Flyer &amp; Nachbarschaftsbriefe</b><small>Inkl. Text &amp; Layout</small></span><span class="fk-p">auf Anfrage</span><svg class="fk-sym fk-chev" aria-hidden="true"><use href="#fk-chev"/></svg></button>
+        <button type="button" class="fk-cell" data-module="schilder"><span class="fk-ic"><svg class="fk-sym" aria-hidden="true"><use href="#fk-sign"/></svg></span><span class="fk-cell-t"><b>Verkaufsschilder mieten</b><small>Sichtbar auch offline</small></span><span class="fk-p">auf Anfrage</span><svg class="fk-sym fk-chev" aria-hidden="true"><use href="#fk-chev"/></svg></button>
+        <button type="button" class="fk-cell" data-module="finanzierung"><span class="fk-ic"><svg class="fk-sym" aria-hidden="true"><use href="#fk-euro"/></svg></span><span class="fk-cell-t"><b>Immobilienfinanzierung</b><small>Für deine Interessent:innen</small></span><span class="fk-p">kostenfrei</span><svg class="fk-sym fk-chev" aria-hidden="true"><use href="#fk-chev"/></svg></button>
       </div>
-    </details>
     </div>
   </div>
 </section>
@@ -2233,47 +2443,25 @@ h1,h2,h3{letter-spacing:-.03em}
 </section>
 
 <!-- BEWERTUNGEN -->
-<section id="bewertungen" class="mintbg">
-  <div class="wrap">
-    <div class="section-head rv" style="text-align:center;margin-left:auto;margin-right:auto">
-      <p class="eyebrow" style="justify-content:center">Was Kund:innen sagen</p>
-      <h2>Nicht unsere Worte. Eure.</h2>
+<section class="fk-s" id="bewertungen">
+  <div class="fk-wrap">
+    <div class="fk-head">
+      <p class="fk-eyebrow">Was Kund:innen sagen</p>
+      <h2 class="fk-h2">Nicht unsere Worte. Eure.</h2>
     </div>
-
-    <div class="rating-head rv">
-      <div class="rating-score">
-        <b>5,0</b>
-        <div>
-          <div class="stars" aria-hidden="true">★★★★★</div>
-          <i>von 5,0</i>
-        </div>
+    <!-- Anzahl der Google-Bewertungen bitte hier aktuell halten -->
+    <div class="fk-rating"><b>5,0</b><span class="fk-stars" aria-hidden="true">★★★★★</span><span>18 Google-Bewertungen · <a href="https://www.google.com/search?q=FAIRkaufswerkstatt+GmbH" target="_blank" rel="noopener">Alle ansehen</a></span></div>
+    <div class="fk-quotes-wrap">
+      <!-- Weitere Bewertungen einfach als weitere <figure class="fk-q"> anhängen – Wischen und Pfeile passen sich an -->
+      <div class="fk-quotes" id="fkQuotes" tabindex="0" role="region" aria-label="Bewertungen – zum Weiterblättern wischen oder die Pfeile nutzen">
+        <figure class="fk-q"><p class="fk-stars" role="img" aria-label="5 von 5 Sternen">★★★★★</p><blockquote>„Verkaufen war noch nie so einfach! Wir haben uns ohne den Makler unglaublich viel Geld erspart.“</blockquote><figcaption>NK · Google Local Guide</figcaption></figure>
+        <figure class="fk-q"><p class="fk-stars" role="img" aria-label="5 von 5 Sternen">★★★★★</p><blockquote>„Schon vom ersten Kontakt an hatten wir das Gefühl, bei Julija und ihrer Fairkaufswerkstatt in den besten Händen zu sein.“</blockquote><figcaption>Anna Voß · Google</figcaption></figure>
+        <figure class="fk-q"><p class="fk-stars" role="img" aria-label="5 von 5 Sternen">★★★★★</p><blockquote>„Ich habe mit der Fairkaufswerkstatt und insbesondere der Geschäftsführerin Julija sehr gute Erfahrungen gemacht. Besonders hervorheben möchte ich den fairen Umgang mit meinen Kunden.“</blockquote><figcaption>Sebastian R. · Google Local Guide</figcaption></figure>
+        <figure class="fk-q"><p class="fk-stars" role="img" aria-label="5 von 5 Sternen">★★★★★</p><blockquote>„Spektakulärer Service verbunden mit einer neuartigen Idee, die durch die Geschäftsführerin und Gründerin Julija Frideric aktives und einzigartiges Leben erfährt.“</blockquote><figcaption>Theo Herrmann · Google Local Guide</figcaption></figure>
       </div>
-      <!-- Anzahl der Google-Bewertungen bitte hier aktuell halten -->
-      <p class="rating-src">Basierend auf <b>18 Google-Bewertungen</b> ·
-        <a href="https://www.google.com/search?q=FAIRkaufswerkstatt+GmbH" target="_blank" rel="noopener">Alle Bewertungen ansehen</a>
-      </p>
-    </div>
-
-    <div class="reviews rv">
-      <div class="review">
-        <div class="stars" aria-label="5 von 5 Sternen">★★★★★</div>
-        <p>„Verkaufen war noch nie so einfach! Wir haben uns ohne den Makler unglaublich viel Geld erspart.“</p>
-        <footer>NK · Google Local Guide</footer>
-      </div>
-      <div class="review">
-        <div class="stars" aria-label="5 von 5 Sternen">★★★★★</div>
-        <p>„Schon vom ersten Kontakt an hatten wir das Gefühl, bei Julija und ihrer Fairkaufswerkstatt in den besten Händen zu sein.“</p>
-        <footer>Anna Voß · Google</footer>
-      </div>
-      <div class="review">
-        <div class="stars" aria-label="5 von 5 Sternen">★★★★★</div>
-        <p>„Ich habe mit der Fairkaufswerkstatt und insbesondere der Geschäftsführerin Julija sehr gute Erfahrungen gemacht. Besonders hervorheben möchte ich den fairen Umgang mit meinen Kunden.“</p>
-        <footer>Sebastian R. · Google Local Guide</footer>
-      </div>
-      <div class="review">
-        <div class="stars" aria-label="5 von 5 Sternen">★★★★★</div>
-        <p>„Spektakulärer Service verbunden mit einer neuartigen Idee, die durch die Geschäftsführerin und Gründerin Julija Frideric aktives und einzigartiges Leben erfährt.“</p>
-        <footer>Theo Herrmann · Google Local Guide</footer>
+      <div class="fk-qnav">
+        <button type="button" class="fk-qbtn" data-dir="-1" aria-label="Vorherige Bewertungen"><svg class="fk-sym" aria-hidden="true"><use href="#fk-chev-l"/></svg></button>
+        <button type="button" class="fk-qbtn" data-dir="1" aria-label="Weitere Bewertungen"><svg class="fk-sym" aria-hidden="true"><use href="#fk-chev"/></svg></button>
       </div>
     </div>
   </div>
@@ -2306,15 +2494,14 @@ h1,h2,h3{letter-spacing:-.03em}
 </section>
 
 <!-- QUERVERWEIS FAIRKAUFSBOOST -->
-<section id="boost">
-  <div class="wrap">
-    <div class="crosslink rv">
-      <div>
-        <p class="eyebrow">Schon online?</p>
-        <h3>Deine Immobilie steht längst im Netz<br class="cl-br"> – und in deinem Postfach <span class="hl">herrscht gähnende Leere?</span></h3>
-        <p>Dann brauchst du kein komplettes Paket, sondern einen zweiten Vermarktungsstart. Mit dem FAIRkaufsBOOST analysieren wir dein bestehendes Inserat und sagen dir kostenlos, was es gerade ausbremst.</p>
-      </div>
-      <a class="btn btn-primary" href="https://www.fairkaufsboost.de" target="_blank" rel="noopener" data-cta="boost">Inserat kostenlos prüfen<small>Antwort innerhalb von 24 Stunden</small></a>
+<section class="fk-s" id="boost">
+  <div class="fk-wrap">
+    <div class="fk-boost">
+      <p class="fk-eyebrow">Schon online?</p>
+      <h3 class="fk-boost-h">Deine Immobilie steht längst im Netz<br class="cl-br"> – und in deinem Postfach <span class="fk-hl">herrscht gähnende Leere?</span></h3>
+      <p class="fk-boost-p">Dann brauchst du kein Paket, sondern einen zweiten Start: Wir prüfen dein Inserat kostenlos und sagen dir, was es ausbremst.</p>
+      <a class="fk-btn fk-btn-primary fk-btn-lg" href="https://www.fairkaufsboost.de" target="_blank" rel="noopener" data-cta="boost">Inserat kostenlos prüfen</a>
+      <p class="fk-boost-hint">Antwort innerhalb von 24 Stunden</p>
     </div>
   </div>
 </section>
@@ -2340,136 +2527,75 @@ h1,h2,h3{letter-spacing:-.03em}
 </section>
 
 <!-- KONTAKT -->
-<section id="kontakt" class="soft">
-  <div class="wrap form-layout">
-    <div class="rv">
-      <p class="eyebrow">Kostenloses Erstgespräch</p>
-      <h2>Erst reden. Dann entscheiden.</h2>
-      <p class="lead">Du erzählst uns von deiner Immobilie, wir sagen dir ehrlich, was wir tun würden – und ob du uns überhaupt brauchst. Ohne Verkaufsdruck und ohne Verpflichtung.</p>
-      <ul class="side-list">
-        <li><span class="num">01</span><div><b>Du meldest dich</b><p>Formular, Kalender oder WhatsApp – such dir aus, was dir am liebsten ist.</p></div></li>
-        <li><span class="num">02</span><div><b>Wir sprechen über deine Immobilie</b><p>Ausgangslage, Zeitrahmen, Preisvorstellung und dein tatsächlicher Unterstützungsbedarf.</p></div></li>
-        <li><span class="num">03</span><div><b>Du bekommst einen Fahrplan</b><p>Konkrete Empfehlung, welches Paket passt – oder welches einzelne Modul reicht.</p></div></li>
-      </ul>
+<section class="fk-s" id="kontakt">
+  <div class="fk-wrap fk-contact">
+    <div class="fk-contact-l">
+      <p class="fk-eyebrow">Kostenloses Erstgespräch</p>
+      <h2 class="fk-h2">Erst reden.<br>Dann entscheiden.</h2>
+      <p class="fk-sub">Du erzählst uns von deiner Immobilie, wir sagen dir ehrlich, was wir tun würden – und ob du uns überhaupt brauchst.</p>
+      <ol class="fk-flow">
+        <li><em>1</em><div><b>Du meldest dich</b><span>Formular, Kalender oder WhatsApp.</span></div></li>
+        <li><em>2</em><div><b>Wir sprechen über deine Immobilie</b><span>Ausgangslage, Zeitrahmen, Preisvorstellung.</span></div></li>
+        <li><em>3</em><div><b>Du bekommst einen Fahrplan</b><span>Welches Paket passt – oder welches Modul reicht.</span></div></li>
+      </ol>
     </div>
 
-    <div class="form-wrap rv">
-      <form id="leadForm" novalidate action="https://formspree.io/f/xrpgkvao" method="POST">
+    <div class="fk-formwrap">
+      <form id="leadForm" class="fk-form" novalidate action="https://formspree.io/f/xrpgkvao" method="POST">
         <input type="hidden" name="_subject" value="Neue Anfrage über fairkaufswerkstatt.de">
         <input type="hidden" name="quelle" value="fairkaufswerkstatt.de">
-        <div class="form-grid">
-          <div class="form-grid two">
-            <div>
-              <label for="name">Name</label>
-              <input type="text" id="name" name="name" placeholder="Vor- und Nachname" required>
-              <span class="err-msg">Bitte gib deinen Namen an.</span>
-            </div>
-            <div>
-              <label for="mail">E-Mail</label>
-              <input type="email" id="mail" name="mail" placeholder="name@beispiel.de" required>
-              <span class="err-msg">Bitte gib eine gültige E-Mail-Adresse an.</span>
-            </div>
-          </div>
-          <div class="form-grid two">
-            <div>
-              <label for="tel">Telefon</label>
-              <input type="tel" id="tel" name="tel" placeholder="Für Rückfragen" required>
-              <span class="err-msg">Bitte gib eine Telefonnummer an.</span>
-            </div>
-            <div>
-              <label for="art">Objektart</label>
-              <select id="art" name="art" required>
-                <option value="">Bitte wählen</option>
-                <option>Einfamilienhaus</option>
-                <option>Doppelhaushälfte / Reihenhaus</option>
-                <option>Eigentumswohnung</option>
-                <option>Mehrfamilienhaus</option>
-                <option>Grundstück</option>
-                <option>Sonstiges</option>
-              </select>
-              <span class="err-msg">Bitte wähle eine Objektart.</span>
-            </div>
-          </div>
-          <div class="form-grid two">
-            <div>
-              <label for="vorhaben">Dein Vorhaben</label>
-              <select id="vorhaben" name="vorhaben" required>
-                <option value="">Bitte wählen</option>
-                <option>Ich möchte verkaufen</option>
-                <option>Ich möchte vermieten</option>
-                <option>Noch unentschieden</option>
-              </select>
-              <span class="err-msg">Bitte wähle dein Vorhaben.</span>
-            </div>
-            <div>
-              <label for="paket">Interessantestes Paket <span class="opt">(optional)</span></label>
-              <select id="paket" name="paket">
-                <option value="">Noch unentschieden</option>
-                <option>FAIRkaufen Premium · 845 €</option>
-                <option>FAIRkaufen Rundum-Sorglos · 2.975 €</option>
-                <option>FAIRkaufen Masterclass · 5.345 €</option>
-                <option>FAIRmieten Basic · 249 €</option>
-                <option>FAIRmieten Top · 415 €</option>
-                <option>FAIRmieten Premium · 595 €</option>
-                <option>Einzelnes Modul</option>
-              </select>
-            </div>
-          </div>
-          <div>
-            <label for="nachricht">Worum geht es? <span class="opt">(optional)</span></label>
-            <input type="text" id="nachricht" name="nachricht" placeholder="z. B. Reihenhaus mit Garten, Verkauf ab Frühjahr">
-          </div>
-          <p class="form-hinweis" style="margin:0;font-size:.83rem;color:var(--muted)">Mit dem Absenden werden deine Angaben zur Bearbeitung deiner Anfrage verarbeitet. Details in der <a href="#" data-legal="datenschutz">Datenschutzerklärung</a>.</p>
-          <button type="submit" class="btn btn-primary btn-block" id="submitBtn">Kostenloses Erstgespräch anfragen</button>
+        <div class="fk-group">
+          <div class="fk-fcell"><label for="name">Name</label><input type="text" id="name" name="name" placeholder="Vor- und Nachname" autocomplete="name" required></div>
+          <div class="fk-fcell"><label for="mail">E-Mail</label><input type="email" id="mail" name="mail" placeholder="name@beispiel.de" autocomplete="email" inputmode="email" required></div>
+          <div class="fk-fcell"><label for="tel">Telefon</label><input type="tel" id="tel" name="tel" placeholder="Für Rückfragen" autocomplete="tel" inputmode="tel" required></div>
         </div>
-        <p class="form-foot">Kostenlos · unverbindlich · kein Vertragsabschluss</p>
+        <div class="fk-group">
+          <div class="fk-fcell fk-sel"><label for="art">Objektart</label><select id="art" name="art" required>
+            <option value="">Bitte wählen</option><option>Einfamilienhaus</option><option>Doppelhaushälfte / Reihenhaus</option><option>Eigentumswohnung</option><option>Mehrfamilienhaus</option><option>Grundstück</option><option>Sonstiges</option>
+          </select><svg class="fk-sym fk-chev" aria-hidden="true"><use href="#fk-chev"/></svg></div>
+          <div class="fk-fcell fk-sel"><label for="vorhaben">Vorhaben</label><select id="vorhaben" name="vorhaben" required>
+            <option value="">Bitte wählen</option><option value="Ich möchte verkaufen">Verkaufen</option><option value="Ich möchte vermieten">Vermieten</option><option value="Noch unentschieden">Noch unentschieden</option>
+          </select><svg class="fk-sym fk-chev" aria-hidden="true"><use href="#fk-chev"/></svg></div>
+          <div class="fk-fcell fk-sel"><label for="paket">Paket</label><select id="paket" name="paket">
+            <option value="">Noch unentschieden</option><option>FAIRkaufen Premium · 845 €</option><option>FAIRkaufen Rundum-Sorglos · 2.975 €</option><option>FAIRkaufen Masterclass · 5.345 €</option><option>FAIRmieten Basic · 249 €</option><option>FAIRmieten Top · 415 €</option><option>FAIRmieten Premium · 595 €</option><option>Einzelnes Modul</option>
+          </select><svg class="fk-sym fk-chev" aria-hidden="true"><use href="#fk-chev"/></svg></div>
+          <div class="fk-fcell"><label for="nachricht">Worum geht’s?</label><input type="text" id="nachricht" name="nachricht" placeholder="optional, z. B. Reihenhaus mit Garten"></div>
+        </div>
+        <p class="fk-formerr" role="alert">Bitte fülle die rot markierten Felder aus.</p>
+        <p class="fk-hint">Kostenlos · unverbindlich · kein Vertragsabschluss</p>
+        <button type="submit" class="fk-btn fk-btn-primary fk-btn-lg fk-block" id="submitBtn">Erstgespräch anfragen</button>
+        <p class="fk-privacy">Mit dem Absenden werden deine Angaben zur Bearbeitung deiner Anfrage verarbeitet. Details in der <a href="#" data-legal="datenschutz">Datenschutzerklärung</a>.</p>
+        <div class="fk-alt">
+          <a class="fk-btn fk-btn-tinted" href="https://calendar.app.google/n9PQD4eXGsQwcMNd8" target="_blank" rel="noopener" data-cta="calendar-form"><svg class="fk-sym" aria-hidden="true"><use href="#fk-cal"/></svg>Termin buchen</a>
+          <a class="fk-btn fk-btn-tinted" href="https://wa.me/4917672743056?text=Hallo%2C%20ich%20interessiere%20mich%20f%C3%BCr%20die%20FAIRkaufswerkstatt.%20Bitte%20nehmen%20Sie%20Kontakt%20zu%20mir%20auf." target="_blank" rel="noopener" data-cta="whatsapp"><svg class="fk-sym" aria-hidden="true"><use href="#fk-bubble"/></svg>WhatsApp</a>
+        </div>
       </form>
 
       <div class="success" id="success">
         <div class="mark">✓</div>
-        <h3 style="font-size:1.4rem;font-family:var(--display);font-weight:700;letter-spacing:-.02em;margin-bottom:10px">Juhu, geschafft! Deine Anfrage ist bei uns gelandet.</h3>
-        <p style="color:var(--muted);margin:0;font-weight:400">Danke für dein Vertrauen! Wir schauen uns alles in Ruhe an und melden uns schnellstmöglich bei dir – meistens noch am selben Tag.</p>
-        <a class="btn btn-dark" style="margin-top:22px" href="https://calendar.app.google/n9PQD4eXGsQwcMNd8" target="_blank" rel="noopener" data-cta="calendar-success">📅 Nicht warten – direkt Termin buchen</a>
+        <h3 class="fk-done-h">Juhu, geschafft! Deine Anfrage ist bei uns gelandet.</h3>
+        <p class="fk-done-p">Danke für dein Vertrauen! Wir schauen uns alles in Ruhe an und melden uns schnellstmöglich bei dir – meistens noch am selben Tag.</p>
+        <a class="fk-btn fk-btn-tinted" href="https://calendar.app.google/n9PQD4eXGsQwcMNd8" target="_blank" rel="noopener" data-cta="calendar-success"><svg class="fk-sym" aria-hidden="true"><use href="#fk-cal"/></svg>Nicht warten – direkt Termin buchen</a>
       </div>
 
       <div class="form-error" id="formError">
         <div class="mark mark-err">!</div>
-        <h3 style="font-size:1.25rem;font-family:var(--display);font-weight:700;letter-spacing:-.02em;margin-bottom:10px">Puh, da ist gerade technisch etwas schiefgelaufen.</h3>
-        <p style="color:var(--muted);margin:0 0 18px;font-weight:400">Kein Grund zur Sorge – schreib uns einfach direkt, wir kümmern uns sofort persönlich um deine Anfrage.</p>
-        <a class="btn btn-dark" href="mailto:info@fairkaufswerkstatt.de">Direkt anschreiben</a>
-      </div>
-    </div>
-  </div>
-
-  <div class="wrap alt-section rv">
-    <div class="alt-divider">oder</div>
-    <div class="alt-paths">
-      <div class="alt-path">
-        <span class="alt-path-icon">📅</span>
-        <div>
-          <b>Lieber gleich sprechen statt schreiben?</b>
-          <p>Buch dir direkt ein kostenloses Kennenlerngespräch in unserem Kalender – ganz ohne Formular.</p>
-          <a class="btn btn-primary" href="https://calendar.app.google/n9PQD4eXGsQwcMNd8" target="_blank" rel="noopener" data-cta="calendar-form">Termin direkt buchen</a>
-        </div>
-      </div>
-      <div class="alt-path">
-        <span class="alt-path-icon">💬</span>
-        <div>
-          <b>Oder kurz per WhatsApp?</b>
-          <p>Schreib uns direkt – wir melden uns meist noch am selben Tag zurück.</p>
-          <a class="btn btn-primary" href="https://wa.me/4917672743056?text=Hallo%2C%20ich%20interessiere%20mich%20f%C3%BCr%20die%20FAIRkaufswerkstatt.%20Bitte%20nehmen%20Sie%20Kontakt%20zu%20mir%20auf." target="_blank" rel="noopener" data-cta="whatsapp">Per WhatsApp schreiben</a>
-        </div>
+        <h3 class="fk-done-h">Puh, da ist gerade technisch etwas schiefgelaufen.</h3>
+        <p class="fk-done-p">Kein Grund zur Sorge – schreib uns einfach direkt, wir kümmern uns sofort persönlich um deine Anfrage.</p>
+        <a class="fk-btn fk-btn-tinted" href="mailto:info@fairkaufswerkstatt.de">Direkt anschreiben</a>
       </div>
     </div>
   </div>
 </section>
 
 <!-- FINAL CTA -->
-<section class="final">
-  <div class="wrap">
-    <h2>Deine Immobilie. Deine Entscheidungen. Dein Geld.</h2>
-    <p class="lead">Lass uns unverbindlich darüber sprechen, was für deinen Verkauf oder deine Vermietung wirklich nötig ist – und was nicht.</p>
-    <a class="btn btn-primary" href="#kontakt" data-cta="final">Kostenloses Erstgespräch<small>Unverbindlich &amp; ohne Verkaufsdruck</small></a>
+<section class="fk-s fk-final-s">
+  <div class="fk-wrap">
+    <div class="fk-final">
+      <h2 class="fk-final-h">Deine Immobilie.<br>Deine Entscheidungen. <span>Dein Geld.</span></h2>
+      <p>Lass uns unverbindlich darüber sprechen, was für deinen Verkauf wirklich nötig ist – und was nicht.</p>
+      <a class="fk-btn fk-btn-primary fk-btn-lg" href="#kontakt" data-cta="final">Kostenloses Erstgespräch</a>
+    </div>
   </div>
 </section>
 
@@ -2487,8 +2613,9 @@ h1,h2,h3{letter-spacing:-.03em}
 
 </main>
 
-<div class="mobile-cta" id="mobileCta">
-  <a class="btn btn-primary btn-block" href="#kontakt" data-cta="sticky">Kostenloses Erstgespräch</a>
+<div class="fk-fab" id="mobileCta">
+  <a class="fk-btn fk-btn-primary" href="#kontakt" data-cta="sticky">Kostenloses Erstgespräch</a>
+  <a class="fk-btn fk-btn-tinted fk-fab-wa" href="https://wa.me/4917672743056?text=Hallo%2C%20ich%20interessiere%20mich%20f%C3%BCr%20die%20FAIRkaufswerkstatt.%20Bitte%20nehmen%20Sie%20Kontakt%20zu%20mir%20auf." target="_blank" rel="noopener" aria-label="Per WhatsApp schreiben" data-cta="whatsapp-fab"><svg class="fk-sym" aria-hidden="true"><use href="#fk-bubble"/></svg></a>
 </div>
 
 <footer class="footer">
@@ -2894,18 +3021,14 @@ const io = new IntersectionObserver((entries) => {
 }, { threshold: .12 });
 document.querySelectorAll('.rv').forEach(el => io.observe(el));
 
-/* ---------- Pakete: einen Teil der Leistungen zeigen, Rest aufklappen ---------- */
+/* ---------- Pakete: Rest der Leistungen aufklappen ---------- */
 (() => {
-  const SICHTBAR = 4;
-  document.querySelectorAll('.plan .plan-list').forEach(list => {
-    const plan = list.closest('.plan');
-    const btn = list.querySelector('.plan-more');
-    const extra = [...list.querySelectorAll('li:not(.inherit)')].slice(SICHTBAR);
-    if (extra.length < 2) { btn.remove(); return; }          // bei 0–1 weiteren Punkten alles zeigen
-    extra.forEach((li, i) => { li.classList.add('extra'); li.style.setProperty('--i', i); });
+  document.querySelectorAll('.fk-plan').forEach(plan => {
+    const btn = plan.querySelector('.fk-more');
+    if (!btn) return;
+    plan.querySelectorAll('.fk-feat li.extra').forEach((li, i) => li.style.setProperty('--i', i));
     const label = btn.querySelector('span');
-    const zu = `+ ${extra.length} weitere Leistungen`;
-    label.textContent = zu;
+    const zu = label.textContent;
     btn.addEventListener('click', () => {
       const offen = plan.classList.toggle('open');
       btn.setAttribute('aria-expanded', String(offen));
@@ -2914,12 +3037,103 @@ document.querySelectorAll('.rv').forEach(el => io.observe(el));
   });
 })();
 
-/* ---------- Ablauf: Aufklappliste, immer nur ein Schritt offen ---------- */
+/* ---------- Ablauf: schmale Zeitleiste links, Inhalt rechts ---------- */
 (() => {
-  const steps = [...document.querySelectorAll('.ab-steps details')];
-  steps.forEach(d => d.addEventListener('toggle', () => {
-    if (d.open) steps.forEach(o => { if (o !== d) o.open = false; });
+  const tabs = [...document.querySelectorAll('.fk-timeline [role="tab"]')];
+  if (!tabs.length) return;
+  const S = [
+    { t:'Unverbindliches Erstgespräch', x:'Wir lernen deine Immobilie und deine Wünsche kennen und klären gemeinsam, wo du wirklich Unterstützung brauchst – und wo nicht. Kein Verkaufsgespräch, sondern eine ehrliche Einordnung.', o:'Ein klarer Fahrplan für deinen Verkauf oder deine Vermietung – transparent und 100 % unverbindlich.' },
+    { t:'Datenbasierte Wertermittlung & Strategie', x:'Auf Basis aktueller Marktdaten ermitteln wir den optimalen Angebotspreis für deine Immobilie. Kein Bauchgefühl, keine Schönfärberei – sondern eine Zahl, die du im Gespräch mit Interessent:innen auch begründen kannst.', o:'Eine fundierte Preisstrategie als sicheres Fundament für die gesamte Vermarktung.' },
+    { t:'Aufbereitung & Profi-Exposé', x:'Wir strukturieren deine vorhandenen Unterlagen, bereiten Grundrisse digital auf und erstellen ein erstklassiges, verkaufsstarkes Exposé. Aus einer Sammlung von PDFs wird ein Auftritt.', o:'Ein professioneller Auftritt, der die Stärken deiner Immobilie in Szene setzt – statt sie nur aufzuzählen.' },
+    { t:'Digitales Marketing & Interessenten-Check', x:'Wir platzieren deine Immobilie auf den relevanten Portalen, managen alle Anfragen und prüfen vorab, ob die Interessierten überhaupt finanzieren bzw. die Miete tragen können.', o:'Kein Besichtigungstourismus: Du empfängst nur geprüfte, ernsthafte Interessent:innen.' },
+    { t:'Besichtigung in Eigenregie & Verhandlungs-Support', x:'Du führst die Besichtigungstermine vor Ort durch – niemand kann deine Immobilie so erzählen wie du. Wir geben dir praxiserprobte Leitfäden an die Hand und unterstützen im Hintergrund bei der Preisverhandlung.', o:'Du behältst die volle Kontrolle vor Ort und holst mit unserem Expertenwissen den besten Preis heraus.' },
+    { t:'Sicherer Vertrag & saubere Abwicklung', x:'Beim Verkauf koordinieren wir den Kaufvertragsentwurf, prüfen alle Formalien und begleiten dich Schritt für Schritt bis zum Notartermin. Beim Vermieten sorgen wir für einen rechtssicheren Mietvertrag und eine saubere Übergabe.', o:'Ein rechtssicherer, entspannter Abschluss bis zur finalen Übergabe.' }
+  ];
+  const el = id => document.getElementById(id);
+  const bars = [...document.querySelectorAll('.fk-progress i')];
+  let cur = 0;
+  function show(i, focus) {
+    cur = (i + S.length) % S.length;
+    tabs.forEach((t, n) => {
+      const on = n === cur;
+      t.setAttribute('aria-selected', String(on));
+      t.tabIndex = on ? 0 : -1;
+      t.classList.toggle('done', n < cur);
+    });
+    bars.forEach((b, n) => b.classList.toggle('on', n <= cur));
+    el('fkStepNo').textContent = `Schritt ${cur + 1} von ${S.length}`;
+    el('fkStepTitle').textContent = S[cur].t;
+    el('fkStepText').textContent = S[cur].x;
+    el('fkStepOut').textContent = S[cur].o;
+    el('fkStepPanel').setAttribute('aria-labelledby', tabs[cur].id);
+    if (focus) tabs[cur].focus();
+  }
+  tabs.forEach((t, n) => t.addEventListener('click', () => show(n)));
+  document.querySelector('.fk-timeline').addEventListener('keydown', e => {
+    if (e.key === 'ArrowDown' || e.key === 'ArrowRight') { e.preventDefault(); show(cur + 1, true); }
+    if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') { e.preventDefault(); show(cur - 1, true); }
+  });
+})();
+
+/* ---------- Selbstcheck „Wo fühlst du dich noch unsicher?“ ---------- */
+(() => {
+  const chips = [...document.querySelectorAll('#fkChecks .fk-chip')];
+  if (!chips.length) return;
+  const CAUSES = ['der Wertermittlung', 'den Unterlagen und rechtlichen Pflichtangaben', 'der Präsentation deiner Immobilie', 'der Vermarktung über die Portale', 'dem Einschätzen von Interessent:innen', 'der Preisverhandlung'];
+  const LABELS = ['', 'Ein Thema', 'Zwei Themen', 'Drei Themen', 'Vier Themen', 'Fünf Themen', 'Alle sechs Themen'];
+  const CLOSERS = [
+    'Dafür brauchst du kein komplettes Paket – das gibt es bei uns auch als einzelnes Modul.',
+    'Beides lässt sich gut zusammen abdecken, ohne dass du den ganzen Verkauf abgibst.',
+    'Ab hier lohnt sich ein Paket meistens mehr als drei einzelne Module.',
+    'Das ist genau die Kombination, für die es das Paket Rundum-Sorglos gibt.',
+    'Viel auf einmal – aber nichts davon musst du allein können.',
+    'Ehrlich gesagt: Genau dafür gibt es uns. Lass uns im Erstgespräch sortieren, wo wir anfangen.'
+  ];
+  const joinDE = a => a.length === 1 ? a[0] : a.slice(0, -1).join(', ') + ' und ' + a[a.length - 1];
+  const $ = id => document.getElementById(id);
+  const card = $('fkResult'), btn = $('fkResBtn');
+  function update() {
+    const idx = chips.map((c, i) => c.getAttribute('aria-pressed') === 'true' ? i : -1).filter(i => i >= 0);
+    $('fkCount').textContent = idx.length;
+    $('fkResLink').hidden = !idx.length;
+    if (!idx.length) { card.hidden = true; btn.setAttribute('aria-expanded', 'false'); return; }
+    $('fkResLabel').textContent = LABELS[idx.length];
+    $('fkResText').textContent = 'Unterstützung brauchst du vor allem bei ' + joinDE(idx.map(i => CAUSES[i])) + '. ' + CLOSERS[idx.length - 1];
+  }
+  chips.forEach(c => c.addEventListener('click', () => {
+    c.setAttribute('aria-pressed', c.getAttribute('aria-pressed') === 'true' ? 'false' : 'true');
+    update();
   }));
+  btn.addEventListener('click', () => {
+    const oeffnen = card.hidden;
+    card.hidden = !oeffnen;
+    btn.setAttribute('aria-expanded', String(oeffnen));
+    if (oeffnen) card.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+  });
+  update();
+})();
+
+/* ---------- Bewertungen: wischen oder mit Pfeilen weiterblättern ---------- */
+(() => {
+  const track = document.getElementById('fkQuotes');
+  if (!track) return;
+  const nav = document.querySelector('.fk-qnav');
+  const [prev, next] = nav.querySelectorAll('.fk-qbtn');
+  function sync() {
+    const max = track.scrollWidth - track.clientWidth - 2;
+    prev.disabled = track.scrollLeft <= 2;
+    next.disabled = track.scrollLeft >= max;
+    nav.hidden = max <= 0;
+  }
+  [prev, next].forEach(b => b.addEventListener('click', () => {
+    const q = track.querySelector('.fk-q');
+    const gap = parseFloat(getComputedStyle(track).columnGap) || 24;
+    const step = q ? q.getBoundingClientRect().width + gap : track.clientWidth;
+    track.scrollBy({ left: step * +b.dataset.dir, behavior: 'smooth' });
+  }));
+  track.addEventListener('scroll', () => requestAnimationFrame(sync), { passive: true });
+  window.addEventListener('resize', sync);
+  sync();
 })();
 
 /* ---------- Ohne-uns/Mit-uns-Regler ---------- */
@@ -2961,7 +3175,7 @@ document.querySelectorAll('.ba-slider').forEach(slider => {
 
 /* ---------- Paket-Umschalter FAIRkaufen / FAIRmieten ---------- */
 (() => {
-  const sw = document.querySelector('.pkg-switch');
+  const sw = document.querySelector('.fk-pkgswitch');
   if (!sw) return;
   const btns = [...sw.querySelectorAll('button')];
   btns.forEach(b => b.addEventListener('click', () => {
